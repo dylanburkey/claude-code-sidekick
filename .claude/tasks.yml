@@ -1,0 +1,247 @@
+# Task Management Configuration
+# Defines task categories, workflows, and execution patterns
+
+# Task categories
+categories:
+  - name: "planning"
+    description: "Project planning and breakdown tasks"
+    priority: "critical"
+    agent: "planner"
+
+  - name: "initialization"
+    description: "Project setup and configuration tasks"
+    priority: "critical"
+    agent: "init"
+
+  - name: "development"
+    description: "Feature implementation and code development"
+    priority: "high"
+    agent: "dev"
+
+  - name: "testing"
+    description: "Testing and validation tasks"
+    priority: "high"
+    agent: "test"
+
+  - name: "documentation"
+    description: "Documentation creation and maintenance"
+    priority: "medium"
+    agent: "docs"
+
+  - name: "review"
+    description: "Code review and quality assurance"
+    priority: "high"
+    agent: "review"
+
+# Task status definitions
+statuses:
+  - "pending"
+  - "in_progress"
+  - "blocked"
+  - "review"
+  - "complete"
+  - "cancelled"
+
+# Task workflow patterns
+workflows:
+  # Project planning workflow
+  project_planning:
+    name: "Project Planning Workflow"
+    trigger: "command:project-planner"
+    steps:
+      - step: 1
+        name: "Read PROJECT_STARTER.md"
+        agent: "planner"
+        actions:
+          - "Parse project definition"
+          - "Extract goals and requirements"
+          - "Identify questions to answer"
+
+      - step: 2
+        name: "Analyze and Plan"
+        agent: "planner"
+        actions:
+          - "Break down into phases"
+          - "Define success criteria"
+          - "Identify dependencies"
+          - "Estimate complexity"
+
+      - step: 3
+        name: "Generate Phase Document"
+        agent: "planner"
+        actions:
+          - "Create project-plan/phase_1.md"
+          - "Document goals and intent"
+          - "List criteria for completion"
+
+  # Task planning workflow
+  task_planning:
+    name: "Task Planning Workflow"
+    trigger: "command:task-planner"
+    steps:
+      - step: 1
+        name: "Read Phase Document"
+        agent: "planner"
+        actions:
+          - "Parse phase document"
+          - "Extract requirements"
+          - "Identify deliverables"
+
+      - step: 2
+        name: "Create Tasks"
+        agent: "planner"
+        actions:
+          - "Break down into atomic tasks"
+          - "Define task dependencies"
+          - "Set priority levels"
+          - "Assign to agents"
+
+      - step: 3
+        name: "Generate Task List"
+        agent: "planner"
+        actions:
+          - "Create tasks/phase-1-tasks.md"
+          - "Include completion criteria"
+          - "Document acceptance tests"
+
+  # Task execution workflow
+  task_execution:
+    name: "Task Execution Workflow"
+    trigger: "command:task-runner"
+    steps:
+      - step: 1
+        name: "Load Tasks"
+        agent: "orchestrator"
+        actions:
+          - "Parse task file"
+          - "Order by dependencies"
+          - "Validate prerequisites"
+
+      - step: 2
+        name: "Execute Tasks"
+        agent: "orchestrator"
+        actions:
+          - "Delegate to appropriate agent"
+          - "Monitor progress"
+          - "Handle failures"
+          - "Update task status"
+
+      - step: 3
+        name: "Verify Completion"
+        agent: "review"
+        actions:
+          - "Validate deliverables"
+          - "Check completion criteria"
+          - "Run acceptance tests"
+
+      - step: 4
+        name: "Update Documentation"
+        agent: "docs"
+        actions:
+          - "Update README.md"
+          - "Update CLAUDE.md"
+          - "Generate reports"
+
+  # Standard development workflow
+  feature_development:
+    name: "Feature Development Workflow"
+    steps:
+      - step: 1
+        name: "Plan"
+        agent: "dev"
+        actions:
+          - "Review task requirements"
+          - "Identify files to modify"
+          - "Plan implementation approach"
+
+      - step: 2
+        name: "Implement"
+        agent: "dev"
+        actions:
+          - "Write semantic HTML"
+          - "Write modern CSS"
+          - "Ensure accessibility"
+          - "Test locally"
+
+      - step: 3
+        name: "Test"
+        agent: "test"
+        actions:
+          - "Write tests"
+          - "Run test suite"
+          - "Validate requirements"
+
+      - step: 4
+        name: "Review"
+        agent: "review"
+        actions:
+          - "Code review"
+          - "Accessibility check"
+          - "Performance check"
+
+      - step: 5
+        name: "Document"
+        agent: "docs"
+        actions:
+          - "Update documentation"
+          - "Add code comments"
+
+# Task execution rules
+execution:
+  max_parallel: 3
+  timeout_minutes: 30
+  retry:
+    max_attempts: 3
+    backoff: "exponential"
+  checkpoints:
+    - "Phase plan complete"
+    - "Tasks generated"
+    - "Implementation complete"
+    - "Tests passing"
+    - "Documentation updated"
+
+# Task templates
+templates:
+  task_item: |
+    ## Task: {{TASK_ID}} - {{TASK_NAME}}
+
+    **Status:** {{STATUS}}
+    **Priority:** {{PRIORITY}}
+    **Agent:** {{AGENT}}
+    **Dependencies:** {{DEPENDENCIES}}
+
+    ### Description
+    {{DESCRIPTION}}
+
+    ### Acceptance Criteria
+    {{CRITERIA}}
+
+    ### Deliverables
+    {{DELIVERABLES}}
+
+    ### Notes
+    {{NOTES}}
+
+  task_file_header: |
+    # Phase {{PHASE_NUMBER}} Tasks
+
+    Generated from: `project-plan/phase_{{PHASE_NUMBER}}.md`
+    Generated at: {{TIMESTAMP}}
+
+    ## Overview
+    {{OVERVIEW}}
+
+    ## Task Summary
+    - Total Tasks: {{TOTAL_TASKS}}
+    - Critical: {{CRITICAL_COUNT}}
+    - High Priority: {{HIGH_COUNT}}
+    - Medium Priority: {{MEDIUM_COUNT}}
+
+    ---
+
+# Reporting configuration
+reporting:
+  format: "markdown"
+  include_timestamps: true
+  include_agent: true
+  output_dir: ".claude/docs/task-reports"

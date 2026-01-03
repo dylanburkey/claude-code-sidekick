@@ -1,0 +1,168 @@
+# Agent Definitions
+# Defines specialized agents for orchestrating complex development tasks
+
+agents:
+  # Initialization agent - sets up environment and project structure
+  - name: "init"
+    type: "initialization"
+    description: "Initializes the environment and creates necessary files and directories"
+    config_file: ".claude/agents/init-agent.md"
+    capabilities:
+      - "Create project structure"
+      - "Initialize configuration files"
+      - "Set up documentation"
+      - "Validate project setup"
+      - "Parse PROJECT_STARTER.md"
+    tools:
+      - "file_operations"
+      - "documentation"
+      - "validation"
+    priority: "critical"
+
+  # Planning agent - handles project planning and breakdown
+  - name: "planner"
+    type: "planning"
+    description: "Analyzes project requirements and creates structured plans"
+    config_file: ".claude/agents/planner-agent.md"
+    capabilities:
+      - "Analyze PROJECT_STARTER.md"
+      - "Create phase breakdowns"
+      - "Define success criteria"
+      - "Identify dependencies"
+      - "Generate task lists"
+    tools:
+      - "file_operations"
+      - "documentation"
+      - "analysis"
+    priority: "critical"
+
+  # Development agent - handles code implementation tasks
+  - name: "dev"
+    type: "development"
+    description: "Handles code implementation and feature development"
+    config_file: ".claude/agents/dev-agent.md"
+    capabilities:
+      - "Implement features"
+      - "Write semantic HTML"
+      - "Create modern CSS"
+      - "Write accessible code"
+      - "Follow project patterns"
+    tools:
+      - "code_editing"
+      - "file_operations"
+      - "linting"
+    priority: "high"
+
+  # Testing agent - creates and runs tests
+  - name: "test"
+    type: "testing"
+    description: "Creates tests and validates implementation"
+    config_file: ".claude/agents/test-agent.md"
+    capabilities:
+      - "Write unit tests"
+      - "Write property tests"
+      - "Create test scenarios"
+      - "Validate requirements"
+      - "Run test suites"
+    tools:
+      - "vitest"
+      - "fast-check"
+      - "test_runner"
+    priority: "high"
+
+  # Documentation agent - maintains project documentation
+  - name: "docs"
+    type: "documentation"
+    description: "Creates and maintains project documentation"
+    config_file: ".claude/agents/docs-agent.md"
+    capabilities:
+      - "Update README.md"
+      - "Update CLAUDE.md"
+      - "Generate API docs"
+      - "Write implementation guides"
+      - "Create architecture docs"
+    tools:
+      - "markdown"
+      - "file_operations"
+      - "documentation"
+    output_dir: ".claude/docs"
+    priority: "medium"
+
+  # Review agent - code review and quality assurance
+  - name: "review"
+    type: "quality_assurance"
+    description: "Reviews code for quality, patterns, and best practices"
+    config_file: ".claude/agents/review-agent.md"
+    capabilities:
+      - "Code review"
+      - "Pattern validation"
+      - "Accessibility audit"
+      - "Performance analysis"
+      - "Security checks"
+    tools:
+      - "linting"
+      - "static_analysis"
+      - "pattern_matching"
+    priority: "high"
+
+  # Orchestrator agent - coordinates other agents
+  - name: "orchestrator"
+    type: "coordination"
+    description: "Coordinates tasks across multiple agents"
+    config_file: ".claude/agents/orchestrator-agent.md"
+    capabilities:
+      - "Delegate tasks"
+      - "Monitor progress"
+      - "Handle dependencies"
+      - "Report status"
+      - "Resolve conflicts"
+    tools:
+      - "task_management"
+      - "communication"
+    priority: "critical"
+
+# Agent coordination rules
+coordination:
+  hierarchy:
+    orchestrator:
+      can_spawn: ["planner", "dev", "test", "docs", "review"]
+    init:
+      can_spawn: ["planner", "docs"]
+    planner:
+      can_spawn: ["dev", "docs"]
+    dev:
+      can_spawn: ["test", "review"]
+    test:
+      can_spawn: []
+    docs:
+      can_spawn: []
+    review:
+      can_spawn: ["dev"]
+
+  communication:
+    - from: "planner"
+      to: "orchestrator"
+      protocol: "plan_complete"
+    - from: "orchestrator"
+      to: "dev"
+      protocol: "task_assignment"
+    - from: "dev"
+      to: "test"
+      protocol: "implementation_complete"
+    - from: "test"
+      to: "dev"
+      protocol: "test_results"
+    - from: "dev"
+      to: "docs"
+      protocol: "documentation_update"
+    - from: "review"
+      to: "dev"
+      protocol: "review_feedback"
+
+# Shared context available to all agents
+shared_context:
+  - "CLAUDE.md"
+  - "README.md"
+  - "PROJECT_STARTER.md"
+  - ".claude/config.yml"
+  - ".claude/rules/"

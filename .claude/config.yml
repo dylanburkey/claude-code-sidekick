@@ -1,0 +1,87 @@
+# Claude Code Library Configuration
+# Main configuration file for the Claude Code agent system template
+
+project:
+  name: "{{PROJECT_NAME}}"
+  version: "1.0.0"
+  description: "{{PROJECT_DESCRIPTION}}"
+  root: "{{PROJECT_ROOT}}"
+
+# Agent system configuration
+agents:
+  enabled: true
+  config_file: ".claude/agents.yml"
+  directory: ".claude/agents"
+  auto_initialize: false
+
+# Command system configuration
+commands:
+  enabled: true
+  directory: ".claude/commands"
+  available:
+    - project-planner
+    - task-planner
+    - task-runner
+
+# Hook system configuration
+hooks:
+  enabled: true
+  directory: ".claude/hooks"
+  triggers:
+    post_save:
+      - "post-save-docs"
+
+# Task management configuration
+tasks:
+  enabled: true
+  config_file: ".claude/tasks.yml"
+  directory: ".claude/tasks"
+  output_format: "markdown"
+
+# Rules configuration
+rules:
+  enabled: true
+  directory: ".claude/rules"
+  active:
+    - code-style
+    - documentation
+    - accessibility
+
+# Project planning configuration
+project_planning:
+  enabled: true
+  input_file: "PROJECT_STARTER.md"
+  output_directory: ".claude/project-plan"
+  phases:
+    - phase_1
+    - phase_2
+    - phase_3
+
+# Documentation configuration
+documentation:
+  enabled: true
+  directory: ".claude/docs"
+  auto_update_readme: true
+  auto_update_claude_md: true
+  formats:
+    - markdown
+
+# Development settings
+development:
+  code_style:
+    prefer_semantic_html: true
+    prefer_modern_css: true
+    avoid_utility_first_css: true
+    accessibility_first: true
+  testing:
+    framework: "vitest"
+    property_testing: "fast-check"
+
+# Workflow settings
+workflow:
+  checkpoints:
+    - "Project plan complete"
+    - "Tasks generated"
+    - "Phase complete"
+  max_parallel_tasks: 3
+  task_timeout_minutes: 30
