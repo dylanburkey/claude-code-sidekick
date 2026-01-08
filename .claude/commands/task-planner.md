@@ -9,7 +9,7 @@ Run after `project-planner` has generated a phase document.
 ## Arguments
 - `phase` (optional): Phase number to plan. Defaults to `1`.
 
-## Instructions
+## Instrutions
 
 ### Step 1: Read Phase Document
 

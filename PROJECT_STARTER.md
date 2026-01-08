@@ -8,15 +8,15 @@
 
 ### Project Name
 <!-- Replace with your project name -->
-{{PROJECT_NAME}}
+North Coast AI
 
 ### Project Description
 <!-- 2-3 sentences describing what this project does -->
-{{PROJECT_DESCRIPTION}}
+North Coast AI is a web application that is on the cutting edge of AI technology. Specializing in Generative AI, across multiple domains, inlcuding blockchain, finance, manufaturing, marketing, and more, North Coast AI provides AI-powered tools for businesses and individuals to improve their digital operations through secure, efficient, and innovational AI solutions.
 
 ### Project Type
 <!-- Select one: web-app | api | library | cli | static-site | shopify-theme | other -->
-{{PROJECT_TYPE}}
+web-app
 
 ---
 
@@ -24,17 +24,27 @@
 
 ### Primary Goal
 <!-- What is the main thing this project should accomplish? -->
+The primary goal of this project is to create a web application that provides AI-powered tools for businesses and individuals to improve their digital operations through secure, efficient, and innovational AI solutions. 
 
+Right now, the project is the website for North Coast AI. We need to create a website that is modern, responsive, and easy to navigate. It should also be easy to update and maintain. It will be built with Astro 5, modern CSS,Vanilla JS and deployed to Cloudflare Workers.
 
+Primary goals include:
+
+ - Create a website for North Coast AI that is modern, responsive, and easy to navigate. It should also be easy to update and maintain. It will be built with Astro 5, modern CSS,Vanilla JS and deployed to Cloudflare Workers. We will focus on the following features:
+   - Modern, responsive design
+   - Easy to navigate
+   - Easy to update and maintain
+   - Built with Astro 5, modern CSS,Vanilla JS and deployed to Cloudflare Workers.
+ 
 ### Success Criteria
 <!-- How will you know the project is successful? List measurable outcomes -->
-- [ ] Criterion 1
-- [ ] Criterion 2
-- [ ] Criterion 3
+- The website is unique and stands out from competitors
+- The website is easy to navigate and use for users including accessibility. We need to be WCAG 2.1 Level AA compliant.
+- We will use Cloudflare D1 for the CMS, Hono for the API, and Cloudflare Workers for the server.
+- The website is built with Astro 5, Modern CSS (Flexbox, Grid, Custom Properties, nested selectors, scoped styles, layers, etc),Vanilla JS and deployed to Cloudflare Workers.
 
 ### Non-Goals
 <!-- What is explicitly NOT part of this project? -->
-- 
 
 ---
 
@@ -51,17 +61,18 @@
 
 <!-- Example: WHEN user clicks submit THE SYSTEM SHALL validate all form fields and display errors next to invalid fields -->
 
-1. 
-2. 
-3. 
+1. The website should be easy to navigate and use for users including accessibility. We need to be WCAG 2.1 Level AA compliant. The site should be built with Astro 5, modern CSS (Flexbox, Grid, Custom Properties, nested selectors, scoped styles, layers, etc),Vanilla JS and deployed to Cloudflare Workers and function on mobile devices.
+2. The website requires a backend API to handle user authentication and authorization. The API will be built with Hono and deployed to Cloudflare Workers. The backend will allow for the creation of new pages, support friendly urls, and allow users to update the SEO data for each page. This includes schema.org data for search engines, JSON-LD data for search engines, and Open Graph data for social media. We will have the essential meta tags such as title, description, keywords, author, and canonical url.
+3. We will use Resource hints to improve performance. This includes DNS prefetching, preloading, and preconnecting.
+4. Modern HTML standards will be used to ensure the website is future proof and compatible with all modern browsers.This includes popovers, tooltips, and other modern features.
 
 ### Non-Functional Requirements
 
 <!-- Example: THE SYSTEM SHALL achieve a Lighthouse performance score of 90+ -->
 
-1. **Performance:** 
-2. **Accessibility:** 
-3. **Security:** 
+1. **Performance:** The website should be fast and responsive. Make use of Astro 5's features to improve performance.
+2. **Accessibility:** The website should be WCAG 2.1 Level AA compliant.
+3. **Security:** The website should be secure and protected against common security threats.
 
 ---
 
@@ -69,7 +80,7 @@
 
 ### Target Platform
 <!-- Where will this run? (browser, node, both, mobile, etc.) -->
-
+This will run in the browser but also be a PWA
 
 ### Technology Preferences
 
@@ -84,11 +95,11 @@
 
 ### Browser/Environment Support
 <!-- Minimum versions, compatibility requirements -->
-
+Anything before 2015 does not require support. Fallbacks for older browsers will be provided.
 
 ### Performance Requirements
 <!-- Load times, bundle sizes, response times, etc. -->
-
+Vite will be used to improve performance. Vite+ is being considered for the frontend.
 
 ---
 
