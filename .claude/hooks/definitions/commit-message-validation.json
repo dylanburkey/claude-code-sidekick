@@ -1,0 +1,38 @@
+{
+  "name": "commit-message-validation",
+  "displayName": "Commit Message Validation",
+  "category": "git",
+  "trigger": "commit-msg",
+  "description": "Enforce conventional commit message format",
+  "script": ".claude/hooks/scripts/commit-msg.sh",
+  "validation": {
+    "pattern": "^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\\(.+\\))?!?: .{1,100}",
+    "examples": [
+      "feat: add user authentication",
+      "fix(api): resolve timeout issue",
+      "docs: update README with setup instructions",
+      "chore!: drop support for Node 14"
+    ],
+    "errorMessage": "Commit message must follow conventional commits format",
+    "allowedTypes": [
+      "feat",
+      "fix",
+      "docs",
+      "style",
+      "refactor",
+      "test",
+      "chore",
+      "perf",
+      "ci",
+      "build",
+      "revert"
+    ],
+    "maxLength": 100,
+    "minLength": 10
+  },
+  "settings": {
+    "failOnError": true,
+    "skipMergeCommits": true,
+    "skipRevertCommits": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "agent-error-handling",
+  "displayName": "Agent Error Handling",
+  "category": "agent",
+  "trigger": "task-error",
+  "description": "Handle and log agent errors gracefully",
+  "actions": [
+    {
+      "name": "log-error",
+      "description": "Log error details",
+      "command": "node .claude/hooks/scripts/log-agent-error.js {taskId} {error}",
+      "continueOnError": true
+    },
+    {
+      "name": "save-context",
+      "description": "Save agent context for debugging",
+      "command": "node .claude/hooks/scripts/save-error-context.js {taskId}",
+      "continueOnError": true
+    },
+    {
+      "name": "notify-user",
+      "description": "Notify user of error",
+      "command": "node .claude/hooks/scripts/show-error-notification.js {taskId} {error}",
+      "continueOnError": true
+    },
+    {
+      "name": "create-issue",
+      "description": "Create GitHub issue for critical errors",
+      "command": "node .claude/hooks/scripts/create-error-issue.js {taskId} {error}",
+      "continueOnError": true,
+      "condition": "severity === 'critical'"
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "logLevel": "error",
+    "notifyUser": true,
+    "saveContext": true,
+    "retryOnError": false,
+    "maxRetries": 3
+  },
+  "errorHandling": {
+    "captureStackTrace": true,
+    "saveState": true,
+    "notifyOnCritical": true,
+    "createIssueOnCritical": false
+  }
+}

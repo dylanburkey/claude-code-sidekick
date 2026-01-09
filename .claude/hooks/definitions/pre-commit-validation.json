@@ -1,0 +1,48 @@
+{
+  "name": "pre-commit-validation",
+  "displayName": "Pre-Commit Validation",
+  "category": "git",
+  "trigger": "pre-commit",
+  "description": "Run linting, formatting, and type checking before commits",
+  "script": ".claude/hooks/scripts/pre-commit.sh",
+  "actions": [
+    {
+      "name": "lint",
+      "description": "Run ESLint",
+      "command": "npm run lint",
+      "continueOnError": false,
+      "timeout": 30000
+    },
+    {
+      "name": "format-check",
+      "description": "Check code formatting",
+      "command": "npm run format:check",
+      "continueOnError": false,
+      "timeout": 15000
+    },
+    {
+      "name": "type-check",
+      "description": "TypeScript type checking",
+      "command": "npm run type-check",
+      "continueOnError": false,
+      "timeout": 30000
+    },
+    {
+      "name": "test-affected",
+      "description": "Run tests for changed files",
+      "command": "npm run test:affected",
+      "continueOnError": true,
+      "timeout": 60000
+    }
+  ],
+  "settings": {
+    "failOnError": true,
+    "skipCIEnvironment": false,
+    "parallel": true,
+    "timeout": 120000
+  },
+  "files": {
+    "include": ["src/**/*", "tests/**/*"],
+    "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/node_modules/**"]
+  }
+}

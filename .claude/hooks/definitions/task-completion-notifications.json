@@ -1,0 +1,40 @@
+{
+  "name": "task-completion-notifications",
+  "displayName": "Task Completion Notifications",
+  "category": "agent",
+  "trigger": "task-complete",
+  "description": "Notify when agent tasks complete",
+  "actions": [
+    {
+      "name": "log-completion",
+      "description": "Log task completion",
+      "command": "node .claude/hooks/scripts/log-task-completion.js {taskId} {status}",
+      "continueOnError": true
+    },
+    {
+      "name": "update-status",
+      "description": "Update task status",
+      "command": "node .claude/hooks/scripts/update-task-status.js {taskId} completed",
+      "continueOnError": true
+    },
+    {
+      "name": "notify-user",
+      "description": "Show notification to user",
+      "command": "node .claude/hooks/scripts/show-notification.js 'Task {taskId} completed'",
+      "continueOnError": true
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "notifyOnSuccess": true,
+    "notifyOnFailure": true,
+    "sound": false,
+    "desktop": true
+  },
+  "notification": {
+    "title": "Agent Task Complete",
+    "message": "Task '{taskName}' completed {status}",
+    "icon": "success",
+    "duration": 5000
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "auto-format-on-save",
+  "displayName": "Auto Format on Save",
+  "category": "file",
+  "trigger": "on-save",
+  "description": "Automatically format code when files are saved",
+  "actions": [
+    {
+      "name": "format",
+      "description": "Format file with Prettier",
+      "command": "prettier --write {file}",
+      "continueOnError": false
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "extensions": [".js", ".ts", ".tsx", ".jsx", ".json", ".css", ".scss", ".html", ".md"],
+    "formatter": "prettier",
+    "configFile": ".prettierrc",
+    "ignoreFile": ".prettierignore"
+  },
+  "files": {
+    "include": ["src/**/*", "tests/**/*", "*.{js,ts,tsx,jsx,json,md}"],
+    "exclude": ["**/node_modules/**", "**/dist/**", "**/build/**", "**/.next/**"]
+  },
+  "ide": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    },
+    "jetbrains": {
+      "action": "ReformatCode",
+      "trigger": "on-save"
+    }
+  }
+}

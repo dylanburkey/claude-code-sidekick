@@ -1,0 +1,36 @@
+{
+  "name": "readme-sync",
+  "displayName": "README Sync",
+  "category": "documentation",
+  "trigger": "post-commit",
+  "description": "Keep README in sync with code changes",
+  "actions": [
+    {
+      "name": "update-badges",
+      "description": "Update status badges",
+      "command": "node .claude/hooks/scripts/update-readme-badges.js",
+      "continueOnError": true
+    },
+    {
+      "name": "update-api-examples",
+      "description": "Update API examples from code",
+      "command": "node .claude/hooks/scripts/sync-api-examples.js",
+      "continueOnError": true
+    },
+    {
+      "name": "update-dependencies",
+      "description": "Update dependency list",
+      "command": "node .claude/hooks/scripts/sync-dependencies.js",
+      "continueOnError": true
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "autoCommit": false,
+    "failOnError": false
+  },
+  "files": {
+    "watch": ["src/**/*.ts", "package.json", "src/api/**/*"],
+    "update": ["README.md", "docs/**/*.md"]
+  }
+}

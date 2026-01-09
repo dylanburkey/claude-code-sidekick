@@ -1,0 +1,97 @@
+{
+  "name": "your-hook-name",
+  "displayName": "Your Hook Display Name",
+  "category": "git|file|build|deployment|agent|quality|documentation|collaboration|custom",
+  "trigger": "pre-commit|commit-msg|pre-push|post-commit|on-save|on-change|pre-build|post-build|pre-deploy|post-deploy|task-complete|task-error",
+  "description": "Brief description of what this hook does",
+  "script": ".claude/hooks/scripts/your-hook-script.sh",
+  "actions": [
+    {
+      "name": "action-1",
+      "description": "What this action does",
+      "command": "command to execute",
+      "continueOnError": false,
+      "timeout": 30000,
+      "condition": "optional condition for when to run"
+    },
+    {
+      "name": "action-2",
+      "description": "Another action",
+      "command": "another command",
+      "continueOnError": true,
+      "timeout": 15000
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "failOnError": true,
+    "skipCIEnvironment": false,
+    "parallel": false,
+    "timeout": 120000,
+    "retryOnFailure": false,
+    "maxRetries": 3
+  },
+  "files": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "tests/**/*"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/*.test.ts",
+      "**/*.spec.ts"
+    ],
+    "extensions": [".ts", ".tsx", ".js", ".jsx"]
+  },
+  "validation": {
+    "pattern": "^regex pattern$",
+    "examples": [
+      "Example 1",
+      "Example 2"
+    ],
+    "errorMessage": "Error message to show on validation failure",
+    "maxLength": 100,
+    "minLength": 10
+  },
+  "notification": {
+    "enabled": true,
+    "title": "Hook Notification",
+    "message": "Notification message template with {variables}",
+    "icon": "success|error|warning|info",
+    "duration": 5000,
+    "sound": false
+  },
+  "ide": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true
+        }
+      }
+    },
+    "jetbrains": {
+      "action": "ActionName",
+      "trigger": "on-save|on-change"
+    }
+  },
+  "dependencies": {
+    "npm": ["package-name@version"],
+    "tools": ["tool-name"],
+    "optional": ["optional-tool"]
+  },
+  "documentation": {
+    "description": "Detailed description of the hook",
+    "usage": "How to use this hook",
+    "examples": [
+      {
+        "title": "Example 1",
+        "description": "Example description",
+        "code": "Example code or command"
+      }
+    ],
+    "notes": "Any additional notes or warnings"
+  }
+}

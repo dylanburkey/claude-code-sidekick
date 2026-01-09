@@ -1,0 +1,39 @@
+{
+  "name": "auto-import-sort",
+  "displayName": "Auto Import Sort",
+  "category": "file",
+  "trigger": "on-save",
+  "description": "Automatically sort and organize imports when files are saved",
+  "actions": [
+    {
+      "name": "sort-imports",
+      "description": "Sort and organize imports",
+      "command": "eslint --fix {file} --rule 'import/order: error'",
+      "continueOnError": false
+    }
+  ],
+  "settings": {
+    "enabled": true,
+    "extensions": [".js", ".ts", ".tsx", ".jsx"],
+    "sortOrder": ["builtin", "external", "internal", "parent", "sibling", "index"],
+    "groupByType": true,
+    "removeUnused": true
+  },
+  "files": {
+    "include": ["src/**/*", "tests/**/*"],
+    "exclude": ["**/node_modules/**", "**/dist/**", "**/*.test.ts", "**/*.spec.ts"]
+  },
+  "ide": {
+    "vscode": {
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.organizeImports": true
+        }
+      }
+    },
+    "jetbrains": {
+      "action": "OptimizeImports",
+      "trigger": "on-save"
+    }
+  }
+}

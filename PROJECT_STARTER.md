@@ -262,6 +262,92 @@ Vite will be used to improve performance. Vite+ is being considered for the fron
 
 ---
 
+## Hooks Configuration
+
+> **Hooks** are automated actions triggered by events in your development workflow. Enable the hooks your project needs below.
+
+### Git Hooks
+
+- **Pre-Commit Validation**: `TRUE` <!-- Lint, format, and test before commits -->
+- **Pre-Push Validation**: `FALSE` <!-- Run full test suite before pushing -->
+- **Commit Message Validation**: `TRUE` <!-- Enforce commit message format -->
+- **Branch Name Validation**: `FALSE` <!-- Enforce branch naming conventions -->
+
+### File Hooks
+
+- **Auto Format on Save**: `TRUE` <!-- Format code automatically when saving files -->
+- **Auto Import Sort**: `TRUE` <!-- Sort and organize imports on save -->
+- **Auto Documentation**: `FALSE` <!-- Generate/update docs when code changes -->
+- **Unused Code Detection**: `FALSE` <!-- Detect and warn about unused code -->
+
+### Build & Test Hooks
+
+- **Pre-Build Validation**: `FALSE` <!-- Validate before starting builds -->
+- **Post-Build Actions**: `FALSE` <!-- Run actions after successful builds -->
+- **Test on File Change**: `FALSE` <!-- Run relevant tests when files change -->
+- **Coverage Reporting**: `FALSE` <!-- Generate coverage reports after tests -->
+
+### Deployment Hooks
+
+- **Pre-Deploy Checks**: `FALSE` <!-- Validate before deployments -->
+- **Post-Deploy Verification**: `FALSE` <!-- Verify deployment success -->
+- **Deployment Notifications**: `FALSE` <!-- Notify team of deployments -->
+- **Rollback on Failure**: `FALSE` <!-- Auto-rollback failed deployments -->
+
+### Code Quality Hooks
+
+- **Complexity Analysis**: `FALSE` <!-- Analyze code complexity on changes -->
+- **Security Scanning**: `FALSE` <!-- Scan for security vulnerabilities -->
+- **Dependency Audit**: `FALSE` <!-- Check for vulnerable dependencies -->
+- **Performance Profiling**: `FALSE` <!-- Profile performance on changes -->
+
+### Documentation Hooks
+
+- **README Sync**: `TRUE` <!-- Keep README in sync with code changes -->
+- **API Doc Generation**: `FALSE` <!-- Generate API docs from code -->
+- **Changelog Update**: `FALSE` <!-- Auto-update changelog on commits -->
+- **Type Documentation**: `FALSE` <!-- Generate type documentation -->
+
+### Collaboration Hooks
+
+- **PR Template Creation**: `FALSE` <!-- Auto-create PR descriptions -->
+- **Issue Linking**: `FALSE` <!-- Link commits to issues automatically -->
+- **Code Review Requests**: `FALSE` <!-- Auto-request reviews on PRs -->
+- **Status Updates**: `FALSE` <!-- Post status updates to team channels -->
+
+### Agent Hooks
+
+- **Task Completion Notifications**: `TRUE` <!-- Notify when agent tasks complete -->
+- **Agent Error Handling**: `TRUE` <!-- Handle and log agent errors -->
+- **Agent Performance Tracking**: `FALSE` <!-- Track agent execution metrics -->
+- **Agent Context Saving**: `FALSE` <!-- Save agent context between runs -->
+
+### Custom Hooks
+
+<!-- Add any custom hooks specific to your project -->
+
+**Database Migration Check**: `FALSE` <!-- Validate migrations before applying -->
+**Environment Sync**: `FALSE` <!-- Sync environment variables across team -->
+
+### Hooks Configuration Notes
+
+<!-- Add any specific hook configuration requirements or setup instructions -->
+
+**Hook Execution Order:**
+
+1. Pre-commit hooks run first
+2. File hooks run on save
+3. Build hooks run during build process
+4. Deploy hooks run during deployment
+
+**Setup Instructions:**
+
+1. Run `/hooks-setup` after filling out this section to generate hook configurations
+2. Hooks are automatically installed in your project
+3. Configure hook settings in `.claude/hooks/config.json`
+
+---
+
 ## Additional Context
 
 ### Reference Projects
