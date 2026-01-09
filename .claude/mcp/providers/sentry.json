@@ -1,0 +1,33 @@
+{
+  "name": "sentry",
+  "displayName": "Sentry",
+  "category": "monitoring",
+  "command": "npx",
+  "args": ["-y", "@sentry/mcp-server"],
+  "env": {
+    "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+    "SENTRY_ORG": "${SENTRY_ORG}",
+    "SENTRY_PROJECT": "${SENTRY_PROJECT}"
+  },
+  "requiredEnvVars": ["SENTRY_AUTH_TOKEN"],
+  "optionalEnvVars": ["SENTRY_ORG", "SENTRY_PROJECT", "SENTRY_DSN"],
+  "documentation": "https://docs.sentry.io/",
+  "setup": ".claude/mcp/providers/sentry-setup.md",
+  "features": [
+    "Error tracking and monitoring",
+    "Performance monitoring",
+    "Release tracking",
+    "Issue management",
+    "Alert configuration",
+    "Source map upload"
+  ],
+  "agentIntegration": {
+    "categories": ["task-automation", "testing"],
+    "useCases": [
+      "Automated error analysis",
+      "Release monitoring",
+      "Performance optimization suggestions",
+      "Error trend analysis"
+    ]
+  }
+}

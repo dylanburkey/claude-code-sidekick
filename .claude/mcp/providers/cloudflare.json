@@ -1,0 +1,32 @@
+{
+  "name": "cloudflare",
+  "displayName": "Cloudflare",
+  "category": "infrastructure",
+  "command": "npx",
+  "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+  "env": {
+    "CLOUDFLARE_API_TOKEN": "${CLOUDFLARE_API_TOKEN}",
+    "CLOUDFLARE_ACCOUNT_ID": "${CLOUDFLARE_ACCOUNT_ID}"
+  },
+  "requiredEnvVars": ["CLOUDFLARE_API_TOKEN"],
+  "optionalEnvVars": ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_ZONE_ID"],
+  "documentation": "https://developers.cloudflare.com/",
+  "setup": ".claude/mcp/providers/cloudflare-setup.md",
+  "features": [
+    "Deploy to Cloudflare Workers",
+    "Manage D1 databases",
+    "KV storage operations",
+    "R2 object storage",
+    "Pages deployment",
+    "DNS management"
+  ],
+  "agentIntegration": {
+    "categories": ["task-automation", "code-generation"],
+    "useCases": [
+      "Automated deployment to Workers",
+      "D1 database management",
+      "KV namespace operations",
+      "R2 bucket management"
+    ]
+  }
+}

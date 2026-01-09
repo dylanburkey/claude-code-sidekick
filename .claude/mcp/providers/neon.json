@@ -1,0 +1,31 @@
+{
+  "name": "neon",
+  "displayName": "Neon Database",
+  "category": "database",
+  "command": "npx",
+  "args": ["-y", "@neondatabase/mcp-server-neon"],
+  "env": {
+    "NEON_API_KEY": "${NEON_API_KEY}"
+  },
+  "requiredEnvVars": ["NEON_API_KEY"],
+  "optionalEnvVars": ["NEON_PROJECT_ID"],
+  "documentation": "https://github.com/neondatabase/mcp-server-neon",
+  "setup": ".claude/mcp/providers/neon-setup.md",
+  "features": [
+    "PostgreSQL database operations",
+    "Database migrations with branching",
+    "Query performance tuning",
+    "Schema comparison",
+    "SQL execution and transactions",
+    "Table schema inspection"
+  ],
+  "agentIntegration": {
+    "categories": ["code-generation", "task-automation", "testing"],
+    "useCases": [
+      "Generate models from database schema",
+      "Create type-safe migrations",
+      "Automated query optimization",
+      "Database testing with branches"
+    ]
+  }
+}

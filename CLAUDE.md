@@ -53,6 +53,39 @@ Specialized agents handle different aspects of development:
 | `review` | Quality | Code review, standards compliance |
 | `orchestrator` | Coordination | Task assignment, dependency management |
 
+## Agent Library
+
+The [Agent Library](./agent-library/README.md) provides a comprehensive collection of specialized agents organized by category:
+
+### Categories
+
+- **[Code Generation](./agent-library/code-generation/)** - Generate components, APIs, configs, and boilerplate
+- **[Task Automation](./agent-library/task-automation/)** - Automate builds, deployments, and workflows
+- **[Testing](./agent-library/testing/)** - Quality assurance, accessibility audits, and test generation
+- **[Documentation](./agent-library/documentation/)** - API docs, READMEs, and inline documentation
+- **[Blockchain](./agent-library/blockchain/)** - Smart contracts, DApps, and Web3 integration
+
+### Using Agent Library Agents
+
+Agents from the library can be:
+
+1. Used directly through prompts and the Task tool
+2. Copied to `.claude/agents/` for project-specific customization
+3. Extended and modified for specific needs
+4. Combined into custom workflows
+
+### Creating Custom Agents
+
+Use the [agent template](./agent-library/templates/agent-template.md) to create new agents:
+
+1. Copy template to appropriate category
+2. Fill in all required sections
+3. Add real-world examples
+4. Test thoroughly
+5. Document MCP integration if applicable
+
+See the [Agent Library README](./agent-library/README.md) for detailed information.
+
 ## Steering Documents
 
 Project-specific guidance lives in `.claude/steering/`:

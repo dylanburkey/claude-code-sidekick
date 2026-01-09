@@ -1,0 +1,32 @@
+{
+  "name": "slack",
+  "displayName": "Slack",
+  "category": "communication",
+  "command": "npx",
+  "args": ["-y", "@slack/mcp-server"],
+  "env": {
+    "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
+    "SLACK_SIGNING_SECRET": "${SLACK_SIGNING_SECRET}"
+  },
+  "requiredEnvVars": ["SLACK_BOT_TOKEN"],
+  "optionalEnvVars": ["SLACK_SIGNING_SECRET", "SLACK_APP_TOKEN"],
+  "documentation": "https://api.slack.com/",
+  "setup": ".claude/mcp/providers/slack-setup.md",
+  "features": [
+    "Post messages to channels",
+    "Send direct messages",
+    "File uploads",
+    "Channel management",
+    "User lookup",
+    "Thread conversations"
+  ],
+  "agentIntegration": {
+    "categories": ["task-automation"],
+    "useCases": [
+      "Deployment notifications",
+      "Build status updates",
+      "Error alerts",
+      "Team coordination"
+    ]
+  }
+}

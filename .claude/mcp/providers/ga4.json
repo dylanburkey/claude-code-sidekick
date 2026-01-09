@@ -1,0 +1,32 @@
+{
+  "name": "ga4",
+  "displayName": "Google Analytics 4",
+  "category": "analytics",
+  "command": "npx",
+  "args": ["-y", "@google-analytics/mcp-server"],
+  "env": {
+    "GA4_MEASUREMENT_ID": "${GA4_MEASUREMENT_ID}",
+    "GA4_API_SECRET": "${GA4_API_SECRET}"
+  },
+  "requiredEnvVars": ["GA4_MEASUREMENT_ID"],
+  "optionalEnvVars": ["GA4_API_SECRET", "GA4_PROPERTY_ID"],
+  "documentation": "https://developers.google.com/analytics/devguides/collection/ga4",
+  "setup": ".claude/mcp/providers/ga4-setup.md",
+  "features": [
+    "Event tracking",
+    "Custom dimensions",
+    "E-commerce tracking",
+    "User properties",
+    "Conversion tracking",
+    "Real-time reporting"
+  ],
+  "agentIntegration": {
+    "categories": ["code-generation", "testing"],
+    "useCases": [
+      "Generate analytics tracking code",
+      "Event implementation",
+      "E-commerce tracking setup",
+      "Analytics testing and validation"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "stripe",
+  "displayName": "Stripe",
+  "category": "payments",
+  "command": "npx",
+  "args": ["-y", "@stripe/mcp-server"],
+  "env": {
+    "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}"
+  },
+  "requiredEnvVars": ["STRIPE_SECRET_KEY"],
+  "optionalEnvVars": ["STRIPE_WEBHOOK_SECRET", "STRIPE_API_VERSION"],
+  "documentation": "https://stripe.com/docs/api",
+  "setup": ".claude/mcp/providers/stripe-setup.md",
+  "features": [
+    "Payment processing",
+    "Subscription management",
+    "Customer management",
+    "Invoice generation",
+    "Webhook handling",
+    "Payment intent creation"
+  ],
+  "agentIntegration": {
+    "categories": ["code-generation", "task-automation"],
+    "useCases": [
+      "Generate payment integration code",
+      "Subscription flow implementation",
+      "Webhook handler generation",
+      "Invoice automation"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "supabase",
+  "displayName": "Supabase",
+  "category": "database",
+  "command": "npx",
+  "args": ["-y", "@supabase/mcp-server"],
+  "env": {
+    "SUPABASE_URL": "${SUPABASE_URL}",
+    "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}",
+    "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+  },
+  "requiredEnvVars": ["SUPABASE_URL", "SUPABASE_ANON_KEY"],
+  "optionalEnvVars": ["SUPABASE_SERVICE_ROLE_KEY"],
+  "documentation": "https://supabase.com/docs",
+  "setup": ".claude/mcp/providers/supabase-setup.md",
+  "features": [
+    "PostgreSQL database operations",
+    "Authentication management",
+    "Real-time subscriptions",
+    "Storage operations",
+    "Edge Functions",
+    "Row Level Security"
+  ],
+  "agentIntegration": {
+    "categories": ["code-generation", "task-automation"],
+    "useCases": [
+      "Auth flow implementation",
+      "Database model generation",
+      "Real-time feature development",
+      "Storage integration"
+    ]
+  }
+}

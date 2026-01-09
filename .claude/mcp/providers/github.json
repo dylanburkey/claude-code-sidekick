@@ -1,0 +1,31 @@
+{
+  "name": "github",
+  "displayName": "GitHub",
+  "category": "development",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-github"],
+  "env": {
+    "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+  },
+  "requiredEnvVars": ["GITHUB_TOKEN"],
+  "optionalEnvVars": ["GITHUB_OWNER", "GITHUB_REPO"],
+  "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+  "setup": ".claude/mcp/providers/github-setup.md",
+  "features": [
+    "Repository operations",
+    "Issue management",
+    "Pull request creation and review",
+    "Branch operations",
+    "GitHub Actions workflows",
+    "Release management"
+  ],
+  "agentIntegration": {
+    "categories": ["task-automation", "documentation"],
+    "useCases": [
+      "Automated PR creation",
+      "Issue tracking and updates",
+      "Release automation",
+      "CI/CD workflow management"
+    ]
+  }
+}

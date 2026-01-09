@@ -164,6 +164,104 @@ Vite will be used to improve performance. Vite+ is being considered for the fron
 
 ---
 
+## MCP Configuration
+
+> **Model Context Protocol (MCP) Servers** extend Claude Code's capabilities by providing access to databases, APIs, and external services. Enable the MCPs your project needs below.
+
+### Database & Storage
+
+- **Neon Database**: `TRUE` <!-- PostgreSQL database operations, migrations, query tuning -->
+- **Supabase**: `FALSE` <!-- PostgreSQL database with auth, storage, realtime -->
+- **Turso**: `FALSE` <!-- Distributed SQLite database -->
+- **Pinecone**: `FALSE` <!-- Vector database for AI/ML -->
+
+### Cloud & Infrastructure
+
+- **Cloudflare**: `TRUE` <!-- Workers, D1, KV, R2, Pages deployment -->
+- **AWS**: `FALSE` <!-- EC2, S3, Lambda, RDS operations -->
+- **Vercel**: `FALSE` <!-- Deployment and edge functions -->
+- **Railway**: `FALSE` <!-- Database and app deployment -->
+
+### Development Tools
+
+- **GitHub**: `TRUE` <!-- Repository operations, issues, PRs, actions -->
+- **GitLab**: `FALSE` <!-- Repository operations and CI/CD -->
+- **Linear**: `FALSE` <!-- Issue tracking and project management -->
+- **Sentry**: `TRUE` <!-- Error tracking and monitoring -->
+
+### Communication
+
+- **Slack**: `FALSE` <!-- Team notifications and updates -->
+- **Discord**: `FALSE` <!-- Community and team communication -->
+- **Email**: `FALSE` <!-- Transactional email via SendGrid/Resend -->
+
+### Analytics & Monitoring
+
+- **Google Analytics 4**: `TRUE` <!-- Web analytics and tracking -->
+- **PostHog**: `FALSE` <!-- Product analytics and feature flags -->
+- **Axiom**: `FALSE` <!-- Log management and analytics -->
+- **Datadog**: `FALSE` <!-- Infrastructure monitoring -->
+
+### Payments & Commerce
+
+- **Stripe**: `TRUE` <!-- Payment processing and subscriptions -->
+- **PayPal**: `FALSE` <!-- Payment processing -->
+- **Shopify**: `FALSE` <!-- E-commerce platform integration -->
+
+### AI & ML Services
+
+- **OpenAI**: `FALSE` <!-- GPT models and embeddings -->
+- **Anthropic**: `FALSE` <!-- Claude API for additional AI features -->
+- **Hugging Face**: `FALSE` <!-- ML models and datasets -->
+- **Replicate**: `FALSE` <!-- AI model deployment -->
+
+### Development Services
+
+- **Chrome DevTools**: `FALSE` <!-- Browser automation and testing -->
+- **Playwright**: `FALSE` <!-- E2E testing and browser automation -->
+- **Puppeteer**: `FALSE` <!-- Headless browser automation -->
+
+### Content & Media
+
+- **Contentful**: `FALSE` <!-- Headless CMS -->
+- **Sanity**: `FALSE` <!-- Structured content platform -->
+- **Cloudinary**: `FALSE` <!-- Image and video management -->
+- **Uploadcare**: `FALSE` <!-- File uploading and CDN -->
+
+### Search & Discovery
+
+- **Algolia**: `FALSE` <!-- Search as a service -->
+- **Meilisearch**: `FALSE` <!-- Open-source search engine -->
+- **Typesense**: `FALSE` <!-- Fast, typo-tolerant search -->
+
+### Custom MCPs
+
+<!-- Add any custom MCP servers specific to your project -->
+
+**Context7**: `FALSE` <!-- Description: Custom context management -->
+**Serena**: `FALSE` <!-- Description: Custom service integration -->
+
+### MCP Configuration Notes
+
+<!-- Add any specific configuration requirements, API keys needed, or setup instructions -->
+
+**Required Environment Variables:**
+
+- NEON_API_KEY (Required for Neon Database)
+- CLOUDFLARE_API_TOKEN (Required for Cloudflare)
+- GITHUB_TOKEN (Required for GitHub)
+- SENTRY_AUTH_TOKEN (Required for Sentry)
+- STRIPE_SECRET_KEY (Required for Stripe)
+- GA4_MEASUREMENT_ID (Required for Google Analytics 4)
+
+**Setup Instructions:**
+
+1. Run `/mcp-setup` after filling out this section to generate configuration
+2. Add required API keys to your `.env` file
+3. Restart Claude Code to load MCP servers
+
+---
+
 ## Additional Context
 
 ### Reference Projects

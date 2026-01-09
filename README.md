@@ -160,6 +160,28 @@ Write clear, testable requirements:
 | **review** | Code review, standards compliance |
 | **orchestrator** | Coordinate agents, manage dependencies |
 
+## Agent Library
+
+📦 **[Browse the Agent Library](agent-library/README.md)**
+
+A comprehensive collection of 50+ specialized agents organized by category:
+
+- **[Code Generation](agent-library/code-generation/)** - API endpoints, components, configs, schemas
+- **[Task Automation](agent-library/task-automation/)** - Build pipelines, deployments, file organization
+- **[Testing](agent-library/testing/)** - Unit tests, accessibility audits, performance testing
+- **[Documentation](agent-library/documentation/)** - API docs, READMEs, changelogs, guides
+- **[Blockchain](agent-library/blockchain/)** - Smart contracts, DApps, Web3 integration
+
+Each agent includes:
+
+- Clear purpose and capabilities
+- Real-world usage examples
+- Configuration options
+- MCP integration support
+- Best practices and troubleshooting
+
+Use agents directly or customize them for your project. Create new agents using the provided [template](agent-library/templates/agent-template.md).
+
 ## Steering Documents
 
 Customize AI behavior for your project:
