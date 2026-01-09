@@ -19,6 +19,8 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 | Guide | Description | Tech Stack |
 |-------|-------------|------------|
 | [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | Build a complete Nuxt 3 app with database and deployment | Nuxt 3, Modern CSS, Vite+, PostgreSQL |
+| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md) | Build a RESTful API with FastAPI and PostgreSQL | Python, FastAPI, PostgreSQL, SQLAlchemy |
+| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md) | Build a decentralized app with wallet auth and NFTs | React, Privy, Ethereum/Polygon, Solidity |
 
 **Coming Soon:**
 - React + Next.js Full-Stack
@@ -41,6 +43,8 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 |-------|------|-------------|
 | [Beginner's Guide](beginner-guide.md) | 30 min | Complete introduction with no coding experience required |
 | [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | 60 min | Build a real application step-by-step |
+| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md) | 75 min | Build a Python API from scratch |
+| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md) | 75 min | Build your first Web3 application |
 
 ### Reference
 
@@ -70,8 +74,13 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 2. Build your app
 
 **Full-Stack with Database:**
-1. [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md)
-2. Follow step-by-step
+1. Frontend + Backend: [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md)
+2. API-first: [Python FastAPI Walkthrough](python-fastapi-walkthrough.md)
+3. Follow step-by-step
+
+**Web3/Blockchain:**
+1. [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md)
+2. Deploy your first dApp
 
 ### "I've never coded before"
 
