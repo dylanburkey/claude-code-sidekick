@@ -164,9 +164,88 @@ Vite will be used to improve performance. Vite+ is being considered for the fron
 
 ---
 
+## Quick Start Configuration
+
+> **Choose a preset that matches your project type for instant setup**
+
+### Project Preset
+
+Select the option that best matches your project. This automatically configures MCP servers, hooks, and code rules.
+
+- [ ] **Static Website** - Semantic HTML, Modern CSS, Vanilla JavaScript
+- [ ] **Astro Site** - Astro 5, Modern CSS, Islands Architecture
+- [ ] **React App** - React, TypeScript, Vite, TanStack
+- [ ] **Next.js App** - Next.js 15, App Router, TypeScript
+- [ ] **Vue/Nuxt** - Vue 3, Nuxt, Composition API
+- [ ] **SvelteKit** - Svelte 5, SvelteKit, Runes
+- [ ] **Full Stack** - Complete backend + frontend + database stack
+- [x] **Custom** - Manual configuration (complete sections below)
+
+### Master Toggles
+
+Control entire feature categories. When `FALSE`, the entire section is skipped.
+
+- **MCP Servers**: `TRUE` <!-- External service integrations (databases, APIs, etc.) -->
+- **Development Hooks**: `TRUE` <!-- Git hooks, auto-formatting, automation -->
+- **Code Quality Rules**: `TRUE` <!-- Language-specific linting and standards -->
+- **AI Agents**: `TRUE` <!-- Specialized agents for tasks -->
+
+**Note:** If you selected a preset above and all master toggles are `TRUE`, skip to [Additional Context](#additional-context). The preset will configure everything for you.
+
+---
+
+## Code Rules Configuration
+
+> **Optional:** Only configure this if you selected "Custom" above or want to override preset rules.
+
+### Language Standards
+
+- **Modern JavaScript**: `TRUE` <!-- ES6+, const/let, arrow functions, async/await -->
+- **TypeScript**: `FALSE` <!-- Type safety, strict mode, decorators -->
+- **Node.js**: `FALSE` <!-- Node-specific patterns and security -->
+- **Python**: `FALSE` <!-- PEP 8, type hints, Black formatting -->
+
+### Framework Standards
+
+- **Astro**: `TRUE` <!-- Islands, components, content collections -->
+- **React**: `FALSE` <!-- Hooks, performance, server components -->
+- **Next.js**: `FALSE` <!-- App router, data fetching, optimization -->
+- **Vue/Nuxt**: `FALSE` <!-- Composition API, auto-imports, Pinia -->
+- **Svelte/SvelteKit**: `FALSE` <!-- Reactivity, stores, routing -->
+
+### CSS & Styling
+
+- **Modern CSS**: `TRUE` <!-- Grid, Flexbox, Custom Properties, Logical Properties -->
+- **Tailwind CSS**: `FALSE` <!-- Utility-first CSS framework -->
+- **Sass/SCSS**: `FALSE` <!-- Preprocessor best practices -->
+
+### Backend & API
+
+- **Hono**: `TRUE` <!-- Lightweight web framework patterns -->
+- **Express/Fastify**: `FALSE` <!-- Node.js backend frameworks -->
+- **REST API**: `FALSE` <!-- RESTful design patterns -->
+- **GraphQL**: `FALSE` <!-- Schema design, resolvers -->
+
+### Quality & Testing
+
+- **WCAG AA Accessibility**: `TRUE` <!-- Enhanced accessibility standards -->
+- **SEO Optimization**: `TRUE` <!-- Meta tags, schema.org, Open Graph -->
+- **Performance**: `TRUE` <!-- Web Vitals, resource hints, optimization -->
+- **Security**: `TRUE` <!-- OWASP, CSP, input validation -->
+- **Testing Standards**: `FALSE` <!-- Jest, Playwright, Testing Library -->
+
+### Platform Standards
+
+- **Cloudflare Workers**: `TRUE` <!-- Edge computing, D1, KV, R2 -->
+- **Vercel**: `FALSE` <!-- Edge functions, deployment -->
+- **PWA**: `TRUE` <!-- Progressive Web App standards -->
+
+---
+
 ## MCP Configuration
 
-> **Model Context Protocol (MCP) Servers** extend Claude Code's capabilities by providing access to databases, APIs, and external services. Enable the MCPs your project needs below.
+> **Optional:** Only configure this if you selected "Custom" above or want additional MCPs beyond your preset.
+> **Model Context Protocol (MCP) Servers** extend Claude Code's capabilities by providing access to databases, APIs, and external services.
 
 ### Database & Storage
 
@@ -264,7 +343,8 @@ Vite will be used to improve performance. Vite+ is being considered for the fron
 
 ## Hooks Configuration
 
-> **Hooks** are automated actions triggered by events in your development workflow. Enable the hooks your project needs below.
+> **Optional:** Only configure this if you selected "Custom" above or want to override preset hooks.
+> **Hooks** are automated actions triggered by events in your development workflow.
 
 ### Git Hooks
 

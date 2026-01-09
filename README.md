@@ -26,8 +26,8 @@ A complete development system that includes:
 - **Spec-Driven Development** with EARS notation
 - **Complete Documentation** for every component
 
-**Setup Time:** 5 minutes
-**Configuration:** TRUE/FALSE flags in one file
+**Setup Time:** 2 minutes with Quick Start presets
+**Configuration:** Choose a preset or use TRUE/FALSE flags
 **Result:** Production-ready development environment
 
 ## Key Differentiators
@@ -199,27 +199,50 @@ Built-in enforcement for:
 
 ## Quick Start
 
-### 1. Copy to Your Project
+### Option 1: Quick Start with Presets (2 minutes)
 
 ```bash
+# 1. Copy to your project
 git clone https://github.com/dylanburkey/claude-code-sidekick.git
 cd claude-code-sidekick
-
-# Copy to your project
 cp -r .claude/ /your-project/
 cp PROJECT_STARTER.md /your-project/
-cp .env.example /your-project/
 ```
 
-### 2. Configure Your Project
+```markdown
+# 2. Edit PROJECT_STARTER.md - Choose your stack
+### Project Preset
+- [x] **Astro Site** - Astro 5, Modern CSS, Islands Architecture
+- [ ] **React App** - React, TypeScript, Vite, TanStack
+- [ ] **Next.js App** - Next.js 15, App Router, TypeScript
+- [ ] **Full Stack** - Complete backend + frontend + database
+- [ ] **Custom** - Manual configuration
+```
 
-Edit `PROJECT_STARTER.md`:
+```bash
+# 3. Apply your preset - Everything configured automatically!
+/quick-start
+```
+
+That's it! Your entire development environment is now configured:
+- Code quality rules for your tech stack
+- MCP servers (databases, cloud, analytics)
+- Development hooks (git, formatting, testing)
+- AI agents specialized for your framework
+- Project structure and dependencies
+
+### Option 2: Manual Configuration (5 minutes)
+
+For complete control, choose "Custom" preset and configure each section:
 
 ```markdown
-## Project Information
-**Name:** Your Project
-**Description:** What it does
-**Type:** web-app
+## Quick Start Configuration
+- [x] **Custom** - Manual configuration
+
+### Master Toggles
+- **MCP Servers**: `TRUE`
+- **Development Hooks**: `TRUE`
+- **Code Quality Rules**: `TRUE`
 
 ## MCP Configuration
 - **Neon Database**: `TRUE`
@@ -229,16 +252,20 @@ Edit `PROJECT_STARTER.md`:
 ## Hooks Configuration
 - **Pre-Commit Validation**: `TRUE`
 - **Auto Format on Save**: `TRUE`
-```
 
-### 3. Generate Configuration
+## Code Rules Configuration
+- **Modern JavaScript**: `TRUE`
+- **Astro**: `TRUE`
+- **Modern CSS**: `TRUE`
+```
 
 ```bash
 /mcp-setup      # Configure MCPs
 /hooks-setup    # Configure hooks
+/rules-setup    # Configure code rules
 ```
 
-### 4. Start Building
+### Start Building
 
 ```bash
 /project-planner    # Create project plan

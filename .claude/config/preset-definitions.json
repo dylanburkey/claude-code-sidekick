@@ -1,0 +1,251 @@
+{
+  "presets": {
+    "static-website": {
+      "name": "Static Website",
+      "description": "Semantic HTML, Modern CSS, Vanilla JavaScript",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": false,
+        "Modern CSS": true,
+        "Tailwind CSS": false,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "PWA": false
+      },
+      "mcp": {
+        "GitHub": true,
+        "Cloudflare": false,
+        "Sentry": false
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "README Sync": true
+      }
+    },
+    "astro-site": {
+      "name": "Astro Site",
+      "description": "Astro 5, Modern CSS, Islands Architecture",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": false,
+        "Astro": true,
+        "Modern CSS": true,
+        "Tailwind CSS": false,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "PWA": true,
+        "Cloudflare Workers": true
+      },
+      "mcp": {
+        "GitHub": true,
+        "Cloudflare": true,
+        "Neon Database": false,
+        "Sentry": true,
+        "Google Analytics 4": true
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "README Sync": true,
+        "Task Completion Notifications": true,
+        "Agent Error Handling": true
+      }
+    },
+    "react-app": {
+      "name": "React App",
+      "description": "React, TypeScript, Vite, TanStack",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": true,
+        "React": true,
+        "Modern CSS": true,
+        "Tailwind CSS": false,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "Testing Standards": true,
+        "PWA": false
+      },
+      "mcp": {
+        "GitHub": true,
+        "Vercel": true,
+        "Sentry": true,
+        "Supabase": false
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "Test on File Change": true,
+        "README Sync": true,
+        "Task Completion Notifications": true
+      }
+    },
+    "nextjs-app": {
+      "name": "Next.js App",
+      "description": "Next.js 15, App Router, TypeScript",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": true,
+        "React": true,
+        "Next.js": true,
+        "Modern CSS": true,
+        "Tailwind CSS": true,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "Testing Standards": true,
+        "PWA": false,
+        "Vercel": true
+      },
+      "mcp": {
+        "GitHub": true,
+        "Vercel": true,
+        "Sentry": true,
+        "Supabase": true,
+        "Stripe": false
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Pre-Push Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "Test on File Change": true,
+        "README Sync": true,
+        "API Doc Generation": true,
+        "Task Completion Notifications": true
+      }
+    },
+    "vue-nuxt": {
+      "name": "Vue/Nuxt",
+      "description": "Vue 3, Nuxt, Composition API",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": true,
+        "Vue/Nuxt": true,
+        "Modern CSS": true,
+        "Tailwind CSS": true,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "Testing Standards": true,
+        "Vercel": false
+      },
+      "mcp": {
+        "GitHub": true,
+        "Vercel": true,
+        "Sentry": true,
+        "Supabase": false
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "Test on File Change": true,
+        "README Sync": true,
+        "Task Completion Notifications": true
+      }
+    },
+    "sveltekit": {
+      "name": "SvelteKit",
+      "description": "Svelte 5, SvelteKit, Runes",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": true,
+        "Svelte/SvelteKit": true,
+        "Modern CSS": true,
+        "Tailwind CSS": false,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "Testing Standards": true,
+        "Vercel": false
+      },
+      "mcp": {
+        "GitHub": true,
+        "Vercel": true,
+        "Sentry": true,
+        "Supabase": false
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "Test on File Change": true,
+        "README Sync": true,
+        "Task Completion Notifications": true
+      }
+    },
+    "full-stack": {
+      "name": "Full Stack",
+      "description": "Complete backend + frontend + database stack",
+      "rules": {
+        "Modern JavaScript": true,
+        "TypeScript": true,
+        "Node.js": true,
+        "React": true,
+        "Next.js": true,
+        "Hono": true,
+        "REST API": true,
+        "Modern CSS": true,
+        "Tailwind CSS": true,
+        "WCAG AA Accessibility": true,
+        "SEO Optimization": true,
+        "Performance": true,
+        "Security": true,
+        "Testing Standards": true,
+        "Cloudflare Workers": false,
+        "Vercel": true
+      },
+      "mcp": {
+        "GitHub": true,
+        "Neon Database": true,
+        "Cloudflare": true,
+        "Vercel": true,
+        "Sentry": true,
+        "Supabase": false,
+        "Stripe": true,
+        "Google Analytics 4": true
+      },
+      "hooks": {
+        "Pre-Commit Validation": true,
+        "Pre-Push Validation": true,
+        "Commit Message Validation": true,
+        "Auto Format on Save": true,
+        "Auto Import Sort": true,
+        "Test on File Change": true,
+        "Pre-Build Validation": true,
+        "Post-Build Actions": true,
+        "Security Scanning": true,
+        "README Sync": true,
+        "API Doc Generation": true,
+        "Task Completion Notifications": true,
+        "Agent Error Handling": true
+      }
+    },
+    "custom": {
+      "name": "Custom",
+      "description": "Manual configuration",
+      "rules": {},
+      "mcp": {},
+      "hooks": {}
+    }
+  }
+}
