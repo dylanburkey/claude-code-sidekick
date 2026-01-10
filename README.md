@@ -1,6 +1,18 @@
 # Claude Code Sidekick
 
-> The only Claude Code development toolkit you need. Combines battle-tested methodologies from Cursor, Zed, Windsurf, and Copilot into a simple, powerful development system that just works.
+> The only Claude Code development toolkit you need. Professional CLI, modern CSS system, and complete development framework in one command.
+
+## 🚀 Instant Setup with CLI
+
+```bash
+npx create-440-app
+```
+
+**2 minutes from idea to production-ready project.** No configuration, no setup, no hassle.
+
+Choose your stack, select features, start building. Everything else is automatic.
+
+---
 
 ## Why Claude Code Sidekick?
 
@@ -19,6 +31,8 @@ While Cursor, Windsurf, and Copilot excel at code completion and inline suggesti
 
 A complete development system that includes:
 
+- **🎯 Professional CLI** - `npx create-440-app` for instant project generation
+- **🎨 440css** - Modern CSS system (~5KB) with dark mode, accessibility, components
 - **50+ Specialized Agents** for every development task
 - **35+ Pre-Configured MCP Integrations** (databases, cloud, analytics, payments)
 - **32+ Automated Hooks** for quality, testing, and deployment
@@ -26,180 +40,80 @@ A complete development system that includes:
 - **Spec-Driven Development** with EARS notation
 - **Complete Documentation** for every component
 
-**Setup Time:** 2 minutes with Quick Start presets
+**Setup Time:** 2 minutes with CLI, 5 minutes manual
 **Configuration:** Choose a preset or use TRUE/FALSE flags
-**Result:** Production-ready development environment
+**Result:** Production-ready development environment with professional CSS
 
-## Key Differentiators
-
-### 1. Declarative Configuration
-
-**Others:** Write complex configuration files, install tools manually, configure each integration
-**Sidekick:** Mark what you want as TRUE, run one command, done.
-
-```markdown
-## MCP Configuration
-- **Neon Database**: `TRUE`
-- **Cloudflare**: `TRUE`
-- **GitHub**: `TRUE`
-- **Stripe**: `TRUE`
-
-## Hooks Configuration
-- **Pre-Commit Validation**: `TRUE`
-- **Auto Format on Save**: `TRUE`
-```
-
-Run `/mcp-setup` and `/hooks-setup` - your entire development environment is configured.
-
-### 2. Agent Library
-
-**Others:** General-purpose AI that tries to do everything
-**Sidekick:** 50+ specialized agents, each expert in their domain
-
-- **Code Generation Agents** - Generate components, APIs, migrations, configs
-- **Task Automation Agents** - Handle builds, deployments, CI/CD
-- **Testing Agents** - Create tests, run audits, validate accessibility
-- **Documentation Agents** - Generate docs, maintain READMEs, update changelogs
-- **Blockchain Agents** - Smart contracts, DApps, Web3 integration
-
-Each agent includes real examples, best practices, and MCP integration.
-
-### 3. MCP Integration at Scale
-
-**Others:** Manual MCP setup, one server at a time
-**Sidekick:** 35+ pre-configured MCP providers across 10 categories
-
-- **Databases**: Neon, Supabase, Turso, Pinecone
-- **Cloud**: Cloudflare, AWS, Vercel, Railway
-- **Development**: GitHub, GitLab, Linear, Sentry
-- **Analytics**: GA4, PostHog, Axiom, Datadog
-- **Payments**: Stripe, PayPal, Shopify
-- **AI/ML**: OpenAI, Anthropic, Hugging Face, Replicate
-- **And 20+ more...**
-
-Each provider includes:
-- JSON configuration
-- Environment variable templates
-- Setup documentation
-- Agent integration examples
-
-### 4. Automated Quality & Compliance
-
-**Others:** Manual testing, linting, and deployment
-**Sidekick:** 32+ hooks automate your entire workflow
-
-- **Git Hooks** - Validate commits, enforce standards, run tests
-- **File Hooks** - Auto-format, sort imports, update docs
-- **Build Hooks** - Pre-build validation, post-build analysis
-- **Deployment Hooks** - Pre-deploy checks, rollback automation
-- **Agent Hooks** - Task notifications, error handling
-
-All configurable with TRUE/FALSE flags.
-
-### 5. Spec-Driven Development
-
-**Others:** Start coding, figure it out as you go
-**Sidekick:** Define requirements first with EARS notation
-
-```markdown
-## Functional Requirements
-
-### Event-Driven
-- WHEN user clicks submit THE SYSTEM SHALL validate all fields
-- WHEN validation passes THE SYSTEM SHALL send data to API
-
-### State-Driven
-- WHILE form is submitting THE SYSTEM SHALL disable submit button
-- WHILE user is authenticated THE SYSTEM SHALL show logout option
-
-### Error Handling
-- IF network request fails THEN THE SYSTEM SHALL retry up to 3 times
-```
-
-Clear, testable, unambiguous requirements that become your implementation roadmap.
-
-## Features
-
-### Structured Workflow
-**Requirements → Plans → Tasks → Implementation**
-
-Define what you want, let the system break it down, execute with specialized agents.
-
-```bash
-/project-planner    # Analyze requirements, create phases
-/task-planner       # Generate implementation tasks
-/task-runner        # Execute with specialized agents
-```
-
-### Specialized Agents
-
-| Agent | Role | When to Use |
-|-------|------|-------------|
-| **init** | Project setup | Starting new projects |
-| **planner** | Requirements analysis | Planning features |
-| **dev** | Code implementation | Building features |
-| **test** | Testing & QA | Ensuring quality |
-| **docs** | Documentation | Maintaining docs |
-| **review** | Code review | Pre-commit validation |
-| **orchestrator** | Task coordination | Complex workflows |
-
-Plus **50+ specialized agents** in the Agent Library for specific tasks.
-
-### MCP Integration
-
-Pre-configured for **35+ providers**:
-
-```markdown
-## Available MCPs
-
-Database & Storage (4)
-- Neon, Supabase, Turso, Pinecone
-
-Cloud & Infrastructure (4)
-- Cloudflare, AWS, Vercel, Railway
-
-Development Tools (4)
-- GitHub, GitLab, Linear, Sentry
-
-Analytics & Monitoring (4)
-- GA4, PostHog, Axiom, Datadog
-
-Payments & Commerce (3)
-- Stripe, PayPal, Shopify
-
-AI & ML Services (4)
-- OpenAI, Anthropic, Hugging Face, Replicate
-
-And 12+ more categories...
-```
-
-### Automated Hooks
-
-**32+ hooks** across 8 categories:
-
-- **Git** - Validate commits, run tests
-- **File** - Format code, sort imports
-- **Build** - Pre-build checks, post-build actions
-- **Deploy** - Deployment automation, rollback
-- **Quality** - Security scans, complexity analysis
-- **Docs** - README sync, changelog updates
-- **Collaboration** - PR templates, issue linking
-- **Agent** - Task notifications, error handling
-
-### Development Standards
-
-Built-in enforcement for:
-
-- **WCAG 2.1 AA** accessibility compliance
-- **Semantic HTML** - proper elements, meaningful structure
-- **Modern CSS** - Grid, Flexbox, custom properties
-- **Progressive Enhancement** - works without JavaScript
-- **Performance** - Lighthouse 90+, optimized bundles
-- **Security** - OWASP compliance, vulnerability scanning
+---
 
 ## Quick Start
 
-### Option 1: Quick Start with Presets (2 minutes)
+### Option 1: CLI - Instant Project Creation (2 minutes) ⚡
+
+**Fastest way to start:**
+
+```bash
+npx create-440-app
+```
+
+Follow the interactive prompts:
+
+```
+◆  What is your project named?
+│  my-awesome-app
+
+◆  Choose your project type:
+│  ● Nuxt - Vue 3, Nuxt, Composition API, Pinia
+│  ○ Astro Site - Astro 5, Modern CSS, Islands
+│  ○ React App - React 18, TypeScript, Vite
+│  ○ Next.js App - Next.js 15, App Router
+│  ○ SvelteKit - Svelte 5, Runes
+│  ○ Full Stack - Complete backend + frontend + database
+
+◆  Select additional features:
+│  ◼ 440css - Modern CSS system (recommended)
+│  ◼ Database - Neon PostgreSQL with Prisma
+│  ◼ Authentication - User authentication system
+│  ◻ Analytics - Sentry error tracking
+│  ◼ Deployment - Vercel/Cloudflare setup
+
+◆  Create project "my-awesome-app" with Nuxt?
+│  Yes
+```
+
+**Done!** Your project is created with:
+- ✅ Framework configured (Nuxt, React, Astro, etc.)
+- ✅ 440css modern CSS system
+- ✅ Database connected (if selected)
+- ✅ Authentication ready (if selected)
+- ✅ Git initialized
+- ✅ Dependencies installed
+- ✅ Claude Code Sidekick configured
+- ✅ Development ready
+
+```bash
+cd my-awesome-app
+npm run dev
+```
+
+**Start building immediately.**
+
+#### CLI Features
+
+- 🎯 **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack, Custom
+- 🎨 **440css Integration** - Modern CSS system with components, dark mode, accessibility
+- 📦 **Feature Selection** - Database, auth, analytics, deployment configs
+- 🔧 **Automatic Setup** - All files, dependencies, and configurations
+- 🚀 **Git Ready** - Initialized with .gitignore and initial commit
+- ⚡ **Zero Config** - Everything works out of the box
+
+[View CLI Documentation →](cli/README.md)
+
+---
+
+### Option 2: Manual Setup with Quick Start Presets (5 minutes)
+
+For manual control or existing projects:
 
 ```bash
 # 1. Copy to your project
@@ -231,7 +145,11 @@ That's it! Your entire development environment is now configured:
 - AI agents specialized for your framework
 - Project structure and dependencies
 
-### Option 2: Manual Configuration (5 minutes)
+[View Quick Start Guide →](docs/guides/quick-start-guide.md)
+
+---
+
+### Option 3: Custom Configuration (5-10 minutes)
 
 For complete control, choose "Custom" preset and configure each section:
 
@@ -265,22 +183,201 @@ For complete control, choose "Custom" preset and configure each section:
 /rules-setup    # Configure code rules
 ```
 
-### Start Building
+---
 
-```bash
-/project-planner    # Create project plan
-/task-planner       # Generate tasks
-/task-runner        # Execute with agents
+## 🎨 440css - Modern CSS System
+
+**Included automatically with CLI, or add manually:**
+
+```html
+<link rel="stylesheet" href="440css/440.css">
 ```
 
-That's it. You now have:
-- Database connected (Neon)
-- Cloud infrastructure ready (Cloudflare)
-- Git automation (GitHub)
-- Code quality checks (pre-commit)
-- Auto-formatting (on save)
-- 50+ specialized agents
-- Complete documentation
+### What is 440css?
+
+Named after 440Hz (the musical note A), representing harmony and standardization. A modern CSS framework built on semantic principles, accessibility-first design, and progressive enhancement.
+
+**Features:**
+- 🎨 **Semantic Classes** - No utility mess, meaningful component names
+- ♿ **Accessibility First** - WCAG AAA compliant out of the box
+- 📐 **Fluid Everything** - Typography, spacing, layouts that scale
+- 🌓 **Dark Mode** - Built-in with `prefers-color-scheme`
+- 🎯 **Logical Properties** - RTL-ready from the start
+- 🚀 **Tiny Bundle** - ~5KB gzipped
+- 🔧 **Custom Properties** - Fully customizable design tokens
+
+**Example Usage:**
+
+```html
+<!-- Auto-responsive grid -->
+<div class="grid-auto">
+  <article class="card">
+    <header class="card-header">
+      <h3 class="card-title">Card Title</h3>
+    </header>
+    <div class="card-body">
+      <p>Content here</p>
+    </div>
+    <footer class="card-footer">
+      <button class="button button-primary">Action</button>
+    </footer>
+  </article>
+</div>
+
+<!-- Fluid typography scales automatically -->
+<h1>Scales from 3rem to 4.5rem</h1>
+<p>Base text scales from 1rem to 1.25rem</p>
+```
+
+**Components:**
+- Buttons (6 variants: primary, secondary, accent, ghost, outline, icon)
+- Forms (complete form system with validation states)
+- Cards (flexible card component)
+- Layout primitives (grid, stack, cluster, sidebar, cover, etc.)
+
+[View 440css Documentation →](cli/templates/440css/README.md)
+
+---
+
+## Key Differentiators
+
+### 1. Professional CLI + Modern CSS
+
+**Others:** Manual setup, utility CSS bloat, configuration hell
+**Sidekick:** One command, semantic CSS, production ready
+
+```bash
+npx create-440-app my-app --preset=nuxt
+# Everything configured in 2 minutes
+```
+
+### 2. Declarative Configuration
+
+**Others:** Write complex configuration files, install tools manually, configure each integration
+**Sidekick:** Mark what you want as TRUE, run one command, done
+
+```markdown
+## MCP Configuration
+- **Neon Database**: `TRUE`
+- **Cloudflare**: `TRUE`
+- **GitHub**: `TRUE`
+- **Stripe**: `TRUE`
+
+## Hooks Configuration
+- **Pre-Commit Validation**: `TRUE`
+- **Auto Format on Save**: `TRUE`
+```
+
+Run `/mcp-setup` and `/hooks-setup` - your entire development environment is configured.
+
+### 3. Agent Library
+
+**Others:** General-purpose AI that tries to do everything
+**Sidekick:** 50+ specialized agents, each expert in their domain
+
+- **Code Generation Agents** - Generate components, APIs, migrations, configs
+- **Task Automation Agents** - Handle builds, deployments, CI/CD
+- **Testing Agents** - Create tests, run audits, validate accessibility
+- **Documentation Agents** - Generate docs, maintain READMEs, update changelogs
+- **Blockchain Agents** - Smart contracts, DApps, Web3 integration
+
+Each agent includes real examples, best practices, and MCP integration.
+
+### 4. MCP Integration at Scale
+
+**Others:** Manual MCP setup, one server at a time
+**Sidekick:** 35+ pre-configured MCP providers across 10 categories
+
+- **Databases**: Neon, Supabase, Turso, Pinecone
+- **Cloud**: Cloudflare, AWS, Vercel, Railway
+- **Development**: GitHub, GitLab, Linear, Sentry
+- **Analytics**: GA4, PostHog, Axiom, Datadog
+- **Payments**: Stripe, PayPal, Shopify
+- **AI/ML**: OpenAI, Anthropic, Hugging Face, Replicate
+- **And 20+ more...**
+
+Each provider includes:
+- JSON configuration
+- Environment variable templates
+- Setup documentation
+- Agent integration examples
+
+### 5. Automated Quality & Compliance
+
+**Others:** Manual testing, linting, and deployment
+**Sidekick:** 32+ hooks automate your entire workflow
+
+- **Git Hooks** - Validate commits, enforce standards, run tests
+- **File Hooks** - Auto-format, sort imports, update docs
+- **Build Hooks** - Pre-build validation, post-build analysis
+- **Deployment Hooks** - Pre-deploy checks, rollback automation
+- **Agent Hooks** - Task notifications, error handling
+
+All configurable with TRUE/FALSE flags.
+
+### 6. Spec-Driven Development
+
+**Others:** Start coding, figure it out as you go
+**Sidekick:** Define requirements first with EARS notation
+
+```markdown
+## Functional Requirements
+
+### Event-Driven
+- WHEN user clicks submit THE SYSTEM SHALL validate all fields
+- WHEN validation passes THE SYSTEM SHALL send data to API
+
+### State-Driven
+- WHILE form is submitting THE SYSTEM SHALL disable submit button
+- WHILE user is authenticated THE SYSTEM SHALL show logout option
+
+### Error Handling
+- IF network request fails THEN THE SYSTEM SHALL retry up to 3 times
+```
+
+Clear, testable, unambiguous requirements that become your implementation roadmap.
+
+---
+
+## Features
+
+### Structured Workflow
+**Requirements → Plans → Tasks → Implementation**
+
+Define what you want, let the system break it down, execute with specialized agents.
+
+```bash
+/project-planner    # Analyze requirements, create phases
+/task-planner       # Generate implementation tasks
+/task-runner        # Execute with specialized agents
+```
+
+### Specialized Agents
+
+| Agent | Role | When to Use |
+|-------|------|-------------|
+| **init** | Project setup | Starting new projects |
+| **planner** | Requirements analysis | Planning features |
+| **dev** | Code implementation | Building features |
+| **test** | Testing & QA | Ensuring quality |
+| **docs** | Documentation | Maintaining docs |
+| **review** | Code review | Pre-commit validation |
+| **orchestrator** | Task coordination | Complex workflows |
+
+Plus **50+ specialized agents** in the Agent Library for specific tasks.
+
+### Development Standards
+
+Built-in enforcement for:
+
+- **WCAG 2.1 AA** accessibility compliance
+- **Semantic HTML** - proper elements, meaningful structure
+- **Modern CSS** - Grid, Flexbox, custom properties, 440css
+- **Progressive Enhancement** - works without JavaScript
+- **Performance** - Lighthouse 90+, optimized bundles
+- **Security** - OWASP compliance, vulnerability scanning
+
+---
 
 ## Comparison
 
@@ -292,6 +389,8 @@ That's it. You now have:
 - Context-aware suggestions
 
 **Sidekick Advantages:**
+- **Instant setup** with professional CLI (`npx create-440-app`)
+- **Modern CSS system** included (440css)
 - Complete project structure
 - Pre-configured integrations (35+ MCPs)
 - Automated workflows (32+ hooks)
@@ -309,6 +408,8 @@ That's it. You now have:
 - Contextual awareness
 
 **Sidekick Advantages:**
+- **CLI for instant projects** (2 minutes from idea to code)
+- **Production-ready CSS** (440css with components)
 - Standardized workflows
 - Pre-built agent library
 - MCP integration system
@@ -326,6 +427,8 @@ That's it. You now have:
 - Simple setup
 
 **Sidekick Advantages:**
+- **Professional CLI** replaces manual scaffolding
+- **Modern CSS framework** (no Tailwind bloat)
 - Complete development framework
 - Project structure and organization
 - Integration management
@@ -339,12 +442,16 @@ That's it. You now have:
 
 What makes Claude Code Sidekick unique:
 
-1. **Complete System** - Not just code completion, entire development workflow
-2. **Declarative** - TRUE/FALSE configuration, no complex setup
-3. **Extensible** - 50+ agents, 35+ MCPs, 32+ hooks, all customizable
-4. **Production-Ready** - Quality, security, accessibility built-in
-5. **Team-Friendly** - Shared configurations, consistent workflows
-6. **Time-Saving** - Hours of setup becomes minutes
+1. **Professional CLI** - `npx create-440-app` for instant, production-ready projects
+2. **Modern CSS System** - 440css semantic framework (~5KB), not utility bloat
+3. **Complete System** - Not just code completion, entire development workflow
+4. **Declarative** - TRUE/FALSE configuration, no complex setup
+5. **Extensible** - 50+ agents, 35+ MCPs, 32+ hooks, all customizable
+6. **Production-Ready** - Quality, security, accessibility, design system built-in
+7. **Team-Friendly** - Shared configurations, consistent workflows
+8. **Time-Saving** - Hours of setup becomes 2 minutes
+
+---
 
 ## What's Included
 
@@ -352,7 +459,7 @@ What makes Claude Code Sidekick unique:
 
 ```
 .claude/
-├── commands/           # /project-planner, /task-planner, /mcp-setup, /hooks-setup
+├── commands/           # /project-planner, /task-planner, /mcp-setup, /hooks-setup, /quick-start
 ├── agents/            # Specialized AI agents for different tasks
 ├── hooks/             # 32+ automated development hooks
 │   ├── definitions/   # Pre-configured hook definitions
@@ -372,6 +479,22 @@ What makes Claude Code Sidekick unique:
     └── structure.md
 ```
 
+### CLI Package
+
+```
+cli/
+├── bin/create-440-app.js       # CLI entry point
+├── src/
+│   ├── index.js                # Interactive prompts
+│   ├── templates.js            # 8 preset configurations
+│   ├── scaffold.js             # Project scaffolding
+│   └── utils.js                # Helper functions
+└── templates/440css/           # Complete CSS system
+    ├── core/                   # Reset, variables, typography, layout
+    ├── components/             # Buttons, forms, cards
+    └── utilities/              # Accessibility, spacing
+```
+
 ### Agent Library
 
 ```
@@ -384,92 +507,29 @@ agent-library/
 └── templates/        # Create custom agents
 ```
 
-## Use Cases
-
-### Startup MVP Development
-- **Quick Setup** - 5 minutes to production-ready environment
-- **Integrated Services** - Database, hosting, analytics, payments
-- **Quality Built-In** - Accessibility, security, performance
-- **Fast Iteration** - Automated testing and deployment
-
-### Enterprise Applications
-- **Standardized Workflows** - Consistent across all teams
-- **Compliance** - Built-in WCAG, security scanning
-- **Integration** - 35+ pre-configured services
-- **Documentation** - Automated and always up-to-date
-
-### Open Source Projects
-- **Contribution-Ready** - Pre-commit hooks, standards enforcement
-- **Documentation** - Auto-generated, always synced
-- **Quality Gates** - Automated testing, code review
-- **Team Coordination** - Hooks for PR templates, issue linking
-
-### Blockchain Development
-- **Specialized Agents** - Smart contract generation, DApp scaffolding
-- **Testing** - Automated testing with testnet integration
-- **Documentation** - Contract documentation, API generation
-- **Security** - Built-in security scanning and auditing
-
-## Real-World Examples
-
-### Example 1: Full-Stack SaaS
-
-```markdown
-## MCPs Enabled
-- Neon Database: TRUE
-- Cloudflare: TRUE
-- GitHub: TRUE
-- Sentry: TRUE
-- Stripe: TRUE
-- GA4: TRUE
-
-## Hooks Enabled
-- Pre-Commit Validation: TRUE
-- Auto Format on Save: TRUE
-- Pre-Deploy Checks: TRUE
-- Post-Deploy Verification: TRUE
-```
-
-**Result:** Complete SaaS infrastructure with database, hosting, error tracking, payments, and analytics - configured in 5 minutes.
-
-### Example 2: Blockchain DApp
-
-```markdown
-## MCPs Enabled
-- Neon Database: TRUE (off-chain data)
-- GitHub: TRUE
-- Sentry: TRUE
-
-## Agents Used
-- Smart Contract Generator
-- DApp Scaffolder
-- Web3 Integration Helper
-- Contract Test Generator
-```
-
-**Result:** Complete DApp with smart contracts, frontend, database, and testing - all generated with proper patterns.
-
-### Example 3: Documentation Site
-
-```markdown
-## Hooks Enabled
-- Auto Documentation: TRUE
-- README Sync: TRUE
-- API Doc Generation: TRUE
-- Changelog Update: TRUE
-```
-
-**Result:** Documentation that updates automatically with every code change. Always accurate, always current.
+---
 
 ## Documentation
 
 ### Getting Started
-- [Quick Start Guide](docs/guides/getting-started.md)
-- [MCP Integration](agent-library/docs/mcp-integration.md)
-- [Hooks Configuration](.claude/hooks/README.md)
-- [Agent Library](agent-library/README.md)
+- [CLI Guide](docs/guides/cli-guide.md) - **Start here!** Instant project creation
+- [Quick Start Guide](docs/guides/quick-start-guide.md) - Preset-based setup
+- [Getting Started](docs/guides/getting-started.md) - Complete setup reference
+- [Beginner's Guide](docs/guides/beginner-guide.md) - For complete beginners
 
-### Guides
+### Comprehensive Guides
+- [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) - Build complete Nuxt app
+- [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) - Build RESTful API
+- [Web3 dApp with Privy](docs/guides/web3-dapp-privy-walkthrough.md) - Build decentralized app
+- [Troubleshooting](docs/guides/troubleshooting.md) - Solutions for 50+ common issues
+
+### Systems Documentation
+- [440css Documentation](cli/templates/440css/README.md) - Modern CSS system
+- [MCP Integration](agent-library/docs/mcp-integration.md) - MCP setup guide
+- [Hooks Configuration](.claude/hooks/README.md) - Automation hooks
+- [Agent Library](agent-library/README.md) - All available agents
+
+### Advanced
 - [Creating Custom Agents](agent-library/templates/README.md)
 - [Adding Custom MCPs](.claude/mcp/templates/custom-mcp-guide.md)
 - [Building Custom Hooks](.claude/hooks/templates/custom-hook-guide.md)
@@ -481,6 +541,107 @@ agent-library/
 - [Code Style Rules](.claude/rules/code-style.md)
 - [Accessibility Standards](.claude/rules/accessibility.md)
 
+---
+
+## Use Cases
+
+### Startup MVP Development
+- **Instant Setup** - 2 minutes to production-ready environment with CLI
+- **Professional Design** - 440css provides polished, accessible UI
+- **Integrated Services** - Database, hosting, analytics, payments
+- **Quality Built-In** - Accessibility, security, performance
+- **Fast Iteration** - Automated testing and deployment
+
+### Enterprise Applications
+- **Standardized Workflows** - Consistent across all teams
+- **Design System** - 440css ensures brand consistency
+- **Compliance** - Built-in WCAG, security scanning
+- **Integration** - 35+ pre-configured services
+- **Documentation** - Automated and always up-to-date
+
+### Open Source Projects
+- **Instant Contributor Setup** - `npx create-440-app` and start coding
+- **Consistent Design** - 440css for professional appearance
+- **Contribution-Ready** - Pre-commit hooks, standards enforcement
+- **Documentation** - Auto-generated, always synced
+- **Quality Gates** - Automated testing, code review
+- **Team Coordination** - Hooks for PR templates, issue linking
+
+### Blockchain Development
+- **Quick DApp Setup** - CLI with Web3 preset
+- **Specialized Agents** - Smart contract generation, DApp scaffolding
+- **Testing** - Automated testing with testnet integration
+- **Documentation** - Contract documentation, API generation
+- **Security** - Built-in security scanning and auditing
+
+---
+
+## Real-World Examples
+
+### Example 1: Full-Stack SaaS (Using CLI)
+
+```bash
+npx create-440-app my-saas --preset=nuxt
+
+# Select features:
+# ✓ 440css
+# ✓ Database (Neon PostgreSQL)
+# ✓ Authentication
+# ✓ Analytics (Sentry)
+# ✓ Deployment (Vercel)
+```
+
+**Result:** Complete SaaS infrastructure with:
+- ✅ Nuxt 3 + Vue 3
+- ✅ 440css design system
+- ✅ Database connected
+- ✅ User authentication
+- ✅ Error tracking
+- ✅ Vercel deployment config
+- ✅ All dependencies installed
+- ✅ Git initialized
+
+**Time:** 2 minutes
+
+### Example 2: Blockchain DApp (Using CLI)
+
+```bash
+npx create-440-app my-dapp
+
+# Choose: Web3 dApp preset
+# Select: 440css, Database, Analytics
+```
+
+**Result:** Complete DApp with:
+- ✅ React + TypeScript
+- ✅ 440css for professional UI
+- ✅ Smart contract templates
+- ✅ Web3 wallet integration
+- ✅ Off-chain database (Neon)
+- ✅ Error tracking (Sentry)
+
+**Time:** 2 minutes
+
+### Example 3: Content Site (Using CLI)
+
+```bash
+npx create-440-app my-blog --preset=astro
+
+# Select: 440css, Deployment (Cloudflare)
+```
+
+**Result:** Production-ready blog:
+- ✅ Astro 5
+- ✅ 440css styling
+- ✅ Islands architecture
+- ✅ SEO optimized
+- ✅ Cloudflare Pages config
+- ✅ Markdown/MDX support
+
+**Time:** 2 minutes
+
+---
+
 ## Community & Support
 
 ### Contributing
@@ -490,6 +651,8 @@ We welcome contributions! Areas where you can help:
 - **New Agents** - Add specialized agents to the library
 - **MCP Providers** - Add new MCP integrations
 - **Hooks** - Create useful automation hooks
+- **440css Components** - Add new components or patterns
+- **CLI Presets** - Create new framework presets
 - **Documentation** - Improve guides and examples
 - **Examples** - Share real-world use cases
 
@@ -497,30 +660,48 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ### Getting Help
 
-- **Issues** - [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
+- **CLI Issues** - [CLI Documentation](cli/README.md)
+- **440css Questions** - [440css Documentation](cli/templates/440css/README.md)
+- **General Issues** - [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
 - **Discussions** - [GitHub Discussions](https://github.com/dylanburkey/claude-code-sidekick/discussions)
-- **Documentation** - Comprehensive docs in this repo
+- **Comprehensive Docs** - All guides in this repo
+
+---
 
 ## Roadmap
 
-### Coming Soon
+### Current (v1.0)
+- ✅ Professional CLI (`create-440-app`)
+- ✅ 440css modern CSS system
+- ✅ 8 production-ready presets
+- ✅ 50+ specialized agents
+- ✅ 35+ MCP integrations
+- ✅ 32+ automation hooks
+- ✅ Comprehensive documentation
+
+### Coming Soon (v1.1)
+- CLI framework updates (Vue 3.5, React 19, etc.)
+- 440css component library expansion
 - Additional MCP providers (MongoDB, Redis, PostgreSQL)
 - More specialized agents (mobile, desktop, embedded)
 - IDE extensions (VSCode, JetBrains, Zed)
 - CI/CD templates (GitHub Actions, GitLab CI, CircleCI)
-- Monitoring dashboard for agents and hooks
-- Team collaboration features
 
-### Future Plans
+### Future Plans (v2.0)
 - Visual workflow builder
 - Agent marketplace
-- Preset project templates
+- 440css theme marketplace
 - Cloud-hosted agent execution
 - Real-time collaboration
+- Monitoring dashboard
+
+---
 
 ## License
 
 MIT License - See [LICENSE](LICENSE) for details.
+
+---
 
 ## Credits
 
@@ -530,6 +711,8 @@ Built with inspiration from:
 - **Copilot** - AI code completion pioneer
 - **Zed** - Fast, collaborative editing
 - **Claude** - Advanced AI reasoning
+- **Every Layout** - Modern CSS layout principles
+- **Utopia** - Fluid type and space scales
 
 Combined into something greater than the sum of its parts.
 
@@ -541,14 +724,20 @@ Combined into something greater than the sum of its parts.
 
 **Claude Code Sidekick helps you build software better.**
 
-- Complete development framework, not just code suggestions
-- 50+ specialized agents for every task
-- 35+ pre-configured integrations
-- 32+ automated quality checks
-- 5 minutes from clone to production-ready
+- ⚡ **2-minute setup** with professional CLI
+- 🎨 **Modern CSS system** (~5KB, accessible, dark mode)
+- 🤖 **50+ specialized agents** for every task
+- 🔌 **35+ pre-configured integrations**
+- ✅ **32+ automated quality checks**
+- 📚 **Complete documentation** for non-developers
+- 🎯 **Production-ready** from day one
 
 **Stop cobbling together tools. Start with a system.**
 
-[Get Started](docs/guides/getting-started.md) | [Browse Agent Library](agent-library/README.md) | [View Examples](examples/)
+```bash
+npx create-440-app
+```
+
+[Get Started →](docs/guides/cli-guide.md) | [Browse Agent Library →](agent-library/README.md) | [View 440css →](cli/templates/440css/README.md)
 
 **Built for developers who want more than autocomplete.**
