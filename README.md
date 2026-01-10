@@ -2,7 +2,7 @@
 
 > The only Claude Code development toolkit you need. Professional CLI, modern CSS system, and complete development framework in one command.
 
-## 🚀 Instant Setup with CLI
+## Instant Setup with CLI
 
 ```bash
 npx create-440-app
@@ -14,39 +14,41 @@ Choose your stack, select features, start building. Everything else is automatic
 
 ---
 
-## 🎉 What's New - January 2026
+## What's New - January 2026
 
-### 🚀 Major Release: CLI + Modern CSS System
+### Major Release: CLI + Modern CSS System
 
 **[v1.0.0](https://github.com/dylanburkey/claude-code-sidekick/releases) - Complete Development Framework**
 
 We've transformed Claude Code Sidekick from a configuration system into a **complete, production-ready development framework**. Now with professional CLI and modern CSS!
 
-#### ✨ New: Professional CLI Tool
+#### New: Professional CLI Tool
 
 ```bash
 npx create-440-app
 ```
 
 **Create production-ready projects in 2 minutes:**
-- 🎯 8 framework presets (Astro, React, Next.js, Nuxt, SvelteKit, Full Stack)
-- 🎨 440css modern CSS system included
-- 📦 Feature selection (Database, Auth, Analytics, Deployment)
-- 🔧 Automatic configuration and scaffolding
-- ⚡ Zero config - everything works out of the box
+
+- 8 framework presets (Astro, React, Next.js, Nuxt, SvelteKit, Full Stack)
+- 440css modern CSS system included
+- Feature selection (Database, Auth, Analytics, Deployment)
+- Automatic configuration and scaffolding
+- Zero config - everything works out of the box
 
 [View CLI Documentation →](cli/README.md)
 
-#### 🎨 New: 440css - Modern CSS System
+#### New: 440css - Modern CSS System
 
 **Finally, semantic CSS that doesn't suck:**
-- ✅ Semantic classes (no utility bloat)
-- ✅ ~5KB gzipped bundle
-- ✅ Fluid typography and spacing
-- ✅ Dark mode built-in
-- ✅ WCAG AAA accessible
-- ✅ Logical properties (RTL-ready)
-- ✅ Production-ready components
+
+- Semantic classes (no utility bloat)
+- ~5KB gzipped bundle
+- Fluid typography and spacing
+- Dark mode built-in
+- WCAG AAA accessible
+- Logical properties (RTL-ready)
+- Production-ready components
 
 ```html
 <div class="grid-auto">
@@ -66,7 +68,7 @@ npx create-440-app
 
 [View 440css Documentation →](cli/templates/440css/README.md)
 
-#### 📚 New: Comprehensive Documentation System
+#### New: Comprehensive Documentation System
 
 **Built for non-developers** - Complete guides to go from zero to production:
 
@@ -82,7 +84,7 @@ npx create-440-app
 
 **Result:** Anyone can build production-ready apps, even with zero coding experience.
 
-#### ⚙️ New: Quick Start Preset System
+#### New: Quick Start Preset System
 
 **2-minute setup with presets** instead of 30 minutes of configuration:
 
@@ -106,7 +108,7 @@ Run `/quick-start` and everything is configured automatically.
 
 ---
 
-### 📊 Performance Improvements
+### Performance Improvements
 
 | Metric | Before | After | Improvement |
 |--------|--------|-------|-------------|
@@ -118,7 +120,7 @@ Run `/quick-start` and everything is configured automatically.
 
 ---
 
-### 🎯 Migration Guide
+### Migration Guide
 
 **Existing Users:**
 
@@ -151,7 +153,7 @@ Or follow the [CLI Guide](docs/guides/cli-guide.md) for detailed instructions.
 
 ---
 
-### 🗺️ What's Next
+### What's Next
 
 **Coming in v1.1:**
 - CLI published to npm (available via `npx create-440-app`)
@@ -182,8 +184,8 @@ While Cursor, Windsurf, and Copilot excel at code completion and inline suggesti
 
 A complete development system that includes:
 
-- **🎯 Professional CLI** - `npx create-440-app` for instant project generation
-- **🎨 440css** - Modern CSS system (~5KB) with dark mode, accessibility, components
+- **Professional CLI** - `npx create-440-app` for instant project generation
+- **440css** - Modern CSS system (~5KB) with dark mode, accessibility, components
 - **50+ Specialized Agents** for every development task
 - **35+ Pre-Configured MCP Integrations** (databases, cloud, analytics, payments)
 - **32+ Automated Hooks** for quality, testing, and deployment
@@ -199,7 +201,7 @@ A complete development system that includes:
 
 ## Quick Start
 
-### Option 1: CLI - Instant Project Creation (2 minutes) ⚡
+### Option 1: CLI - Instant Project Creation (2 minutes)
 
 **Fastest way to start:**
 
@@ -233,14 +235,15 @@ Follow the interactive prompts:
 ```
 
 **Done!** Your project is created with:
-- ✅ Framework configured (Nuxt, React, Astro, etc.)
-- ✅ 440css modern CSS system
-- ✅ Database connected (if selected)
-- ✅ Authentication ready (if selected)
-- ✅ Git initialized
-- ✅ Dependencies installed
-- ✅ Claude Code Sidekick configured
-- ✅ Development ready
+
+- Framework configured (Nuxt, React, Astro, etc.)
+- 440css modern CSS system
+- Database connected (if selected)
+- Authentication ready (if selected)
+- Git initialized
+- Dependencies installed
+- Claude Code Sidekick configured
+- Development ready
 
 ```bash
 cd my-awesome-app
@@ -251,12 +254,12 @@ npm run dev
 
 #### CLI Features
 
-- 🎯 **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack, Custom
-- 🎨 **440css Integration** - Modern CSS system with components, dark mode, accessibility
-- 📦 **Feature Selection** - Database, auth, analytics, deployment configs
-- 🔧 **Automatic Setup** - All files, dependencies, and configurations
-- 🚀 **Git Ready** - Initialized with .gitignore and initial commit
-- ⚡ **Zero Config** - Everything works out of the box
+- **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack, Custom
+- **440css Integration** - Modern CSS system with components, dark mode, accessibility
+- **Feature Selection** - Database, auth, analytics, deployment configs
+- **Automatic Setup** - All files, dependencies, and configurations
+- **Git Ready** - Initialized with .gitignore and initial commit
+- **Zero Config** - Everything works out of the box
 
 [View CLI Documentation →](cli/README.md)
 
@@ -336,7 +339,7 @@ For complete control, choose "Custom" preset and configure each section:
 
 ---
 
-## 🎨 440css - Modern CSS System
+## 440css - Modern CSS System
 
 **Included automatically with CLI, or add manually:**
 
@@ -349,13 +352,14 @@ For complete control, choose "Custom" preset and configure each section:
 Named after 440Hz (the musical note A), representing harmony and standardization. A modern CSS framework built on semantic principles, accessibility-first design, and progressive enhancement.
 
 **Features:**
-- 🎨 **Semantic Classes** - No utility mess, meaningful component names
-- ♿ **Accessibility First** - WCAG AAA compliant out of the box
-- 📐 **Fluid Everything** - Typography, spacing, layouts that scale
-- 🌓 **Dark Mode** - Built-in with `prefers-color-scheme`
-- 🎯 **Logical Properties** - RTL-ready from the start
-- 🚀 **Tiny Bundle** - ~5KB gzipped
-- 🔧 **Custom Properties** - Fully customizable design tokens
+
+- **Semantic Classes** - No utility mess, meaningful component names
+- **Accessibility First** - WCAG AAA compliant out of the box
+- **Fluid Everything** - Typography, spacing, layouts that scale
+- **Dark Mode** - Built-in with `prefers-color-scheme`
+- **Logical Properties** - RTL-ready from the start
+- **Tiny Bundle** - ~5KB gzipped
+- **Custom Properties** - Fully customizable design tokens
 
 **Example Usage:**
 
@@ -743,14 +747,15 @@ npx create-440-app my-saas --preset=nuxt
 ```
 
 **Result:** Complete SaaS infrastructure with:
-- ✅ Nuxt 3 + Vue 3
-- ✅ 440css design system
-- ✅ Database connected
-- ✅ User authentication
-- ✅ Error tracking
-- ✅ Vercel deployment config
-- ✅ All dependencies installed
-- ✅ Git initialized
+
+- Nuxt 3 + Vue 3
+- 440css design system
+- Database connected
+- User authentication
+- Error tracking
+- Vercel deployment config
+- All dependencies installed
+- Git initialized
 
 **Time:** 2 minutes
 
@@ -764,12 +769,13 @@ npx create-440-app my-dapp
 ```
 
 **Result:** Complete DApp with:
-- ✅ React + TypeScript
-- ✅ 440css for professional UI
-- ✅ Smart contract templates
-- ✅ Web3 wallet integration
-- ✅ Off-chain database (Neon)
-- ✅ Error tracking (Sentry)
+
+- React + TypeScript
+- 440css for professional UI
+- Smart contract templates
+- Web3 wallet integration
+- Off-chain database (Neon)
+- Error tracking (Sentry)
 
 **Time:** 2 minutes
 
@@ -782,12 +788,13 @@ npx create-440-app my-blog --preset=astro
 ```
 
 **Result:** Production-ready blog:
-- ✅ Astro 5
-- ✅ 440css styling
-- ✅ Islands architecture
-- ✅ SEO optimized
-- ✅ Cloudflare Pages config
-- ✅ Markdown/MDX support
+
+- Astro 5
+- 440css styling
+- Islands architecture
+- SEO optimized
+- Cloudflare Pages config
+- Markdown/MDX support
 
 **Time:** 2 minutes
 
@@ -822,13 +829,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ## Roadmap
 
 ### Current (v1.0)
-- ✅ Professional CLI (`create-440-app`)
-- ✅ 440css modern CSS system
-- ✅ 8 production-ready presets
-- ✅ 50+ specialized agents
-- ✅ 35+ MCP integrations
-- ✅ 32+ automation hooks
-- ✅ Comprehensive documentation
+
+- Professional CLI (`create-440-app`)
+- 440css modern CSS system
+- 8 production-ready presets
+- 50+ specialized agents
+- 35+ MCP integrations
+- 32+ automation hooks
+- Comprehensive documentation
 
 ### Coming Soon (v1.1)
 - CLI framework updates (Vue 3.5, React 19, etc.)
@@ -875,13 +883,13 @@ Combined into something greater than the sum of its parts.
 
 **Claude Code Sidekick helps you build software better.**
 
-- ⚡ **2-minute setup** with professional CLI
-- 🎨 **Modern CSS system** (~5KB, accessible, dark mode)
-- 🤖 **50+ specialized agents** for every task
-- 🔌 **35+ pre-configured integrations**
-- ✅ **32+ automated quality checks**
-- 📚 **Complete documentation** for non-developers
-- 🎯 **Production-ready** from day one
+- **2-minute setup** with professional CLI
+- **Modern CSS system** (~5KB, accessible, dark mode)
+- **50+ specialized agents** for every task
+- **35+ pre-configured integrations**
+- **32+ automated quality checks**
+- **Complete documentation** for non-developers
+- **Production-ready** from day one
 
 **Stop cobbling together tools. Start with a system.**
 

@@ -8,13 +8,13 @@
 
 ## Features
 
-- 🎨 **Semantic Classes** - No utility mess, just meaningful component names
-- ♿ **Accessibility First** - WCAG AAA compliant out of the box
-- 📐 **Fluid Everything** - Typography, spacing, and layouts that scale
-- 🌓 **Dark Mode** - Built-in dark mode support
-- 🎯 **Logical Properties** - RTL-ready from the start
-- 🚀 **Tiny Bundle** - ~5KB gzipped
-- 🔧 **Custom Properties** - Fully customizable design tokens
+- **Semantic Classes** - No utility mess, just meaningful component names
+- **Accessibility First** - WCAG AAA compliant out of the box
+- **Fluid Everything** - Typography, spacing, and layouts that scale
+- **Dark Mode** - Built-in dark mode support
+- **Logical Properties** - RTL-ready from the start
+- **Tiny Bundle** - ~5KB gzipped
+- **Custom Properties** - Fully customizable design tokens
 
 ## Installation
 
@@ -237,4 +237,4 @@ MIT
 
 ---
 
-**Built with love and web standards** 🚀
+Built with love and web standards
