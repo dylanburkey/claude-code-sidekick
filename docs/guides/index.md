@@ -33,6 +33,7 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 
 | Guide | Time | Description |
 |-------|------|-------------|
+| [CLI Guide](cli-guide.md) | 2 min | Create projects instantly with the CLI (recommended) |
 | [Getting Started](getting-started.md) | 5 min | Initial setup with Quick Start or Custom config |
 | [Quick Start Guide](quick-start-guide.md) | 2 min | Use presets for instant configuration |
 | [Configuration](configuration.md) | 10 min | Detailed configuration options |
