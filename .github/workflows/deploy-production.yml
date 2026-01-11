@@ -1,0 +1,321 @@
+# Deploy Development to Production Workflow
+# Merges dev branch into main with full validation
+
+name: Deploy to Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_deploy:
+        description: 'Type "DEPLOY" to confirm production deployment'
+        required: true
+        type: string
+      create_release:
+        description: 'Create a GitHub release'
+        required: false
+        type: boolean
+        default: true
+      version_bump:
+        description: 'Version bump type'
+        required: false
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  # Job 1: Validate deployment request
+  validate-deploy:
+    name: Validate Deployment Request
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Validate confirmation
+        run: |
+          if [ "${{ github.event.inputs.confirm_deploy }}" != "DEPLOY" ]; then
+            echo "❌ Deployment not confirmed. You must type 'DEPLOY' to proceed."
+            exit 1
+          fi
+          echo "✅ Deployment confirmed by ${{ github.actor }}"
+
+  # Job 2: Run all validation on dev branch
+  pre-deploy-validation:
+    name: Pre-deployment Validation
+    runs-on: ubuntu-latest
+    needs: validate-deploy
+    
+    steps:
+      - name: Checkout dev branch
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'cli/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          cd cli && pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Check JSDoc comments
+        run: pnpm lint:jsdoc
+
+      - name: Run Prettier check
+        run: pnpm format:check
+
+      - name: Run CLI tests
+        run: cd cli && pnpm test
+
+      - name: Validate YAML configs
+        run: |
+          npm install -g yaml-lint
+          find .claude -name "*.yml" -exec yamllint {} \;
+
+      - name: Validate agent library structure
+        run: |
+          # Verify required structure exists
+          test -d "agent-library" || exit 1
+          test -d ".claude/agents" || exit 1
+          test -f "CLAUDE.md" || exit 1
+          test -f "README.md" || exit 1
+          echo "✅ Structure validation passed"
+
+  # Job 3: Merge dev into main
+  merge-to-main:
+    name: Merge Dev to Main
+    runs-on: ubuntu-latest
+    needs: pre-deploy-validation
+    outputs:
+      merge_sha: ${{ steps.merge.outputs.merge_sha }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch dev branch
+        run: git fetch origin dev:dev
+
+      - name: Check for merge conflicts
+        run: |
+          echo "🔍 Checking for merge conflicts..."
+          git merge --no-commit --no-ff dev || {
+            echo "❌ Merge conflicts detected. Please resolve manually."
+            git merge --abort
+            exit 1
+          }
+          git merge --abort
+          echo "✅ No merge conflicts"
+
+      - name: Merge dev into main
+        id: merge
+        run: |
+          echo "🚀 Merging dev into main..."
+          git merge dev --no-ff -m "chore: merge dev into main for production deployment
+
+          Deployed via GitHub Actions workflow
+          Triggered by: ${{ github.actor }}
+          Run ID: ${{ github.run_id }}
+          Version bump: ${{ github.event.inputs.version_bump }}"
+          
+          MERGE_SHA=$(git rev-parse HEAD)
+          echo "merge_sha=$MERGE_SHA" >> $GITHUB_OUTPUT
+          
+      - name: Push to main
+        run: git push origin main
+
+  # Job 4: Create release
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: merge-to-main
+    if: ${{ github.event.inputs.create_release == 'true' }}
+    
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Calculate new version
+        id: version
+        run: |
+          # Get current version from CLI package.json
+          CURRENT_VERSION=$(node -p "require('./cli/package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          
+          # Parse version components
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+          
+          # Bump version based on input
+          case "${{ github.event.inputs.version_bump }}" in
+            "major")
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            "minor")
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            "patch")
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+          
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update CLI package.json version
+        run: |
+          cd cli
+          npm version ${{ steps.version.outputs.new_version }} --no-git-tag-version
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add cli/package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
+          git push origin main
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -n "$LAST_TAG" ]; then
+            COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
+          fi
+          
+          # Categorize commits
+          FEATURES=$(echo "$COMMITS" | grep -E "^- (feat|feature)" || true)
+          FIXES=$(echo "$COMMITS" | grep -E "^- (fix|bugfix)" || true)
+          DOCS=$(echo "$COMMITS" | grep -E "^- (docs|doc)" || true)
+          OTHER=$(echo "$COMMITS" | grep -vE "^- (feat|feature|fix|bugfix|docs|doc)" || true)
+          
+          {
+            echo "CHANGELOG<<EOF"
+            if [ -n "$FEATURES" ]; then
+              echo "### ✨ Features"
+              echo "$FEATURES"
+              echo ""
+            fi
+            if [ -n "$FIXES" ]; then
+              echo "### 🐛 Bug Fixes"
+              echo "$FIXES"
+              echo ""
+            fi
+            if [ -n "$DOCS" ]; then
+              echo "### 📝 Documentation"
+              echo "$DOCS"
+              echo ""
+            fi
+            if [ -n "$OTHER" ]; then
+              echo "### 🔧 Other Changes"
+              echo "$OTHER"
+            fi
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.new_version }}
+          name: Claude Code Starter v${{ steps.version.outputs.new_version }}
+          body: |
+            ## What's Changed in v${{ steps.version.outputs.new_version }}
+            
+            ${{ steps.changelog.outputs.CHANGELOG }}
+            
+            ---
+            
+            ### Installation
+            
+            ```bash
+            npx create-440-app my-project
+            ```
+            
+            ### Documentation
+            
+            - [CLAUDE.md](./CLAUDE.md) - AI Assistant context
+            - [README.md](./README.md) - Getting started
+            - [Agent Library](./agent-library/README.md) - Available agents
+            
+            ---
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ needs.merge-to-main.outputs.merge_sha }}...v${{ steps.version.outputs.new_version }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job 5: Summary
+  deploy-summary:
+    name: Deployment Summary
+    runs-on: ubuntu-latest
+    needs: [merge-to-main, create-release]
+    if: always()
+    
+    steps:
+      - name: Print summary
+        run: |
+          echo "📋 Deployment Summary"
+          echo "====================="
+          echo ""
+          echo "Triggered by: ${{ github.actor }}"
+          echo "Merge Status: ${{ needs.merge-to-main.result }}"
+          echo "Release Status: ${{ needs.create-release.result }}"
+          echo "Merge SHA: ${{ needs.merge-to-main.outputs.merge_sha }}"
+          echo ""
+          
+          if [ "${{ needs.merge-to-main.result }}" = "success" ]; then
+            echo "✅ Code successfully merged to main"
+          else
+            echo "❌ Merge to main failed"
+          fi
+          
+          if [ "${{ needs.create-release.result }}" = "success" ]; then
+            echo "✅ GitHub release created"
+          elif [ "${{ needs.create-release.result }}" = "skipped" ]; then
+            echo "⏭️ Release creation was skipped"
+          else
+            echo "❌ Release creation failed"
+          fi

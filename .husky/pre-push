@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-push validation..."
+
+# Full validation before push (includes linting, formatting, and tests)
+pnpm validate
+
+echo "All pre-push checks passed! Safe to push."

@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "node bin/create-440-app.js",
-    "test": "node --test src/**/*.test.js"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [
     "cli",
@@ -32,6 +34,10 @@
     "degit": "^2.8.4",
     "fs-extra": "^11.2.0",
     "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.0.0",
+    "vitest": "^2.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

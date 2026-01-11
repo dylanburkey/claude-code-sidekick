@@ -1,0 +1,314 @@
+# Continuous Integration Workflow
+# Validates code quality, documentation, and CLI functionality
+
+name: CI - Code Quality & Validation
+
+on:
+  push:
+    branches: [main, dev, development]
+  pull_request:
+    branches: [main, dev, development]
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  # Job 1: Lint and validate code quality
+  lint:
+    name: Lint & Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'cli/pnpm-lock.yaml'
+
+      - name: Install root dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: .
+
+      - name: Install CLI dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: cli
+
+      - name: Run ESLint
+        run: pnpm lint
+        continue-on-error: false
+
+      - name: Check JSDoc comments
+        run: pnpm lint:jsdoc
+        continue-on-error: false
+
+      - name: Run Prettier check
+        run: pnpm format:check
+
+  # Job 2: Validate YAML configurations
+  validate-configs:
+    name: Validate Configuration Files
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install yaml validator
+        run: npm install -g yaml-lint
+
+      - name: Validate YAML files
+        run: |
+          echo "🔍 Validating YAML configuration files..."
+          
+          # Find and validate all YAML files
+          find . -name "*.yml" -o -name "*.yaml" | while read file; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              yamllint "$file" || exit 1
+            fi
+          done
+          
+          echo "✅ All YAML files are valid!"
+
+      - name: Validate JSON files
+        run: |
+          echo "🔍 Validating JSON files..."
+          
+          find . -name "*.json" -not -path "./node_modules/*" -not -path "./cli/node_modules/*" | while read file; do
+            if [ -f "$file" ]; then
+              echo "Checking $file"
+              node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))" || exit 1
+            fi
+          done
+          
+          echo "✅ All JSON files are valid!"
+
+  # Job 3: Validate Markdown documentation
+  validate-docs:
+    name: Validate Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: |
+          echo "🔍 Validating Markdown documentation..."
+          markdownlint '**/*.md' --ignore node_modules --ignore cli/node_modules || true
+          echo "✅ Markdown validation complete"
+
+      - name: Check for broken internal links
+        run: |
+          echo "🔍 Checking for broken internal links..."
+          
+          # Find all markdown files and check for broken links
+          for file in $(find . -name "*.md" -not -path "./node_modules/*" -not -path "./cli/node_modules/*"); do
+            echo "Checking links in $file"
+            
+            # Extract relative links and verify they exist
+            grep -oP '\[.*?\]\(\K[^)]+(?=\))' "$file" 2>/dev/null | while read link; do
+              # Skip external URLs and anchors
+              if [[ ! "$link" =~ ^https?:// ]] && [[ ! "$link" =~ ^# ]]; then
+                # Get directory of current file
+                dir=$(dirname "$file")
+                # Resolve relative path
+                target="$dir/$link"
+                # Remove anchor if present
+                target="${target%%#*}"
+                
+                if [ ! -e "$target" ] && [ ! -e "${target%.md}" ]; then
+                  echo "⚠️  Broken link in $file: $link"
+                fi
+              fi
+            done
+          done
+          
+          echo "✅ Link check complete"
+
+  # Job 4: Test CLI tool
+  test-cli:
+    name: Test CLI Tool
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'cli/pnpm-lock.yaml'
+
+      - name: Install CLI dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: cli
+
+      - name: Run CLI tests
+        run: pnpm test
+        working-directory: cli
+
+      - name: Test CLI execution
+        run: |
+          echo "🔍 Testing CLI execution..."
+          node bin/create-440-app.js --help
+          echo "✅ CLI executes successfully"
+        working-directory: cli
+
+  # Job 5: Validate agent library structure
+  validate-agents:
+    name: Validate Agent Library
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate agent structure
+        run: |
+          echo "🔍 Validating agent library structure..."
+          
+          # Check required directories exist
+          REQUIRED_DIRS=(
+            "agent-library"
+            ".claude/agents"
+            ".claude/commands"
+            ".claude/hooks"
+            ".claude/rules"
+          )
+          
+          for dir in "${REQUIRED_DIRS[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "❌ Missing required directory: $dir"
+              exit 1
+            fi
+            echo "✅ Found: $dir"
+          done
+          
+          # Check required files exist
+          REQUIRED_FILES=(
+            "CLAUDE.md"
+            "README.md"
+            "PROJECT_STARTER.md"
+            ".claude/config.yml"
+            ".claude/agents.yml"
+            ".claude/tasks.yml"
+          )
+          
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing required file: $file"
+              exit 1
+            fi
+            echo "✅ Found: $file"
+          done
+          
+          echo "✅ Agent library structure is valid!"
+
+      - name: Validate agent files have required sections
+        run: |
+          echo "🔍 Checking agent files for required sections..."
+          
+          # Check each agent file in agent-library
+          find agent-library -name "*.md" -type f | while read agent_file; do
+            echo "Checking $agent_file"
+            
+            # Check for common required sections (adjust as needed)
+            if ! grep -q "## " "$agent_file"; then
+              echo "⚠️  No sections found in $agent_file"
+            fi
+          done
+          
+          echo "✅ Agent file validation complete"
+
+  # Job 6: Security audit
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'cli/pnpm-lock.yaml'
+
+      - name: Install CLI dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: cli
+
+      - name: Run security audit
+        run: pnpm audit --audit-level=moderate
+        working-directory: cli
+        continue-on-error: true
+
+  # Final job: Summary
+  ci-summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [lint, validate-configs, validate-docs, test-cli, validate-agents, security]
+    if: always()
+    
+    steps:
+      - name: Check job results
+        run: |
+          echo "📋 CI Results Summary"
+          echo "====================="
+          echo ""
+          echo "Lint:            ${{ needs.lint.result }}"
+          echo "Config Validate: ${{ needs.validate-configs.result }}"
+          echo "Docs Validate:   ${{ needs.validate-docs.result }}"
+          echo "CLI Tests:       ${{ needs.test-cli.result }}"
+          echo "Agent Validate:  ${{ needs.validate-agents.result }}"
+          echo "Security:        ${{ needs.security.result }}"
+          echo ""
+          
+          if [ "${{ needs.lint.result }}" != "success" ] || \
+             [ "${{ needs.validate-configs.result }}" != "success" ] || \
+             [ "${{ needs.test-cli.result }}" != "success" ] || \
+             [ "${{ needs.validate-agents.result }}" != "success" ]; then
+            echo "❌ One or more critical CI checks failed"
+            exit 1
+          fi
+          echo "✅ All critical CI checks passed!"

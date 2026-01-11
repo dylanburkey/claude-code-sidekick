@@ -1,0 +1,278 @@
+# Quick Merge Dev to Main Workflow
+# Simplified workflow for merging dev into main
+
+name: Merge Dev to Main
+
+on:
+  workflow_dispatch:
+    inputs:
+      merge_strategy:
+        description: 'Merge strategy'
+        required: true
+        type: choice
+        options:
+          - merge
+          - squash
+          - rebase
+        default: merge
+      create_release:
+        description: 'Create a GitHub release'
+        required: false
+        type: boolean
+        default: false
+      version_bump:
+        description: 'Version bump type (if creating release)'
+        required: false
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  # Job 1: Validate branches
+  validate:
+    name: Validate Branches
+    runs-on: ubuntu-latest
+    outputs:
+      can_merge: ${{ steps.check.outputs.can_merge }}
+      commits_ahead: ${{ steps.check.outputs.commits_ahead }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check branch status
+        id: check
+        run: |
+          git fetch origin main dev
+          
+          # Check if dev is ahead of main
+          COMMITS_AHEAD=$(git rev-list --count origin/main..origin/dev)
+          COMMITS_BEHIND=$(git rev-list --count origin/dev..origin/main)
+          
+          echo "Dev is $COMMITS_AHEAD commits ahead of main"
+          echo "Dev is $COMMITS_BEHIND commits behind main"
+          
+          echo "commits_ahead=$COMMITS_AHEAD" >> $GITHUB_OUTPUT
+          
+          if [ "$COMMITS_AHEAD" -eq 0 ]; then
+            echo "❌ Dev branch has no new commits to merge"
+            echo "can_merge=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+          echo "can_merge=true" >> $GITHUB_OUTPUT
+          echo "✅ Dev branch has $COMMITS_AHEAD commits ready to merge"
+
+  # Job 2: Run quality checks
+  quality-check:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    needs: validate
+    
+    steps:
+      - name: Checkout dev branch
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: 'cli/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          cd cli && pnpm install --frozen-lockfile
+
+      - name: Run all checks
+        run: |
+          echo "Running quality checks..."
+          pnpm lint
+          pnpm lint:jsdoc
+          pnpm format:check
+          cd cli && pnpm test
+          echo "✅ All quality checks passed"
+
+  # Job 3: Perform merge
+  merge:
+    name: Merge Branches
+    runs-on: ubuntu-latest
+    needs: quality-check
+    outputs:
+      merge_sha: ${{ steps.merge.outputs.merge_sha }}
+    
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch dev branch
+        run: git fetch origin dev:dev
+
+      - name: Perform merge
+        id: merge
+        run: |
+          STRATEGY="${{ github.event.inputs.merge_strategy }}"
+          
+          case $STRATEGY in
+            "merge")
+              git merge dev --no-ff -m "Merge dev into main
+
+              Merged via GitHub Actions
+              Strategy: merge (--no-ff)
+              Triggered by: ${{ github.actor }}"
+              ;;
+            "squash")
+              git merge dev --squash
+              git commit -m "Squash merge dev into main
+
+              Merged via GitHub Actions
+              Strategy: squash
+              Triggered by: ${{ github.actor }}"
+              ;;
+            "rebase")
+              git rebase dev
+              ;;
+          esac
+          
+          MERGE_SHA=$(git rev-parse HEAD)
+          echo "merge_sha=$MERGE_SHA" >> $GITHUB_OUTPUT
+          echo "✅ Merge completed with SHA: $MERGE_SHA"
+
+      - name: Push to main
+        run: git push origin main
+
+  # Job 4: Create release (optional)
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: merge
+    if: ${{ github.event.inputs.create_release == 'true' }}
+    
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Calculate new version
+        id: version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./cli/package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+          
+          case "${{ github.event.inputs.version_bump }}" in
+            "major")
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            "minor")
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            "patch")
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+          
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version and create tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          cd cli
+          npm version ${{ steps.version.outputs.new_version }} --no-git-tag-version
+          cd ..
+          
+          git add cli/package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
+          git push origin main
+          
+          git tag -a "v${{ steps.version.outputs.new_version }}" -m "Release v${{ steps.version.outputs.new_version }}"
+          git push origin "v${{ steps.version.outputs.new_version }}"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+          
+          if [ -n "$LAST_TAG" ]; then
+            COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
+          fi
+          
+          echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.new_version }}
+          name: Release v${{ steps.version.outputs.new_version }}
+          body: |
+            ## What's Changed
+            
+            ${{ steps.changelog.outputs.CHANGELOG }}
+            
+            ---
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ needs.merge.outputs.merge_sha }}...v${{ steps.version.outputs.new_version }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Job 5: Summary
+  summary:
+    name: Merge Summary
+    runs-on: ubuntu-latest
+    needs: [merge, create-release]
+    if: always()
+    
+    steps:
+      - name: Print summary
+        run: |
+          echo "🎉 Merge Complete!"
+          echo ""
+          echo "Strategy: ${{ github.event.inputs.merge_strategy }}"
+          echo "Merge SHA: ${{ needs.merge.outputs.merge_sha }}"
+          echo "Release Created: ${{ github.event.inputs.create_release }}"
