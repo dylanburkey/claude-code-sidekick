@@ -8,8 +8,8 @@ import { validateProjectName, getProjectPath } from './utils.js';
 const program = new Command();
 
 program
-  .name('create-440-app')
-  .description('Create a new project with Claude Code Sidekick and 440css')
+  .name('create-claude-project')
+  .description('Create a new project with Claude Code Sidekick')
   .version('1.0.0')
   .argument('[project-name]', 'Name of the project')
   .option('-p, --preset <preset>', 'Project preset (static|astro|react|nextjs|nuxt|svelte|fullstack)')
@@ -22,7 +22,7 @@ program
 export async function createProject(cliProjectName, cliOptions = {}) {
   console.clear();
 
-  p.intro(chalk.bold.cyan('🚀 Create 440 App'));
+  p.intro(chalk.bold.cyan('Create Claude Project'));
 
   // Project name
   let projectName = cliProjectName;
@@ -102,11 +102,6 @@ export async function createProject(cliProjectName, cliOptions = {}) {
     message: 'Select additional features:',
     options: [
       {
-        value: '440css',
-        label: '440css',
-        hint: 'Modern CSS system (recommended)',
-      },
-      {
         value: 'database',
         label: 'Database',
         hint: 'Neon PostgreSQL with Prisma',
@@ -127,7 +122,7 @@ export async function createProject(cliProjectName, cliOptions = {}) {
         hint: 'Vercel/Cloudflare setup',
       },
     ],
-    initialValues: ['440css'],
+    initialValues: [],
   });
 
   if (p.isCancel(features)) {
@@ -170,7 +165,7 @@ export async function createProject(cliProjectName, cliOptions = {}) {
     );
 
     p.outro(
-      `${chalk.green('✓')} Your project is ready! ${chalk.dim('Happy building!')}`
+      `${chalk.green('✓')} Your project is ready! ${chalk.dim('Start building with Claude.')}`
     );
   } catch (error) {
     s.stop('Error creating project');

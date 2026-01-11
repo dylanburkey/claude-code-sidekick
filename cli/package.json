@@ -1,13 +1,13 @@
 {
-  "name": "create-440-app",
+  "name": "create-claude-project",
   "version": "1.0.0",
-  "description": "CLI tool to create new projects with Claude Code Sidekick and 440css",
+  "description": "CLI tool to create new projects with Claude Code Sidekick",
   "type": "module",
   "bin": {
-    "create-440-app": "./bin/create-440-app.js"
+    "create-claude-project": "./bin/create-claude-project.js"
   },
   "scripts": {
-    "dev": "node bin/create-440-app.js",
+    "dev": "node bin/create-claude-project.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
@@ -17,8 +17,8 @@
     "scaffold",
     "template",
     "starter",
-    "440css",
     "claude-code",
+    "ai-development",
     "nuxt",
     "astro",
     "react",

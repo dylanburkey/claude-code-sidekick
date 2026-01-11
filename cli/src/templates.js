@@ -209,12 +209,6 @@ export const PRESETS = {
 };
 
 export const FEATURE_CONFIGS = {
-  '440css': {
-    files: ['440css/'],
-    dependencies: {},
-    description: 'Modern CSS system with design tokens and components',
-  },
-
   database: {
     mcp: ['Neon Database'],
     dependencies: {
