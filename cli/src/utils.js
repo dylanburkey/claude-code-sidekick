@@ -14,8 +14,8 @@
  * For licensing inquiries: https://github.com/dylanburkey
  */
 
-import path from 'path';
-import fs from 'fs-extra';
+import path from 'node:path';
+import { readdir } from 'node:fs/promises';
 
 /**
  * Validate project name
@@ -72,7 +72,7 @@ export function getProjectPath(projectName) {
  */
 export async function isDirectoryEmpty(dirPath) {
   try {
-    const files = await fs.readdir(dirPath);
+    const files = await readdir(dirPath);
     return files.length === 0;
   } catch {
     // Directory doesn't exist, so it's "empty"
