@@ -4,6 +4,8 @@
 > Professional project scaffolding, specialized agents, and automation in one
 > command.
 
+![Claude Code Sidekick](public/social-card.png)
+
 ---
 
 **© 2026 Dylan Burkey. All Rights Reserved.**
@@ -22,6 +24,8 @@ LICENSE file for complete terms.
 ```bash
 npx create-claude-project
 ```
+
+![Claude Code Sidekick](public/social-card-v3.png)
 
 Follow the interactive prompts to scaffold a production-ready project with
 Claude Code Sidekick configured.
@@ -74,6 +78,8 @@ environment
 ---
 
 ## CLI Features
+
+![CLI Preview](public/social-card-v3.png)
 
 The `create-claude-project` CLI scaffolds production-ready projects with:
 
@@ -424,6 +430,8 @@ MIT License - See [LICENSE](LICENSE) for details.
 ```bash
 npx create-claude-project
 ```
+
+![Claude Code Sidekick Overview](public/social-card-v2.png)
 
 [Get Started →](docs/guides/cli-guide.md) |
 [Browse Agent Library →](agent-library/README.md)
