@@ -1,6 +1,7 @@
 # Structure Steering Document
 
-> This document defines code organization patterns and file structure conventions.
+> This document defines code organization patterns and file structure
+> conventions.
 
 ## Directory Organization
 
@@ -49,12 +50,14 @@ theme-root/
 ## File Naming Conventions
 
 ### General Rules
+
 - Use kebab-case for files: `user-profile.js`
 - Use PascalCase for components: `UserProfile.jsx`
 - Use snake_case for test files: `user_profile.test.js`
 - Prefix partials with underscore: `_variables.css`
 
 ### Component Files
+
 ```
 components/
 ├── Button/
@@ -67,6 +70,7 @@ components/
 ## Module Organization
 
 ### Single Responsibility
+
 Each file should have one primary purpose:
 
 ```javascript
@@ -76,20 +80,20 @@ export function formatDate(date, locale = 'en-US') {
 }
 
 // DON'T: Multiple unrelated functions
-export function formatDate() { }
-export function calculateTotal() { }
-export function validateEmail() { }
+export function formatDate() {}
+export function calculateTotal() {}
+export function validateEmail() {}
 ```
 
 ### Export Patterns
 
 ```javascript
 // Named exports for utilities
-export function formatCurrency(value) { }
-export function formatDate(date) { }
+export function formatCurrency(value) {}
+export function formatDate(date) {}
 
 // Default export for components
-export default function UserProfile() { }
+export default function UserProfile() {}
 
 // Re-export from index for clean imports
 // components/index.js

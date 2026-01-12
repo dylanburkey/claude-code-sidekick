@@ -1,10 +1,12 @@
 # Quick Start Command
 
-> Instantly configure your project based on the selected preset in PROJECT_STARTER.md
+> Instantly configure your project based on the selected preset in
+> PROJECT_STARTER.md
 
 ## Purpose
 
-This command reads the Quick Start Configuration section in PROJECT_STARTER.md and automatically:
+This command reads the Quick Start Configuration section in PROJECT_STARTER.md
+and automatically:
 
 1. Applies the selected preset configuration
 2. Enables appropriate MCP servers
@@ -195,11 +197,9 @@ Suggest dependencies based on preset:
 ```markdown
 Recommended dependencies for Astro Site:
 
-Install with:
-npm install astro @astrojs/cloudflare
+Install with: npm install astro @astrojs/cloudflare
 
-Dev dependencies:
-npm install -D prettier prettier-plugin-astro
+Dev dependencies: npm install -D prettier prettier-plugin-astro
 ```
 
 ### Step 7: Output Summary
@@ -246,6 +246,7 @@ Ready to start building! 🚀
 Perfect for simple sites with semantic HTML and vanilla JavaScript.
 
 **Includes:**
+
 - Modern JavaScript (ES6+)
 - Modern CSS (Grid, Flexbox, Custom Properties)
 - WCAG AA Accessibility
@@ -253,6 +254,7 @@ Perfect for simple sites with semantic HTML and vanilla JavaScript.
 - Basic git hooks
 
 **Best for:**
+
 - Landing pages
 - Documentation sites
 - Marketing websites
@@ -263,6 +265,7 @@ Perfect for simple sites with semantic HTML and vanilla JavaScript.
 Optimized for content-focused sites with Astro's islands architecture.
 
 **Includes:**
+
 - Astro conventions
 - Modern CSS
 - Component best practices
@@ -271,6 +274,7 @@ Optimized for content-focused sites with Astro's islands architecture.
 - PWA support
 
 **Best for:**
+
 - Blogs
 - Marketing sites
 - Documentation
@@ -281,6 +285,7 @@ Optimized for content-focused sites with Astro's islands architecture.
 Single-page applications with React and modern tooling.
 
 **Includes:**
+
 - React best practices
 - TypeScript support
 - Vite bundling
@@ -288,6 +293,7 @@ Single-page applications with React and modern tooling.
 - State management patterns
 
 **Best for:**
+
 - Dashboards
 - Admin panels
 - Web applications
@@ -298,6 +304,7 @@ Single-page applications with React and modern tooling.
 Full-featured Next.js applications with App Router.
 
 **Includes:**
+
 - Next.js conventions
 - React Server Components
 - TypeScript
@@ -306,6 +313,7 @@ Full-featured Next.js applications with App Router.
 - Testing setup
 
 **Best for:**
+
 - Full-stack applications
 - E-commerce sites
 - Content platforms
@@ -316,6 +324,7 @@ Full-featured Next.js applications with App Router.
 Modern Vue 3 applications with Nuxt.
 
 **Includes:**
+
 - Vue Composition API
 - Nuxt auto-imports
 - TypeScript
@@ -323,6 +332,7 @@ Modern Vue 3 applications with Nuxt.
 - Server-side rendering
 
 **Best for:**
+
 - SPAs
 - SSR applications
 - Progressive web apps
@@ -332,6 +342,7 @@ Modern Vue 3 applications with Nuxt.
 Lightweight applications with Svelte and SvelteKit.
 
 **Includes:**
+
 - Svelte 5 features
 - Runes system
 - TypeScript
@@ -339,6 +350,7 @@ Lightweight applications with Svelte and SvelteKit.
 - Routing patterns
 
 **Best for:**
+
 - Fast, lightweight apps
 - Interactive experiences
 - Performance-critical sites
@@ -348,6 +360,7 @@ Lightweight applications with Svelte and SvelteKit.
 Complete backend + frontend + database stack.
 
 **Includes:**
+
 - Frontend framework (React/Next.js)
 - Backend API (Hono/Express)
 - Database (PostgreSQL/D1)
@@ -356,6 +369,7 @@ Complete backend + frontend + database stack.
 - Deployment pipelines
 
 **Best for:**
+
 - Complete applications
 - SaaS platforms
 - Enterprise apps
@@ -366,11 +380,13 @@ Complete backend + frontend + database stack.
 Manual configuration for unique requirements.
 
 **Behavior:**
+
 - No automatic configuration
 - Fill out all sections manually
 - Full control over every setting
 
 **Best for:**
+
 - Unique tech stacks
 - Legacy projects
 - Experimental setups
@@ -446,6 +462,7 @@ Reset to custom configuration:
 ```
 
 **Behavior:**
+
 - Changes PROJECT_STARTER.md preset to "Custom"
 - Preserves existing configurations
 - Allows manual setup
@@ -559,6 +576,7 @@ Using manual configuration (Custom preset mode)
 ```
 
 **Fix:** Either:
+
 1. Remove manual MCP configuration to use preset
 2. Switch to "Custom" preset for manual control
 
@@ -590,6 +608,7 @@ Choose the simplest preset that meets your needs:
 ### Use Presets as Starting Points
 
 You can:
+
 1. Apply a preset
 2. Manually adjust specific settings
 3. Keep most preset defaults
@@ -601,6 +620,7 @@ Always run `--show-preset` first to see what will change.
 ### Keep Presets Updated
 
 As your project grows, you might:
+
 - Start with **Static Website**
 - Upgrade to **Astro Site**
 - Eventually use **Full Stack**
@@ -617,4 +637,5 @@ Re-run `/quick-start` with new preset to update configuration.
 
 ---
 
-*Quick Start makes project setup instant. Choose your stack, apply the preset, and start building in minutes instead of hours.*
+_Quick Start makes project setup instant. Choose your stack, apply the preset,
+and start building in minutes instead of hours._

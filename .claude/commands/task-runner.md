@@ -1,14 +1,19 @@
 # Task Runner Command
 
 ## Purpose
-Executes tasks from a task file using the appropriate subagents, completing them one by one in dependency order.
+
+Executes tasks from a task file using the appropriate subagents, completing them
+one by one in dependency order.
 
 ## Trigger
+
 Run after `task-planner` has generated a task list.
 
 ## Arguments
+
 - `phase` (optional): Phase number to execute. Defaults to `1`.
-- `task` (optional): Specific task ID to run. If omitted, runs all pending tasks.
+- `task` (optional): Specific task ID to run. If omitted, runs all pending
+  tasks.
 - `mode` (optional): Execution mode - `sequential` (default) or `batch`.
 
 ## Instructions
@@ -33,6 +38,7 @@ Read `.claude/tasks/phase-{{PHASE}}-tasks.md` and parse:
 For each task in order:
 
 #### 3.1 Pre-Execution Check
+
 - Verify all dependencies are `complete`
 - If blocked, move to next task
 - Load agent configuration
@@ -52,6 +58,7 @@ Agent Mapping:
 ```
 
 When invoking an agent:
+
 1. Load agent configuration from file
 2. Pass task context (description, criteria, deliverables)
 3. Apply relevant rules from `.claude/rules/`
@@ -65,11 +72,13 @@ Each agent follows this protocol:
 ## Task Execution: {{TASK_ID}}
 
 ### Context
+
 - Task: {{TASK_NAME}}
 - Description: {{DESCRIPTION}}
 - Deliverables: {{DELIVERABLES}}
 
 ### Execution Steps
+
 1. Review acceptance criteria
 2. Plan implementation approach
 3. Execute implementation
@@ -77,6 +86,7 @@ Each agent follows this protocol:
 5. Self-review against criteria
 
 ### Completion Report
+
 - Status: {{complete/failed/blocked}}
 - Deliverables Created: {{LIST}}
 - Notes: {{Any issues or observations}}
@@ -85,6 +95,7 @@ Each agent follows this protocol:
 #### 3.4 Post-Execution
 
 After each task:
+
 1. Update task status in task file
 2. Log execution details
 3. Trigger documentation hook if applicable
@@ -108,19 +119,24 @@ After each task batch, report:
 ## Execution Progress
 
 ### Completed
+
 - [x] PHASE1-001: Set up project structure
 - [x] PHASE1-002: Create configuration files
 
 ### In Progress
+
 - [ ] PHASE1-003: Implement core component
 
 ### Blocked
+
 - [ ] PHASE1-004: Write tests (waiting on PHASE1-003)
 
 ### Failed
+
 - [ ] PHASE1-005: Integration setup (Error: ...)
 
 ### Summary
+
 - Completed: 2/10
 - In Progress: 1/10
 - Blocked: 1/10
@@ -146,13 +162,13 @@ When all tasks complete:
 async function invokeAgent(taskContext) {
   const agent = await loadAgent(taskContext.agent);
   const rules = await loadRules(agent.applicableRules);
-  
+
   const execution = await agent.execute({
     task: taskContext,
     rules: rules,
-    sharedContext: await loadSharedContext()
+    sharedContext: await loadSharedContext(),
   });
-  
+
   return execution.result;
 }
 ```
@@ -161,29 +177,30 @@ async function invokeAgent(taskContext) {
 
 ```yaml
 TaskContext:
-  id: "PHASE1-001"
-  name: "Set up project structure"
-  agent: "init"
-  description: "..."
+  id: 'PHASE1-001'
+  name: 'Set up project structure'
+  agent: 'init'
+  description: '...'
   acceptanceCriteria: [...]
   deliverables: [...]
   dependencies: []
-  technicalNotes: "..."
-  
+  technicalNotes: '...'
+
 AgentContext:
-  config: ".claude/agents/init-agent.md"
+  config: '.claude/agents/init-agent.md'
   capabilities: [...]
   tools: [...]
-  
+
 ExecutionContext:
   sharedContext: [CLAUDE.md, README.md, ...]
   rules: [code-style, documentation, accessibility]
-  outputDir: ".claude/docs"
+  outputDir: '.claude/docs'
 ```
 
 ## Output
 
 The command produces:
+
 1. Updated `.claude/tasks/phase-{{PHASE}}-tasks.md` with status changes
 2. Deliverables as defined by each task
 3. Execution log in `.claude/docs/execution-logs/`
@@ -208,11 +225,13 @@ The command produces:
 ## Execution Modes
 
 ### Sequential Mode (Default)
+
 - Executes one task at a time
 - Safer, easier to debug
 - Better for initial runs
 
 ### Batch Mode
+
 - Groups independent tasks
 - Executes batches in parallel
 - Faster for large task lists
@@ -221,6 +240,7 @@ The command produces:
 ## Error Recovery
 
 ### Retry Strategy
+
 ```yaml
 retry:
   max_attempts: 3
@@ -230,12 +250,14 @@ retry:
 ```
 
 ### Skip Strategy
+
 - Mark task as `skipped`
 - Block dependent tasks
 - Continue with independent tasks
 - Report at end
 
 ### Manual Intervention
+
 - Pause execution
 - Request user input
 - Resume with guidance

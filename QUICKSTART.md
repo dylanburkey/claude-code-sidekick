@@ -17,16 +17,20 @@ Open `PROJECT_STARTER.md` and complete each section:
 
 ```markdown
 ## Project Overview
-**Name:** My Awesome Project
-**Description:** A web application that does amazing things
+
+**Name:** My Awesome Project **Description:** A web application that does
+amazing things
 
 ## Goals
+
 1. Build a responsive landing page
 2. Implement user authentication
 3. Create a dashboard
 
 ## Requirements (EARS Notation)
+
 ### Functional
+
 - THE SYSTEM SHALL display a responsive navigation menu
 - WHEN user clicks login THE SYSTEM SHALL show authentication modal
 - WHILE user is authenticated THE SYSTEM SHALL display dashboard link
@@ -41,6 +45,7 @@ In Claude Code, run the planner command:
 ```
 
 This analyzes your PROJECT_STARTER.md and creates:
+
 - `project-plan/phase_1.md` - Detailed project breakdown
 
 ## 4. Generate Tasks
@@ -52,6 +57,7 @@ Run the task planner:
 ```
 
 This creates:
+
 - `tasks/phase-1-tasks.md` - Step-by-step implementation tasks
 
 ## 5. Execute Tasks
@@ -63,6 +69,7 @@ Run the task runner:
 ```
 
 This:
+
 - Reads tasks from `tasks/phase-1-tasks.md`
 - Assigns tasks to appropriate agents (dev, test, docs)
 - Executes tasks in dependency order
@@ -124,6 +131,7 @@ Ask Claude: "Review the code in src/components/Button.js"
 ```
 
 The review agent will check:
+
 - Code style compliance
 - Accessibility standards
 - Performance considerations
@@ -148,14 +156,17 @@ Ask Claude: "Update the documentation for the authentication module"
 ## Troubleshooting
 
 **Tasks not generating correctly?**
+
 - Ensure PROJECT_STARTER.md has clear requirements
 - Check that goals are specific and measurable
 
 **Agents not following standards?**
+
 - Review and update steering documents
 - Check rules/ directory for missing standards
 
 **Documentation not updating?**
+
 - Verify hooks are properly configured
 - Check file paths in hook definitions
 

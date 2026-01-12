@@ -4,13 +4,16 @@
 
 ## Overview
 
-This directory contains templates and guidelines for creating new agents. Using these templates ensures consistency across the agent library and makes agents easier to understand, use, and maintain.
+This directory contains templates and guidelines for creating new agents. Using
+these templates ensures consistency across the agent library and makes agents
+easier to understand, use, and maintain.
 
 ## Available Templates
 
 ### [agent-template.md](./agent-template.md)
 
-The main template for creating new agents. This template includes all sections that should be present in an agent definition:
+The main template for creating new agents. This template includes all sections
+that should be present in an agent definition:
 
 - Purpose and capabilities
 - Usage examples
@@ -61,6 +64,7 @@ Work through each section of the template:
 ### Step 4: Add Real Examples
 
 Include at least 3 real-world examples showing:
+
 - Basic usage
 - Advanced usage with configuration
 - Complex scenario with multiple features
@@ -68,6 +72,7 @@ Include at least 3 real-world examples showing:
 ### Step 5: Test Your Agent
 
 Before adding to the library:
+
 - [ ] Test with multiple scenarios
 - [ ] Verify all examples work
 - [ ] Check documentation completeness
@@ -81,17 +86,20 @@ Add your agent to the appropriate category's README:
 
 ```markdown
 ### [Your Agent Name](./your-agent-name.md)
+
 Brief description of what this agent does
 ```
 
 ## Agent Naming Conventions
 
 ### File Names
+
 - Use kebab-case: `api-endpoint-generator.md`
 - Be descriptive: `react-component-generator.md` not `component.md`
 - Include the type if relevant: `unit-test-generator.md`
 
 ### Agent Names in Documentation
+
 - Use Title Case: "API Endpoint Generator"
 - Be specific: "React Component Generator" not "Component Generator"
 - Avoid redundant words: "Test Generator" not "Test Generation Generator"
@@ -101,26 +109,31 @@ Brief description of what this agent does
 ### Writing Style
 
 **Be Clear and Concise:**
+
 ```markdown
-✓ "Generates REST API endpoints with validation and error handling"
-✗ "This agent can be used to create endpoints for APIs"
+✓ "Generates REST API endpoints with validation and error handling" ✗ "This
+agent can be used to create endpoints for APIs"
 ```
 
 **Use Active Voice:**
+
 ```markdown
-✓ "The agent generates unit tests for all exported functions"
-✗ "Unit tests are generated for all exported functions by the agent"
+✓ "The agent generates unit tests for all exported functions" ✗ "Unit tests are
+generated for all exported functions by the agent"
 ```
 
 **Provide Context:**
+
 ```markdown
-✓ "Use this agent when you need to scaffold a complete CRUD feature with database models, API endpoints, and frontend components"
-✗ "Use this agent for CRUD stuff"
+✓ "Use this agent when you need to scaffold a complete CRUD feature with
+database models, API endpoints, and frontend components" ✗ "Use this agent for
+CRUD stuff"
 ```
 
 ### Code Examples
 
 **Always Include:**
+
 - Language identifier for syntax highlighting
 - Complete, runnable examples
 - Comments explaining non-obvious parts
@@ -139,17 +152,18 @@ async function fetchUser(id) {
 
 Always document configuration in a table:
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| framework | string | 'react' | Frontend framework to use |
-| typescript | boolean | true | Enable TypeScript |
-| tests | boolean | true | Generate tests |
+| Option     | Type    | Default | Description               |
+| ---------- | ------- | ------- | ------------------------- |
+| framework  | string  | 'react' | Frontend framework to use |
+| typescript | boolean | true    | Enable TypeScript         |
+| tests      | boolean | true    | Generate tests            |
 
 ## Quality Checklist
 
 Before submitting an agent to the library:
 
 ### Completeness
+
 - [ ] All template sections filled out
 - [ ] At least 3 real examples included
 - [ ] All configuration options documented
@@ -157,18 +171,21 @@ Before submitting an agent to the library:
 - [ ] MCP integration explained (if used)
 
 ### Accuracy
+
 - [ ] Examples tested and working
 - [ ] Code snippets are syntactically correct
 - [ ] Configuration options match implementation
 - [ ] Links are valid and working
 
 ### Clarity
+
 - [ ] Purpose is clear and specific
 - [ ] Usage examples are realistic
 - [ ] Instructions are easy to follow
 - [ ] Technical terms are explained
 
 ### Consistency
+
 - [ ] Follows template structure
 - [ ] Uses consistent terminology
 - [ ] Matches style of other agents
@@ -181,12 +198,14 @@ Before submitting an agent to the library:
 **Focus on:** Creating production-ready code
 
 **Should include:**
+
 - Output examples (show generated code)
 - Customization options
 - Code style/standards followed
 - Integration with existing code
 
 **Example agents:**
+
 - API endpoint generator
 - Component scaffolder
 - Database model generator
@@ -196,12 +215,14 @@ Before submitting an agent to the library:
 **Focus on:** Automating workflows
 
 **Should include:**
+
 - Trigger conditions
 - Step-by-step workflow
 - Error handling and rollback
 - Monitoring and logging
 
 **Example agents:**
+
 - Build pipeline
 - Deployment automator
 - Dependency updater
@@ -211,12 +232,14 @@ Before submitting an agent to the library:
 **Focus on:** Quality assurance
 
 **Should include:**
+
 - Test coverage approach
 - Testing frameworks used
 - Assertion patterns
 - CI/CD integration
 
 **Example agents:**
+
 - Unit test generator
 - Accessibility auditor
 - Performance tester
@@ -226,12 +249,14 @@ Before submitting an agent to the library:
 **Focus on:** Creating/maintaining docs
 
 **Should include:**
+
 - Documentation format/style
 - Update triggers
 - Version control
 - Output locations
 
 **Example agents:**
+
 - API documentation generator
 - README builder
 - Changelog maintainer
@@ -241,12 +266,14 @@ Before submitting an agent to the library:
 **Focus on:** Web3 development
 
 **Should include:**
+
 - Security considerations
 - Gas optimization
 - Network support
 - Testing with testnets
 
 **Example agents:**
+
 - Smart contract generator
 - DApp scaffolder
 - Subgraph generator
@@ -261,18 +288,23 @@ Before submitting an agent to the library:
 > One-line description
 
 ## Purpose
+
 Why this agent exists
 
 ## Capabilities
+
 What it can do
 
 ## Usage
+
 How to use it
 
 ## Examples
+
 Real-world examples
 
 ## Configuration
+
 Options and settings
 
 [... other sections ...]
@@ -287,16 +319,19 @@ Options and settings
 
 **Prompt:**
 ```
+
 [Exact user prompt]
-```
+
+````
 
 **Result:**
 ```[language]
 [Generated output]
-```
+````
 
 **Explanation:** Why/how it works
-```
+
+````
 
 ### Configuration Pattern
 
@@ -317,7 +352,7 @@ config:
   output:
     path: ./generated
     format: typescript
-```
+````
 
 ## Troubleshooting Template Creation
 
@@ -328,6 +363,7 @@ config:
 ### Issue: Not Enough Examples
 
 **Solution:** Create examples for:
+
 - Simple case
 - Complex case
 - Error case
@@ -336,6 +372,7 @@ config:
 ### Issue: Unclear Purpose
 
 **Solution:** Answer these questions:
+
 - What problem does this solve?
 - When would someone use this?
 - What makes this better than manual work?
@@ -343,6 +380,7 @@ config:
 ### Issue: Missing Configuration
 
 **Solution:** Document:
+
 - All available options
 - Default values
 - Required vs optional
@@ -353,7 +391,8 @@ config:
 Track agent changes with version numbers:
 
 ```yaml
-version: 1.2.0  # major.minor.patch
+version: 1.2.0 # major.minor.patch
+
 
 # Increment:
 # - major: Breaking changes
@@ -388,4 +427,4 @@ Contributions to templates are welcome! To suggest improvements:
 
 ---
 
-*These templates ensure consistency and quality across the Agent Library*
+_These templates ensure consistency and quality across the Agent Library_

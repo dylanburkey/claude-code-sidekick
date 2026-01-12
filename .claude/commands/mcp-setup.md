@@ -41,13 +41,15 @@ Read the MCP Configuration section and identify all MCPs marked as `TRUE`:
 ```
 
 Extract:
+
 - MCP name
 - Category
 - Status (TRUE/FALSE)
 
 ### Step 2: Load MCP Provider Configurations
 
-For each enabled MCP, load its configuration from `.claude/mcp/providers/[mcp-name].json`:
+For each enabled MCP, load its configuration from
+`.claude/mcp/providers/[mcp-name].json`:
 
 ```json
 {
@@ -132,12 +134,14 @@ The following MCP servers have been configured for your project:
 **Purpose:** PostgreSQL database operations, migrations, query tuning
 
 **Setup:**
+
 1. Sign up at https://neon.tech
 2. Create a project
 3. Generate API key from Account Settings
 4. Add to `.env`: `NEON_API_KEY=your_key_here`
 
 **Required Environment Variables:**
+
 - `NEON_API_KEY`
 
 **Documentation:** https://github.com/neondatabase/mcp-server-neon
@@ -149,11 +153,13 @@ The following MCP servers have been configured for your project:
 **Purpose:** Repository operations, issues, PRs, CI/CD
 
 **Setup:**
+
 1. Go to https://github.com/settings/tokens
 2. Generate a new token with repo permissions
 3. Add to `.env`: `GITHUB_TOKEN=your_token_here`
 
 **Required Environment Variables:**
+
 - `GITHUB_TOKEN`
 
 **Documentation:** https://github.com/modelcontextprotocol/servers
@@ -162,6 +168,7 @@ The following MCP servers have been configured for your project:
 ### Step 6: Validate Configuration
 
 Check for:
+
 - Required environment variables are documented
 - MCP providers are available (npm packages exist)
 - No conflicting configurations
@@ -214,10 +221,7 @@ Each MCP provider has a JSON configuration file in `.claude/mcp/providers/`:
   "optionalEnvVars": ["OPTIONAL_VAR"],
   "documentation": "https://docs-url",
   "setup": ".claude/mcp/providers/provider-setup.md",
-  "features": [
-    "Feature 1",
-    "Feature 2"
-  ],
+  "features": ["Feature 1", "Feature 2"],
   "agentIntegration": {
     "categories": ["code-generation", "task-automation"],
     "examples": "path/to/examples.md"
@@ -246,6 +250,7 @@ Validate existing MCP configuration:
 ```
 
 Checks:
+
 - All enabled MCPs have valid configurations
 - Environment variables are defined
 - No syntax errors in config files
@@ -328,6 +333,7 @@ After MCP setup, agents can leverage configured MCPs:
 ## Example: Database Model Generator with Neon
 
 If Neon MCP is enabled, the code-generation agents can:
+
 - Query actual database schema
 - Generate models matching existing tables
 - Create type-safe migrations
@@ -360,17 +366,20 @@ If Neon MCP is enabled, the code-generation agents can:
 ### Example 1: Enable Neon and GitHub
 
 PROJECT_STARTER.md:
+
 ```markdown
 - **Neon Database**: `TRUE`
 - **GitHub**: `TRUE`
 ```
 
 Run:
+
 ```bash
 /mcp-setup
 ```
 
 Result:
+
 - 2 MCPs configured
 - .env.example with NEON_API_KEY and GITHUB_TOKEN
 - Setup instructions generated
@@ -378,6 +387,7 @@ Result:
 ### Example 2: Full Stack with Analytics
 
 Enable:
+
 - Neon Database
 - Cloudflare
 - GitHub
@@ -386,11 +396,13 @@ Enable:
 - Google Analytics 4
 
 Run:
+
 ```bash
 /mcp-setup
 ```
 
 Result:
+
 - 6 MCPs configured
 - Complete development, deployment, and monitoring stack
 - Integrated error tracking and analytics
@@ -466,4 +478,5 @@ Status: 6/6 MCPs properly configured
 
 ---
 
-*This command streamlines MCP setup and ensures all team members have consistent configuration.*
+_This command streamlines MCP setup and ensures all team members have consistent
+configuration._

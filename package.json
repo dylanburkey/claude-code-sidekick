@@ -1,0 +1,59 @@
+{
+  "name": "claude-code-starter-files",
+  "version": "1.0.0",
+  "description": "Claude Code Starter Files - A structured workflow template for AI-assisted development",
+  "type": "module",
+  "private": true,
+  "author": "Dylan Burkey",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dylanburkey/claude-code-lib.git"
+  },
+  "scripts": {
+    "lint": "eslint cli/src cli/bin",
+    "lint:fix": "eslint cli/src cli/bin --fix",
+    "lint:jsdoc": "eslint cli/src cli/bin --rule 'jsdoc/require-jsdoc: error'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "validate": "pnpm lint && pnpm format:check && pnpm test",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "@vitest/ui": "^2.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-jsdoc": "^50.0.0",
+    "prettier": "^3.2.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "vitest": "^2.0.0",
+    "yaml-lint": "^1.7.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai-development",
+    "workflow",
+    "agents",
+    "starter-template",
+    "spec-driven-development"
+  ]
+}

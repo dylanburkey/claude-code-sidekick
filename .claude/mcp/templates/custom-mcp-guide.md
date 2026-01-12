@@ -4,7 +4,9 @@
 
 ## Overview
 
-Custom MCP providers allow you to extend Claude Code with project-specific integrations, proprietary APIs, or internal services. This guide walks through creating and configuring custom MCPs.
+Custom MCP providers allow you to extend Claude Code with project-specific
+integrations, proprietary APIs, or internal services. This guide walks through
+creating and configuring custom MCPs.
 
 ## When to Create a Custom MCP
 
@@ -23,6 +25,7 @@ Create a custom MCP when you need to:
 Define what your MCP will do:
 
 **Example: Internal API Integration**
+
 - **Name**: company-api
 - **Purpose**: Access internal REST API
 - **Features**: CRUD operations, search, reports
@@ -181,7 +184,7 @@ await server.connect(transport);
 
 Create `.claude/mcp/docs/company-api-setup.md`:
 
-```markdown
+````markdown
 # Company API MCP Setup
 
 ## Prerequisites
@@ -208,6 +211,7 @@ COMPANY_API_URL=https://api.company.com
 COMPANY_API_KEY=your_api_key_here
 COMPANY_API_TIMEOUT=5000  # Optional, default 5 seconds
 ```
+````
 
 ### 3. Install Dependencies
 
@@ -247,7 +251,7 @@ Should connect without errors.
 ```javascript
 const user = await mcp.companyApi.getResource({
   resourceType: 'users',
-  id: '12345'
+  id: '12345',
 });
 ```
 
@@ -256,7 +260,7 @@ const user = await mcp.companyApi.getResource({
 ```javascript
 const products = await mcp.companyApi.search({
   query: 'laptop',
-  type: 'products'
+  type: 'products',
 });
 ```
 
@@ -280,7 +284,8 @@ const products = await mcp.companyApi.search({
 - Use different keys for dev/staging/prod
 - Rotate keys quarterly
 - Monitor API usage for anomalies
-```
+
+````
 
 ### Step 5: Add to PROJECT_STARTER.md
 
@@ -290,7 +295,7 @@ In the Custom MCPs section:
 ### Custom MCPs
 
 **Company API**: `TRUE` <!-- Internal REST API integration -->
-```
+````
 
 ### Step 6: Generate Configuration
 
@@ -299,6 +304,7 @@ In the Custom MCPs section:
 ```
 
 This will:
+
 - Add your MCP to Claude Code configuration
 - Include environment variables in `.env.example`
 - Generate setup instructions
@@ -570,4 +576,5 @@ For help with custom MCPs:
 
 ---
 
-*Custom MCPs enable Claude Code to integrate with any system or service, making it a truly extensible development environment.*
+_Custom MCPs enable Claude Code to integrate with any system or service, making
+it a truly extensible development environment._

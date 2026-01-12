@@ -4,26 +4,32 @@
 
 ## Overview
 
-Task automation agents handle the routine, repetitive tasks that slow down development. From building and deploying to file organization and dependency management, these agents free you to focus on creative problem-solving.
+Task automation agents handle the routine, repetitive tasks that slow down
+development. From building and deploying to file organization and dependency
+management, these agents free you to focus on creative problem-solving.
 
 ## Available Agents
 
 ### Build Automation
+
 - **Build Pipeline**: Automated build processes with optimization
 - **Asset Optimizer**: Compress images, minify CSS/JS, optimize fonts
 - **Bundle Analyzer**: Analyze and optimize bundle sizes
 
 ### Deployment Automation
+
 - **CI/CD Runner**: Automated continuous integration and deployment
 - **Environment Manager**: Manage staging, production environments
 - **Release Automator**: Versioning, changelog, and release notes
 
 ### File Management
+
 - **File Organizer**: Organize files by type, feature, or convention
 - **Import Sorter**: Sort and organize import statements
 - **Dead Code Eliminator**: Find and remove unused code
 
 ### Dependency Management
+
 - **Dependency Updater**: Keep dependencies current and secure
 - **Package Auditor**: Security audits and vulnerability fixes
 - **License Checker**: Verify license compatibility
@@ -46,6 +52,7 @@ Set up daily dependency security audits and create PRs for updates
 
 ```markdown
 Create a deployment workflow that:
+
 1. Runs all tests
 2. Builds for production
 3. Runs accessibility audits
@@ -81,6 +88,7 @@ try {
 ### Notifications
 
 Keep teams informed:
+
 - Start/end of important tasks
 - Errors and failures
 - Success confirmations
@@ -101,7 +109,7 @@ config:
   parallel: true
   failFast: true
   notifications:
-    slack: "#dev-notifications"
+    slack: '#dev-notifications'
 ```
 
 ### Deployment Configuration
@@ -128,6 +136,7 @@ config:
 **Scenario:** Every commit should trigger a build with tests
 
 **Configuration:**
+
 ```yaml
 trigger: commit
 steps:
@@ -148,6 +157,7 @@ steps:
 **Scenario:** Weekly dependency updates with automated testing
 
 **Configuration:**
+
 ```yaml
 schedule: weekly
 steps:
@@ -159,7 +169,7 @@ steps:
     run: npm test
   - name: Create PR
     if: tests-pass
-    title: "chore: update dependencies"
+    title: 'chore: update dependencies'
 ```
 
 ### Example 3: Asset Optimization
@@ -167,9 +177,10 @@ steps:
 **Scenario:** Optimize all images before deployment
 
 **Configuration:**
+
 ```yaml
 trigger: pre-deploy
-files: "src/**/*.{jpg,png,svg}"
+files: 'src/**/*.{jpg,png,svg}'
 steps:
   - name: Compress Images
     tool: sharp
@@ -197,7 +208,7 @@ async function deployWithMigration() {
   // Run database migration via MCP
   await mcp.neon.prepareDatabaseMigration({
     projectId: 'project-id',
-    migrationSql: migrationScript
+    migrationSql: migrationScript,
   });
 
   // Deploy application
@@ -206,7 +217,7 @@ async function deployWithMigration() {
   // Complete migration
   await mcp.neon.completeDatabaseMigration({
     migrationId: 'migration-id',
-    applyChanges: true
+    applyChanges: true,
   });
 }
 ```
@@ -276,7 +287,7 @@ tasks:
 ### Scheduled Tasks
 
 ```yaml
-schedule: "0 9 * * MON"  # Every Monday at 9 AM
+schedule: '0 9 * * MON' # Every Monday at 9 AM
 tasks:
   - dependency-audit
   - lighthouse-score
@@ -304,14 +315,14 @@ const metrics = {
   startTime: Date.now(),
   steps: [],
   totalDuration: null,
-  success: false
+  success: false,
 };
 
 // Track each step
 metrics.steps.push({
   name: 'lint',
   duration: '15s',
-  success: true
+  success: true,
 });
 ```
 
@@ -351,16 +362,19 @@ npm run rollback:staging <version>
 ## Troubleshooting
 
 ### Task Hangs or Times Out
+
 - Add timeout configurations
 - Check for blocking operations
 - Review resource limits
 
 ### Inconsistent Results
+
 - Ensure idempotent operations
 - Clear caches between runs
 - Verify environment consistency
 
 ### Permission Errors
+
 - Check service account permissions
 - Verify API tokens and keys
 - Review access control lists
@@ -384,4 +398,5 @@ To add a new automation agent:
 
 ---
 
-*Task automation agents eliminate toil and ensure consistent, reliable workflows across your development pipeline.*
+_Task automation agents eliminate toil and ensure consistent, reliable workflows
+across your development pipeline._

@@ -6,12 +6,7 @@
     "git": {
       "pre-commit-validation": {
         "enabled": true,
-        "actions": [
-          "lint",
-          "format-check",
-          "type-check",
-          "test-affected"
-        ],
+        "actions": ["lint", "format-check", "type-check", "test-affected"],
         "settings": {
           "failOnError": true,
           "parallel": true,
@@ -28,11 +23,7 @@
       },
       "pre-push-validation": {
         "enabled": false,
-        "actions": [
-          "test-full",
-          "build",
-          "security-scan"
-        ],
+        "actions": ["test-full", "build", "security-scan"],
         "settings": {
           "failOnError": true,
           "timeout": 300000
@@ -69,30 +60,20 @@
     "build": {
       "pre-build-validation": {
         "enabled": false,
-        "actions": [
-          "lint",
-          "type-check"
-        ],
+        "actions": ["lint", "type-check"],
         "settings": {
           "failOnError": true
         }
       },
       "post-build-actions": {
         "enabled": false,
-        "actions": [
-          "analyze-bundle",
-          "generate-source-maps"
-        ]
+        "actions": ["analyze-bundle", "generate-source-maps"]
       }
     },
     "deployment": {
       "pre-deploy-checks": {
         "enabled": false,
-        "actions": [
-          "test-full",
-          "build-production",
-          "security-scan"
-        ],
+        "actions": ["test-full", "build-production", "security-scan"],
         "settings": {
           "failOnError": true,
           "requireApproval": true
@@ -100,11 +81,7 @@
       },
       "post-deploy-verification": {
         "enabled": false,
-        "actions": [
-          "health-check",
-          "smoke-test",
-          "verify-metrics"
-        ],
+        "actions": ["health-check", "smoke-test", "verify-metrics"],
         "settings": {
           "failOnError": true,
           "rollbackOnFailure": true

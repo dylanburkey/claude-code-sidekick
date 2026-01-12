@@ -4,7 +4,8 @@
 
 ## Overview
 
-Custom hooks allow you to automate project-specific tasks and enforce custom workflows. This guide walks through creating and configuring custom hooks.
+Custom hooks allow you to automate project-specific tasks and enforce custom
+workflows. This guide walks through creating and configuring custom hooks.
 
 ## When to Create a Custom Hook
 
@@ -23,6 +24,7 @@ Create a custom hook when you need to:
 Define what your hook will do:
 
 **Example: Database Schema Validation**
+
 - **Name**: database-schema-validation
 - **Trigger**: pre-commit
 - **Purpose**: Validate database migrations before committing
@@ -87,7 +89,7 @@ const { execSync } = require('child_process');
 const stagedFiles = execSync('git diff --cached --name-only --diff-filter=ACM')
   .toString()
   .split('\n')
-  .filter(file => file.startsWith('db/migrations/') && file.endsWith('.sql'));
+  .filter((file) => file.startsWith('db/migrations/') && file.endsWith('.sql'));
 
 if (stagedFiles.length === 0) {
   console.log('No migration files to validate');
@@ -125,7 +127,9 @@ for (const file of stagedFiles) {
 }
 
 if (hasErrors) {
-  console.error('\nMigration validation failed. Please fix errors and try again.');
+  console.error(
+    '\nMigration validation failed. Please fix errors and try again.'
+  );
   process.exit(1);
 }
 
@@ -134,6 +138,7 @@ process.exit(0);
 ```
 
 Make it executable:
+
 ```bash
 chmod +x scripts/validate-migration-syntax.js
 ```
@@ -143,7 +148,9 @@ chmod +x scripts/validate-migration-syntax.js
 ```markdown
 ### Custom Hooks
 
-**Database Schema Validation**: `TRUE` <!-- Validate migrations before commits -->
+**Database Schema Validation**: `TRUE`
+
+<!-- Validate migrations before commits -->
 ```
 
 ### Step 5: Run Setup
@@ -241,9 +248,9 @@ Run actions in parallel:
     "parallel": true
   },
   "actions": [
-    {"name": "lint", "command": "npm run lint"},
-    {"name": "test", "command": "npm run test"},
-    {"name": "type-check", "command": "npm run type-check"}
+    { "name": "lint", "command": "npm run lint" },
+    { "name": "test", "command": "npm run test" },
+    { "name": "type-check", "command": "npm run type-check" }
   ]
 }
 ```
@@ -296,7 +303,7 @@ async function validateMigration(file) {
   // Create test branch
   const branch = await mcp.neon.createBranch({
     projectId: process.env.NEON_PROJECT_ID,
-    branchName: `test-migration-${Date.now()}`
+    branchName: `test-migration-${Date.now()}`,
   });
 
   try {
@@ -304,7 +311,7 @@ async function validateMigration(file) {
     await mcp.neon.runSql({
       projectId: process.env.NEON_PROJECT_ID,
       branchId: branch.id,
-      sql: fs.readFileSync(file, 'utf8')
+      sql: fs.readFileSync(file, 'utf8'),
     });
 
     console.log('Migration validated successfully');
@@ -316,7 +323,7 @@ async function validateMigration(file) {
     // Cleanup test branch
     await mcp.neon.deleteBranch({
       projectId: process.env.NEON_PROJECT_ID,
-      branchId: branch.id
+      branchId: branch.id,
     });
   }
 }
@@ -332,7 +339,7 @@ const { validateHook } = require('./.claude/hooks/scripts/run-hook');
 describe('Custom Hook', () => {
   test('validates migration syntax', async () => {
     const result = await validateHook('database-schema-validation', {
-      files: ['db/migrations/001_test.sql']
+      files: ['db/migrations/001_test.sql'],
     });
 
     expect(result.passed).toBe(true);
@@ -340,7 +347,7 @@ describe('Custom Hook', () => {
 
   test('fails on invalid syntax', async () => {
     const result = await validateHook('database-schema-validation', {
-      files: ['db/migrations/invalid.sql']
+      files: ['db/migrations/invalid.sql'],
     });
 
     expect(result.passed).toBe(false);
@@ -481,4 +488,5 @@ git commit -m "test: hook validation" 2>&1 | grep "validation failed"
 
 ---
 
-*Custom hooks enable you to automate any project-specific workflow and enforce your team's unique development practices.*
+_Custom hooks enable you to automate any project-specific workflow and enforce
+your team's unique development practices._

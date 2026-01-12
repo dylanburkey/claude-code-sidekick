@@ -1,12 +1,16 @@
 # Task Planner Command
 
 ## Purpose
-Reviews a phase document from `project-plan/` and creates a detailed task list in `tasks/`.
+
+Reviews a phase document from `project-plan/` and creates a detailed task list
+in `tasks/`.
 
 ## Trigger
+
 Run after `project-planner` has generated a phase document.
 
 ## Arguments
+
 - `phase` (optional): Phase number to plan. Defaults to `1`.
 
 ## Instrutions
@@ -59,6 +63,7 @@ Create atomic, actionable tasks. Each task should:
 ### Step 3: Define Task Dependencies
 
 For each task, identify:
+
 - **Predecessors** - Tasks that must complete first
 - **Successors** - Tasks blocked by this one
 - **Parallel** - Tasks that can run concurrently
@@ -67,24 +72,23 @@ For each task, identify:
 
 Map tasks to agents based on capabilities:
 
-| Task Type | Agent |
-|-----------|-------|
-| Setup | init |
-| Planning | planner |
-| Coding | dev |
-| Testing | test |
-| Documentation | docs |
-| Review | review |
+| Task Type     | Agent   |
+| ------------- | ------- |
+| Setup         | init    |
+| Planning      | planner |
+| Coding        | dev     |
+| Testing       | test    |
+| Documentation | docs    |
+| Review        | review  |
 
 ### Step 5: Generate Task File
 
 Create `.claude/tasks/phase-{{PHASE}}-tasks.md`:
 
-```markdown
+````markdown
 # Phase {{PHASE}} Tasks
 
-Generated: {{TIMESTAMP}}
-Source: project-plan/phase_{{PHASE}}.md
+Generated: {{TIMESTAMP}} Source: project-plan/phase\_{{PHASE}}.md
 
 ## Overview
 
@@ -92,12 +96,12 @@ Source: project-plan/phase_{{PHASE}}.md
 
 ## Task Summary
 
-| Status | Count |
-|--------|-------|
-| Total | {{TOTAL}} |
+| Status   | Count        |
+| -------- | ------------ |
+| Total    | {{TOTAL}}    |
 | Critical | {{CRITICAL}} |
-| High | {{HIGH}} |
-| Medium | {{MEDIUM}} |
+| High     | {{HIGH}}     |
+| Medium   | {{MEDIUM}}   |
 
 ## Dependency Graph
 
@@ -108,6 +112,7 @@ graph TD
     T2 --> T4[Task 4]
     T3 --> T4
 ```
+````
 
 ---
 
@@ -117,26 +122,23 @@ graph TD
 
 #### Task 1: {{TASK_NAME}}
 
-**ID:** PHASE{{PHASE}}-001
-**Status:** pending
-**Agent:** {{AGENT}}
-**Estimated Effort:** {{ESTIMATE}}
-**Dependencies:** None
+**ID:** PHASE{{PHASE}}-001 **Status:** pending **Agent:** {{AGENT}} **Estimated
+Effort:** {{ESTIMATE}} **Dependencies:** None
 
-**Description:**
-{{Detailed description of what needs to be done}}
+**Description:** {{Detailed description of what needs to be done}}
 
 **Acceptance Criteria:**
+
 - [ ] {{Criterion 1}}
 - [ ] {{Criterion 2}}
 - [ ] {{Criterion 3}}
 
 **Deliverables:**
+
 - {{File or artifact 1}}
 - {{File or artifact 2}}
 
-**Technical Notes:**
-{{Any technical guidance or considerations}}
+**Technical Notes:** {{Any technical guidance or considerations}}
 
 ---
 
@@ -144,11 +146,8 @@ graph TD
 
 #### Task 2: {{TASK_NAME}}
 
-**ID:** PHASE{{PHASE}}-002
-**Status:** pending
-**Agent:** {{AGENT}}
-**Estimated Effort:** {{ESTIMATE}}
-**Dependencies:** PHASE{{PHASE}}-001
+**ID:** PHASE{{PHASE}}-002 **Status:** pending **Agent:** {{AGENT}} **Estimated
+Effort:** {{ESTIMATE}} **Dependencies:** PHASE{{PHASE}}-001
 
 ...
 
@@ -166,11 +165,9 @@ Recommended execution sequence:
 
 1. **Batch 1 (Parallel)**
    - PHASE{{PHASE}}-001
-   
 2. **Batch 2 (After Batch 1)**
    - PHASE{{PHASE}}-002
    - PHASE{{PHASE}}-003
-   
 3. **Batch 3 (After Batch 2)**
    - PHASE{{PHASE}}-004
 
@@ -185,7 +182,8 @@ Recommended execution sequence:
 ## Notes
 
 {{Any additional notes or considerations}}
-```
+
+````
 
 ### Step 6: Validate Task List
 
@@ -210,7 +208,7 @@ The command produces:
 
 # Plan tasks for a specific phase
 /task-planner phase=2
-```
+````
 
 ## Task Template
 
@@ -219,24 +217,21 @@ Use this template for each task:
 ```markdown
 #### Task {{NUMBER}}: {{NAME}}
 
-**ID:** PHASE{{PHASE}}-{{PADDED_NUMBER}}
-**Status:** pending
-**Agent:** {{AGENT}}
-**Priority:** {{PRIORITY}}
-**Estimated Effort:** {{ESTIMATE}}
+**ID:** PHASE{{PHASE}}-{{PADDED_NUMBER}} **Status:** pending **Agent:**
+{{AGENT}} **Priority:** {{PRIORITY}} **Estimated Effort:** {{ESTIMATE}}
 **Dependencies:** {{DEPS or "None"}}
 
-**Description:**
-{{Clear description of what needs to be done}}
+**Description:** {{Clear description of what needs to be done}}
 
 **Acceptance Criteria:**
+
 - [ ] {{Specific, testable criterion}}
 
 **Deliverables:**
+
 - {{Specific file or artifact}}
 
-**Technical Notes:**
-{{Implementation guidance}}
+**Technical Notes:** {{Implementation guidance}}
 ```
 
 ## Best Practices

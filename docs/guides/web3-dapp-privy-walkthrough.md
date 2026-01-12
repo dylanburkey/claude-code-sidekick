@@ -1,10 +1,12 @@
 # Building a Web3 dApp with Privy: Complete Walkthrough
 
-> **Build a professional Web3 application with wallet authentication, smart contracts, and blockchain integration - No blockchain experience required!**
+> **Build a professional Web3 application with wallet authentication, smart
+> contracts, and blockchain integration - No blockchain experience required!**
 
 ## What You'll Build
 
 A complete decentralized application (dApp) with:
+
 - **Frontend:** React + TypeScript + Vite
 - **Wallet Auth:** Privy for seamless wallet connections
 - **Blockchain:** Ethereum/Polygon smart contract integration
@@ -21,16 +23,19 @@ A complete decentralized application (dApp) with:
 ### Web3 Basics (No Jargon)
 
 **Traditional Web (Web2):**
+
 - Your data lives on company servers
 - Companies control access
 - You need username/password
 
 **Web3:**
+
 - Your data lives in your wallet (you control it)
 - You connect with your wallet (like MetaMask)
 - No passwords needed - cryptographic signatures prove it's you
 
 **Privy Makes This Easy:**
+
 - Users can connect with any wallet
 - Or sign in with email/social (Privy creates wallet for them)
 - Handles all complexity automatically
@@ -74,14 +79,17 @@ rm -rf temp-sidekick
 ## Project Information
 
 ### Project Name
+
 NFT Minting dApp
 
 ### Project Description
-A decentralized application for minting NFTs with wallet authentication
-via Privy. Users connect their wallet, interact with smart contracts,
-and mint their own NFTs on the Polygon network.
+
+A decentralized application for minting NFTs with wallet authentication via
+Privy. Users connect their wallet, interact with smart contracts, and mint their
+own NFTs on the Polygon network.
 
 ### Project Type
+
 web-app
 ```
 
@@ -108,7 +116,7 @@ web-app
 ### Language Standards
 
 - **Modern JavaScript**: `TRUE`
-- **TypeScript**: `TRUE`  ← Important for Web3
+- **TypeScript**: `TRUE` ← Important for Web3
 - **Node.js**: `TRUE`
 
 ### Framework Standards
@@ -117,7 +125,7 @@ web-app
 
 ### Quality & Testing
 
-- **Security**: `TRUE`  ← Critical for Web3
+- **Security**: `TRUE` ← Critical for Web3
 - **Testing Standards**: `TRUE`
 
 ## MCP Configuration
@@ -125,11 +133,11 @@ web-app
 ### Development Tools
 
 - **GitHub**: `TRUE`
-- **Sentry**: `TRUE`  ← Track Web3 errors
+- **Sentry**: `TRUE` ← Track Web3 errors
 
 ### Cloud & Infrastructure
 
-- **Vercel**: `TRUE`  ← For deployment
+- **Vercel**: `TRUE` ← For deployment
 ```
 
 ### 1.5 Run Quick Start
@@ -161,15 +169,18 @@ web-app
 **In the Privy Dashboard:**
 
 **Login Methods:**
+
 - ✅ Email
 - ✅ Wallet (MetaMask, Coinbase, WalletConnect)
 - ✅ Social (Google, Twitter, Discord)
 
 **Chains:**
+
 - ✅ Polygon Mumbai (for development)
 - Later add Polygon Mainnet (for production)
 
 **Appearance:**
+
 - Upload your logo
 - Set brand colors
 - Customize connect modal
@@ -276,12 +287,17 @@ Create a Web3 NFT minting application where users can:
 
 ### Functional Requirements
 
-1. **WHEN** user clicks "Connect Wallet" **THE SYSTEM SHALL** show Privy modal with login options
-2. **WHEN** user connects wallet **THE SYSTEM SHALL** fetch and display their address and balance
+1. **WHEN** user clicks "Connect Wallet" **THE SYSTEM SHALL** show Privy modal
+   with login options
+2. **WHEN** user connects wallet **THE SYSTEM SHALL** fetch and display their
+   address and balance
 3. **WHEN** user mints NFT **THE SYSTEM SHALL** prompt for transaction signature
-4. **WHEN** transaction succeeds **THE SYSTEM SHALL** show success message with transaction hash
-5. **WHEN** user insufficient funds **THE SYSTEM SHALL** show friendly error message
-6. **IF** user rejects transaction **THEN THE SYSTEM SHALL** allow them to try again
+4. **WHEN** transaction succeeds **THE SYSTEM SHALL** show success message with
+   transaction hash
+5. **WHEN** user insufficient funds **THE SYSTEM SHALL** show friendly error
+   message
+6. **IF** user rejects transaction **THEN THE SYSTEM SHALL** allow them to try
+   again
 7. **THE SYSTEM SHALL** store NFT metadata on IPFS
 8. **THE SYSTEM SHALL** display loading states during blockchain operations
 9. **THE SYSTEM SHALL** show gas estimates before transactions
@@ -302,6 +318,7 @@ npm install --save \
 ```
 
 **What each does:**
+
 - `@privy-io/react-auth` - Privy wallet connection
 - `wagmi` - React hooks for Ethereum
 - `viem` - Modern Ethereum library
@@ -316,6 +333,7 @@ npm install --save \
 ```
 
 Creates a plan covering:
+
 - React + TypeScript setup with Vite
 - Privy integration
 - Smart contract deployment
@@ -333,6 +351,7 @@ Creates a plan covering:
 ```
 
 Tasks will include:
+
 1. Set up React + TypeScript + Vite
 2. Install and configure Privy
 3. Create wallet connection flow
@@ -806,6 +825,7 @@ npm run dev
 ### 12.1 Update Privy for Production
 
 In Privy Dashboard:
+
 1. Add production URL: `https://your-app.vercel.app`
 2. Update chain to Polygon Mainnet (for production)
 3. Save changes
@@ -832,6 +852,7 @@ vercel --prod
 ```
 
 **Add environment variables in Vercel:**
+
 - `VITE_PRIVY_APP_ID`
 - `VITE_ALCHEMY_API_KEY`
 - `VITE_NFT_CONTRACT_ADDRESS`
@@ -947,6 +968,7 @@ export function NetworkSwitcher() {
 ### "Privy not configured"
 
 Check `.env`:
+
 ```bash
 # Make sure this is set
 VITE_PRIVY_APP_ID=clp...
@@ -954,12 +976,12 @@ VITE_PRIVY_APP_ID=clp...
 
 ### "Insufficient funds"
 
-Get test MATIC from faucet:
-https://faucet.polygon.technology
+Get test MATIC from faucet: https://faucet.polygon.technology
 
 ### "Contract not deployed"
 
 Re-run deployment:
+
 ```bash
 cd hardhat
 npx hardhat run scripts/deploy.ts --network mumbai
@@ -968,6 +990,7 @@ npx hardhat run scripts/deploy.ts --network mumbai
 ### "MetaMask shows wrong network"
 
 Switch to Polygon Mumbai in MetaMask:
+
 1. Open MetaMask
 2. Click network dropdown
 3. Select "Polygon Mumbai" or add it manually
@@ -975,6 +998,7 @@ Switch to Polygon Mumbai in MetaMask:
 ### "IPFS upload failed"
 
 Try alternative IPFS service:
+
 - Pinata: https://pinata.cloud
 - NFT.Storage: https://nft.storage
 - Web3.Storage: https://web3.storage
@@ -986,6 +1010,7 @@ Try alternative IPFS service:
 ### Enhance Your dApp
 
 **Add Features:**
+
 - NFT marketplace (buy/sell)
 - Lazy minting (mint on purchase)
 - Royalties for creators
@@ -994,6 +1019,7 @@ Try alternative IPFS service:
 - Token gating
 
 **Improve UX:**
+
 - Loading skeletons
 - Transaction animations
 - Error boundaries
@@ -1001,12 +1027,14 @@ Try alternative IPFS service:
 - Progressive Web App
 
 **Add Security:**
+
 - Rate limiting
 - Signature verification
 - Contract upgradability
 - Pausable contracts
 
 **Scale:**
+
 - Layer 2 solutions (Polygon, Arbitrum)
 - IPFS pinning service
 - CDN for assets
@@ -1017,6 +1045,7 @@ Try alternative IPFS service:
 ## Summary
 
 **You built:**
+
 - ✅ Full Web3 dApp with React + TypeScript
 - ✅ Privy wallet authentication (email, social, wallet)
 - ✅ Smart contract on Polygon

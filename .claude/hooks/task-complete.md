@@ -1,10 +1,13 @@
 # Task Completion Hook
 
 ## Trigger
+
 This hook activates when any task is marked as completed.
 
 ## Purpose
+
 Ensure proper task finalization and maintain project state:
+
 1. Validate completion criteria met
 2. Update task tracking documents
 3. Trigger dependent task notifications
@@ -14,19 +17,20 @@ Ensure proper task finalization and maintain project state:
 
 ```yaml
 trigger:
-  event: "task_complete"
-  source: "task-runner"
-  
+  event: 'task_complete'
+  source: 'task-runner'
+
   payload:
-    task_id: "PHASE1-003"
-    agent: "dev"
-    status: "completed"
+    task_id: 'PHASE1-003'
+    agent: 'dev'
+    status: 'completed'
     artifacts: []
 ```
 
 ## Validation Steps
 
 ### 1. Acceptance Criteria Check
+
 ```yaml
 validate:
   criteria:
@@ -37,6 +41,7 @@ validate:
 ```
 
 ### 2. Artifact Verification
+
 ```yaml
 artifacts:
   verify:
@@ -46,6 +51,7 @@ artifacts:
 ```
 
 ### 3. Documentation Check
+
 ```yaml
 documentation:
   verify:
@@ -57,8 +63,10 @@ documentation:
 ## Actions
 
 ### Update Task File
+
 ```markdown
 ### PHASE1-003: Implement Header Component
+
 - **Status**: ✅ Completed
 - **Completed**: 2024-01-15 14:30:00
 - **Agent**: dev
@@ -70,18 +78,20 @@ documentation:
 ```
 
 ### Notify Dependent Tasks
+
 ```yaml
 notify:
   tasks:
-    - id: "PHASE1-004"
-      message: "Dependency PHASE1-003 completed"
-      status: "ready"
-    - id: "PHASE1-005"
-      message: "Dependency PHASE1-003 completed"
-      status: "pending" # still has other dependencies
+    - id: 'PHASE1-004'
+      message: 'Dependency PHASE1-003 completed'
+      status: 'ready'
+    - id: 'PHASE1-005'
+      message: 'Dependency PHASE1-003 completed'
+      status: 'pending' # still has other dependencies
 ```
 
 ### Update Progress Tracking
+
 ```yaml
 progress:
   phase: 1
@@ -99,6 +109,7 @@ Generated at `.claude/docs/task-reports/PHASE1-003.md`:
 # Task Completion Report: PHASE1-003
 
 ## Summary
+
 - **Task**: Implement Header Component
 - **Status**: Completed
 - **Agent**: dev-agent
@@ -107,23 +118,27 @@ Generated at `.claude/docs/task-reports/PHASE1-003.md`:
 - **Duration**: 45 minutes
 
 ## Deliverables
-| File | Action | Lines |
-|------|--------|-------|
-| src/components/header.js | Created | 85 |
-| src/components/header.css | Created | 120 |
-| tests/header.test.js | Created | 45 |
+
+| File                      | Action  | Lines |
+| ------------------------- | ------- | ----- |
+| src/components/header.js  | Created | 85    |
+| src/components/header.css | Created | 120   |
+| tests/header.test.js      | Created | 45    |
 
 ## Acceptance Criteria
+
 - [x] Responsive header component
 - [x] Navigation support
 - [x] Accessible keyboard navigation
 - [x] Unit tests passing
 
 ## Notes
-Implementation followed existing component patterns.
-Used CSS Grid for layout per project standards.
+
+Implementation followed existing component patterns. Used CSS Grid for layout
+per project standards.
 
 ## Next Steps
+
 - PHASE1-004 now unblocked
 - PHASE1-005 pending other dependencies
 ```
@@ -131,6 +146,7 @@ Used CSS Grid for layout per project standards.
 ## Configuration
 
 In `.claude/config.yml`:
+
 ```yaml
 hooks:
   task_complete:
@@ -144,6 +160,7 @@ hooks:
 ## Error Handling
 
 If validation fails:
+
 ```yaml
 on_failure:
   - revert task status to "in_progress"

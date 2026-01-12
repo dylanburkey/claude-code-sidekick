@@ -10,25 +10,25 @@ Code documentation for all exported modules.
 
 ## Quick Reference
 
-*This section is automatically updated when new exports are documented.*
+_This section is automatically updated when new exports are documented._
 
 ### Components
 
-| Component | Description |
-|-----------|-------------|
-| *None documented yet* | Add components to `src/components/` |
+| Component             | Description                         |
+| --------------------- | ----------------------------------- |
+| _None documented yet_ | Add components to `src/components/` |
 
 ### Utilities
 
-| Function | Description |
-|----------|-------------|
-| *None documented yet* | Add utilities to `src/utils/` |
+| Function              | Description                   |
+| --------------------- | ----------------------------- |
+| _None documented yet_ | Add utilities to `src/utils/` |
 
 ### Types
 
-| Type | Description |
-|------|-------------|
-| *None documented yet* | Add types to `src/types/` |
+| Type                  | Description               |
+| --------------------- | ------------------------- |
+| _None documented yet_ | Add types to `src/types/` |
 
 ---
 
@@ -52,4 +52,5 @@ export function myFunction(input) {
 }
 ```
 
-Documentation will be generated in the appropriate subdirectory based on file location.
+Documentation will be generated in the appropriate subdirectory based on file
+location.

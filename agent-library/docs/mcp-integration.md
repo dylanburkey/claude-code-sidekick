@@ -1,6 +1,7 @@
 # MCP Integration Guide
 
-> Comprehensive guide to integrating Model Context Protocol (MCP) with the Agent Library
+> Comprehensive guide to integrating Model Context Protocol (MCP) with the Agent
+> Library
 
 ## Table of Contents
 
@@ -18,14 +19,16 @@
 
 ## What is MCP?
 
-The Model Context Protocol (MCP) is a standardized protocol that enables AI assistants like Claude to:
+The Model Context Protocol (MCP) is a standardized protocol that enables AI
+assistants like Claude to:
 
 - **Access Resources**: Files, databases, APIs, and other data sources
 - **Execute Tools**: Run functions and commands with parameters
 - **Share Context**: Maintain state and share information across interactions
 - **Integrate Services**: Connect to external services seamlessly
 
-MCP servers expose resources and tools that can be used by AI assistants to extend their capabilities beyond simple text generation.
+MCP servers expose resources and tools that can be used by AI assistants to
+extend their capabilities beyond simple text generation.
 
 ### Key Concepts
 
@@ -114,27 +117,28 @@ Connect to production systems:
 
 ### Neon Database (Built-in)
 
-The Neon MCP server is pre-configured and provides PostgreSQL database operations:
+The Neon MCP server is pre-configured and provides PostgreSQL database
+operations:
 
 #### Available Tools
 
-| Tool | Purpose | Example Use Case |
-|------|---------|------------------|
-| `list_projects` | List Neon projects | Find databases to work with |
-| `create_project` | Create new project | Set up test environment |
-| `run_sql` | Execute SQL | Query or modify data |
-| `run_sql_transaction` | Execute transaction | Multiple related queries |
-| `describe_table_schema` | Get table structure | Generate models from schema |
-| `get_database_tables` | List all tables | Understand database structure |
-| `create_branch` | Create database branch | Isolated testing environment |
-| `prepare_database_migration` | Prepare migration | Safe schema changes |
-| `complete_database_migration` | Apply migration | Finalize schema updates |
-| `prepare_query_tuning` | Analyze query performance | Optimize slow queries |
-| `complete_query_tuning` | Apply optimizations | Implement performance fixes |
-| `get_connection_string` | Get database URL | Connect applications |
-| `provision_neon_auth` | Set up authentication | Add auth to project |
-| `compare_database_schema` | Diff schemas | Find schema differences |
-| `explain_sql_statement` | Analyze query plan | Debug performance issues |
+| Tool                          | Purpose                   | Example Use Case              |
+| ----------------------------- | ------------------------- | ----------------------------- |
+| `list_projects`               | List Neon projects        | Find databases to work with   |
+| `create_project`              | Create new project        | Set up test environment       |
+| `run_sql`                     | Execute SQL               | Query or modify data          |
+| `run_sql_transaction`         | Execute transaction       | Multiple related queries      |
+| `describe_table_schema`       | Get table structure       | Generate models from schema   |
+| `get_database_tables`         | List all tables           | Understand database structure |
+| `create_branch`               | Create database branch    | Isolated testing environment  |
+| `prepare_database_migration`  | Prepare migration         | Safe schema changes           |
+| `complete_database_migration` | Apply migration           | Finalize schema updates       |
+| `prepare_query_tuning`        | Analyze query performance | Optimize slow queries         |
+| `complete_query_tuning`       | Apply optimizations       | Implement performance fixes   |
+| `get_connection_string`       | Get database URL          | Connect applications          |
+| `provision_neon_auth`         | Set up authentication     | Add auth to project           |
+| `compare_database_schema`     | Diff schemas              | Find schema differences       |
+| `explain_sql_statement`       | Analyze query plan        | Debug performance issues      |
 
 #### Example: Database-Aware Code Generation
 
@@ -143,14 +147,14 @@ The Neon MCP server is pre-configured and provides PostgreSQL database operation
 async function generateModelsFromDatabase() {
   // Get actual database tables via MCP
   const tables = await mcp.neon.getDatabaseTables({
-    projectId: process.env.NEON_PROJECT_ID
+    projectId: process.env.NEON_PROJECT_ID,
   });
 
   // Generate TypeScript types from real schema
   for (const tableName of tables) {
     const schema = await mcp.neon.describeTableSchema({
       projectId: process.env.NEON_PROJECT_ID,
-      tableName
+      tableName,
     });
 
     const typeDefinition = generateTypeScriptType(schema);
@@ -170,7 +174,11 @@ You can add additional MCP servers to extend capabilities:
   "mcpServers": {
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/files"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/files"
+      ]
     }
   }
 }
@@ -232,6 +240,7 @@ Agent can optionally use MCP if available:
 ## MCP Integration (Optional)
 
 This agent can use MCP to enhance its output:
+
 - Query database schema for accurate models
 - Read existing files to match patterns
 - Validate generated code against real constraints
@@ -245,6 +254,7 @@ Agent works better with MCP but doesn't require it:
 ## MCP Integration (Recommended)
 
 This agent benefits significantly from MCP:
+
 - Generates accurate code based on real schemas
 - Validates against actual database constraints
 - Tests generated code in real environment
@@ -258,6 +268,7 @@ Agent requires MCP to function:
 ## MCP Integration (Required)
 
 This agent requires MCP to operate:
+
 - Must connect to database for migrations
 - Requires access to production schema
 - Needs to execute queries for validation
@@ -301,7 +312,7 @@ Generate code based on existing database schema:
 // 1. Query database schema via MCP
 const schema = await mcp.neon.describeTableSchema({
   projectId: 'project-id',
-  tableName: 'users'
+  tableName: 'users',
 });
 
 // 2. Generate TypeScript types
@@ -322,14 +333,14 @@ Test migrations in isolated branches:
 // 1. Create temporary branch for testing
 const branch = await mcp.neon.createBranch({
   projectId: 'project-id',
-  branchName: `test-migration-${Date.now()}`
+  branchName: `test-migration-${Date.now()}`,
 });
 
 // 2. Apply migration to test branch
 await mcp.neon.runSql({
   projectId: 'project-id',
   branchId: branch.id,
-  sql: migrationSQL
+  sql: migrationSQL,
 });
 
 // 3. Run tests against test branch
@@ -339,14 +350,14 @@ const testsPass = await runTests(branch.connectionString);
 if (testsPass) {
   await mcp.neon.runSql({
     projectId: 'project-id',
-    sql: migrationSQL
+    sql: migrationSQL,
   });
 }
 
 // 5. Cleanup test branch
 await mcp.neon.deleteBranch({
   projectId: 'project-id',
-  branchId: branch.id
+  branchId: branch.id,
 });
 ```
 
@@ -357,7 +368,7 @@ Use MCP to understand existing codebase:
 ```javascript
 // 1. Read existing models via filesystem MCP
 const existingModels = await mcp.filesystem.listFiles({
-  pattern: 'src/models/*.ts'
+  pattern: 'src/models/*.ts',
 });
 
 // 2. Analyze patterns
@@ -369,8 +380,8 @@ const newModel = generateModel({
   patterns: patterns,
   schema: await mcp.neon.describeTableSchema({
     projectId: 'project-id',
-    tableName: 'products'
-  })
+    tableName: 'products',
+  }),
 });
 ```
 
@@ -387,7 +398,7 @@ try {
   await mcp.neon.explainSqlStatement({
     projectId: 'project-id',
     sql: migration,
-    analyze: false // Just validate syntax
+    analyze: false, // Just validate syntax
   });
 } catch (error) {
   console.error('Invalid SQL:', error);
@@ -396,20 +407,20 @@ try {
 
 // 3. Test in temporary branch
 const testBranch = await mcp.neon.createBranch({
-  projectId: 'project-id'
+  projectId: 'project-id',
 });
 
 await mcp.neon.runSql({
   projectId: 'project-id',
   branchId: testBranch.id,
-  sql: migration
+  sql: migration,
 });
 
 // 4. Verify schema change
 const newSchema = await mcp.neon.describeTableSchema({
   projectId: 'project-id',
   branchId: testBranch.id,
-  tableName: 'target_table'
+  tableName: 'target_table',
 });
 
 // 5. Verify meets requirements
@@ -426,13 +437,13 @@ async function deployFeature() {
   // 1. Get latest code from GitHub
   const latestCommit = await mcp.github.getLatestCommit({
     repo: 'org/repo',
-    branch: 'main'
+    branch: 'main',
   });
 
   // 2. Run database migration
   const migration = await mcp.neon.prepareDatabaseMigration({
     projectId: 'project-id',
-    migrationSql: migrationScript
+    migrationSql: migrationScript,
   });
 
   // 3. Deploy application
@@ -441,13 +452,13 @@ async function deployFeature() {
   // 4. Complete migration
   await mcp.neon.completeDatabaseMigration({
     migrationId: migration.id,
-    applyChanges: true
+    applyChanges: true,
   });
 
   // 5. Notify team via Slack
   await mcp.slack.postMessage({
     channel: '#deployments',
-    text: `✅ Deployed ${latestCommit.sha} with database migration`
+    text: `✅ Deployed ${latestCommit.sha} with database migration`,
   });
 }
 ```
@@ -473,7 +484,7 @@ const projectId = process.env.NEON_PROJECT_ID;
 ```javascript
 // ✓ Always test in isolated branches
 const testBranch = await mcp.neon.createBranch({
-  projectId: process.env.NEON_PROJECT_ID
+  projectId: process.env.NEON_PROJECT_ID,
 });
 
 try {
@@ -481,7 +492,7 @@ try {
 } finally {
   await mcp.neon.deleteBranch({
     projectId: process.env.NEON_PROJECT_ID,
-    branchId: testBranch.id
+    branchId: testBranch.id,
   });
 }
 ```
@@ -498,7 +509,7 @@ function validateProjectId(id) {
 }
 
 const tables = await mcp.neon.getDatabaseTables({
-  projectId: validateProjectId(userInput)
+  projectId: validateProjectId(userInput),
 });
 ```
 
@@ -517,7 +528,7 @@ async function getSchema(tableName) {
 
   const schema = await mcp.neon.describeTableSchema({
     projectId: process.env.NEON_PROJECT_ID,
-    tableName
+    tableName,
   });
 
   schemaCache.set(tableName, schema);
@@ -534,8 +545,8 @@ await mcp.neon.runSqlTransaction({
   sqlStatements: [
     'INSERT INTO users ...',
     'INSERT INTO profiles ...',
-    'UPDATE settings ...'
-  ]
+    'UPDATE settings ...',
+  ],
 });
 ```
 
@@ -547,7 +558,7 @@ await mcp.neon.runSqlTransaction({
 // ✓ Graceful degradation when MCP unavailable
 try {
   const schema = await mcp.neon.getDatabaseTables({
-    projectId: process.env.NEON_PROJECT_ID
+    projectId: process.env.NEON_PROJECT_ID,
   });
   return generateFromSchema(schema);
 } catch (error) {
@@ -568,7 +579,7 @@ async function runSqlWithRetry(sql, maxRetries = 3) {
     try {
       return await mcp.neon.runSql({
         projectId: process.env.NEON_PROJECT_ID,
-        sql
+        sql,
       });
     } catch (error) {
       if (i === maxRetries - 1) throw error;
@@ -589,8 +600,8 @@ async function runSqlWithRetry(sql, maxRetries = 3) {
 const mockMcp = {
   neon: {
     getDatabaseTables: jest.fn().mockResolvedValue(['users', 'posts']),
-    describeTableSchema: jest.fn().mockResolvedValue(mockSchema)
-  }
+    describeTableSchema: jest.fn().mockResolvedValue(mockSchema),
+  },
 };
 
 test('generates models from schema', async () => {
@@ -608,14 +619,14 @@ describe('Database operations', () => {
 
   beforeAll(async () => {
     testBranch = await mcp.neon.createBranch({
-      projectId: process.env.TEST_PROJECT_ID
+      projectId: process.env.TEST_PROJECT_ID,
     });
   });
 
   afterAll(async () => {
     await mcp.neon.deleteBranch({
       projectId: process.env.TEST_PROJECT_ID,
-      branchId: testBranch.id
+      branchId: testBranch.id,
     });
   });
 
@@ -636,19 +647,19 @@ describe('Database operations', () => {
 async function generateTypeScriptModels() {
   // 1. Get all tables
   const tables = await mcp.neon.getDatabaseTables({
-    projectId: process.env.NEON_PROJECT_ID
+    projectId: process.env.NEON_PROJECT_ID,
   });
 
   // 2. For each table, generate types
   for (const tableName of tables) {
     const schema = await mcp.neon.describeTableSchema({
       projectId: process.env.NEON_PROJECT_ID,
-      tableName
+      tableName,
     });
 
     const typeDefinition = `
 export interface ${pascalCase(tableName)} {
-${schema.columns.map(col => `  ${col.name}: ${pgTypeToTS(col.type)};`).join('\n')}
+${schema.columns.map((col) => `  ${col.name}: ${pgTypeToTS(col.type)};`).join('\n')}
 }
 
 export type ${pascalCase(tableName)}Create = Omit<${pascalCase(tableName)}, 'id' | 'createdAt'>;
@@ -668,7 +679,7 @@ async function testAndApplyMigration(migrationSQL: string) {
   // 1. Create test branch
   const testBranch = await mcp.neon.createBranch({
     projectId: process.env.NEON_PROJECT_ID,
-    branchName: `migration-test-${Date.now()}`
+    branchName: `migration-test-${Date.now()}`,
   });
 
   try {
@@ -676,13 +687,13 @@ async function testAndApplyMigration(migrationSQL: string) {
     await mcp.neon.runSql({
       projectId: process.env.NEON_PROJECT_ID,
       branchId: testBranch.id,
-      sql: migrationSQL
+      sql: migrationSQL,
     });
 
     // 3. Run integration tests
     const testConnectionString = await mcp.neon.getConnectionString({
       projectId: process.env.NEON_PROJECT_ID,
-      branchId: testBranch.id
+      branchId: testBranch.id,
     });
 
     const testResults = await runIntegrationTests(testConnectionString);
@@ -694,7 +705,7 @@ async function testAndApplyMigration(migrationSQL: string) {
     // 4. Compare schema changes
     const schemaDiff = await mcp.neon.compareDatabaseSchema({
       projectId: process.env.NEON_PROJECT_ID,
-      branchId: testBranch.id
+      branchId: testBranch.id,
     });
 
     console.log('Schema changes:', schemaDiff);
@@ -702,16 +713,15 @@ async function testAndApplyMigration(migrationSQL: string) {
     // 5. Apply to production if tests pass
     await mcp.neon.runSql({
       projectId: process.env.NEON_PROJECT_ID,
-      sql: migrationSQL
+      sql: migrationSQL,
     });
 
     console.log('✅ Migration applied successfully');
-
   } finally {
     // 6. Cleanup test branch
     await mcp.neon.deleteBranch({
       projectId: process.env.NEON_PROJECT_ID,
-      branchId: testBranch.id
+      branchId: testBranch.id,
     });
   }
 }
@@ -726,7 +736,7 @@ async function optimizeSlowQueries() {
   const slowQueries = await mcp.neon.listSlowQueries({
     projectId: process.env.NEON_PROJECT_ID,
     minExecutionTime: 1000, // > 1 second
-    limit: 10
+    limit: 10,
   });
 
   for (const query of slowQueries) {
@@ -735,7 +745,7 @@ async function optimizeSlowQueries() {
     // 2. Analyze query
     const tuning = await mcp.neon.prepareQueryTuning({
       projectId: process.env.NEON_PROJECT_ID,
-      sql: query.query
+      sql: query.query,
     });
 
     // 3. Review suggested optimizations
@@ -748,10 +758,12 @@ async function optimizeSlowQueries() {
         projectId: process.env.NEON_PROJECT_ID,
         suggestedSqlStatements: tuning.suggestedStatements,
         temporaryBranchId: tuning.tempBranchId,
-        applyChanges: true
+        applyChanges: true,
       });
 
-      console.log(`✅ Optimized with ${tuning.improvementPercent}% improvement`);
+      console.log(
+        `✅ Optimized with ${tuning.improvementPercent}% improvement`
+      );
     }
   }
 }
@@ -858,4 +870,5 @@ mcp:
 
 ---
 
-*MCP integration enables agents to work with real systems, making generated code production-ready and context-aware.*
+_MCP integration enables agents to work with real systems, making generated code
+production-ready and context-aware._

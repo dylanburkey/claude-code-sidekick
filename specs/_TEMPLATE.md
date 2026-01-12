@@ -21,26 +21,31 @@
 > Use EARS notation for precise, testable requirements.
 
 #### Ubiquitous (Always True)
+
 <!-- THE SYSTEM SHALL [action] -->
 
 - [ ] THE SYSTEM SHALL {{requirement}}
 
 #### Event-Driven
+
 <!-- WHEN [event] THE SYSTEM SHALL [response] -->
 
 - [ ] WHEN {{event}} THE SYSTEM SHALL {{response}}
 
 #### State-Driven
+
 <!-- WHILE [state] THE SYSTEM SHALL [behavior] -->
 
 - [ ] WHILE {{state}} THE SYSTEM SHALL {{behavior}}
 
 #### Optional
+
 <!-- WHERE [condition] THE SYSTEM SHALL [action] -->
 
 - [ ] WHERE {{condition}} THE SYSTEM SHALL {{action}}
 
 #### Unwanted Behavior
+
 <!-- IF [condition] THEN THE SYSTEM SHALL [response] -->
 
 - [ ] IF {{error condition}} THEN THE SYSTEM SHALL {{error handling}}
@@ -48,18 +53,22 @@
 ### Non-Functional Requirements
 
 #### Performance
+
 - [ ] Response time: {{target}}
 - [ ] Load capacity: {{target}}
 
 #### Accessibility
+
 - [ ] WCAG compliance level: {{AA | AAA}}
 - [ ] Keyboard navigation: {{requirement}}
 - [ ] Screen reader support: {{requirement}}
 
 #### Security
+
 - [ ] {{security requirement}}
 
 #### Browser Support
+
 - [ ] {{browser list and versions}}
 
 ---

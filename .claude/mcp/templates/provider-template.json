@@ -3,21 +3,13 @@
   "displayName": "Your Provider Display Name",
   "category": "database|infrastructure|development|communication|analytics|payments|ai|content|search|custom",
   "command": "npx|node|python|custom-command",
-  "args": [
-    "package-name-or-script-path",
-    "--optional-flag"
-  ],
+  "args": ["package-name-or-script-path", "--optional-flag"],
   "env": {
     "REQUIRED_ENV_VAR": "${REQUIRED_ENV_VAR}",
     "OPTIONAL_ENV_VAR": "${OPTIONAL_ENV_VAR}"
   },
-  "requiredEnvVars": [
-    "REQUIRED_ENV_VAR"
-  ],
-  "optionalEnvVars": [
-    "OPTIONAL_ENV_VAR",
-    "ANOTHER_OPTIONAL_VAR"
-  ],
+  "requiredEnvVars": ["REQUIRED_ENV_VAR"],
+  "optionalEnvVars": ["OPTIONAL_ENV_VAR", "ANOTHER_OPTIONAL_VAR"],
   "documentation": "https://docs.yourprovider.com",
   "setup": ".claude/mcp/docs/your-provider-setup.md",
   "features": [
@@ -26,13 +18,7 @@
     "Feature 3: Brief description"
   ],
   "agentIntegration": {
-    "categories": [
-      "code-generation",
-      "task-automation",
-      "testing",
-      "documentation",
-      "blockchain"
-    ],
+    "categories": ["code-generation", "task-automation", "testing", "documentation", "blockchain"],
     "useCases": [
       "Use case 1: Specific example",
       "Use case 2: Specific example",

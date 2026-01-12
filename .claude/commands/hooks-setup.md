@@ -42,13 +42,15 @@ Read the Hooks Configuration section and identify all hooks marked as `TRUE`:
 ```
 
 Extract:
+
 - Hook name
 - Category
 - Status (TRUE/FALSE)
 
 ### Step 2: Load Hook Definitions
 
-For each enabled hook, load its configuration from `.claude/hooks/definitions/[hook-name].json`:
+For each enabled hook, load its configuration from
+`.claude/hooks/definitions/[hook-name].json`:
 
 ```json
 {
@@ -180,6 +182,7 @@ process.exit(0);
 For file hooks (on-save), generate IDE-specific configurations:
 
 **VSCode (.vscode/settings.json):**
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -190,6 +193,7 @@ For file hooks (on-save), generate IDE-specific configurations:
 ```
 
 **JetBrains (.idea/watcherTasks.xml):**
+
 ```xml
 <TaskOptions>
   <option name="name" value="Format on Save" />
@@ -293,6 +297,7 @@ Validate existing hook configuration:
 ```
 
 Checks:
+
 - All enabled hooks have valid configurations
 - Git hooks are properly installed
 - Scripts are executable
@@ -307,6 +312,7 @@ Remove all installed hooks:
 ```
 
 Removes:
+
 - Git hooks from `.git/hooks/`
 - Hook configuration files
 - Generated scripts
@@ -381,11 +387,13 @@ Enable pre-commit validation and commit message validation:
 ```
 
 Run:
+
 ```bash
 /hooks-setup
 ```
 
 Result:
+
 - Lint, format, and type-check before commits
 - Enforce conventional commit messages
 
@@ -399,6 +407,7 @@ Enable auto-formatting on save:
 ```
 
 Result:
+
 - Code automatically formatted on save
 - Imports sorted and organized
 
@@ -414,6 +423,7 @@ Enable all deployment hooks:
 ```
 
 Result:
+
 - Comprehensive deployment automation
 - Automated rollback on failures
 - Team notifications
@@ -423,6 +433,7 @@ Result:
 ### Hooks Not Running
 
 **Check:**
+
 1. Verify hooks are enabled in config.json
 2. Ensure git hooks are executable: `chmod +x .git/hooks/*`
 3. Check hook scripts exist
@@ -431,6 +442,7 @@ Result:
 ### Hook Failing
 
 **Debug:**
+
 1. Run hook manually to see errors
 2. Check action commands are valid
 3. Verify required dependencies are installed
@@ -439,6 +451,7 @@ Result:
 ### IDE Integration Not Working
 
 **Solutions:**
+
 1. Restart IDE to reload settings
 2. Check IDE-specific configuration files
 3. Verify IDE supports the hook type
@@ -464,6 +477,7 @@ Result:
 ### Start Simple
 
 Begin with essential hooks:
+
 ```markdown
 - **Pre-Commit Validation**: `TRUE`
 - **Auto Format on Save**: `TRUE`
@@ -474,6 +488,7 @@ Add more as needed.
 ### Test Hooks
 
 Always test hooks before relying on them:
+
 ```bash
 # Test git hooks
 git commit --allow-empty -m "test: hook validation"
@@ -534,4 +549,5 @@ Hooks can detect CI environments and adjust behavior:
 
 ---
 
-*This command automates hook setup and ensures consistent development workflows across the team.*
+_This command automates hook setup and ensures consistent development workflows
+across the team._
