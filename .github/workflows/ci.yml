@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
-          cache-dependency-path: "cli/pnpm-lock.yaml"
+          cache-dependency-path: "**/pnpm-lock.yaml"
 
       - name: Install root dependencies
         run: pnpm install --frozen-lockfile
@@ -75,7 +75,7 @@ jobs:
 
       - name: Validate YAML files
         run: |
-          echo "🔍 Validating YAML configuration files..."
+          echo " Validating YAML configuration files..."
 
           # Find and validate all YAML files
           find . -name "*.yml" -o -name "*.yaml" | while read file; do
@@ -85,11 +85,11 @@ jobs:
             fi
           done
 
-          echo "✅ All YAML files are valid!"
+          echo "All YAML files are valid!"
 
       - name: Validate JSON files
         run: |
-          echo "🔍 Validating JSON files..."
+          echo " Validating JSON files..."
 
           find . -name "*.json" -not -path "./node_modules/*" -not -path "./cli/node_modules/*" | while read file; do
             if [ -f "$file" ]; then
@@ -98,7 +98,7 @@ jobs:
             fi
           done
 
-          echo "✅ All JSON files are valid!"
+          echo "All JSON files are valid!"
 
   # Job 3: Validate Markdown documentation
   validate-docs:
@@ -119,13 +119,13 @@ jobs:
 
       - name: Lint Markdown files
         run: |
-          echo "🔍 Validating Markdown documentation..."
+          echo " Validating Markdown documentation..."
           markdownlint '**/*.md' --ignore node_modules --ignore cli/node_modules || true
-          echo "✅ Markdown validation complete"
+          echo "Markdown validation complete"
 
       - name: Check for broken internal links
         run: |
-          echo "🔍 Checking for broken internal links..."
+          echo " Checking for broken internal links..."
 
           # Find all markdown files and check for broken links
           for file in $(find . -name "*.md" -not -path "./node_modules/*" -not -path "./cli/node_modules/*"); do
@@ -143,13 +143,13 @@ jobs:
                 target="${target%%#*}"
                 
                 if [ ! -e "$target" ] && [ ! -e "${target%.md}" ]; then
-                  echo "⚠️  Broken link in $file: $link"
+                  echo "Broken link in $file: $link"
                 fi
               fi
             done
           done
 
-          echo "✅ Link check complete"
+          echo "Link check complete"
 
   # Job 4: Test CLI tool
   test-cli:
@@ -170,7 +170,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
-          cache-dependency-path: "cli/pnpm-lock.yaml"
+          cache-dependency-path: "**/pnpm-lock.yaml"
 
       - name: Install CLI dependencies
         run: pnpm install --frozen-lockfile
@@ -182,9 +182,9 @@ jobs:
 
       - name: Test CLI execution
         run: |
-          echo "🔍 Testing CLI execution..."
-          node bin/create-440-app.js --help
-          echo "✅ CLI executes successfully"
+          echo "Testing CLI execution..."
+          node bin/create-claude-project.js --help
+          echo "CLI executes successfully"
         working-directory: cli
 
   # Job 5: Validate agent library structure
@@ -198,7 +198,7 @@ jobs:
 
       - name: Validate agent structure
         run: |
-          echo "🔍 Validating agent library structure..."
+          echo " Validating agent library structure..."
 
           # Check required directories exist
           REQUIRED_DIRS=(
@@ -211,10 +211,10 @@ jobs:
 
           for dir in "${REQUIRED_DIRS[@]}"; do
             if [ ! -d "$dir" ]; then
-              echo "❌ Missing required directory: $dir"
+              echo "Missing required directory: $dir"
               exit 1
             fi
-            echo "✅ Found: $dir"
+            echo "Found: $dir"
           done
 
           # Check required files exist
@@ -229,17 +229,17 @@ jobs:
 
           for file in "${REQUIRED_FILES[@]}"; do
             if [ ! -f "$file" ]; then
-              echo "❌ Missing required file: $file"
+              echo "Missing required file: $file"
               exit 1
             fi
-            echo "✅ Found: $file"
+            echo "Found: $file"
           done
 
-          echo "✅ Agent library structure is valid!"
+          echo "Agent library structure is valid!"
 
       - name: Validate agent files have required sections
         run: |
-          echo "🔍 Checking agent files for required sections..."
+          echo " Checking agent files for required sections..."
 
           # Check each agent file in agent-library
           find agent-library -name "*.md" -type f | while read agent_file; do
@@ -247,11 +247,11 @@ jobs:
             
             # Check for common required sections (adjust as needed)
             if ! grep -q "## " "$agent_file"; then
-              echo "⚠️  No sections found in $agent_file"
+              echo "No sections found in $agent_file"
             fi
           done
 
-          echo "✅ Agent file validation complete"
+          echo "Agent file validation complete"
 
   # Job 6: Security audit
   security:
@@ -272,7 +272,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
-          cache-dependency-path: "cli/pnpm-lock.yaml"
+          cache-dependency-path: "**/pnpm-lock.yaml"
 
       - name: Install CLI dependencies
         run: pnpm install --frozen-lockfile
@@ -293,7 +293,7 @@ jobs:
     steps:
       - name: Check job results
         run: |
-          echo "📋 CI Results Summary"
+          echo "CI Results Summary"
           echo "====================="
           echo ""
           echo "Lint:            ${{ needs.lint.result }}"
@@ -308,7 +308,7 @@ jobs:
              [ "${{ needs.validate-configs.result }}" != "success" ] || \
              [ "${{ needs.test-cli.result }}" != "success" ] || \
              [ "${{ needs.validate-agents.result }}" != "success" ]; then
-            echo "❌ One or more critical CI checks failed"
+            echo "One or more critical CI checks failed"
             exit 1
           fi
-          echo "✅ All critical CI checks passed!"
+          echo "All critical CI checks passed!"

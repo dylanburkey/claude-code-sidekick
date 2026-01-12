@@ -23,9 +23,11 @@ program
   });
 
 /**
+ * Runs the interactive CLI flow to create and configure a new project.
  *
- * @param cliProjectName
- * @param cliOptions
+ * @param {string|undefined} cliProjectName - Optional project name provided via CLI arguments.
+ * @param {object} [cliOptions] - CLI options such as preset, skip-install, and skip-git flags.
+ * @returns {Promise<void>} Resolves when project scaffolding and setup are complete.
  */
 export async function createProject(cliProjectName, cliOptions = {}) {
   console.clear();

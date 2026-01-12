@@ -9,14 +9,17 @@ const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
+ * Scaffolds a new project with the specified configuration, including base files,
+ * package.json, environment files, git initialization, and dependency installation.
  *
- * @param root0
- * @param root0.projectName
- * @param root0.projectPath
- * @param root0.preset
- * @param root0.features
- * @param root0.skipInstall
- * @param root0.skipGit
+ * @param {object} root0 - Project configuration object.
+ * @param {string} root0.projectName - Name of the project to create.
+ * @param {string} root0.projectPath - Absolute path where the project will be created.
+ * @param {string} root0.preset - Selected preset (static, astro, react, nextjs, nuxt, svelte, fullstack).
+ * @param {Array<string>} root0.features - Array of additional features to include (database, auth, analytics, deployment).
+ * @param {boolean} root0.skipInstall - Whether to skip dependency installation.
+ * @param {boolean} root0.skipGit - Whether to skip git initialization.
+ * @returns {Promise<string>} Resolves with the project path when scaffolding is complete.
  */
 export async function scaffoldProject({
   projectName,

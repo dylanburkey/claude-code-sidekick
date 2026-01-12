@@ -599,4 +599,4 @@ bun install
 
 ---
 
-**Ready to build!** 🚀
+**Ready to build!**
