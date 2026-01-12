@@ -4,7 +4,8 @@ System architecture and design documentation.
 
 ## Overview
 
-The Claude Code Starter Template uses a structured, agent-based architecture for AI-assisted development.
+The Claude Code Starter Template uses a structured, agent-based architecture for
+AI-assisted development.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -39,44 +40,44 @@ The Claude Code Starter Template uses a structured, agent-based architecture for
 
 Entry points for workflows:
 
-| Command | Purpose |
-|---------|---------|
+| Command            | Purpose                             |
+| ------------------ | ----------------------------------- |
 | `/project-planner` | Analyze requirements, create phases |
-| `/task-planner` | Generate implementation tasks |
-| `/task-runner` | Execute tasks with agents |
+| `/task-planner`    | Generate implementation tasks       |
+| `/task-runner`     | Execute tasks with agents           |
 
 ### Agents
 
 Specialized workers:
 
-| Agent | Responsibility |
-|-------|----------------|
-| `orchestrator` | Coordinate agents, manage flow |
-| `planner` | Analyze requirements, create plans |
-| `dev` | Write code, implement features |
-| `test` | Write and run tests |
-| `docs` | Create documentation |
-| `review` | Code review, quality checks |
+| Agent          | Responsibility                     |
+| -------------- | ---------------------------------- |
+| `orchestrator` | Coordinate agents, manage flow     |
+| `planner`      | Analyze requirements, create plans |
+| `dev`          | Write code, implement features     |
+| `test`         | Write and run tests                |
+| `docs`         | Create documentation               |
+| `review`       | Code review, quality checks        |
 
 ### Hooks
 
 Event-driven automation:
 
-| Hook | Trigger | Action |
-|------|---------|--------|
-| `doc-generator` | File save | Generate docs |
-| `pre-commit` | Git commit | Quality checks |
-| `task-complete` | Task done | Update status |
+| Hook            | Trigger    | Action         |
+| --------------- | ---------- | -------------- |
+| `doc-generator` | File save  | Generate docs  |
+| `pre-commit`    | Git commit | Quality checks |
+| `task-complete` | Task done  | Update status  |
 
 ### Rules
 
 Enforced standards:
 
-| Rule | Enforces |
-|------|----------|
-| `code-style` | Formatting, patterns |
-| `accessibility` | WCAG compliance |
-| `documentation` | Doc standards |
+| Rule            | Enforces             |
+| --------------- | -------------------- |
+| `code-style`    | Formatting, patterns |
+| `accessibility` | WCAG compliance      |
+| `documentation` | Doc standards        |
 
 ## Sections
 
@@ -89,13 +90,13 @@ Enforced standards:
 
 Requirements use EARS (Easy Approach to Requirements Syntax):
 
-| Pattern | Syntax | Use Case |
-|---------|--------|----------|
-| Ubiquitous | THE SYSTEM SHALL... | Always-on behavior |
-| Event-Driven | WHEN... THE SYSTEM SHALL... | Response to events |
-| State-Driven | WHILE... THE SYSTEM SHALL... | State-dependent behavior |
-| Optional | WHERE... THE SYSTEM SHALL... | Conditional features |
-| Unwanted | IF... THEN THE SYSTEM SHALL... | Error handling |
+| Pattern      | Syntax                         | Use Case                 |
+| ------------ | ------------------------------ | ------------------------ |
+| Ubiquitous   | THE SYSTEM SHALL...            | Always-on behavior       |
+| Event-Driven | WHEN... THE SYSTEM SHALL...    | Response to events       |
+| State-Driven | WHILE... THE SYSTEM SHALL...   | State-dependent behavior |
+| Optional     | WHERE... THE SYSTEM SHALL...   | Conditional features     |
+| Unwanted     | IF... THEN THE SYSTEM SHALL... | Error handling           |
 
 ### Progressive Enhancement
 

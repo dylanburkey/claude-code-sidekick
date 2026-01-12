@@ -11,14 +11,14 @@ on:
     types: [opened, synchronize, reopened]
 
 env:
-  NODE_VERSION: '20'
-  PNPM_VERSION: '9'
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
 
 jobs:
   pre-commit-checks:
     name: Pre-commit Quality Gates
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,8 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install dependencies
         run: |
@@ -46,14 +46,14 @@ jobs:
       - name: Check for JavaScript errors
         run: |
           echo "🔍 Checking for JavaScript syntax errors..."
-          
+
           find cli/src cli/bin -name "*.js" -type f 2>/dev/null | while read file; do
             node --check "$file" 2>&1 || {
               echo "❌ Syntax error in: $file"
               exit 1
             }
           done
-          
+
           echo "✅ No JavaScript syntax errors found"
 
       # Gate 2: ESLint must pass
@@ -90,9 +90,9 @@ jobs:
       - name: YAML validation
         run: |
           echo "🔍 Validating YAML files..."
-          
+
           npm install -g yaml-lint
-          
+
           for file in $(find .claude -name "*.yml" -o -name "*.yaml"); do
             if [ -f "$file" ]; then
               yamllint "$file" || {
@@ -101,7 +101,7 @@ jobs:
               }
             fi
           done
-          
+
           echo "✅ All YAML files are valid"
 
       # Gate 6: CLI tests pass
@@ -118,40 +118,40 @@ jobs:
       - name: Validate changed files
         run: |
           echo "🔍 Validating changed files..."
-          
+
           # Get list of changed files
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }})
           else
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD 2>/dev/null || echo "")
           fi
-          
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No changed files to validate"
             exit 0
           fi
-          
+
           echo "Changed files:"
           echo "$CHANGED_FILES"
-          
+
           # Check for agent library changes
           AGENT_CHANGES=$(echo "$CHANGED_FILES" | grep -E '^agent-library/' || true)
           if [ -n "$AGENT_CHANGES" ]; then
             echo "📝 Agent library files changed - validating structure"
           fi
-          
+
           # Check for CLI changes
           CLI_CHANGES=$(echo "$CHANGED_FILES" | grep -E '^cli/' || true)
           if [ -n "$CLI_CHANGES" ]; then
             echo "📝 CLI files changed - tests already validated"
           fi
-          
+
           # Check for config changes
           CONFIG_CHANGES=$(echo "$CHANGED_FILES" | grep -E '\.yml$|\.yaml$' || true)
           if [ -n "$CONFIG_CHANGES" ]; then
             echo "📝 Configuration files changed - YAML already validated"
           fi
-          
+
           echo "✅ All changed files validated"
 
       - name: Summary

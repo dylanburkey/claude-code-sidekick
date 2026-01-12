@@ -1,10 +1,12 @@
 # Building a Full-Stack Nuxt App: Complete Walkthrough
 
-> **Build a professional Nuxt 3 application with database, modern CSS, and Vite+ - No coding experience required!**
+> **Build a professional Nuxt 3 application with database, modern CSS, and
+> Vite+ - No coding experience required!**
 
 ## What You'll Build
 
 A complete web application with:
+
 - **Frontend:** Nuxt 3 with Vue Composition API
 - **Styling:** Modern CSS (Grid, Flexbox, Custom Properties)
 - **Build Tool:** Vite+ for lightning-fast performance
@@ -44,6 +46,7 @@ rm -rf temp-sidekick
 ```
 
 **What you now have:**
+
 - A fresh project folder
 - All Sidekick configuration files
 - Ready for customization
@@ -58,12 +61,17 @@ Open `PROJECT_STARTER.md` in your text editor.
 ## Project Information
 
 ### Project Name
+
 Task Master Pro
 
 ### Project Description
-A full-stack task management application built with Nuxt 3. Users can create accounts, manage tasks, set priorities, and track progress. Features a modern, responsive design with real-time updates.
+
+A full-stack task management application built with Nuxt 3. Users can create
+accounts, manage tasks, set priorities, and track progress. Features a modern,
+responsive design with real-time updates.
 
 ### Project Type
+
 web-app
 ```
 
@@ -78,7 +86,7 @@ Find this section and change it to:
 - [ ] **Astro Site**
 - [ ] **React App**
 - [ ] **Next.js App**
-- [x] **Vue/Nuxt** - Vue 3, Nuxt, Composition API  ← Put the X here
+- [x] **Vue/Nuxt** - Vue 3, Nuxt, Composition API ← Put the X here
 - [ ] **SvelteKit**
 - [ ] **Full Stack**
 - [ ] **Custom**
@@ -103,15 +111,15 @@ Since we want full-stack features, scroll down to **Code Rules Configuration**:
 ### Language Standards
 
 - **Modern JavaScript**: `TRUE`
-- **TypeScript**: `TRUE`  ← Change this to TRUE
-- **Node.js**: `TRUE`     ← Change this to TRUE
+- **TypeScript**: `TRUE` ← Change this to TRUE
+- **Node.js**: `TRUE` ← Change this to TRUE
 - **Python**: `FALSE`
 
 ### Backend & API
 
 - **Hono**: `FALSE`
-- **Express/Fastify**: `TRUE`  ← Change this to TRUE
-- **REST API**: `TRUE`          ← Change this to TRUE
+- **Express/Fastify**: `TRUE` ← Change this to TRUE
+- **REST API**: `TRUE` ← Change this to TRUE
 - **GraphQL**: `FALSE`
 ```
 
@@ -122,7 +130,7 @@ Since we want full-stack features, scroll down to **Code Rules Configuration**:
 
 ### Database & Storage
 
-- **Neon Database**: `TRUE`  ← Make sure this is TRUE
+- **Neon Database**: `TRUE` ← Make sure this is TRUE
 - **Supabase**: `FALSE`
 - **Turso**: `FALSE`
 ```
@@ -188,7 +196,8 @@ Ready! 🚀
    - Click "Create repository"
 
 3. **Get your GitHub token:**
-   - Go to Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Go to Settings → Developer settings → Personal access tokens → Tokens
+     (classic)
    - Click "Generate new token (classic)"
    - Name: "Task Master Pro"
    - Select scopes: `repo`, `workflow`
@@ -336,15 +345,23 @@ Create a modern task management application where users can:
 ```markdown
 ### Functional Requirements
 
-1. **WHEN** user signs up **THE SYSTEM SHALL** create a new account and send confirmation email
-2. **WHEN** user logs in **THE SYSTEM SHALL** verify credentials and create a session
-3. **WHEN** user creates a task **THE SYSTEM SHALL** save it to the database and update the UI
-4. **WHEN** user marks task complete **THE SYSTEM SHALL** update status in real-time
-5. **WHEN** user edits a task **THE SYSTEM SHALL** save changes without page reload
-6. **WHEN** user deletes a task **THE SYSTEM SHALL** show confirmation before removing
+1. **WHEN** user signs up **THE SYSTEM SHALL** create a new account and send
+   confirmation email
+2. **WHEN** user logs in **THE SYSTEM SHALL** verify credentials and create a
+   session
+3. **WHEN** user creates a task **THE SYSTEM SHALL** save it to the database and
+   update the UI
+4. **WHEN** user marks task complete **THE SYSTEM SHALL** update status in
+   real-time
+5. **WHEN** user edits a task **THE SYSTEM SHALL** save changes without page
+   reload
+6. **WHEN** user deletes a task **THE SYSTEM SHALL** show confirmation before
+   removing
 7. **WHILE** user is logged in **THE SYSTEM SHALL** auto-save all changes
-8. **WHERE** user has no tasks **THE SYSTEM SHALL** show helpful onboarding message
-9. **IF** network fails **THEN THE SYSTEM SHALL** queue changes and sync when reconnected
+8. **WHERE** user has no tasks **THE SYSTEM SHALL** show helpful onboarding
+   message
+9. **IF** network fails **THEN THE SYSTEM SHALL** queue changes and sync when
+   reconnected
 ```
 
 ---
@@ -358,6 +375,7 @@ Run the project planner:
 ```
 
 **What happens:**
+
 - AI analyzes your requirements
 - Creates a multi-phase implementation plan
 - Identifies technical approach for each feature
@@ -374,12 +392,13 @@ Open it to see:
 
 Phase 1 focuses on core infrastructure and basic task management.
 
-**Duration:** 2-3 development sessions
-**Prerequisites:** Environment setup complete
+**Duration:** 2-3 development sessions **Prerequisites:** Environment setup
+complete
 
 ## Technical Approach
 
 ### Frontend Stack
+
 - **Nuxt 3** with auto-imports and file-based routing
 - **Vue 3 Composition API** for component logic
 - **Pinia** for state management
@@ -387,6 +406,7 @@ Phase 1 focuses on core infrastructure and basic task management.
 - **Vite+** for optimized builds
 
 ### Backend Stack
+
 - **Nuxt Server Routes** for API endpoints
 - **PostgreSQL** via Neon for data persistence
 - **Prisma ORM** for database operations
@@ -395,24 +415,28 @@ Phase 1 focuses on core infrastructure and basic task management.
 ### Features to Implement
 
 #### 1. Database Schema
+
 - Users table
 - Tasks table
 - Projects table (for future phases)
 - Indexes for performance
 
 #### 2. Authentication System
+
 - Registration endpoint
 - Login endpoint
 - Session management
 - Protected routes
 
 #### 3. Task CRUD Operations
+
 - Create task API
 - Read/list tasks API
 - Update task API
 - Delete task API
 
 #### 4. Basic UI Components
+
 - Layout with navigation
 - Task list component
 - Task form component
@@ -441,9 +465,11 @@ This breaks down everything into individual tasks:
 ## Database Setup (Agent: database)
 
 ### Task 1.1: Create Database Schema
+
 **Description:** Set up PostgreSQL database with tables for users and tasks
 
 **Actions:**
+
 - Initialize Prisma
 - Create schema for users table
 - Create schema for tasks table
@@ -451,39 +477,40 @@ This breaks down everything into individual tasks:
 - Generate migrations
 
 **Success Criteria:**
+
 - Schema file exists and is valid
 - Migrations run without errors
 - Tables created in Neon database
 
-**Estimated Time:** 15 minutes
-**Priority:** High
-**Dependencies:** None
+**Estimated Time:** 15 minutes **Priority:** High **Dependencies:** None
 
 ---
 
 ### Task 1.2: Seed Development Data
+
 **Description:** Add sample data for testing
 
 **Actions:**
+
 - Create seed script
 - Add 5 sample users
 - Add 20 sample tasks
 - Run seeder
 
 **Success Criteria:**
+
 - Seed script runs successfully
 - Data visible in database
 - Can query data via API
 
-**Estimated Time:** 10 minutes
-**Priority:** Medium
-**Dependencies:** Task 1.1
+**Estimated Time:** 10 minutes **Priority:** Medium **Dependencies:** Task 1.1
 
 ---
 
 ## Authentication (Agent: backend-api)
 
 ### Task 2.1: Implement Registration
+
 ... (more tasks)
 ```
 
@@ -646,12 +673,14 @@ my-nuxt-app/
 #### 8.2 Test the Features
 
 **Register a New User:**
+
 1. Click "Sign Up"
 2. Enter email and password
 3. Submit form
 4. You're automatically logged in!
 
 **Create a Task:**
+
 1. Click "New Task"
 2. Enter task details
 3. Set priority
@@ -659,16 +688,19 @@ my-nuxt-app/
 5. Task appears in your list instantly
 
 **Edit a Task:**
+
 1. Click on any task
 2. Modify the details
 3. Changes save automatically
 
 **Mark Complete:**
+
 1. Check the checkbox on a task
 2. Task updates in real-time
 3. Moves to "Completed" section
 
 **Delete a Task:**
+
 1. Click the delete icon
 2. Confirm deletion
 3. Task removed from database
@@ -684,24 +716,24 @@ Open `assets/styles/variables.css`:
 ```css
 :root {
   /* Change these to your brand colors */
-  --color-primary: #3B82F6;      /* Blue */
-  --color-secondary: #8B5CF6;    /* Purple */
-  --color-success: #10B981;      /* Green */
-  --color-danger: #EF4444;       /* Red */
-  --color-warning: #F59E0B;      /* Orange */
+  --color-primary: #3b82f6; /* Blue */
+  --color-secondary: #8b5cf6; /* Purple */
+  --color-success: #10b981; /* Green */
+  --color-danger: #ef4444; /* Red */
+  --color-warning: #f59e0b; /* Orange */
 
   /* Or use your own colors */
-  --color-primary: #FF6B6B;      /* Coral */
-  --color-secondary: #4ECDC4;    /* Teal */
+  --color-primary: #ff6b6b; /* Coral */
+  --color-secondary: #4ecdc4; /* Teal */
 
   /* Background colors */
-  --color-background: #FFFFFF;
-  --color-surface: #F3F4F6;
-  --color-border: #E5E7EB;
+  --color-background: #ffffff;
+  --color-surface: #f3f4f6;
+  --color-border: #e5e7eb;
 
   /* Text colors */
-  --color-text: #1F2937;
-  --color-text-light: #6B7280;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
 }
 ```
 
@@ -722,13 +754,13 @@ Still in `variables.css`:
   --font-display: 'Playfair Display', serif;
 
   /* Font sizes */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
 }
 ```
 
@@ -737,14 +769,14 @@ Still in `variables.css`:
 ```css
 :root {
   /* Spacing scale */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
 }
 ```
 
@@ -760,12 +792,12 @@ Open `components/ThemeToggle.vue` (it was created automatically):
 </template>
 
 <script setup>
-const isDark = ref(false)
+const isDark = ref(false);
 
 const toggleTheme = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark')
-}
+  isDark.value = !isDark.value;
+  document.documentElement.classList.toggle('dark');
+};
 </script>
 ```
 
@@ -773,11 +805,11 @@ Dark mode colors in `variables.css`:
 
 ```css
 .dark {
-  --color-background: #1F2937;
+  --color-background: #1f2937;
   --color-surface: #111827;
   --color-border: #374151;
-  --color-text: #F3F4F6;
-  --color-text-light: #9CA3AF;
+  --color-text: #f3f4f6;
+  --color-text-light: #9ca3af;
 }
 ```
 
@@ -795,15 +827,19 @@ Create `specs/task-categories.md`:
 # Task Categories Feature
 
 ## Description
+
 Users can organize tasks into categories (Work, Personal, Shopping, etc.)
 
 ## Requirements
 
 1. **WHEN** user creates a task **THE SYSTEM SHALL** allow selecting a category
 2. **WHEN** user views tasks **THE SYSTEM SHALL** show category tag
-3. **WHEN** user clicks a category **THE SYSTEM SHALL** filter to show only that category
-4. **THE SYSTEM SHALL** provide default categories (Work, Personal, Shopping, Health, Other)
-5. **WHEN** user creates custom category **THE SYSTEM SHALL** save it for future use
+3. **WHEN** user clicks a category **THE SYSTEM SHALL** filter to show only that
+   category
+4. **THE SYSTEM SHALL** provide default categories (Work, Personal, Shopping,
+   Health, Other)
+5. **WHEN** user creates custom category **THE SYSTEM SHALL** save it for future
+   use
 
 ## UI Components
 
@@ -830,6 +866,7 @@ Users can organize tasks into categories (Work, Personal, Shopping, etc.)
 ```
 
 **The agents will:**
+
 - Update the database schema
 - Create the category management system
 - Build the UI components
@@ -858,6 +895,7 @@ npx vercel
 ```
 
 **Follow the prompts:**
+
 - "Set up and deploy?" → Yes
 - "Which scope?" → Your account
 - "Link to existing project?" → No
@@ -882,6 +920,7 @@ https://task-master-pro.vercel.app
 #### 11.3 Set Up Environment Variables
 
 In the Vercel dashboard:
+
 1. Go to your project
 2. Click "Settings" → "Environment Variables"
 3. Add all variables from your `.env`:
@@ -928,6 +967,7 @@ If you enabled Google Analytics:
 4. Already configured in your app!
 
 Track:
+
 - Page views
 - User interactions
 - Task completions
@@ -943,6 +983,7 @@ npx lighthouse https://task-master-pro.vercel.app
 ```
 
 You should see:
+
 - Performance: 95+
 - Accessibility: 100
 - Best Practices: 100
@@ -955,24 +996,29 @@ You should see:
 ### Common Issues
 
 **"Cannot connect to database"**
+
 - Check `DATABASE_URL` in `.env`
 - Verify Neon project is running
 - Run `npx prisma migrate dev` again
 
 **"Port 3000 already in use"**
+
 - Stop other apps using port 3000
 - Or use a different port: `npm run dev -- --port 3001`
 
 **"Module not found"**
+
 - Run `npm install` again
 - Delete `node_modules` and run `npm install`
 
 **"Build failed on Vercel"**
+
 - Check environment variables are set
 - Verify build works locally first
 - Check Vercel logs for specific error
 
 **"Tasks not saving"**
+
 - Check browser console for errors
 - Verify API endpoints are working: `/api/tasks`
 - Check database connection
@@ -984,22 +1030,26 @@ You should see:
 ### Enhance Your App
 
 **Add Authentication Providers:**
+
 - Google OAuth
 - GitHub login
 - Magic link email
 
 **Add Real-Time Features:**
+
 - WebSocket connections
 - Live task updates
 - Collaborative editing
 
 **Improve UX:**
+
 - Add animations and transitions
 - Improve mobile experience
 - Add keyboard shortcuts
 - Add drag-and-drop task reordering
 
 **Add Business Features:**
+
 - Task assignments (multi-user)
 - Due date reminders
 - Email notifications
@@ -1033,7 +1083,7 @@ The agents created this component (`components/TaskCard.vue`):
         :checked="task.completed"
         @change="toggleComplete"
         class="task-card__checkbox"
-      >
+      />
       <h3 class="task-card__title">{{ task.title }}</h3>
       <span
         class="task-card__priority"
@@ -1065,23 +1115,23 @@ The agents created this component (`components/TaskCard.vue`):
 const props = defineProps({
   task: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const emit = defineEmits(['toggle', 'edit', 'delete'])
+const emit = defineEmits(['toggle', 'edit', 'delete']);
 
-const toggleComplete = () => emit('toggle', props.task.id)
-const editTask = () => emit('edit', props.task.id)
-const deleteTask = () => emit('delete', props.task.id)
+const toggleComplete = () => emit('toggle', props.task.id);
+const editTask = () => emit('edit', props.task.id);
+const deleteTask = () => emit('delete', props.task.id);
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
-    year: 'numeric'
-  })
-}
+    year: 'numeric',
+  });
+};
 </script>
 
 <style scoped>
@@ -1198,6 +1248,7 @@ const formatDate = (date) => {
 ```
 
 **Notice:**
+
 - Modern Vue 3 Composition API with `<script setup>`
 - Semantic HTML (article, time, button)
 - Accessible (screen reader text, proper labels)
@@ -1210,22 +1261,15 @@ const formatDate = (date) => {
 
 **Congratulations!** You've built a complete full-stack Nuxt 3 application with:
 
-✅ Vue 3 Composition API
-✅ TypeScript support
-✅ Modern CSS (no frameworks needed!)
-✅ Vite+ for fast builds
-✅ PostgreSQL database
-✅ User authentication
-✅ CRUD operations
-✅ Responsive design
-✅ Accessibility (WCAG AA)
-✅ Deployed to production
-✅ Error tracking
-✅ Analytics
+✅ Vue 3 Composition API ✅ TypeScript support ✅ Modern CSS (no frameworks
+needed!) ✅ Vite+ for fast builds ✅ PostgreSQL database ✅ User authentication
+✅ CRUD operations ✅ Responsive design ✅ Accessibility (WCAG AA) ✅ Deployed
+to production ✅ Error tracking ✅ Analytics
 
 **Total time:** ~60 minutes from zero to production!
 
 **You can:**
+
 - ✅ Add new features in minutes
 - ✅ Customize any aspect of the design
 - ✅ Scale to thousands of users

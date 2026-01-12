@@ -13,10 +13,10 @@ export default defineConfig({
         '**/*.config.js',
         '**/dist/**',
         '**/coverage/**',
-        '**/.{husky,github}/**'
-      ]
+        '**/.{husky,github}/**',
+      ],
     },
     include: ['cli/src/**/*.{test,spec}.js'],
-    exclude: ['node_modules', 'cli/node_modules', 'cli/templates']
-  }
+    exclude: ['node_modules', 'cli/node_modules', 'cli/templates'],
+  },
 });

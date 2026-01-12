@@ -1,10 +1,13 @@
 # CLAUDE.md - AI Assistant Context
 
-> This document provides context and instructions for AI assistants working on projects using this template.
+> This document provides context and instructions for AI assistants working on
+> projects using this template.
 
 ## Template Overview
 
-This is a **Claude Code Starter Template** that provides a structured workflow for AI-assisted development. It implements spec-driven development using EARS notation for clear, testable requirements.
+This is a **Claude Code Starter Template** that provides a structured workflow
+for AI-assisted development. It implements spec-driven development using EARS
+notation for clear, testable requirements.
 
 ### Core Philosophy
 
@@ -33,37 +36,43 @@ tasks/phase-N-tasks.md
 
 ### Commands
 
-| Command | Purpose | Output |
-|---------|---------|--------|
+| Command            | Purpose                                        | Output                    |
+| ------------------ | ---------------------------------------------- | ------------------------- |
 | `/project-planner` | Analyze requirements, create project breakdown | `project-plan/phase_N.md` |
-| `/task-planner` | Generate implementation tasks from plan | `tasks/phase-N-tasks.md` |
-| `/task-runner` | Execute tasks using specialized agents | Completed code + docs |
+| `/task-planner`    | Generate implementation tasks from plan        | `tasks/phase-N-tasks.md`  |
+| `/task-runner`     | Execute tasks using specialized agents         | Completed code + docs     |
 
 ## Agents
 
 Specialized agents handle different aspects of development:
 
-| Agent | Role | Responsibilities |
-|-------|------|------------------|
-| `init` | Initialization | Project setup, file structure, config |
-| `planner` | Planning | Requirements analysis, phase breakdown |
-| `dev` | Development | Code implementation, feature building |
-| `test` | Testing | Unit tests, integration tests, validation |
-| `docs` | Documentation | README, inline docs, API docs |
-| `review` | Quality | Code review, standards compliance |
-| `orchestrator` | Coordination | Task assignment, dependency management |
+| Agent          | Role           | Responsibilities                          |
+| -------------- | -------------- | ----------------------------------------- |
+| `init`         | Initialization | Project setup, file structure, config     |
+| `planner`      | Planning       | Requirements analysis, phase breakdown    |
+| `dev`          | Development    | Code implementation, feature building     |
+| `test`         | Testing        | Unit tests, integration tests, validation |
+| `docs`         | Documentation  | README, inline docs, API docs             |
+| `review`       | Quality        | Code review, standards compliance         |
+| `orchestrator` | Coordination   | Task assignment, dependency management    |
 
 ## Agent Library
 
-The [Agent Library](./agent-library/README.md) provides a comprehensive collection of specialized agents organized by category:
+The [Agent Library](./agent-library/README.md) provides a comprehensive
+collection of specialized agents organized by category:
 
 ### Categories
 
-- **[Code Generation](./agent-library/code-generation/)** - Generate components, APIs, configs, and boilerplate
-- **[Task Automation](./agent-library/task-automation/)** - Automate builds, deployments, and workflows
-- **[Testing](./agent-library/testing/)** - Quality assurance, accessibility audits, and test generation
-- **[Documentation](./agent-library/documentation/)** - API docs, READMEs, and inline documentation
-- **[Blockchain](./agent-library/blockchain/)** - Smart contracts, DApps, and Web3 integration
+- **[Code Generation](./agent-library/code-generation/)** - Generate components,
+  APIs, configs, and boilerplate
+- **[Task Automation](./agent-library/task-automation/)** - Automate builds,
+  deployments, and workflows
+- **[Testing](./agent-library/testing/)** - Quality assurance, accessibility
+  audits, and test generation
+- **[Documentation](./agent-library/documentation/)** - API docs, READMEs, and
+  inline documentation
+- **[Blockchain](./agent-library/blockchain/)** - Smart contracts, DApps, and
+  Web3 integration
 
 ### Using Agent Library Agents
 
@@ -76,7 +85,8 @@ Agents from the library can be:
 
 ### Creating Custom Agents
 
-Use the [agent template](./agent-library/templates/agent-template.md) to create new agents:
+Use the [agent template](./agent-library/templates/agent-template.md) to create
+new agents:
 
 1. Copy template to appropriate category
 2. Fill in all required sections
@@ -84,7 +94,8 @@ Use the [agent template](./agent-library/templates/agent-template.md) to create 
 4. Test thoroughly
 5. Document MCP integration if applicable
 
-See the [Agent Library README](./agent-library/README.md) for detailed information.
+See the [Agent Library README](./agent-library/README.md) for detailed
+information.
 
 ## Steering Documents
 
@@ -108,28 +119,28 @@ Development rules in `.claude/rules/`:
 
 Use EARS (Easy Approach to Requirements Syntax) for clear requirements:
 
-| Pattern | Format | Example |
-|---------|--------|---------|
-| Ubiquitous | THE SYSTEM SHALL [action] | THE SYSTEM SHALL validate all user input |
-| Event-Driven | WHEN [event] THE SYSTEM SHALL [response] | WHEN user submits form THE SYSTEM SHALL display confirmation |
-| State-Driven | WHILE [state] THE SYSTEM SHALL [behavior] | WHILE loading THE SYSTEM SHALL show spinner |
-| Optional | WHERE [condition] THE SYSTEM SHALL [action] | WHERE user is admin THE SYSTEM SHALL show settings |
-| Unwanted | IF [condition] THEN THE SYSTEM SHALL [response] | IF network fails THEN THE SYSTEM SHALL retry 3 times |
+| Pattern      | Format                                          | Example                                                      |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------------ |
+| Ubiquitous   | THE SYSTEM SHALL [action]                       | THE SYSTEM SHALL validate all user input                     |
+| Event-Driven | WHEN [event] THE SYSTEM SHALL [response]        | WHEN user submits form THE SYSTEM SHALL display confirmation |
+| State-Driven | WHILE [state] THE SYSTEM SHALL [behavior]       | WHILE loading THE SYSTEM SHALL show spinner                  |
+| Optional     | WHERE [condition] THE SYSTEM SHALL [action]     | WHERE user is admin THE SYSTEM SHALL show settings           |
+| Unwanted     | IF [condition] THEN THE SYSTEM SHALL [response] | IF network fails THEN THE SYSTEM SHALL retry 3 times         |
 
 ## Code Standards
 
 ### HTML
+
 ```html
 <!-- Semantic, accessible structure -->
-<button type="submit" aria-describedby="help-text">
-  Submit Form
-</button>
+<button type="submit" aria-describedby="help-text">Submit Form</button>
 <p id="help-text" class="visually-hidden">
   Submits your information for processing
 </p>
 ```
 
 ### CSS
+
 ```css
 /* Modern CSS with custom properties */
 .component {
@@ -141,6 +152,7 @@ Use EARS (Easy Approach to Requirements Syntax) for clear requirements:
 ```
 
 ### JavaScript
+
 ```javascript
 // Native APIs, progressive enhancement
 const form = document.querySelector('form');
@@ -169,11 +181,11 @@ tasks/                 # Generated tasks
 
 Automated actions triggered by events:
 
-| Hook | Trigger | Action |
-|------|---------|--------|
-| `post-save-docs` | File saved | Update relevant documentation |
-| `pre-commit` | Before commit | Run linting, tests |
-| `task-complete` | Task finished | Update task status, notify |
+| Hook             | Trigger       | Action                        |
+| ---------------- | ------------- | ----------------------------- |
+| `post-save-docs` | File saved    | Update relevant documentation |
+| `pre-commit`     | Before commit | Run linting, tests            |
+| `task-complete`  | Task finished | Update task status, notify    |
 
 ## Working with This Template
 
@@ -226,4 +238,5 @@ When working on projects using this template:
 
 ---
 
-*This template implements spec-driven development inspired by modern AI development workflows. It emphasizes clarity, testability, and maintainability.*
+_This template implements spec-driven development inspired by modern AI
+development workflows. It emphasizes clarity, testability, and maintainability._

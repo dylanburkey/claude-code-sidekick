@@ -5,6 +5,7 @@
 ## Purpose
 
 Detailed explanation of the agent's purpose and the problem it solves. Include:
+
 - What specific task or workflow this agent handles
 - Why this agent is useful
 - When to use this agent
@@ -57,11 +58,11 @@ config:
 
 ### Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| option1 | string | 'default' | What this option does |
-| option2 | number | 100 | What this option controls |
-| option3 | boolean | true | Enable/disable feature |
+| Option  | Type    | Default   | Description               |
+| ------- | ------- | --------- | ------------------------- |
+| option1 | string  | 'default' | What this option does     |
+| option2 | number  | 100       | What this option controls |
+| option3 | boolean | true      | Enable/disable feature    |
 
 ## Examples
 
@@ -70,16 +71,19 @@ config:
 **Scenario:** Brief description of the scenario
 
 **Prompt:**
+
 ```markdown
 [Exact prompt user would provide]
 ```
 
 **Expected Output:**
+
 ```
 [Description of what the agent will generate/do]
 ```
 
 **Result:**
+
 ```[language]
 [Example of actual generated code/output]
 ```
@@ -89,16 +93,19 @@ config:
 **Scenario:** Brief description of the scenario
 
 **Prompt:**
+
 ```markdown
 [Exact prompt user would provide]
 ```
 
 **Expected Output:**
+
 ```
 [Description of what the agent will generate/do]
 ```
 
 **Result:**
+
 ```[language]
 [Example of actual generated code/output]
 ```
@@ -108,16 +115,19 @@ config:
 **Scenario:** Brief description of the scenario
 
 **Prompt:**
+
 ```markdown
 [Exact prompt user would provide]
 ```
 
 **Expected Output:**
+
 ```
 [Description of what the agent will generate/do]
 ```
 
 **Result:**
+
 ```[language]
 [Example of actual generated code/output]
 ```
@@ -140,7 +150,7 @@ Document how this agent leverages the Model Context Protocol:
 async function agentFunction() {
   // MCP integration example
   const resource = await mcp.tool.method({
-    param: 'value'
+    param: 'value',
   });
 
   // Process and use MCP resources
@@ -261,7 +271,7 @@ How to customize this agent for specific needs:
 // Example of extending the agent
 const customAgent = extendAgent('agent-name', {
   customOption: value,
-  overrideMethod: customMethod
+  overrideMethod: customMethod,
 });
 ```
 
@@ -275,8 +285,8 @@ const agentWithCustomTemplate = {
   ...baseAgent,
   templates: {
     main: './custom-templates/main.hbs',
-    partial: './custom-templates/partial.hbs'
-  }
+    partial: './custom-templates/partial.hbs',
+  },
 };
 ```
 
@@ -341,4 +351,4 @@ updated: 2024-01-15
 
 ---
 
-*This agent is part of the Claude Code Sidekick Agent Library*
+_This agent is part of the Claude Code Sidekick Agent Library_

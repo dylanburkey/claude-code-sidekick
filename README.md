@@ -1,6 +1,8 @@
 # Claude Code Sidekick
 
-> Complete development framework for AI-assisted coding with Claude. Professional project scaffolding, specialized agents, and automation in one command.
+> Complete development framework for AI-assisted coding with Claude.
+> Professional project scaffolding, specialized agents, and automation in one
+> command.
 
 ## Quick Start
 
@@ -10,7 +12,8 @@
 npx create-claude-project
 ```
 
-Follow the interactive prompts to scaffold a production-ready project with Claude Code Sidekick configured.
+Follow the interactive prompts to scaffold a production-ready project with
+Claude Code Sidekick configured.
 
 ### Option 2: Manual Setup (5 minutes)
 
@@ -32,23 +35,30 @@ cp PROJECT_STARTER.md /your-project/
 
 ## What is Claude Code Sidekick?
 
-Traditional AI coding tools give you **suggestions**. Claude Code Sidekick gives you **systems**.
+Traditional AI coding tools give you **suggestions**. Claude Code Sidekick gives
+you **systems**.
 
-While Cursor, Windsurf, and Copilot excel at code completion and inline suggestions, they leave you to figure out project structure, workflow automation, and system integration. Claude Code Sidekick provides a complete, opinionated development framework that transforms how you build software with AI.
+While Cursor, Windsurf, and Copilot excel at code completion and inline
+suggestions, they leave you to figure out project structure, workflow
+automation, and system integration. Claude Code Sidekick provides a complete,
+opinionated development framework that transforms how you build software with
+AI.
 
 ### Core Features
 
-- **Professional CLI** - `npx create-claude-project` for instant project generation
+- **Professional CLI** - `npx create-claude-project` for instant project
+  generation
 - **50+ Specialized Agents** for every development task
-- **35+ Pre-Configured MCP Integrations** (databases, cloud, analytics, payments)
+- **35+ Pre-Configured MCP Integrations** (databases, cloud, analytics,
+  payments)
 - **32+ Automated Hooks** for quality, testing, and deployment
 - **Declarative Configuration** - Just flip TRUE/FALSE switches
 - **Spec-Driven Development** with EARS notation
 - **Complete Documentation** for every component
 
-**Setup Time:** 2 minutes with CLI, 5 minutes manual
-**Configuration:** Choose a preset or use TRUE/FALSE flags
-**Result:** Production-ready development environment
+**Setup Time:** 2 minutes with CLI, 5 minutes manual **Configuration:** Choose a
+preset or use TRUE/FALSE flags **Result:** Production-ready development
+environment
 
 ---
 
@@ -56,7 +66,8 @@ While Cursor, Windsurf, and Copilot excel at code completion and inline suggesti
 
 The `create-claude-project` CLI scaffolds production-ready projects with:
 
-- **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack, Custom
+- **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit,
+  Full Stack, Custom
 - **Feature Selection** - Database, auth, analytics, deployment configs
 - **Automatic Setup** - All files, dependencies, and configurations
 - **Claude Code Integration** - .claude/ directory with agents, hooks, and rules
@@ -71,27 +82,30 @@ The `create-claude-project` CLI scaffolds production-ready projects with:
 
 ### 1. Declarative Configuration
 
-**Others:** Write complex configuration files, install tools manually, configure each integration
-**Sidekick:** Mark what you want as TRUE, run one command, done
+**Others:** Write complex configuration files, install tools manually, configure
+each integration **Sidekick:** Mark what you want as TRUE, run one command, done
 
 ```markdown
 ## MCP Configuration
+
 - **Neon Database**: `TRUE`
 - **Cloudflare**: `TRUE`
 - **GitHub**: `TRUE`
 - **Stripe**: `TRUE`
 
 ## Hooks Configuration
+
 - **Pre-Commit Validation**: `TRUE`
 - **Auto Format on Save**: `TRUE`
 ```
 
-Run `/mcp-setup` and `/hooks-setup` - your entire development environment is configured.
+Run `/mcp-setup` and `/hooks-setup` - your entire development environment is
+configured.
 
 ### 2. Agent Library
 
-**Others:** General-purpose AI that tries to do everything
-**Sidekick:** 50+ specialized agents, each expert in their domain
+**Others:** General-purpose AI that tries to do everything **Sidekick:** 50+
+specialized agents, each expert in their domain
 
 - **Code Generation Agents** - Generate components, APIs, migrations, configs
 - **Task Automation Agents** - Handle builds, deployments, CI/CD
@@ -103,8 +117,8 @@ Each agent includes real examples, best practices, and MCP integration.
 
 ### 3. MCP Integration at Scale
 
-**Others:** Manual MCP setup, one server at a time
-**Sidekick:** 35+ pre-configured MCP providers across 10 categories
+**Others:** Manual MCP setup, one server at a time **Sidekick:** 35+
+pre-configured MCP providers across 10 categories
 
 - **Databases**: Neon, Supabase, Turso, Pinecone
 - **Cloud**: Cloudflare, AWS, Vercel, Railway
@@ -115,6 +129,7 @@ Each agent includes real examples, best practices, and MCP integration.
 - **And 20+ more...**
 
 Each provider includes:
+
 - JSON configuration
 - Environment variable templates
 - Setup documentation
@@ -122,8 +137,8 @@ Each provider includes:
 
 ### 4. Automated Quality & Compliance
 
-**Others:** Manual testing, linting, and deployment
-**Sidekick:** 32+ hooks automate your entire workflow
+**Others:** Manual testing, linting, and deployment **Sidekick:** 32+ hooks
+automate your entire workflow
 
 - **Git Hooks** - Validate commits, enforce standards, run tests
 - **File Hooks** - Auto-format, sort imports, update docs
@@ -135,25 +150,29 @@ All configurable with TRUE/FALSE flags.
 
 ### 5. Spec-Driven Development
 
-**Others:** Start coding, figure it out as you go
-**Sidekick:** Define requirements first with EARS notation
+**Others:** Start coding, figure it out as you go **Sidekick:** Define
+requirements first with EARS notation
 
 ```markdown
 ## Functional Requirements
 
 ### Event-Driven
+
 - WHEN user clicks submit THE SYSTEM SHALL validate all fields
 - WHEN validation passes THE SYSTEM SHALL send data to API
 
 ### State-Driven
+
 - WHILE form is submitting THE SYSTEM SHALL disable submit button
 - WHILE user is authenticated THE SYSTEM SHALL show logout option
 
 ### Error Handling
+
 - IF network request fails THEN THE SYSTEM SHALL retry up to 3 times
 ```
 
-Clear, testable, unambiguous requirements that become your implementation roadmap.
+Clear, testable, unambiguous requirements that become your implementation
+roadmap.
 
 ---
 
@@ -162,6 +181,7 @@ Clear, testable, unambiguous requirements that become your implementation roadma
 ### vs. Cursor
 
 **Cursor Strengths:**
+
 - Excellent AI pair programming
 - Natural language code editing
 - Context-aware suggestions
@@ -180,6 +200,7 @@ Clear, testable, unambiguous requirements that become your implementation roadma
 ### vs. Windsurf
 
 **Windsurf Strengths:**
+
 - Flow-based development
 - Multi-file editing
 - Contextual awareness
@@ -198,11 +219,13 @@ Clear, testable, unambiguous requirements that become your implementation roadma
 ### vs. Copilot
 
 **Copilot Strengths:**
+
 - Fast autocomplete
 - Wide IDE support
 - Simple setup
 
 **Sidekick Advantages:**
+
 - Complete development framework
 - Project structure and organization
 - Integration management
@@ -276,23 +299,31 @@ agent-library/
 - [Beginner's Guide](docs/guides/beginner-guide.md) - For complete beginners
 
 ### Comprehensive Guides
-- [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) - Build complete Nuxt app
-- [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) - Build RESTful API
-- [Web3 dApp with Privy](docs/guides/web3-dapp-privy-walkthrough.md) - Build decentralized app
-- [Troubleshooting](docs/guides/troubleshooting.md) - Solutions for 50+ common issues
+
+- [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) -
+  Build complete Nuxt app
+- [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) -
+  Build RESTful API
+- [Web3 dApp with Privy](docs/guides/web3-dapp-privy-walkthrough.md) - Build
+  decentralized app
+- [Troubleshooting](docs/guides/troubleshooting.md) - Solutions for 50+ common
+  issues
 
 ### Systems Documentation
+
 - [MCP Integration](agent-library/docs/mcp-integration.md) - MCP setup guide
 - [Hooks Configuration](.claude/hooks/README.md) - Automation hooks
 - [Agent Library](agent-library/README.md) - All available agents
 
 ### Advanced
+
 - [Creating Custom Agents](agent-library/templates/README.md)
 - [Adding Custom MCPs](.claude/mcp/templates/custom-mcp-guide.md)
 - [Building Custom Hooks](.claude/hooks/templates/custom-hook-guide.md)
 - [EARS Requirements Notation](docs/ears-guide.md)
 
 ### Reference
+
 - [All Available MCPs](.claude/mcp/README.md)
 - [All Available Hooks](.claude/hooks/README.md)
 - [Code Style Rules](.claude/rules/code-style.md)
@@ -324,6 +355,7 @@ agent-library/
 - Quality gates and automated testing
 
 ### Blockchain Development
+
 - Quick DApp setup with CLI
 - Specialized agents for smart contracts and DApp scaffolding
 - Automated testing with testnet integration
@@ -349,8 +381,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ### Getting Help
 
 - **CLI Issues** - [CLI Documentation](cli/README.md)
-- **General Issues** - [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
-- **Discussions** - [GitHub Discussions](https://github.com/dylanburkey/claude-code-sidekick/discussions)
+- **General Issues** -
+  [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
+- **Discussions** -
+  [GitHub Discussions](https://github.com/dylanburkey/claude-code-sidekick/discussions)
 - **Comprehensive Docs** - All guides in this repo
 
 ---
@@ -380,6 +414,7 @@ MIT License - See [LICENSE](LICENSE) for details.
 npx create-claude-project
 ```
 
-[Get Started →](docs/guides/cli-guide.md) | [Browse Agent Library →](agent-library/README.md)
+[Get Started →](docs/guides/cli-guide.md) |
+[Browse Agent Library →](agent-library/README.md)
 
 **Built for developers who want more than autocomplete.**

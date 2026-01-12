@@ -11,16 +11,18 @@ Welcome to the project documentation.
 
 ## Overview
 
-This documentation is automatically generated and maintained by the `doc-generator` hook. When you save files in your project, documentation is created or updated based on the file type and content.
+This documentation is automatically generated and maintained by the
+`doc-generator` hook. When you save files in your project, documentation is
+created or updated based on the file type and content.
 
 ## Documentation Structure
 
-| Section | Description |
-|---------|-------------|
-| [API](api/) | Code documentation, components, utilities, types |
-| [Guides](guides/) | How-to guides and tutorials |
-| [Architecture](architecture/) | System design and decisions |
-| [Changelog](changelog/) | Version history and changes |
+| Section                       | Description                                      |
+| ----------------------------- | ------------------------------------------------ |
+| [API](api/)                   | Code documentation, components, utilities, types |
+| [Guides](guides/)             | How-to guides and tutorials                      |
+| [Architecture](architecture/) | System design and decisions                      |
+| [Changelog](changelog/)       | Version history and changes                      |
 
 ## How Documentation is Generated
 
@@ -36,7 +38,8 @@ The `doc-generator` hook triggers on file save and:
 
 ### Manual Documentation
 
-Add `.md` files directly to any docs subdirectory. They will be indexed automatically.
+Add `.md` files directly to any docs subdirectory. They will be indexed
+automatically.
 
 ### Code Comments
 
@@ -64,15 +67,19 @@ Document significant decisions in `architecture/decisions/`:
 # ADR-001: Use Custom Elements for Components
 
 ## Status
+
 Accepted
 
 ## Context
+
 We need a component system that works without build tools.
 
 ## Decision
+
 Use native Custom Elements (Web Components).
 
 ## Consequences
+
 - Works in all modern browsers
 - No framework dependency
 - Requires polyfill for older browsers

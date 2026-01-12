@@ -1,26 +1,32 @@
 # Testing Agents
 
-> Agents focused on quality assurance, testing, and validation to ensure code reliability and accessibility.
+> Agents focused on quality assurance, testing, and validation to ensure code
+> reliability and accessibility.
 
 ## Overview
 
-Testing agents automate the creation and execution of tests across your application. From unit tests to accessibility audits, these agents help maintain code quality and catch issues before they reach production.
+Testing agents automate the creation and execution of tests across your
+application. From unit tests to accessibility audits, these agents help maintain
+code quality and catch issues before they reach production.
 
 ## Available Agents
 
 ### Test Generation
+
 - **Unit Test Generator**: Create comprehensive unit tests
 - **Integration Test Builder**: Generate integration test suites
 - **E2E Test Creator**: Build end-to-end test scenarios
 - **Snapshot Test Generator**: Create visual regression tests
 
 ### Quality Assurance
+
 - **Accessibility Auditor**: WCAG compliance checking
 - **Performance Tester**: Load time and performance metrics
 - **Security Scanner**: Vulnerability detection and fixes
 - **Code Quality Analyzer**: Code smell detection and suggestions
 
 ### Test Management
+
 - **Coverage Reporter**: Test coverage analysis and reporting
 - **Test Runner**: Automated test execution
 - **Flaky Test Detector**: Identify and fix unstable tests
@@ -32,6 +38,7 @@ Testing agents automate the creation and execution of tests across your applicat
 
 ```markdown
 Generate unit tests for the ProductCard component including:
+
 - Rendering with different prop combinations
 - User interaction events
 - Edge cases and error states
@@ -42,6 +49,7 @@ Generate unit tests for the ProductCard component including:
 
 ```markdown
 Run a comprehensive quality audit:
+
 - Accessibility (WCAG 2.1 AA)
 - Performance (Lighthouse)
 - Security vulnerabilities
@@ -52,6 +60,7 @@ Run a comprehensive quality audit:
 
 ```markdown
 Set up automated testing that runs:
+
 - Unit tests on every commit
 - Integration tests on PR creation
 - E2E tests on staging deployment
@@ -120,10 +129,10 @@ config:
     functions: 80
     lines: 80
   patterns:
-    - "src/**/*.test.ts"
+    - 'src/**/*.test.ts'
   exclude:
-    - "**/*.spec.ts"
-    - "**/mocks/**"
+    - '**/*.spec.ts'
+    - '**/mocks/**'
 ```
 
 ### Accessibility Audit Configuration
@@ -151,6 +160,7 @@ config:
 ### Example 1: Component Test Suite
 
 **Prompt:**
+
 ```
 Generate a complete test suite for the LoginForm component covering:
 - Form validation (email, password)
@@ -161,6 +171,7 @@ Generate a complete test suite for the LoginForm component covering:
 ```
 
 **Generated Output:**
+
 ```typescript
 describe('LoginForm', () => {
   describe('Validation', () => {
@@ -187,6 +198,7 @@ describe('LoginForm', () => {
 ### Example 2: API Integration Tests
 
 **Prompt:**
+
 ```
 Generate integration tests for the user API endpoints:
 - POST /api/users (create user)
@@ -198,6 +210,7 @@ Include authentication, validation, and error cases.
 ```
 
 **Generated Output:**
+
 ```typescript
 describe('User API', () => {
   describe('POST /api/users', () => {
@@ -214,6 +227,7 @@ describe('User API', () => {
 ### Example 3: E2E User Flow
 
 **Prompt:**
+
 ```
 Generate E2E tests for the checkout flow:
 1. Add items to cart
@@ -244,20 +258,20 @@ async function setupTestEnvironment() {
   // Create test branch in Neon
   const testBranch = await mcp.neon.createBranch({
     projectId: 'project-id',
-    branchName: `test-${Date.now()}`
+    branchName: `test-${Date.now()}`,
   });
 
   // Run tests against test branch
   const connectionString = await mcp.neon.getConnectionString({
     projectId: 'project-id',
-    branchId: testBranch.id
+    branchId: testBranch.id,
   });
 
   // Cleanup after tests
   afterAll(async () => {
     await mcp.neon.deleteBranch({
       projectId: 'project-id',
-      branchId: testBranch.id
+      branchId: testBranch.id,
     });
   });
 }
@@ -266,6 +280,7 @@ async function setupTestEnvironment() {
 ## Test Types
 
 ### Unit Tests
+
 Test individual functions and components in isolation.
 
 ```javascript
@@ -277,6 +292,7 @@ test('formatPrice returns correct format', () => {
 ```
 
 ### Integration Tests
+
 Test how components work together.
 
 ```javascript
@@ -292,6 +308,7 @@ test('cart updates when product is added', async () => {
 ```
 
 ### E2E Tests
+
 Test complete user flows through the application.
 
 ```javascript
@@ -307,6 +324,7 @@ test('user can complete checkout', async () => {
 ```
 
 ### Accessibility Tests
+
 Ensure WCAG compliance and usability.
 
 ```javascript
@@ -410,18 +428,21 @@ jobs:
 ## Troubleshooting
 
 ### Flaky Tests
+
 - Use explicit waits instead of timeouts
 - Mock external dependencies
 - Reset state between tests
 - Use deterministic test data
 
 ### Slow Tests
+
 - Run tests in parallel
 - Use test databases/environments
 - Mock expensive operations
 - Optimize setup/teardown
 
 ### False Positives
+
 - Review test assertions
 - Check for race conditions
 - Verify test isolation
@@ -446,4 +467,5 @@ To add a new testing agent:
 
 ---
 
-*Testing agents ensure your code is reliable, accessible, and performant through automated quality assurance.*
+_Testing agents ensure your code is reliable, accessible, and performant through
+automated quality assurance._

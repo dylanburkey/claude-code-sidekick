@@ -1,10 +1,12 @@
 # Complete Beginner's Guide to Claude Code Sidekick
 
-> **No coding experience required!** This guide walks you through creating a professional web application from scratch.
+> **No coding experience required!** This guide walks you through creating a
+> professional web application from scratch.
 
 ## What You'll Learn
 
 By the end of this guide, you'll have:
+
 - A fully functional web application
 - Automatic code formatting and quality checks
 - Database integration
@@ -21,13 +23,15 @@ By the end of this guide, you'll have:
 
 1. **A computer** (Mac, Windows, or Linux)
 2. **Internet connection**
-3. **Claude Code installed** ([Installation Guide](https://claude.ai/claude-code))
+3. **Claude Code installed**
+   ([Installation Guide](https://claude.ai/claude-code))
 
 That's it! Everything else is handled automatically.
 
 ### What is Claude Code Sidekick?
 
 Think of it as a **complete development assistant** that:
+
 - Sets up your entire project automatically
 - Writes code based on your descriptions
 - Ensures professional quality standards
@@ -40,20 +44,17 @@ Think of it as a **complete development assistant** that:
 
 ### Key Concepts (Non-Technical)
 
-**Project Preset**
-: A template that automatically configures everything for your type of application
+**Project Preset** : A template that automatically configures everything for
+your type of application
 
-**Master Toggles**
-: On/off switches that control major features
+**Master Toggles** : On/off switches that control major features
 
-**MCP Servers**
-: Connections to external services (databases, cloud hosting, analytics)
+**MCP Servers** : Connections to external services (databases, cloud hosting,
+analytics)
 
-**Hooks**
-: Automated tasks that run at specific times (like auto-saving)
+**Hooks** : Automated tasks that run at specific times (like auto-saving)
 
-**Agents**
-: Specialized AI assistants for different tasks
+**Agents** : Specialized AI assistants for different tasks
 
 ---
 
@@ -80,13 +81,15 @@ cd ~/my-first-app
 ```
 
 **What just happened?**
+
 - You downloaded the Sidekick toolkit
 - Copied it to a new folder called "my-first-app"
 - Moved into that folder
 
 ### Step 2: Choose Your Project Type
 
-Open the file `PROJECT_STARTER.md` in any text editor (like Notepad, TextEdit, or VSCode).
+Open the file `PROJECT_STARTER.md` in any text editor (like Notepad, TextEdit,
+or VSCode).
 
 Find this section:
 
@@ -106,21 +109,25 @@ Find this section:
 **Change the `x` to mark your choice:**
 
 For a simple website:
+
 ```markdown
 - [x] **Static Website**
 ```
 
 For a blog or content site:
+
 ```markdown
 - [x] **Astro Site**
 ```
 
 For a web application:
+
 ```markdown
 - [x] **React App**
 ```
 
 For a complete application with database:
+
 ```markdown
 - [x] **Full Stack**
 ```
@@ -136,6 +143,7 @@ In your terminal, type:
 ```
 
 **What happens next:**
+
 1. Sidekick reads your project type
 2. Automatically configures everything
 3. Creates the project structure
@@ -166,12 +174,15 @@ Back in `PROJECT_STARTER.md`, scroll to the top and fill out:
 ## Project Information
 
 ### Project Name
+
 My Amazing App
 
 ### Project Description
+
 A web application that helps users track their daily tasks
 
 ### Project Type
+
 web-app
 ```
 
@@ -185,13 +196,16 @@ Still in `PROJECT_STARTER.md`, find the **Goals & Objectives** section:
 ## Goals & Objectives
 
 ### Primary Goal
+
 Create a task tracking app where users can:
+
 - Add daily tasks
 - Mark tasks as complete
 - View their task history
 - Get reminders for important tasks
 
 ### Success Criteria
+
 - Users can add a task in under 5 seconds
 - The app works on mobile phones
 - Tasks are saved even if the user closes the app
@@ -209,6 +223,7 @@ In the terminal:
 ```
 
 **What this does:**
+
 - Analyzes your description
 - Creates a step-by-step implementation plan
 - Breaks down the work into manageable tasks
@@ -217,6 +232,7 @@ In the terminal:
 **You'll get a file:** `project-plan/phase_1.md`
 
 Open it and read through. It will show:
+
 - What will be built in each phase
 - Technical approach (simplified explanation)
 - Tasks broken down step-by-step
@@ -228,6 +244,7 @@ Open it and read through. It will show:
 ```
 
 **What this does:**
+
 - Creates specific, actionable tasks
 - Assigns each task to a specialized agent
 - Organizes tasks by priority
@@ -243,6 +260,7 @@ This lists everything that needs to be done.
 ```
 
 **What this does:**
+
 - Specialized AI agents start working
 - Code is written automatically
 - Tests are created
@@ -293,6 +311,7 @@ npm run dev
 # In PROJECT_STARTER.md or a new file
 
 I want to change the task list to show:
+
 - A checkbox for completion
 - The task name in bold
 - The date it was created
@@ -302,6 +321,7 @@ I want to change the task list to show:
 2. **Ask Claude Code to implement it:**
 
 In your terminal or Claude Code interface:
+
 ```
 Please update the task list component to match my new requirements
 ```
@@ -320,7 +340,8 @@ Please update the task list component to match my new requirements
 
 ### When You Need a Database
 
-If you selected **Full Stack** or want to save user data, you'll need a database.
+If you selected **Full Stack** or want to save user data, you'll need a
+database.
 
 ### Easy Database Setup (Neon)
 
@@ -358,6 +379,7 @@ NEON_API_KEY=your_key_here
 ```
 
 This will:
+
 - Connect to Neon
 - Create a database
 - Set up tables
@@ -376,6 +398,7 @@ I need to save user tasks to the database. Each task should have:
 ```
 
 Claude Code will:
+
 - Create the database structure
 - Write the code to save/load data
 - Handle all the technical details
@@ -433,6 +456,7 @@ Your live site updates automatically!
 # features/user-profiles.md
 
 I want users to have profiles with:
+
 - Profile picture
 - Username
 - Bio
@@ -501,6 +525,7 @@ Analytics are automatically added!
 1. **Check the error message** - It usually tells you what's wrong
 
 2. **Ask Claude Code:**
+
 ```
 I'm getting this error: [paste the error]
 Can you help me fix it?
@@ -513,17 +538,21 @@ Can you help me fix it?
 ### Common Issues
 
 **"Command not found"**
+
 - Make sure you're in the right folder
 - Run `cd ~/my-first-app` first
 
 **"Permission denied"**
+
 - On Mac/Linux: Add `sudo` before the command
 - On Windows: Run as Administrator
 
 **"Module not found"**
+
 - Run `npm install` to install dependencies
 
 **"Port already in use"**
+
 - Another app is using port 3000
 - Stop the other app or use a different port
 
@@ -580,17 +609,20 @@ They usually tell you exactly what's wrong.
 ### Expanding Your Skills
 
 **Learn by Doing:**
+
 1. Start with a simple preset (Static Website or Astro Site)
 2. Build a small project
 3. Add features one at a time
 4. Learn from the code that's generated
 
 **Explore the Agents:**
+
 - Different agents handle different tasks
 - Read `.claude/agents/` to see what each does
 - Request specific agents for specific jobs
 
 **Understand the Code:**
+
 - Ask Claude Code to explain any code you don't understand
 - Add comments to complex sections
 - Read the generated documentation
@@ -598,16 +630,19 @@ They usually tell you exactly what's wrong.
 ### Project Ideas for Practice
 
 **Beginner:**
+
 - Personal portfolio website
 - Recipe collection site
 - Photo gallery
 
 **Intermediate:**
+
 - Todo list application
 - Blog with comments
 - Event calendar
 
 **Advanced:**
+
 - Social media dashboard
 - E-commerce store
 - Multi-user collaboration tool
@@ -616,47 +651,35 @@ They usually tell you exactly what's wrong.
 
 ## Glossary
 
-**Agent**
-: A specialized AI assistant for specific tasks (coding, testing, documentation, etc.)
+**Agent** : A specialized AI assistant for specific tasks (coding, testing,
+documentation, etc.)
 
-**API**
-: A way for different software to communicate (like a telephone for apps)
+**API** : A way for different software to communicate (like a telephone for
+apps)
 
-**Component**
-: A reusable piece of user interface (like a button or form)
+**Component** : A reusable piece of user interface (like a button or form)
 
-**Database**
-: Where your app stores information permanently
+**Database** : Where your app stores information permanently
 
-**Deployment**
-: Making your app available on the internet
+**Deployment** : Making your app available on the internet
 
-**Environment Variable**
-: A secret value (like an API key) stored securely
+**Environment Variable** : A secret value (like an API key) stored securely
 
-**Framework**
-: A toolkit that makes building apps easier (like React or Nuxt)
+**Framework** : A toolkit that makes building apps easier (like React or Nuxt)
 
-**Git**
-: A system for tracking changes to your code over time
+**Git** : A system for tracking changes to your code over time
 
-**Hook**
-: An automated task that runs at a specific time
+**Hook** : An automated task that runs at a specific time
 
-**MCP Server**
-: A connection to an external service (database, analytics, etc.)
+**MCP Server** : A connection to an external service (database, analytics, etc.)
 
-**npm**
-: Node Package Manager - installs tools and libraries
+**npm** : Node Package Manager - installs tools and libraries
 
-**Preset**
-: A pre-configured template for a specific type of project
+**Preset** : A pre-configured template for a specific type of project
 
-**Repository**
-: A folder that contains your project and its history
+**Repository** : A folder that contains your project and its history
 
-**Terminal**
-: A text-based interface for running commands
+**Terminal** : A text-based interface for running commands
 
 ---
 
@@ -718,4 +741,6 @@ Before deploying your app, make sure:
 
 ---
 
-**Congratulations!** You've learned how to build professional web applications with Claude Code Sidekick. Start simple, experiment, and don't be afraid to ask for help. Happy building! 🚀
+**Congratulations!** You've learned how to build professional web applications
+with Claude Code Sidekick. Start simple, experiment, and don't be afraid to ask
+for help. Happy building! 🚀

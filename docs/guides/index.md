@@ -6,23 +6,24 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 
 **New to Claude Code Sidekick?** Choose your path:
 
-| Guide | Time | Best For |
-|-------|------|----------|
-| [Quick Start Guide](quick-start-guide.md) | 2 min | Use a preset, get building fast |
-| [Beginner's Guide](beginner-guide.md) | 30 min | First-time users, learn concepts |
-| [Getting Started](getting-started.md) | 5 min | Quick reference for setup |
+| Guide                                     | Time   | Best For                         |
+| ----------------------------------------- | ------ | -------------------------------- |
+| [Quick Start Guide](quick-start-guide.md) | 2 min  | Use a preset, get building fast  |
+| [Beginner's Guide](beginner-guide.md)     | 30 min | First-time users, learn concepts |
+| [Getting Started](getting-started.md)     | 5 min  | Quick reference for setup        |
 
 ## 📚 Complete Walkthroughs
 
 ### Full-Stack Development
 
-| Guide | Description | Tech Stack |
-|-------|-------------|------------|
-| [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | Build a complete Nuxt 3 app with database and deployment | Nuxt 3, Modern CSS, Vite+, PostgreSQL |
-| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md) | Build a RESTful API with FastAPI and PostgreSQL | Python, FastAPI, PostgreSQL, SQLAlchemy |
-| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md) | Build a decentralized app with wallet auth and NFTs | React, Privy, Ethereum/Polygon, Solidity |
+| Guide                                                        | Description                                              | Tech Stack                               |
+| ------------------------------------------------------------ | -------------------------------------------------------- | ---------------------------------------- |
+| [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | Build a complete Nuxt 3 app with database and deployment | Nuxt 3, Modern CSS, Vite+, PostgreSQL    |
+| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md)  | Build a RESTful API with FastAPI and PostgreSQL          | Python, FastAPI, PostgreSQL, SQLAlchemy  |
+| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md)       | Build a decentralized app with wallet auth and NFTs      | React, Privy, Ethereum/Polygon, Solidity |
 
 **Coming Soon:**
+
 - React + Next.js Full-Stack
 - Astro Content Site
 - SvelteKit Application
@@ -31,28 +32,28 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 
 ### Setup & Installation
 
-| Guide | Time | Description |
-|-------|------|-------------|
-| [CLI Guide](cli-guide.md) | 2 min | Create projects instantly with the CLI (recommended) |
-| [Getting Started](getting-started.md) | 5 min | Initial setup with Quick Start or Custom config |
-| [Quick Start Guide](quick-start-guide.md) | 2 min | Use presets for instant configuration |
-| [Configuration](configuration.md) | 10 min | Detailed configuration options |
+| Guide                                     | Time   | Description                                          |
+| ----------------------------------------- | ------ | ---------------------------------------------------- |
+| [CLI Guide](cli-guide.md)                 | 2 min  | Create projects instantly with the CLI (recommended) |
+| [Getting Started](getting-started.md)     | 5 min  | Initial setup with Quick Start or Custom config      |
+| [Quick Start Guide](quick-start-guide.md) | 2 min  | Use presets for instant configuration                |
+| [Configuration](configuration.md)         | 10 min | Detailed configuration options                       |
 
 ### For Beginners
 
-| Guide | Time | Description |
-|-------|------|-------------|
-| [Beginner's Guide](beginner-guide.md) | 30 min | Complete introduction with no coding experience required |
-| [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | 60 min | Build a real application step-by-step |
-| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md) | 75 min | Build a Python API from scratch |
-| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md) | 75 min | Build your first Web3 application |
+| Guide                                                        | Time   | Description                                              |
+| ------------------------------------------------------------ | ------ | -------------------------------------------------------- |
+| [Beginner's Guide](beginner-guide.md)                        | 30 min | Complete introduction with no coding experience required |
+| [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md) | 60 min | Build a real application step-by-step                    |
+| [Python FastAPI Walkthrough](python-fastapi-walkthrough.md)  | 75 min | Build a Python API from scratch                          |
+| [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md)       | 75 min | Build your first Web3 application                        |
 
 ### Reference
 
-| Guide | Description |
-|-------|-------------|
-| [Troubleshooting](troubleshooting.md) | Common issues and solutions |
-| [Configuration](configuration.md) | All configuration options explained |
+| Guide                                 | Description                         |
+| ------------------------------------- | ----------------------------------- |
+| [Troubleshooting](troubleshooting.md) | Common issues and solutions         |
+| [Configuration](configuration.md)     | All configuration options explained |
 
 ---
 
@@ -61,25 +62,31 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 ### "I want to build a website"
 
 **Static/Marketing Site:**
+
 1. [Quick Start Guide](quick-start-guide.md) → Select "Static Website"
 2. Build your site
 
 **Blog/Content Site:**
+
 1. [Quick Start Guide](quick-start-guide.md) → Select "Astro Site"
 2. Build your content
 
 ### "I want to build a web application"
 
 **Simple App (SPA):**
+
 1. [Quick Start Guide](quick-start-guide.md) → Select "React App" or "Vue/Nuxt"
 2. Build your app
 
 **Full-Stack with Database:**
-1. Frontend + Backend: [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md)
+
+1. Frontend + Backend:
+   [Nuxt Full-Stack Walkthrough](nuxt-fullstack-walkthrough.md)
 2. API-first: [Python FastAPI Walkthrough](python-fastapi-walkthrough.md)
 3. Follow step-by-step
 
 **Web3/Blockchain:**
+
 1. [Web3 dApp with Privy](web3-dapp-privy-walkthrough.md)
 2. Deploy your first dApp
 
@@ -112,12 +119,12 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 
 ### Common Tasks
 
-| Task | Command | Guide |
-|------|---------|-------|
-| Start new project | `/quick-start` | [Quick Start](quick-start-guide.md) |
-| Fix an issue | Read error, check guide | [Troubleshooting](troubleshooting.md) |
-| Add a feature | Describe it, run `/task-planner` | [Beginner's Guide](beginner-guide.md#part-6-common-tasks) |
-| Deploy to production | `npm run deploy` | [Nuxt Walkthrough](nuxt-fullstack-walkthrough.md#step-11-deploy-to-production-10-minutes) |
+| Task                 | Command                          | Guide                                                                                     |
+| -------------------- | -------------------------------- | ----------------------------------------------------------------------------------------- |
+| Start new project    | `/quick-start`                   | [Quick Start](quick-start-guide.md)                                                       |
+| Fix an issue         | Read error, check guide          | [Troubleshooting](troubleshooting.md)                                                     |
+| Add a feature        | Describe it, run `/task-planner` | [Beginner's Guide](beginner-guide.md#part-6-common-tasks)                                 |
+| Deploy to production | `npm run deploy`                 | [Nuxt Walkthrough](nuxt-fullstack-walkthrough.md#step-11-deploy-to-production-10-minutes) |
 
 ---
 
@@ -126,6 +133,7 @@ Comprehensive step-by-step guides for building with Claude Code Sidekick.
 All guides follow a consistent structure:
 
 ### Complete Walkthrough Guides
+
 - **Goal**: What you'll build
 - **Time**: How long it takes
 - **Prerequisites**: What you need
@@ -135,6 +143,7 @@ All guides follow a consistent structure:
 - **Next steps**: What to do after
 
 ### Reference Guides
+
 - **Overview**: What it covers
 - **Quick reference**: Fast lookup
 - **Detailed explanations**: Deep dives
@@ -150,14 +159,17 @@ We welcome contributions! Here's how to add a new guide:
 ### 1. Choose Guide Type
 
 **Walkthrough Guide** - Step-by-step tutorial
+
 - Use for: Building something specific
 - Example: "Building a Blog with Astro"
 
 **Reference Guide** - Detailed documentation
+
 - Use for: Explaining concepts or options
 - Example: "MCP Server Configuration"
 
 **Troubleshooting Guide** - Problem solving
+
 - Use for: Common errors and solutions
 - Example: "Database Connection Issues"
 
@@ -187,11 +199,10 @@ We welcome contributions! Here's how to add a new guide:
 
 Explanation with code:
 
-\`\`\`bash
-command example
-\`\`\`
+\`\`\`bash command example \`\`\`
 
 **What this does:**
+
 - Explanation
 
 ### 1.2 Next Substep
@@ -219,6 +230,7 @@ command example
 ### 3. Guidelines
 
 **Writing Style:**
+
 - Clear and conversational
 - Short sentences
 - Active voice
@@ -226,24 +238,28 @@ command example
 - Include examples
 
 **Code Samples:**
+
 - Always include context
 - Add comments
 - Show expected output
 - Provide full examples
 
 **Structure:**
+
 - Use numbered steps for sequences
 - Use bullets for lists
 - Use headers for organization
 - Include visual breaks (----)
 
 **For Beginners:**
+
 - Explain every command
 - Don't assume knowledge
 - Provide context
 - Show expected results
 
 **For Experts:**
+
 - Quick reference first
 - Details available but optional
 - Link to deep dives
@@ -280,6 +296,7 @@ When updating an existing guide:
 ### Regular Review
 
 Guides are reviewed:
+
 - When major versions release
 - When features change
 - When users report issues
@@ -292,7 +309,8 @@ Guides are reviewed:
 **Can't find what you're looking for?**
 
 1. Check [Troubleshooting](troubleshooting.md)
-2. Search [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
+2. Search
+   [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
 3. Ask Claude Code directly
 4. Open a new issue
 

@@ -1,6 +1,7 @@
 # Getting Started
 
-Get your project running in 2 minutes with Quick Start presets, or take full control with custom configuration.
+Get your project running in 2 minutes with Quick Start presets, or take full
+control with custom configuration.
 
 ## Choose Your Path
 
@@ -10,7 +11,8 @@ Get your project running in 2 minutes with Quick Start presets, or take full con
 
 [Complete Quick Start Guide →](quick-start-guide.md)
 
-Select a preset that matches your project type and everything is configured automatically.
+Select a preset that matches your project type and everything is configured
+automatically.
 
 ### ⚙️ Custom Configuration
 
@@ -53,7 +55,7 @@ Open `PROJECT_STARTER.md` and choose your tech stack:
 ### Project Preset
 
 - [ ] **Static Website** - HTML, Modern CSS, Vanilla JS
-- [x] **Astro Site** - Astro 5, Modern CSS, Islands  ← Put X here
+- [x] **Astro Site** - Astro 5, Modern CSS, Islands ← Put X here
 - [ ] **React App** - React, TypeScript, Vite
 - [ ] **Next.js App** - Next.js 15, App Router
 - [ ] **Vue/Nuxt** - Vue 3, Nuxt, Composition API
@@ -69,6 +71,7 @@ Open `PROJECT_STARTER.md` and choose your tech stack:
 ```
 
 **Done!** Your project is configured with:
+
 - Code quality rules for your tech stack
 - MCP servers (database, cloud, analytics)
 - Development hooks (git, formatting, testing)
@@ -83,12 +86,15 @@ In `PROJECT_STARTER.md`, fill out:
 ## Project Information
 
 ### Project Name
+
 My Awesome App
 
 ### Project Description
+
 A web application that helps users manage their tasks efficiently
 
 ### Primary Goal
+
 Create a simple, beautiful task manager that works on all devices
 ```
 
@@ -130,10 +136,10 @@ Same as Quick Start Step 1 above.
 ```markdown
 ### Master Toggles
 
-- **MCP Servers**: `TRUE`         # External services
-- **Development Hooks**: `TRUE`   # Automation
-- **Code Quality Rules**: `TRUE`  # Linting/standards
-- **AI Agents**: `TRUE`           # Specialized agents
+- **MCP Servers**: `TRUE` # External services
+- **Development Hooks**: `TRUE` # Automation
+- **Code Quality Rules**: `TRUE` # Linting/standards
+- **AI Agents**: `TRUE` # Specialized agents
 ```
 
 **Set to `FALSE` to disable entire categories.**
@@ -144,15 +150,16 @@ Same as Quick Start Step 1 above.
 ## Code Rules Configuration
 
 ### Language Standards
+
 - **Modern JavaScript**: `TRUE`
 - **TypeScript**: `FALSE`
 - **Node.js**: `FALSE`
 - **Python**: `FALSE`
 
 ### Framework Standards
+
 - **Astro**: `TRUE`
-- **React**: `FALSE`
-(... configure what you need ...)
+- **React**: `FALSE` (... configure what you need ...)
 ```
 
 See [Configuration Guide](configuration.md) for all options.
@@ -163,13 +170,14 @@ See [Configuration Guide](configuration.md) for all options.
 ## MCP Configuration
 
 ### Database & Storage
+
 - **Neon Database**: `TRUE`
 - **Supabase**: `FALSE`
 
 ### Cloud & Infrastructure
+
 - **Cloudflare**: `TRUE`
-- **Vercel**: `FALSE`
-(... select what you need ...)
+- **Vercel**: `FALSE` (... select what you need ...)
 ```
 
 ### Step 6: Apply Configuration

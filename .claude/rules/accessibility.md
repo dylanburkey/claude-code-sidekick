@@ -1,20 +1,26 @@
 # Accessibility Rules
 
 ## Purpose
-Ensure all code meets WCAG 2.1 AA standards and provides an inclusive user experience.
+
+Ensure all code meets WCAG 2.1 AA standards and provides an inclusive user
+experience.
 
 ## Core Principles
 
 ### 1. Perceivable
+
 Information must be presentable in ways all users can perceive.
 
 ### 2. Operable
+
 Interface components must be operable by all users.
 
 ### 3. Understandable
+
 Information and UI operation must be understandable.
 
 ### 4. Robust
+
 Content must be robust enough for diverse user agents.
 
 ---
@@ -22,6 +28,7 @@ Content must be robust enough for diverse user agents.
 ## HTML Accessibility
 
 ### Semantic Structure
+
 ```html
 <!-- ✓ Correct - meaningful landmarks -->
 <header role="banner">
@@ -47,36 +54,35 @@ Content must be robust enough for diverse user agents.
 ```
 
 ### Headings
+
 ```html
 <!-- ✓ Correct - logical hierarchy -->
 <h1>Main Page Title</h1>
-  <h2>Section Title</h2>
-    <h3>Subsection Title</h3>
-  <h2>Another Section</h2>
+<h2>Section Title</h2>
+<h3>Subsection Title</h3>
+<h2>Another Section</h2>
 
 <!-- ✗ Avoid - skipped levels -->
 <h1>Title</h1>
-  <h3>Subsection</h3>  <!-- missing h2 -->
+<h3>Subsection</h3>
+<!-- missing h2 -->
 ```
 
 ### Images
+
 ```html
 <!-- ✓ Informative image -->
-<img 
-  src="product.jpg" 
+<img
+  src="product.jpg"
   alt="Red industrial safety helmet with adjustable strap"
->
+/>
 
 <!-- ✓ Decorative image -->
-<img src="decorative-line.svg" alt="" role="presentation">
+<img src="decorative-line.svg" alt="" role="presentation" />
 
 <!-- ✓ Complex image with extended description -->
 <figure>
-  <img 
-    src="chart.png" 
-    alt="Sales growth chart"
-    aria-describedby="chart-desc"
-  >
+  <img src="chart.png" alt="Sales growth chart" aria-describedby="chart-desc" />
   <figcaption id="chart-desc">
     Chart showing 25% sales increase from Q1 to Q4 2024...
   </figcaption>
@@ -84,42 +90,44 @@ Content must be robust enough for diverse user agents.
 ```
 
 ### Forms
+
 ```html
 <!-- ✓ Correct - associated labels -->
 <form>
   <div class="form-field">
     <label for="email">Email Address</label>
-    <input 
-      type="email" 
-      id="email" 
+    <input
+      type="email"
+      id="email"
       name="email"
       required
       aria-describedby="email-hint"
-    >
+    />
     <p id="email-hint" class="hint">We'll never share your email.</p>
   </div>
-  
+
   <div class="form-field">
     <label for="password">Password</label>
-    <input 
-      type="password" 
+    <input
+      type="password"
       id="password"
       required
       aria-describedby="password-requirements"
-    >
+    />
     <p id="password-requirements" class="hint">
       Minimum 8 characters with one number.
     </p>
   </div>
-  
+
   <button type="submit">Create Account</button>
 </form>
 
 <!-- ✗ Avoid - missing labels -->
-<input type="email" placeholder="Email">
+<input type="email" placeholder="Email" />
 ```
 
 ### Links and Buttons
+
 ```html
 <!-- ✓ Descriptive link text -->
 <a href="/products/safety-helmets">
@@ -135,14 +143,19 @@ Content must be robust enough for diverse user agents.
 <a href="/products">Click here</a>
 
 <!-- ✗ Avoid - empty button -->
-<button><svg><!-- icon --></svg></button>
+<button>
+  <svg><!-- icon --></svg>
+</button>
 ```
 
 ### Tables
+
 ```html
 <!-- ✓ Correct - accessible table -->
 <table>
-  <caption>Product Specifications</caption>
+  <caption>
+    Product Specifications
+  </caption>
   <thead>
     <tr>
       <th scope="col">Feature</th>
@@ -167,6 +180,7 @@ Content must be robust enough for diverse user agents.
 ## CSS Accessibility
 
 ### Focus Visibility
+
 ```css
 /* ✓ Visible focus indicator */
 :focus {
@@ -182,16 +196,17 @@ Content must be robust enough for diverse user agents.
 
 /* ✗ Never remove focus without replacement */
 :focus {
-  outline: none;  /* NEVER do this without alternative */
+  outline: none; /* NEVER do this without alternative */
 }
 ```
 
 ### Color Contrast
+
 ```css
 /* ✓ Sufficient contrast (4.5:1 for normal text) */
 .text-content {
-  color: #1a1a2e;          /* Dark text */
-  background: #ffffff;      /* Light background */
+  color: #1a1a2e; /* Dark text */
+  background: #ffffff; /* Light background */
   /* Contrast ratio: 14.8:1 ✓ */
 }
 
@@ -205,6 +220,7 @@ Content must be robust enough for diverse user agents.
 ```
 
 ### Motion and Animation
+
 ```css
 /* ✓ Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
@@ -224,24 +240,26 @@ Content must be robust enough for diverse user agents.
 ```
 
 ### Text Sizing
+
 ```css
 /* ✓ Relative units for text */
 body {
-  font-size: 1rem;      /* 16px base */
+  font-size: 1rem; /* 16px base */
   line-height: 1.5;
 }
 
 .small-text {
-  font-size: 0.875rem;  /* 14px minimum */
+  font-size: 0.875rem; /* 14px minimum */
 }
 
 /* ✗ Avoid fixed pixel sizes for body text */
 body {
-  font-size: 14px;      /* Can't scale with user preferences */
+  font-size: 14px; /* Can't scale with user preferences */
 }
 ```
 
 ### Touch Targets
+
 ```css
 /* ✓ Minimum 44x44px touch targets */
 .button,
@@ -262,13 +280,14 @@ body {
 ## JavaScript Accessibility
 
 ### Keyboard Navigation
+
 ```javascript
 // ✓ Support keyboard navigation
 class Dropdown extends HTMLElement {
   connectedCallback() {
     this.addEventListener('keydown', this.handleKeydown.bind(this));
   }
-  
+
   handleKeydown(event) {
     switch (event.key) {
       case 'Escape':
@@ -292,6 +311,7 @@ class Dropdown extends HTMLElement {
 ```
 
 ### Focus Management
+
 ```javascript
 // ✓ Manage focus in modals
 class Modal extends HTMLElement {
@@ -301,12 +321,12 @@ class Modal extends HTMLElement {
     this.querySelector('[autofocus]')?.focus();
     this.trapFocus();
   }
-  
+
   close() {
     this.removeAttribute('open');
     this.previouslyFocused?.focus();
   }
-  
+
   trapFocus() {
     const focusable = this.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -317,6 +337,7 @@ class Modal extends HTMLElement {
 ```
 
 ### ARIA Live Regions
+
 ```javascript
 // ✓ Announce dynamic content
 const announcer = document.getElementById('announcer');
@@ -331,6 +352,7 @@ announce('Item added to cart');
 ```
 
 ### Screen Reader Only Content
+
 ```css
 /* Utility for screen reader only content */
 .sr-only {
@@ -359,6 +381,7 @@ announce('Item added to cart');
 ## Testing Requirements
 
 ### Automated Testing
+
 - Use jest-axe for component tests
 - Run axe-core in integration tests
 - Include in CI/CD pipeline
@@ -376,6 +399,7 @@ test('component is accessible', async () => {
 ```
 
 ### Manual Testing Checklist
+
 - [ ] Keyboard-only navigation works
 - [ ] Screen reader announces content correctly
 - [ ] Focus order is logical
@@ -386,6 +410,7 @@ test('component is accessible', async () => {
 ---
 
 ## Enforcement
+
 - All new components must pass accessibility tests
 - Review agent checks for WCAG compliance
 - Pre-commit hook runs accessibility linting

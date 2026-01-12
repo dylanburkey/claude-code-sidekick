@@ -1,32 +1,39 @@
 # Documentation Agents
 
-> Agents that create and maintain comprehensive, up-to-date project documentation.
+> Agents that create and maintain comprehensive, up-to-date project
+> documentation.
 
 ## Overview
 
-Documentation agents automate the creation and maintenance of documentation across your project. From API docs to inline comments, these agents ensure your code is always well-documented and easy to understand.
+Documentation agents automate the creation and maintenance of documentation
+across your project. From API docs to inline comments, these agents ensure your
+code is always well-documented and easy to understand.
 
 ## Available Agents
 
 ### API Documentation
+
 - **OpenAPI Generator**: Generate OpenAPI/Swagger specs from code
 - **API Reference Builder**: Create comprehensive API documentation
 - **Endpoint Documenter**: Document REST/GraphQL endpoints
 - **SDK Documentation**: Generate client SDK documentation
 
 ### Code Documentation
+
 - **JSDoc Generator**: Create JSDoc comments for functions/classes
 - **Type Documentation**: Document TypeScript types and interfaces
 - **Inline Comment Generator**: Add explanatory comments to code
 - **Architecture Documenter**: Document system architecture
 
 ### Project Documentation
+
 - **README Generator**: Create comprehensive README files
 - **Changelog Maintainer**: Automated changelog updates
 - **Contributing Guide**: Generate contribution guidelines
 - **Setup Guide**: Create installation and setup instructions
 
 ### User Documentation
+
 - **User Guide Generator**: Create end-user documentation
 - **Tutorial Builder**: Generate step-by-step tutorials
 - **FAQ Generator**: Build FAQ sections from common questions
@@ -38,6 +45,7 @@ Documentation agents automate the creation and maintenance of documentation acro
 
 ```markdown
 Generate OpenAPI documentation for all API endpoints in src/api/ including:
+
 - Request/response schemas
 - Authentication requirements
 - Error responses
@@ -48,6 +56,7 @@ Generate OpenAPI documentation for all API endpoints in src/api/ including:
 
 ```markdown
 Generate a comprehensive README for this project including:
+
 - Project description and features
 - Installation instructions
 - Quick start guide
@@ -60,6 +69,7 @@ Generate a comprehensive README for this project including:
 
 ```markdown
 Add JSDoc comments to all exported functions in src/utils/ including:
+
 - Function description
 - Parameter types and descriptions
 - Return value documentation
@@ -100,27 +110,35 @@ function calculateTotal(basePrice, taxRate, discounts = []) {
 Brief description (1-2 sentences)
 
 ## Overview
+
 Detailed explanation of purpose and functionality
 
 ## Installation
+
 How to install/import
 
 ## Usage
+
 Basic usage examples
 
 ## API Reference
+
 Detailed API documentation
 
 ## Examples
+
 Real-world usage examples
 
 ## Configuration
+
 Available options and settings
 
 ## Troubleshooting
+
 Common issues and solutions
 
 ## Related
+
 Links to related documentation
 ```
 
@@ -178,6 +196,7 @@ config:
 ### Example 1: API Endpoint Documentation
 
 **Prompt:**
+
 ```
 Document the POST /api/users endpoint including:
 - Request body schema
@@ -189,12 +208,14 @@ Document the POST /api/users endpoint including:
 ```
 
 **Generated Output:**
-```markdown
+
+````markdown
 ## POST /api/users
 
 Create a new user account.
 
 ### Authentication
+
 Requires admin API key in `Authorization` header.
 
 ### Request Body
@@ -206,16 +227,18 @@ Requires admin API key in `Authorization` header.
   "role": "user"
 }
 ```
+````
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| email | string | Yes | Valid email address |
-| name | string | Yes | User's full name (2-100 chars) |
-| role | string | No | User role (default: "user") |
+| Field | Type   | Required | Description                    |
+| ----- | ------ | -------- | ------------------------------ |
+| email | string | Yes      | Valid email address            |
+| name  | string | Yes      | User's full name (2-100 chars) |
+| role  | string | No       | User role (default: "user")    |
 
 ### Response
 
 **Success (201):**
+
 ```json
 {
   "id": "user_123",
@@ -227,6 +250,7 @@ Requires admin API key in `Authorization` header.
 ```
 
 **Error (400):**
+
 ```json
 {
   "error": "Invalid email address",
@@ -237,21 +261,23 @@ Requires admin API key in `Authorization` header.
 ### Examples
 
 **JavaScript:**
+
 ```javascript
 const response = await fetch('https://api.example.com/users', {
   method: 'POST',
   headers: {
-    'Authorization': 'Bearer YOUR_API_KEY',
-    'Content-Type': 'application/json'
+    Authorization: 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json',
   },
   body: JSON.stringify({
     email: 'user@example.com',
-    name: 'John Doe'
-  })
+    name: 'John Doe',
+  }),
 });
 ```
 
 **cURL:**
+
 ```bash
 curl -X POST https://api.example.com/users \
   -H "Authorization: Bearer YOUR_API_KEY" \
@@ -260,32 +286,40 @@ curl -X POST https://api.example.com/users \
 ```
 
 ### Rate Limiting
+
 100 requests per hour per API key
+
 ```
 
 ### Example 2: Component Documentation
 
 **Prompt:**
 ```
+
 Generate documentation for the Button component including:
+
 - Component props
 - Usage examples
 - Accessibility features
 - Styling options
 - Related components
+
 ```
 
 ### Example 3: Architecture Documentation
 
 **Prompt:**
 ```
+
 Document the application architecture including:
+
 - System overview
 - Component relationships
 - Data flow
 - External dependencies
 - Deployment architecture
-```
+
+````
 
 ## Integration with MCP
 
@@ -318,23 +352,28 @@ async function generateDatabaseDocs() {
     await writeFile(`docs/database/${table.name}.md`, docs);
   }
 }
-```
+````
 
 ## Documentation Types
 
 ### API Documentation
+
 Complete reference for API endpoints, parameters, and responses.
 
 ### Code Documentation
+
 Inline comments and docstrings explaining code functionality.
 
 ### User Documentation
+
 End-user guides, tutorials, and help articles.
 
 ### Architecture Documentation
+
 System design, component relationships, and technical decisions.
 
 ### Process Documentation
+
 Development workflows, deployment procedures, and best practices.
 
 ## Automated Documentation
@@ -381,8 +420,8 @@ triggers:
   - file-save
 
 files:
-  - "src/**/*.ts"
-  - "src/**/*.tsx"
+  - 'src/**/*.ts'
+  - 'src/**/*.tsx'
 
 actions:
   - name: Update API Docs
@@ -395,18 +434,21 @@ actions:
 ## Documentation Tools
 
 ### Static Site Generators
+
 - **VitePress**: Modern documentation sites
 - **Docusaurus**: React-based documentation
 - **MkDocs**: Python documentation generator
 - **Sphinx**: Comprehensive documentation tool
 
 ### API Documentation
+
 - **Swagger UI**: Interactive API documentation
 - **ReDoc**: OpenAPI documentation viewer
 - **GraphQL Playground**: GraphQL API explorer
 - **Postman**: API documentation and testing
 
 ### Code Documentation
+
 - **JSDoc**: JavaScript documentation
 - **TypeDoc**: TypeScript documentation
 - **Storybook**: Component documentation
@@ -421,48 +463,57 @@ actions:
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/),
-and this project adheres to [Semantic Versioning](https://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
+project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
 ### Added
+
 - New feature X
 - New API endpoint Y
 
 ### Changed
+
 - Updated dependency Z
 
 ### Fixed
+
 - Bug in component A
 
 ## [1.2.0] - 2024-01-15
 
 ### Added
+
 - Feature B with improved performance
 - Support for new configuration option
 
 ### Deprecated
+
 - Old API endpoint (will be removed in 2.0.0)
 ```
 
 ### Migration Guides
 
-```markdown
+````markdown
 # Migration Guide: v1.x to v2.0
 
 ## Breaking Changes
 
 ### API Changes
+
 - `oldMethod()` renamed to `newMethod()`
 - `config.oldOption` replaced with `config.newOption`
 
 ### Before
+
 ```javascript
 api.oldMethod({ oldOption: true });
 ```
+````
 
 ### After
+
 ```javascript
 api.newMethod({ newOption: true });
 ```
@@ -474,6 +525,7 @@ api.newMethod({ newOption: true });
 3. Update configuration
 4. Run tests
 5. Deploy
+
 ```
 
 ## Troubleshooting
@@ -513,3 +565,4 @@ To add a new documentation agent:
 ---
 
 *Documentation agents ensure your code is accessible, understandable, and maintainable through comprehensive automated documentation.*
+```

@@ -1,6 +1,7 @@
 # CI/CD Pipeline Documentation
 
-This document describes the continuous integration and deployment pipeline for the Claude Code Starter Files project.
+This document describes the continuous integration and deployment pipeline for
+the Claude Code Starter Files project.
 
 ## Overview
 
@@ -63,21 +64,22 @@ chmod +x .husky/pre-push
 
 **Jobs:**
 
-| Job | Description |
-|-----|-------------|
-| `lint` | ESLint + JSDoc + Prettier validation |
-| `validate-configs` | YAML and JSON file validation |
-| `validate-docs` | Markdown linting and link checking |
-| `test-cli` | CLI tests and execution verification |
-| `validate-agents` | Agent library structure validation |
-| `security` | npm audit for vulnerabilities |
-| `ci-summary` | Aggregates results |
+| Job                | Description                          |
+| ------------------ | ------------------------------------ |
+| `lint`             | ESLint + JSDoc + Prettier validation |
+| `validate-configs` | YAML and JSON file validation        |
+| `validate-docs`    | Markdown linting and link checking   |
+| `test-cli`         | CLI tests and execution verification |
+| `validate-agents`  | Agent library structure validation   |
+| `security`         | npm audit for vulnerabilities        |
+| `ci-summary`       | Aggregates results                   |
 
 ### 2. Pre-commit Validation (`pre-commit.yml`)
 
 **Triggers:** Push to non-main branches, PRs
 
 **Quality Gates:**
+
 1. ✅ No JavaScript syntax errors
 2. ✅ ESLint passes
 3. ✅ JSDoc comments present
@@ -92,10 +94,12 @@ chmod +x .husky/pre-push
 **Required Input:** Type "DEPLOY" to confirm
 
 **Options:**
+
 - Create GitHub release (default: true)
 - Version bump type: patch, minor, major
 
 **Jobs:**
+
 1. Validate deployment request
 2. Run all validation on dev branch
 3. Merge dev into main (no-ff)
@@ -106,6 +110,7 @@ chmod +x .husky/pre-push
 **Triggers:** Manual (workflow_dispatch)
 
 **Options:**
+
 - Merge strategy: merge, squash, or rebase
 - Create GitHub release (optional)
 - Version bump type: patch, minor, major
@@ -114,15 +119,15 @@ chmod +x .husky/pre-push
 
 ## NPM Scripts Reference
 
-| Script | Description |
-|--------|-------------|
-| `pnpm lint` | Run ESLint on CLI source files |
-| `pnpm lint:fix` | Run ESLint with auto-fix |
-| `pnpm lint:jsdoc` | Check JSDoc comments specifically |
-| `pnpm format` | Format all files with Prettier |
-| `pnpm format:check` | Check formatting without changes |
-| `pnpm validate` | Run all validation checks |
-| `pnpm test` | Run CLI tests |
+| Script              | Description                       |
+| ------------------- | --------------------------------- |
+| `pnpm lint`         | Run ESLint on CLI source files    |
+| `pnpm lint:fix`     | Run ESLint with auto-fix          |
+| `pnpm lint:jsdoc`   | Check JSDoc comments specifically |
+| `pnpm format`       | Format all files with Prettier    |
+| `pnpm format:check` | Check formatting without changes  |
+| `pnpm validate`     | Run all validation checks         |
+| `pnpm test`         | Run CLI tests                     |
 
 ---
 
@@ -189,6 +194,7 @@ main (production)
 ### YAML Configuration Validation
 
 All `.yml` files in `.claude/` are validated for:
+
 - Valid YAML syntax
 - Proper indentation
 - No duplicate keys
@@ -196,6 +202,7 @@ All `.yml` files in `.claude/` are validated for:
 ### Agent Library Validation
 
 The CI verifies:
+
 - Required directories exist (`agent-library`, `.claude/agents`, etc.)
 - Required files exist (`CLAUDE.md`, `README.md`, etc.)
 - Agent files contain proper section headers
@@ -224,8 +231,9 @@ pnpm lint:fix
 ### JSDoc Missing
 
 The linter requires JSDoc for:
+
 - Function declarations
-- Method definitions  
+- Method definitions
 - Class declarations
 - Exported functions
 
@@ -249,6 +257,7 @@ chmod +x .husky/pre-push
 ### Merge Conflicts
 
 If the deploy workflow fails due to conflicts:
+
 1. Locally checkout `main`
 2. Run `git merge dev`
 3. Resolve conflicts
@@ -293,6 +302,7 @@ package.json              # Root package with scripts
 5. Click "Run workflow"
 
 The workflow will:
+
 - Validate all code
 - Merge dev → main
 - Bump version in `cli/package.json`

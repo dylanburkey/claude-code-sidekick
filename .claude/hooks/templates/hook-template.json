@@ -32,25 +32,13 @@
     "maxRetries": 3
   },
   "files": {
-    "include": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "tests/**/*"
-    ],
-    "exclude": [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/*.test.ts",
-      "**/*.spec.ts"
-    ],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*"],
+    "exclude": ["**/node_modules/**", "**/dist/**", "**/*.test.ts", "**/*.spec.ts"],
     "extensions": [".ts", ".tsx", ".js", ".jsx"]
   },
   "validation": {
     "pattern": "^regex pattern$",
-    "examples": [
-      "Example 1",
-      "Example 2"
-    ],
+    "examples": ["Example 1", "Example 2"],
     "errorMessage": "Error message to show on validation failure",
     "maxLength": 100,
     "minLength": 10

@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       merge_strategy:
-        description: 'Merge strategy'
+        description: "Merge strategy"
         required: true
         type: choice
         options:
@@ -16,12 +16,12 @@ on:
           - rebase
         default: merge
       create_release:
-        description: 'Create a GitHub release'
+        description: "Create a GitHub release"
         required: false
         type: boolean
         default: false
       version_bump:
-        description: 'Version bump type (if creating release)'
+        description: "Version bump type (if creating release)"
         required: false
         type: choice
         options:
@@ -31,8 +31,8 @@ on:
         default: patch
 
 env:
-  NODE_VERSION: '20'
-  PNPM_VERSION: '9'
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
 
 jobs:
   # Job 1: Validate branches
@@ -42,7 +42,7 @@ jobs:
     outputs:
       can_merge: ${{ steps.check.outputs.can_merge }}
       commits_ahead: ${{ steps.check.outputs.commits_ahead }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -53,22 +53,22 @@ jobs:
         id: check
         run: |
           git fetch origin main dev
-          
+
           # Check if dev is ahead of main
           COMMITS_AHEAD=$(git rev-list --count origin/main..origin/dev)
           COMMITS_BEHIND=$(git rev-list --count origin/dev..origin/main)
-          
+
           echo "Dev is $COMMITS_AHEAD commits ahead of main"
           echo "Dev is $COMMITS_BEHIND commits behind main"
-          
+
           echo "commits_ahead=$COMMITS_AHEAD" >> $GITHUB_OUTPUT
-          
+
           if [ "$COMMITS_AHEAD" -eq 0 ]; then
             echo "❌ Dev branch has no new commits to merge"
             echo "can_merge=false" >> $GITHUB_OUTPUT
             exit 1
           fi
-          
+
           echo "can_merge=true" >> $GITHUB_OUTPUT
           echo "✅ Dev branch has $COMMITS_AHEAD commits ready to merge"
 
@@ -77,7 +77,7 @@ jobs:
     name: Quality Gates
     runs-on: ubuntu-latest
     needs: validate
-    
+
     steps:
       - name: Checkout dev branch
         uses: actions/checkout@v4
@@ -93,8 +93,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install dependencies
         run: |
@@ -117,7 +117,7 @@ jobs:
     needs: quality-check
     outputs:
       merge_sha: ${{ steps.merge.outputs.merge_sha }}
-    
+
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
@@ -138,7 +138,7 @@ jobs:
         id: merge
         run: |
           STRATEGY="${{ github.event.inputs.merge_strategy }}"
-          
+
           case $STRATEGY in
             "merge")
               git merge dev --no-ff -m "Merge dev into main
@@ -159,7 +159,7 @@ jobs:
               git rebase dev
               ;;
           esac
-          
+
           MERGE_SHA=$(git rev-parse HEAD)
           echo "merge_sha=$MERGE_SHA" >> $GITHUB_OUTPUT
           echo "✅ Merge completed with SHA: $MERGE_SHA"
@@ -173,7 +173,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: merge
     if: ${{ github.event.inputs.create_release == 'true' }}
-    
+
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -191,9 +191,9 @@ jobs:
         run: |
           CURRENT_VERSION=$(node -p "require('./cli/package.json').version")
           echo "Current version: $CURRENT_VERSION"
-          
+
           IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-          
+
           case "${{ github.event.inputs.version_bump }}" in
             "major")
               MAJOR=$((MAJOR + 1))
@@ -208,7 +208,7 @@ jobs:
               PATCH=$((PATCH + 1))
               ;;
           esac
-          
+
           NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
           echo "New version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -217,15 +217,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           cd cli
           npm version ${{ steps.version.outputs.new_version }} --no-git-tag-version
           cd ..
-          
+
           git add cli/package.json
           git commit -m "chore: bump version to ${{ steps.version.outputs.new_version }}"
           git push origin main
-          
+
           git tag -a "v${{ steps.version.outputs.new_version }}" -m "Release v${{ steps.version.outputs.new_version }}"
           git push origin "v${{ steps.version.outputs.new_version }}"
 
@@ -233,13 +233,13 @@ jobs:
         id: changelog
         run: |
           LAST_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
-          
+
           if [ -n "$LAST_TAG" ]; then
             COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
           else
             COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
           fi
-          
+
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           echo "$COMMITS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -251,9 +251,9 @@ jobs:
           name: Release v${{ steps.version.outputs.new_version }}
           body: |
             ## What's Changed
-            
+
             ${{ steps.changelog.outputs.CHANGELOG }}
-            
+
             ---
             **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ needs.merge.outputs.merge_sha }}...v${{ steps.version.outputs.new_version }}
           draft: false
@@ -267,7 +267,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [merge, create-release]
     if: always()
-    
+
     steps:
       - name: Print summary
         run: |

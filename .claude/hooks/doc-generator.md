@@ -1,10 +1,13 @@
 # Documentation Generator Hook
 
 ## Trigger
+
 This hook activates when any file is saved in the project.
 
 ## Purpose
+
 Automatically generate and maintain project documentation by:
+
 1. Creating the docs directory structure if it doesn't exist
 2. Generating documentation based on file type and content
 3. Organizing documentation in a clean, navigable structure
@@ -46,7 +49,7 @@ docs/
 
 ```yaml
 check:
-  path: "docs/"
+  path: 'docs/'
   if_missing: create_structure
   if_exists: verify_structure
 ```
@@ -73,6 +76,7 @@ mkdir -p docs/assets/images
 If missing, create these index files:
 
 #### docs/index.md
+
 ```markdown
 # Project Documentation
 
@@ -91,15 +95,16 @@ Welcome to the project documentation.
 
 ## Documentation Structure
 
-| Section | Description |
-|---------|-------------|
-| [API](api/) | Code documentation, components, utilities |
-| [Guides](guides/) | How-to guides and tutorials |
-| [Architecture](architecture/) | System design and decisions |
-| [Changelog](changelog/) | Version history and changes |
+| Section                       | Description                               |
+| ----------------------------- | ----------------------------------------- |
+| [API](api/)                   | Code documentation, components, utilities |
+| [Guides](guides/)             | How-to guides and tutorials               |
+| [Architecture](architecture/) | System design and decisions               |
+| [Changelog](changelog/)       | Version history and changes               |
 ```
 
 #### docs/api/index.md
+
 ```markdown
 # API Reference
 
@@ -117,6 +122,7 @@ Code documentation for all exported modules.
 ```
 
 #### docs/guides/index.md
+
 ```markdown
 # Guides
 
@@ -135,6 +141,7 @@ Step-by-step guides for common tasks.
 ```
 
 #### docs/architecture/index.md
+
 ```markdown
 # Architecture
 
@@ -158,17 +165,19 @@ System architecture and design documentation.
 
 ## File Type Handlers
 
-### JavaScript/TypeScript Files (*.js, *.ts, *.jsx, *.tsx)
+### JavaScript/TypeScript Files (_.js, _.ts, _.jsx, _.tsx)
 
 **Output location:** `docs/api/`
 
 **Extract and document:**
+
 - Exported functions with JSDoc
 - Exported classes and methods
 - Exported constants
 - Type definitions
 
 **Template:**
+
 ```markdown
 # {{MODULE_NAME}}
 
@@ -182,24 +191,20 @@ System architecture and design documentation.
 
 {{description}}
 
-**Parameters:**
-| Name | Type | Description |
-|------|------|-------------|
-| {{name}} | `{{type}}` | {{description}} |
+**Parameters:** | Name | Type | Description | |------|------|-------------| |
+{{name}} | `{{type}}` | {{description}} |
 
 **Returns:** `{{returnType}}` - {{returnDescription}}
 
-**Example:**
-\`\`\`javascript
-{{example}}
-\`\`\`
+**Example:** \`\`\`javascript {{example}} \`\`\`
 ```
 
-### CSS Files (*.css)
+### CSS Files (\*.css)
 
 **Output location:** `docs/api/styles/`
 
 **Extract and document:**
+
 - Custom properties (CSS variables)
 - Key class names
 - Media query breakpoints
@@ -210,17 +215,19 @@ System architecture and design documentation.
 **Output location:** `docs/api/components/{{component-name}}.md`
 
 **Document:**
+
 - Component purpose
 - Props/attributes
 - Events emitted
 - Slots/children
 - Usage examples
 
-### Configuration Files (*.yml, *.yaml, *.json)
+### Configuration Files (_.yml, _.yaml, \*.json)
 
 **Output location:** `docs/guides/configuration.md`
 
 **Document:**
+
 - Available options
 - Default values
 - Example configurations
@@ -234,35 +241,35 @@ System architecture and design documentation.
 ```yaml
 process:
   trigger: file_save
-  
+
   steps:
-    - name: "Ensure docs structure"
+    - name: 'Ensure docs structure'
       action: create_directories_if_missing
-      
-    - name: "Analyze file"
+
+    - name: 'Analyze file'
       action: parse_file_content
       extract:
         - exports
         - jsdoc_comments
         - type_definitions
         - dependencies
-        
-    - name: "Determine doc location"
+
+    - name: 'Determine doc location'
       action: map_file_to_docs
       rules:
-        "src/components/**": "docs/api/components/"
-        "src/utils/**": "docs/api/utilities/"
-        "src/types/**": "docs/api/types/"
-        "*.config.*": "docs/guides/configuration.md"
-        
-    - name: "Generate documentation"
+        'src/components/**': 'docs/api/components/'
+        'src/utils/**': 'docs/api/utilities/'
+        'src/types/**': 'docs/api/types/'
+        '*.config.*': 'docs/guides/configuration.md'
+
+    - name: 'Generate documentation'
       action: render_documentation
-      template: "{{file_type_template}}"
-      
-    - name: "Update indexes"
+      template: '{{file_type_template}}'
+
+    - name: 'Update indexes'
       action: update_index_files
-      
-    - name: "Update README link"
+
+    - name: 'Update README link'
       action: ensure_docs_link_in_readme
 ```
 
@@ -276,12 +283,12 @@ When new documentation is generated:
 
 ```yaml
 update_index:
-  - file: "docs/index.md"
-    section: "## Quick Links"
+  - file: 'docs/index.md'
+    section: '## Quick Links'
     regenerate: true
-    
-  - file: "docs/api/index.md"
-    section: "## Quick Reference"
+
+  - file: 'docs/api/index.md'
+    section: '## Quick Reference'
     regenerate: true
 ```
 
@@ -294,22 +301,25 @@ update_index:
 After documentation is generated, verify README.md contains a docs link:
 
 **Check for existing link:**
+
 ```markdown
 ## Documentation
 
-See the [full documentation](docs/index.md) for detailed guides and API reference.
+See the [full documentation](docs/index.md) for detailed guides and API
+reference.
 ```
 
 **If missing, add after the first section:**
+
 ```yaml
 readme_update:
   action: insert_section
-  after: "## Quick Start"  # or first heading
+  after: '## Quick Start' # or first heading
   content: |
     ## Documentation
-    
+
     See the [full documentation](docs/index.md) for detailed guides and API reference.
-    
+
     - [Getting Started](docs/guides/getting-started.md)
     - [API Reference](docs/api/index.md)
     - [Architecture](docs/architecture/index.md)
@@ -325,28 +335,28 @@ readme_update:
 hooks:
   doc_generator:
     enabled: true
-    
+
     # Debounce rapid saves
     debounce_ms: 3000
-    
+
     # Directories to ignore
     exclude:
-      - "node_modules/**"
-      - "dist/**"
-      - "*.test.*"
-      - "*.spec.*"
-      - ".git/**"
-      
+      - 'node_modules/**'
+      - 'dist/**'
+      - '*.test.*'
+      - '*.spec.*'
+      - '.git/**'
+
     # Documentation output
     output:
-      directory: "docs"
-      format: "markdown"
-      
+      directory: 'docs'
+      format: 'markdown'
+
     # Auto-update README
     readme_integration:
       enabled: true
-      link_position: "after_quickstart"
-      
+      link_position: 'after_quickstart'
+
     # Generation options
     options:
       include_private: false
@@ -413,6 +423,7 @@ hooks:
 ## Output Examples
 
 ### Log Entry
+
 ```
 [HOOK] doc-generator triggered
   File: src/components/Button.js
@@ -432,31 +443,27 @@ hooks:
 
 ## Import
 
-\`\`\`javascript
-import { Button } from '@/components/Button';
-\`\`\`
+\`\`\`javascript import { Button } from '@/components/Button'; \`\`\`
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary'` | `'primary'` | Button style variant |
-| `disabled` | `boolean` | `false` | Disable button interactions |
-| `onClick` | `function` | - | Click handler |
+| Prop       | Type                       | Default     | Description                 |
+| ---------- | -------------------------- | ----------- | --------------------------- |
+| `variant`  | `'primary' \| 'secondary'` | `'primary'` | Button style variant        |
+| `disabled` | `boolean`                  | `false`     | Disable button interactions |
+| `onClick`  | `function`                 | -           | Click handler               |
 
 ## Examples
 
 ### Primary Button
-\`\`\`html
-<Button variant="primary">Click Me</Button>
-\`\`\`
+
+\`\`\`html <Button variant="primary">Click Me</Button> \`\`\`
 
 ### Disabled Button
-\`\`\`html
-<Button disabled>Can't Click</Button>
-\`\`\`
+
+\`\`\`html <Button disabled>Can't Click</Button> \`\`\`
 
 ---
 
-*Generated from `src/components/Button.js`*
+_Generated from `src/components/Button.js`_
 ```

@@ -4,7 +4,10 @@
 
 ## Overview
 
-The MCP Configuration System provides a declarative way to enable and configure MCP servers for your project. Simply mark MCPs as `TRUE` or `FALSE` in `PROJECT_STARTER.md`, run `/mcp-setup`, and everything is configured automatically.
+The MCP Configuration System provides a declarative way to enable and configure
+MCP servers for your project. Simply mark MCPs as `TRUE` or `FALSE` in
+`PROJECT_STARTER.md`, run `/mcp-setup`, and everything is configured
+automatically.
 
 ## Quick Start
 
@@ -14,13 +17,16 @@ The MCP Configuration System provides a declarative way to enable and configure 
 ## MCP Configuration
 
 ### Database & Storage
+
 - **Neon Database**: `TRUE`
 - **Supabase**: `FALSE`
 
 ### Cloud & Infrastructure
+
 - **Cloudflare**: `TRUE`
 
 ### Development Tools
+
 - **GitHub**: `TRUE`
 ```
 
@@ -76,89 +82,89 @@ Done! Your MCPs are ready to use.
 
 ### Database & Storage (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Neon** | PostgreSQL with branching | Easy |
-| **Supabase** | PostgreSQL + Auth + Storage | Easy |
-| **Turso** | Distributed SQLite | Easy |
-| **Pinecone** | Vector database | Medium |
+| Provider     | Purpose                     | Setup Complexity |
+| ------------ | --------------------------- | ---------------- |
+| **Neon**     | PostgreSQL with branching   | Easy             |
+| **Supabase** | PostgreSQL + Auth + Storage | Easy             |
+| **Turso**    | Distributed SQLite          | Easy             |
+| **Pinecone** | Vector database             | Medium           |
 
 ### Cloud & Infrastructure (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Cloudflare** | Workers, D1, KV, R2, Pages | Medium |
-| **AWS** | EC2, S3, Lambda, RDS | Complex |
-| **Vercel** | Deployment, Edge Functions | Easy |
-| **Railway** | App & DB deployment | Easy |
+| Provider       | Purpose                    | Setup Complexity |
+| -------------- | -------------------------- | ---------------- |
+| **Cloudflare** | Workers, D1, KV, R2, Pages | Medium           |
+| **AWS**        | EC2, S3, Lambda, RDS       | Complex          |
+| **Vercel**     | Deployment, Edge Functions | Easy             |
+| **Railway**    | App & DB deployment        | Easy             |
 
 ### Development Tools (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **GitHub** | Repos, Issues, PRs, Actions | Easy |
-| **GitLab** | Repos, CI/CD | Easy |
-| **Linear** | Issue tracking | Easy |
-| **Sentry** | Error monitoring | Easy |
+| Provider   | Purpose                     | Setup Complexity |
+| ---------- | --------------------------- | ---------------- |
+| **GitHub** | Repos, Issues, PRs, Actions | Easy             |
+| **GitLab** | Repos, CI/CD                | Easy             |
+| **Linear** | Issue tracking              | Easy             |
+| **Sentry** | Error monitoring            | Easy             |
 
 ### Communication (3)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Slack** | Team notifications | Medium |
-| **Discord** | Community communication | Medium |
-| **Email** | Transactional email | Easy |
+| Provider    | Purpose                 | Setup Complexity |
+| ----------- | ----------------------- | ---------------- |
+| **Slack**   | Team notifications      | Medium           |
+| **Discord** | Community communication | Medium           |
+| **Email**   | Transactional email     | Easy             |
 
 ### Analytics & Monitoring (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Google Analytics 4** | Web analytics | Easy |
-| **PostHog** | Product analytics | Easy |
-| **Axiom** | Log management | Easy |
-| **Datadog** | Infrastructure monitoring | Medium |
+| Provider               | Purpose                   | Setup Complexity |
+| ---------------------- | ------------------------- | ---------------- |
+| **Google Analytics 4** | Web analytics             | Easy             |
+| **PostHog**            | Product analytics         | Easy             |
+| **Axiom**              | Log management            | Easy             |
+| **Datadog**            | Infrastructure monitoring | Medium           |
 
 ### Payments & Commerce (3)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Stripe** | Payments & subscriptions | Medium |
-| **PayPal** | Payment processing | Medium |
-| **Shopify** | E-commerce platform | Complex |
+| Provider    | Purpose                  | Setup Complexity |
+| ----------- | ------------------------ | ---------------- |
+| **Stripe**  | Payments & subscriptions | Medium           |
+| **PayPal**  | Payment processing       | Medium           |
+| **Shopify** | E-commerce platform      | Complex          |
 
 ### AI & ML Services (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **OpenAI** | GPT models, embeddings | Easy |
-| **Anthropic** | Claude API | Easy |
-| **Hugging Face** | ML models | Medium |
-| **Replicate** | AI model deployment | Easy |
+| Provider         | Purpose                | Setup Complexity |
+| ---------------- | ---------------------- | ---------------- |
+| **OpenAI**       | GPT models, embeddings | Easy             |
+| **Anthropic**    | Claude API             | Easy             |
+| **Hugging Face** | ML models              | Medium           |
+| **Replicate**    | AI model deployment    | Easy             |
 
 ### Development Services (3)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Chrome DevTools** | Browser automation | Medium |
-| **Playwright** | E2E testing | Easy |
-| **Puppeteer** | Headless browser | Easy |
+| Provider            | Purpose            | Setup Complexity |
+| ------------------- | ------------------ | ---------------- |
+| **Chrome DevTools** | Browser automation | Medium           |
+| **Playwright**      | E2E testing        | Easy             |
+| **Puppeteer**       | Headless browser   | Easy             |
 
 ### Content & Media (4)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Contentful** | Headless CMS | Medium |
-| **Sanity** | Structured content | Medium |
-| **Cloudinary** | Media management | Easy |
-| **Uploadcare** | File CDN | Easy |
+| Provider       | Purpose            | Setup Complexity |
+| -------------- | ------------------ | ---------------- |
+| **Contentful** | Headless CMS       | Medium           |
+| **Sanity**     | Structured content | Medium           |
+| **Cloudinary** | Media management   | Easy             |
+| **Uploadcare** | File CDN           | Easy             |
 
 ### Search & Discovery (3)
 
-| Provider | Purpose | Setup Complexity |
-|----------|---------|-----------------|
-| **Algolia** | Search as a service | Medium |
-| **Meilisearch** | Open-source search | Easy |
-| **Typesense** | Fast search | Easy |
+| Provider        | Purpose             | Setup Complexity |
+| --------------- | ------------------- | ---------------- |
+| **Algolia**     | Search as a service | Medium           |
+| **Meilisearch** | Open-source search  | Easy             |
+| **Typesense**   | Fast search         | Easy             |
 
 **Total: 35+ pre-configured MCP providers**
 
@@ -173,6 +179,7 @@ Generate MCP configuration from PROJECT_STARTER.md
 ```
 
 **Options:**
+
 - `--output-only` - Generate config without writing files
 - `--validate` - Validate existing configuration
 - `--list` - List all available providers
@@ -188,6 +195,7 @@ Validate MCP configuration and environment
 ```
 
 Checks:
+
 - Configuration file validity
 - Required environment variables
 - Package availability
@@ -211,14 +219,10 @@ Each MCP provider is defined in a JSON file:
   "optionalEnvVars": ["OPTIONAL_VAR"],
   "documentation": "https://docs-url",
   "setup": "path/to/setup.md",
-  "features": [
-    "Feature description"
-  ],
+  "features": ["Feature description"],
   "agentIntegration": {
     "categories": ["code-generation"],
-    "useCases": [
-      "Use case description"
-    ]
+    "useCases": ["Use case description"]
   }
 }
 ```
@@ -242,10 +246,7 @@ Create `.claude/mcp/providers/custom.json`:
   "requiredEnvVars": ["CUSTOM_API_KEY"],
   "documentation": "https://your-docs",
   "setup": ".claude/mcp/providers/custom-setup.md",
-  "features": [
-    "Custom feature 1",
-    "Custom feature 2"
-  ]
+  "features": ["Custom feature 1", "Custom feature 2"]
 }
 ```
 
@@ -312,7 +313,7 @@ MCPs enhance agent capabilities across all categories:
 ```javascript
 // With Neon MCP: Generate models from actual DB schema
 const tables = await mcp.neon.getDatabaseTables({
-  projectId: process.env.NEON_PROJECT_ID
+  projectId: process.env.NEON_PROJECT_ID,
 });
 
 const models = generateModelsFromSchema(tables);
@@ -324,13 +325,13 @@ const models = generateModelsFromSchema(tables);
 // With Cloudflare MCP: Deploy to Workers
 await mcp.cloudflare.deploy({
   script: workerCode,
-  name: 'api-worker'
+  name: 'api-worker',
 });
 
 // With Slack MCP: Notify team
 await mcp.slack.postMessage({
   channel: '#deployments',
-  text: '✅ Deployed to production'
+  text: '✅ Deployed to production',
 });
 ```
 
@@ -339,7 +340,7 @@ await mcp.slack.postMessage({
 ```javascript
 // With Neon MCP: Create test database branch
 const testBranch = await mcp.neon.createBranch({
-  projectId: process.env.NEON_PROJECT_ID
+  projectId: process.env.NEON_PROJECT_ID,
 });
 
 await runTests(testBranch.connectionString);
@@ -350,12 +351,14 @@ await runTests(testBranch.connectionString);
 ### MCP Server Won't Start
 
 **Check:**
+
 1. Package is installed: `npm info @package/name`
 2. Environment variables are set
 3. API keys are valid
 4. Network connectivity
 
 **Debug:**
+
 ```bash
 # Test MCP manually
 npx @package/name
@@ -367,6 +370,7 @@ npx @package/name
 ### Environment Variables Not Loading
 
 **Solutions:**
+
 1. Ensure `.env` is in project root
 2. Verify variable names match exactly
 3. Restart Claude Code
@@ -375,6 +379,7 @@ npx @package/name
 ### Authentication Failures
 
 **Steps:**
+
 1. Verify API key format
 2. Check key permissions/scopes
 3. Confirm key is not expired
@@ -383,6 +388,7 @@ npx @package/name
 ### Configuration Not Applied
 
 **Actions:**
+
 1. Validate JSON: `cat .claude/mcp/configs/mcp-config.json | jq .`
 2. Check file permissions
 3. Restart Claude Code
@@ -404,10 +410,10 @@ Grant minimum required permissions:
 
 ```javascript
 // ✓ Good: Scoped permissions
-GITHUB_TOKEN=ghp_xxx  // repo:read, issues:write
+GITHUB_TOKEN = ghp_xxx; // repo:read, issues:write
 
 // ✗ Bad: Overly broad permissions
-GITHUB_TOKEN=ghp_xxx  // admin:everything
+GITHUB_TOKEN = ghp_xxx; // admin:everything
 ```
 
 ### Network Security
@@ -439,8 +445,8 @@ Add notes in PROJECT_STARTER.md:
 ```markdown
 ### MCP Configuration Notes
 
-**Neon**: Using main project for prod, branch for development
-**GitHub**: Read-only token for CI, write token for releases
+**Neon**: Using main project for prod, branch for development **GitHub**:
+Read-only token for CI, write token for releases
 ```
 
 ### 3. Test Before Production
@@ -454,6 +460,7 @@ Add notes in PROJECT_STARTER.md:
 ### 4. Monitor Usage
 
 Track MCP usage:
+
 - API call volume
 - Error rates
 - Response times
@@ -532,4 +539,5 @@ To add a new MCP provider:
 
 ---
 
-*The MCP Configuration System makes it easy to extend Claude Code with powerful integrations, enabling agents to work with real systems and services.*
+_The MCP Configuration System makes it easy to extend Claude Code with powerful
+integrations, enabling agents to work with real systems and services._

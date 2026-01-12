@@ -4,7 +4,8 @@
 
 ## Overview
 
-The Quick Start system provides instant project configuration through intelligent presets that automatically configure:
+The Quick Start system provides instant project configuration through
+intelligent presets that automatically configure:
 
 - **Code Quality Rules** - Language and framework-specific best practices
 - **MCP Servers** - Database, cloud, and service integrations
@@ -16,7 +17,8 @@ The Quick Start system provides instant project configuration through intelligen
 
 ### 1. Choose Your Stack
 
-Instead of manually configuring dozens of settings, simply select the preset that matches your project:
+Instead of manually configuring dozens of settings, simply select the preset
+that matches your project:
 
 ```markdown
 ### Project Preset
@@ -46,12 +48,14 @@ Your entire development environment is configured and ready!
 ### Static Website
 
 **Perfect for:**
+
 - Landing pages
 - Documentation sites
 - Marketing websites
 - Portfolios
 
 **Includes:**
+
 - Modern JavaScript (ES6+)
 - Modern CSS (Grid, Flexbox, Custom Properties)
 - WCAG AA Accessibility
@@ -59,9 +63,11 @@ Your entire development environment is configured and ready!
 - Git hooks for code quality
 
 **MCP Servers:**
+
 - GitHub (repository operations)
 
 **Hooks:**
+
 - Pre-commit validation
 - Auto-format on save
 - README sync
@@ -71,12 +77,14 @@ Your entire development environment is configured and ready!
 ### Astro Site
 
 **Perfect for:**
+
 - Blogs and content sites
 - Marketing sites
 - Documentation
 - Content-heavy applications
 
 **Includes:**
+
 - Astro 5 conventions
 - Modern CSS
 - Component best practices
@@ -85,12 +93,14 @@ Your entire development environment is configured and ready!
 - PWA support
 
 **MCP Servers:**
+
 - GitHub (repository operations)
 - Cloudflare (Workers, Pages, D1)
 - Sentry (error tracking)
 - Google Analytics 4
 
 **Hooks:**
+
 - Pre-commit validation
 - Commit message validation
 - Auto-format on save
@@ -103,12 +113,14 @@ Your entire development environment is configured and ready!
 ### React App
 
 **Perfect for:**
+
 - Dashboards
 - Admin panels
 - Single-page applications
 - Interactive web apps
 
 **Includes:**
+
 - React 18+ best practices
 - TypeScript strict mode
 - Vite bundling
@@ -117,11 +129,13 @@ Your entire development environment is configured and ready!
 - Component patterns
 
 **MCP Servers:**
+
 - GitHub
 - Vercel (deployment)
 - Sentry (error tracking)
 
 **Hooks:**
+
 - Pre-commit validation
 - Commit message validation
 - Auto-format on save
@@ -133,12 +147,14 @@ Your entire development environment is configured and ready!
 ### Next.js App
 
 **Perfect for:**
+
 - Full-stack applications
 - E-commerce sites
 - Content platforms
 - SaaS products
 
 **Includes:**
+
 - Next.js 15+ conventions
 - App Router patterns
 - React Server Components
@@ -148,12 +164,14 @@ Your entire development environment is configured and ready!
 - Testing setup
 
 **MCP Servers:**
+
 - GitHub
 - Vercel (deployment)
 - Sentry (error tracking)
 - Supabase (database + auth)
 
 **Hooks:**
+
 - Pre-commit validation
 - Pre-push validation
 - Commit message validation
@@ -166,11 +184,13 @@ Your entire development environment is configured and ready!
 ### Vue/Nuxt
 
 **Perfect for:**
+
 - Single-page applications
 - Server-side rendered apps
 - Progressive web apps
 
 **Includes:**
+
 - Vue 3 Composition API
 - Nuxt auto-imports
 - TypeScript
@@ -178,11 +198,13 @@ Your entire development environment is configured and ready!
 - Modern patterns
 
 **MCP Servers:**
+
 - GitHub
 - Vercel (deployment)
 - Sentry (error tracking)
 
 **Hooks:**
+
 - Pre-commit validation
 - Auto-format on save
 - Test on file change
@@ -193,11 +215,13 @@ Your entire development environment is configured and ready!
 ### SvelteKit
 
 **Perfect for:**
+
 - Fast, lightweight apps
 - Interactive experiences
 - Performance-critical sites
 
 **Includes:**
+
 - Svelte 5 features
 - Runes system
 - TypeScript
@@ -205,11 +229,13 @@ Your entire development environment is configured and ready!
 - Routing patterns
 
 **MCP Servers:**
+
 - GitHub
 - Vercel (deployment)
 - Sentry (error tracking)
 
 **Hooks:**
+
 - Pre-commit validation
 - Auto-format on save
 - Test on file change
@@ -220,12 +246,14 @@ Your entire development environment is configured and ready!
 ### Full Stack
 
 **Perfect for:**
+
 - Complete applications
 - SaaS platforms
 - Enterprise applications
 - Complex systems
 
 **Includes:**
+
 - Frontend (React/Next.js)
 - Backend (Hono/Node.js)
 - Database (PostgreSQL/D1)
@@ -235,6 +263,7 @@ Your entire development environment is configured and ready!
 - Security best practices
 
 **MCP Servers:**
+
 - GitHub
 - Neon Database (PostgreSQL)
 - Cloudflare (Workers, D1, KV)
@@ -244,6 +273,7 @@ Your entire development environment is configured and ready!
 - Google Analytics 4
 
 **Hooks:**
+
 - Pre-commit validation
 - Pre-push validation
 - Commit message validation
@@ -258,12 +288,14 @@ Your entire development environment is configured and ready!
 ### Custom
 
 **Perfect for:**
+
 - Unique tech stacks
 - Legacy projects
 - Experimental setups
 - Projects with specific requirements
 
 **Behavior:**
+
 - No automatic configuration
 - Complete manual control
 - Fill out all sections in PROJECT_STARTER.md
@@ -275,10 +307,10 @@ Control entire feature categories:
 ```markdown
 ### Master Toggles
 
-- **MCP Servers**: `TRUE`         # Enable database and service integrations
-- **Development Hooks**: `TRUE`   # Enable git hooks and automation
-- **Code Quality Rules**: `TRUE`  # Enable linting and standards
-- **AI Agents**: `TRUE`           # Enable specialized task agents
+- **MCP Servers**: `TRUE` # Enable database and service integrations
+- **Development Hooks**: `TRUE` # Enable git hooks and automation
+- **Code Quality Rules**: `TRUE` # Enable linting and standards
+- **AI Agents**: `TRUE` # Enable specialized task agents
 ```
 
 When set to `FALSE`, the entire category is disabled:
@@ -325,17 +357,21 @@ Start with a preset, then customize:
 
 ```markdown
 ### Project Preset
+
 - [x] **Astro Site**
 
 ### Master Toggles
+
 - **MCP Servers**: `TRUE`
 - **Development Hooks**: `TRUE`
 - **Code Quality Rules**: `TRUE`
 
 ## Code Rules Configuration
+
 <!-- Override specific rules -->
-- **TypeScript**: `TRUE`  <!-- Add TypeScript to Astro preset -->
-- **Tailwind CSS**: `TRUE`  <!-- Add Tailwind to Astro preset -->
+
+- **TypeScript**: `TRUE` <!-- Add TypeScript to Astro preset -->
+- **Tailwind CSS**: `TRUE` <!-- Add Tailwind to Astro preset -->
 ```
 
 ### Validate Before Applying
@@ -479,9 +515,11 @@ npm install
 **Behavior:** If a master toggle is `FALSE`, that entire section is skipped.
 
 **Example:**
+
 ```markdown
 - **MCP Servers**: `FALSE`
 ```
+
 Result: No MCP servers will be configured, regardless of preset.
 
 ### Preset vs Manual Config Conflict
@@ -489,30 +527,36 @@ Result: No MCP servers will be configured, regardless of preset.
 **Warning:** Manual configuration overrides preset.
 
 **Fix:** Either:
+
 1. Remove manual config to use preset defaults
 2. Switch to "Custom" preset for full manual control
 
 ## Benefits
 
 ### Speed
+
 - **Without Quick Start:** 30-60 minutes of configuration
 - **With Quick Start:** 2 minutes to production-ready
 
 ### Consistency
+
 - Same setup across all projects
 - Team-wide standards
 - Best practices enforced automatically
 
 ### Completeness
+
 - Nothing missed
 - All integrations configured
 - Full automation enabled
 
 ### Flexibility
+
 - Start with preset, customize as needed
 - Master toggles for bulk control
 - Switch presets anytime
 
 ---
 
-**Quick Start transforms setup from hours to minutes. Choose your stack, run one command, and start building.**
+**Quick Start transforms setup from hours to minutes. Choose your stack, run one
+command, and start building.**

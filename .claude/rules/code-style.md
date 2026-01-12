@@ -1,11 +1,14 @@
 # Code Style Rules
 
 ## Purpose
-Enforce consistent, maintainable code across the project following modern web standards.
+
+Enforce consistent, maintainable code across the project following modern web
+standards.
 
 ## HTML Standards
 
 ### Semantic Markup
+
 Use semantic HTML elements over generic divs:
 
 ```html
@@ -41,6 +44,7 @@ Use semantic HTML elements over generic divs:
 ```
 
 ### Document Outline
+
 - One `<h1>` per page
 - Proper heading hierarchy (no skipped levels)
 - Use `<section>` and `<article>` appropriately
@@ -48,6 +52,7 @@ Use semantic HTML elements over generic divs:
 ## CSS Standards
 
 ### Modern CSS First
+
 Use CSS Grid and Flexbox for layout:
 
 ```css
@@ -73,6 +78,7 @@ Use CSS Grid and Flexbox for layout:
 ```
 
 ### Custom Properties
+
 Use CSS custom properties for theming:
 
 ```css
@@ -81,13 +87,13 @@ Use CSS custom properties for theming:
   --color-primary: #1a1a2e;
   --color-secondary: #16213e;
   --color-accent: #e94560;
-  
+
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 2rem;
   --space-xl: 4rem;
-  
+
   --font-body: system-ui, sans-serif;
   --font-heading: Georgia, serif;
 }
@@ -101,6 +107,7 @@ Use CSS custom properties for theming:
 ```
 
 ### Logical Properties
+
 Prefer logical properties for internationalization:
 
 ```css
@@ -121,6 +128,7 @@ Prefer logical properties for internationalization:
 ```
 
 ### No Utility-First Frameworks
+
 Write semantic, maintainable CSS:
 
 ```css
@@ -143,6 +151,7 @@ Write semantic, maintainable CSS:
 ```
 
 ### Mobile-First Responsive
+
 Start with mobile, enhance for larger screens:
 
 ```css
@@ -167,6 +176,7 @@ Start with mobile, enhance for larger screens:
 ## JavaScript Standards
 
 ### Modern ES6+
+
 Use modern JavaScript features:
 
 ```javascript
@@ -192,6 +202,7 @@ const fetchData = async (url) => {
 ```
 
 ### Web Components
+
 Prefer native web components:
 
 ```javascript
@@ -200,7 +211,7 @@ class ProductCard extends HTMLElement {
   connectedCallback() {
     this.render();
   }
-  
+
   render() {
     this.innerHTML = `
       <article class="product-card">
@@ -214,15 +225,14 @@ customElements.define('product-card', ProductCard);
 ```
 
 ### Progressive Enhancement
+
 Core functionality without JavaScript:
 
 ```html
 <!-- ✓ Works without JS, enhanced with JS -->
 <details class="accordion">
   <summary>Section Title</summary>
-  <div class="accordion__content">
-    Content here...
-  </div>
+  <div class="accordion__content">Content here...</div>
 </details>
 
 <!-- Enhanced with JavaScript for animations -->
@@ -231,26 +241,35 @@ Core functionality without JavaScript:
 ## Naming Conventions
 
 ### Files
+
 - `kebab-case` for files: `product-card.js`, `main-header.css`
 - Component files match component name: `ProductCard` → `product-card.js`
 
 ### CSS Classes
+
 - BEM methodology: `block__element--modifier`
 - Semantic names describing purpose, not appearance
 
 ```css
 /* ✓ Correct */
-.product-card {}
-.product-card__title {}
-.product-card--featured {}
+.product-card {
+}
+.product-card__title {
+}
+.product-card--featured {
+}
 
 /* ✗ Avoid */
-.red-box {}
-.left-aligned {}
-.big-text {}
+.red-box {
+}
+.left-aligned {
+}
+.big-text {
+}
 ```
 
 ### JavaScript
+
 - `camelCase` for variables and functions
 - `PascalCase` for classes and components
 - `UPPER_SNAKE_CASE` for constants
@@ -258,6 +277,7 @@ Core functionality without JavaScript:
 ## Code Organization
 
 ### File Structure
+
 ```
 src/
 ├── components/
@@ -271,6 +291,7 @@ src/
 ```
 
 ### Import Order
+
 1. External dependencies
 2. Internal modules
 3. Styles
@@ -289,6 +310,7 @@ import './styles/main.css';
 ```
 
 ## Enforcement
+
 - Agents check against these rules before completing tasks
 - Pre-commit hook validates compliance
 - Review agent uses these as evaluation criteria

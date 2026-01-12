@@ -12,12 +12,14 @@ Follow the interactive prompts to create your project!
 
 ## Features
 
-- **8 Project Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack
+- **8 Project Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit, Full
+  Stack
 - **Interactive Setup** - Beautiful CLI with smart defaults
 - **Feature Selection** - Choose exactly what you need
 - **Automatic Configuration** - All files, dependencies, and settings
 - **Development Ready** - Git, hooks, rules, MCPs pre-configured
-- **Claude Code Integration** - Complete .claude/ directory with agents and automation
+- **Claude Code Integration** - Complete .claude/ directory with agents and
+  automation
 
 ## Usage
 
@@ -155,13 +157,13 @@ Then use Claude Code Sidekick to build:
 
 ## CLI Options
 
-| Option | Description |
-|--------|-------------|
+| Option            | Description                                                                   |
+| ----------------- | ----------------------------------------------------------------------------- |
 | `--preset <name>` | Skip preset selection (static\|astro\|react\|nextjs\|nuxt\|svelte\|fullstack) |
-| `--skip-install` | Don't run npm install |
-| `--skip-git` | Don't initialize git repository |
-| `--help` | Show help message |
-| `--version` | Show version number |
+| `--skip-install`  | Don't run npm install                                                         |
+| `--skip-git`      | Don't initialize git repository                                               |
+| `--help`          | Show help message                                                             |
+| `--version`       | Show version number                                                           |
 
 ## Examples
 

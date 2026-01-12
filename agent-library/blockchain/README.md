@@ -1,32 +1,40 @@
 # Blockchain Development Agents
 
-> Specialized agents for Web3, smart contract development, and blockchain integration.
+> Specialized agents for Web3, smart contract development, and blockchain
+> integration.
 
 ## Overview
 
-Blockchain development agents provide specialized tools for building decentralized applications (DApps), smart contracts, and Web3 integrations. These agents understand blockchain-specific patterns, security considerations, and best practices.
+Blockchain development agents provide specialized tools for building
+decentralized applications (DApps), smart contracts, and Web3 integrations.
+These agents understand blockchain-specific patterns, security considerations,
+and best practices.
 
 ## Available Agents
 
 ### Smart Contract Development
+
 - **Contract Generator**: Generate Solidity/Vyper smart contracts
 - **Contract Upgrader**: Create upgradeable contract patterns
 - **Security Auditor**: Analyze contracts for vulnerabilities
 - **Gas Optimizer**: Optimize contract gas usage
 
 ### DApp Development
+
 - **DApp Scaffolder**: Generate complete DApp structure
 - **Web3 Integration**: Connect frontend to blockchain
 - **Wallet Connector**: Implement wallet connection logic
 - **Transaction Manager**: Handle blockchain transactions
 
 ### Testing & Deployment
+
 - **Contract Test Generator**: Create comprehensive contract tests
 - **Hardhat/Foundry Setup**: Configure development environment
 - **Deployment Scripts**: Generate deployment automation
 - **Network Manager**: Multi-chain deployment handling
 
 ### Blockchain Integration
+
 - **Subgraph Generator**: Create The Graph subgraphs
 - **Event Listener**: Monitor blockchain events
 - **Oracle Integration**: Connect to price feeds and oracles
@@ -38,6 +46,7 @@ Blockchain development agents provide specialized tools for building decentraliz
 
 ```markdown
 Generate an ERC-721 NFT contract with:
+
 - Mintable tokens with metadata
 - Pausable functionality
 - Owner controls
@@ -50,6 +59,7 @@ Generate an ERC-721 NFT contract with:
 
 ```markdown
 Generate a DApp frontend for the NFT marketplace including:
+
 - Wallet connection (MetaMask, WalletConnect)
 - Contract interaction hooks
 - Transaction status handling
@@ -62,6 +72,7 @@ Generate a DApp frontend for the NFT marketplace including:
 
 ```markdown
 Create deployment scripts for:
+
 - Ethereum mainnet
 - Polygon
 - Arbitrum
@@ -195,7 +206,7 @@ config:
       - coinbase
   contracts:
     - name: NFTMarketplace
-      address: "0x..."
+      address: '0x...'
   networks:
     - mainnet
     - goerli
@@ -207,6 +218,7 @@ config:
 ### Example 1: ERC-20 Token
 
 **Prompt:**
+
 ```
 Generate an ERC-20 token contract with:
 - Fixed supply of 1,000,000 tokens
@@ -218,6 +230,7 @@ Generate an ERC-20 token contract with:
 ```
 
 **Generated Output:**
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
@@ -239,6 +252,7 @@ contract MyToken is ERC20, ERC20Burnable, ERC20Permit {
 ### Example 2: NFT Marketplace
 
 **Prompt:**
+
 ```
 Create an NFT marketplace contract with:
 - List NFTs for sale (fixed price or auction)
@@ -252,6 +266,7 @@ Create an NFT marketplace contract with:
 ### Example 3: DeFi Staking Contract
 
 **Prompt:**
+
 ```
 Generate a staking contract that allows:
 - Users to stake ERC-20 tokens
@@ -287,7 +302,13 @@ async function indexNFTTransfers(contractAddress: string) {
         INSERT INTO nft_transfers (from_address, to_address, token_id, tx_hash, block_number)
         VALUES ($1, $2, $3, $4, $5)
       `,
-      params: [from, to, tokenId.toString(), event.transactionHash, event.blockNumber]
+      params: [
+        from,
+        to,
+        tokenId.toString(),
+        event.transactionHash,
+        event.blockNumber,
+      ],
     });
   });
 }
@@ -354,26 +375,26 @@ contract Marketplace is PullPayment {
 ### Unit Tests
 
 ```typescript
-import { expect } from "chai";
-import { ethers } from "hardhat";
+import { expect } from 'chai';
+import { ethers } from 'hardhat';
 
-describe("MyNFT", function () {
-  it("Should mint an NFT", async function () {
+describe('MyNFT', function () {
+  it('Should mint an NFT', async function () {
     const [owner, addr1] = await ethers.getSigners();
-    const MyNFT = await ethers.getContractFactory("MyNFT");
+    const MyNFT = await ethers.getContractFactory('MyNFT');
     const nft = await MyNFT.deploy();
 
     await nft.mint(addr1.address, 1);
     expect(await nft.ownerOf(1)).to.equal(addr1.address);
   });
 
-  it("Should emit Transfer event", async function () {
+  it('Should emit Transfer event', async function () {
     const [owner, addr1] = await ethers.getSigners();
-    const MyNFT = await ethers.getContractFactory("MyNFT");
+    const MyNFT = await ethers.getContractFactory('MyNFT');
     const nft = await MyNFT.deploy();
 
     await expect(nft.mint(addr1.address, 1))
-      .to.emit(nft, "Transfer")
+      .to.emit(nft, 'Transfer')
       .withArgs(ethers.ZeroAddress, addr1.address, 1);
   });
 });
@@ -382,11 +403,11 @@ describe("MyNFT", function () {
 ### Gas Tests
 
 ```typescript
-it("Should optimize gas for batch minting", async function () {
+it('Should optimize gas for batch minting', async function () {
   const tx = await nft.batchMint(addr1.address, [1, 2, 3, 4, 5]);
   const receipt = await tx.wait();
 
-  console.log("Gas used:", receipt.gasUsed.toString());
+  console.log('Gas used:', receipt.gasUsed.toString());
   expect(receipt.gasUsed).to.be.lt(500000); // Assert gas limit
 });
 ```
@@ -412,25 +433,25 @@ contract MyNFTTest is Test {
 
 ```typescript
 // deploy/001_deploy_nft.ts
-import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DeployFunction } from "hardhat-deploy/types";
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
+import { DeployFunction } from 'hardhat-deploy/types';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts } = hre;
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  await deploy("MyNFT", {
+  await deploy('MyNFT', {
     from: deployer,
-    args: ["MyNFT", "MNFT"],
+    args: ['MyNFT', 'MNFT'],
     log: true,
     waitConfirmations: 5,
   });
 
   // Verify on Etherscan
-  await hre.run("verify:verify", {
+  await hre.run('verify:verify', {
     address: deployment.address,
-    constructorArguments: ["MyNFT", "MNFT"],
+    constructorArguments: ['MyNFT', 'MNFT'],
   });
 };
 
@@ -475,18 +496,21 @@ echidna: npm run security:echidna
 ## Troubleshooting
 
 ### Gas Issues
+
 - Use gas profiler to identify expensive operations
 - Optimize storage layout
 - Use events instead of storage where possible
 - Batch operations when possible
 
 ### Transaction Failures
+
 - Check gas limits
 - Verify correct network
 - Ensure sufficient balance
 - Review revert messages
 
 ### Integration Issues
+
 - Verify contract ABIs match deployed contracts
 - Check network configurations
 - Validate wallet connections
@@ -513,4 +537,5 @@ To add a new blockchain agent:
 
 ---
 
-*Blockchain development agents provide secure, optimized, and tested solutions for decentralized application development.*
+_Blockchain development agents provide secure, optimized, and tested solutions
+for decentralized application development._

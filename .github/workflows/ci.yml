@@ -10,15 +10,15 @@ on:
     branches: [main, dev, development]
 
 env:
-  NODE_VERSION: '20'
-  PNPM_VERSION: '9'
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
 
 jobs:
   # Job 1: Lint and validate code quality
   lint:
     name: Lint & Code Quality
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,8 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install root dependencies
         run: pnpm install --frozen-lockfile
@@ -60,7 +60,7 @@ jobs:
   validate-configs:
     name: Validate Configuration Files
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -76,7 +76,7 @@ jobs:
       - name: Validate YAML files
         run: |
           echo "🔍 Validating YAML configuration files..."
-          
+
           # Find and validate all YAML files
           find . -name "*.yml" -o -name "*.yaml" | while read file; do
             if [ -f "$file" ]; then
@@ -84,27 +84,27 @@ jobs:
               yamllint "$file" || exit 1
             fi
           done
-          
+
           echo "✅ All YAML files are valid!"
 
       - name: Validate JSON files
         run: |
           echo "🔍 Validating JSON files..."
-          
+
           find . -name "*.json" -not -path "./node_modules/*" -not -path "./cli/node_modules/*" | while read file; do
             if [ -f "$file" ]; then
               echo "Checking $file"
               node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))" || exit 1
             fi
           done
-          
+
           echo "✅ All JSON files are valid!"
 
   # Job 3: Validate Markdown documentation
   validate-docs:
     name: Validate Documentation
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -126,7 +126,7 @@ jobs:
       - name: Check for broken internal links
         run: |
           echo "🔍 Checking for broken internal links..."
-          
+
           # Find all markdown files and check for broken links
           for file in $(find . -name "*.md" -not -path "./node_modules/*" -not -path "./cli/node_modules/*"); do
             echo "Checking links in $file"
@@ -148,14 +148,14 @@ jobs:
               fi
             done
           done
-          
+
           echo "✅ Link check complete"
 
   # Job 4: Test CLI tool
   test-cli:
     name: Test CLI Tool
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -169,8 +169,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install CLI dependencies
         run: pnpm install --frozen-lockfile
@@ -191,7 +191,7 @@ jobs:
   validate-agents:
     name: Validate Agent Library
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -199,7 +199,7 @@ jobs:
       - name: Validate agent structure
         run: |
           echo "🔍 Validating agent library structure..."
-          
+
           # Check required directories exist
           REQUIRED_DIRS=(
             "agent-library"
@@ -208,7 +208,7 @@ jobs:
             ".claude/hooks"
             ".claude/rules"
           )
-          
+
           for dir in "${REQUIRED_DIRS[@]}"; do
             if [ ! -d "$dir" ]; then
               echo "❌ Missing required directory: $dir"
@@ -216,7 +216,7 @@ jobs:
             fi
             echo "✅ Found: $dir"
           done
-          
+
           # Check required files exist
           REQUIRED_FILES=(
             "CLAUDE.md"
@@ -226,7 +226,7 @@ jobs:
             ".claude/agents.yml"
             ".claude/tasks.yml"
           )
-          
+
           for file in "${REQUIRED_FILES[@]}"; do
             if [ ! -f "$file" ]; then
               echo "❌ Missing required file: $file"
@@ -234,13 +234,13 @@ jobs:
             fi
             echo "✅ Found: $file"
           done
-          
+
           echo "✅ Agent library structure is valid!"
 
       - name: Validate agent files have required sections
         run: |
           echo "🔍 Checking agent files for required sections..."
-          
+
           # Check each agent file in agent-library
           find agent-library -name "*.md" -type f | while read agent_file; do
             echo "Checking $agent_file"
@@ -250,14 +250,14 @@ jobs:
               echo "⚠️  No sections found in $agent_file"
             fi
           done
-          
+
           echo "✅ Agent file validation complete"
 
   # Job 6: Security audit
   security:
     name: Security Audit
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -271,8 +271,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install CLI dependencies
         run: pnpm install --frozen-lockfile
@@ -289,7 +289,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint, validate-configs, validate-docs, test-cli, validate-agents, security]
     if: always()
-    
+
     steps:
       - name: Check job results
         run: |
@@ -303,7 +303,7 @@ jobs:
           echo "Agent Validate:  ${{ needs.validate-agents.result }}"
           echo "Security:        ${{ needs.security.result }}"
           echo ""
-          
+
           if [ "${{ needs.lint.result }}" != "success" ] || \
              [ "${{ needs.validate-configs.result }}" != "success" ] || \
              [ "${{ needs.test-cli.result }}" != "success" ] || \

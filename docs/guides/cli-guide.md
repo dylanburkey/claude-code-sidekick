@@ -26,11 +26,13 @@ npx create-440-app
 ### Your First Project
 
 1. **Run the command:**
+
    ```bash
    npx create-440-app
    ```
 
 2. **Answer the prompts:**
+
    ```
    ◆  What is your project named?
    │  my-awesome-app
@@ -65,6 +67,7 @@ npx create-440-app
 **Best for:** Landing pages, marketing sites, portfolios
 
 **Includes:**
+
 - Semantic HTML5
 - Modern CSS
 - Vanilla JavaScript
@@ -72,6 +75,7 @@ npx create-440-app
 - SEO optimization
 
 **Example use cases:**
+
 - Product landing page
 - Portfolio website
 - Company homepage
@@ -83,6 +87,7 @@ npx create-440-app
 **Best for:** Content sites, blogs, documentation
 
 **Includes:**
+
 - Astro 5
 - Modern CSS
 - Islands Architecture
@@ -90,6 +95,7 @@ npx create-440-app
 - Cloudflare Pages ready
 
 **Example use cases:**
+
 - Technical blog
 - Documentation site
 - Content-heavy marketing site
@@ -101,6 +107,7 @@ npx create-440-app
 **Best for:** Interactive web applications
 
 **Includes:**
+
 - React 18
 - TypeScript
 - Vite
@@ -108,6 +115,7 @@ npx create-440-app
 - Modern CSS
 
 **Example use cases:**
+
 - Dashboard
 - Admin panel
 - Interactive tool
@@ -119,6 +127,7 @@ npx create-440-app
 **Best for:** Full-stack React applications
 
 **Includes:**
+
 - Next.js 15
 - App Router
 - TypeScript
@@ -126,6 +135,7 @@ npx create-440-app
 - API Routes
 
 **Example use cases:**
+
 - SaaS application
 - E-commerce site
 - Full-stack web app
@@ -137,6 +147,7 @@ npx create-440-app
 **Best for:** Full-stack Vue applications
 
 **Includes:**
+
 - Vue 3
 - Nuxt
 - Composition API
@@ -144,6 +155,7 @@ npx create-440-app
 - Server-side rendering
 
 **Example use cases:**
+
 - Task management app
 - Social platform
 - Content management system
@@ -155,6 +167,7 @@ npx create-440-app
 **Best for:** Modern reactive applications
 
 **Includes:**
+
 - Svelte 5
 - Runes API
 - TypeScript
@@ -162,6 +175,7 @@ npx create-440-app
 - Adapter Auto
 
 **Example use cases:**
+
 - Real-time dashboard
 - Chat application
 - Interactive data visualization
@@ -173,6 +187,7 @@ npx create-440-app
 **Best for:** Complete backend + frontend applications
 
 **Includes:**
+
 - Node.js/Fastify
 - PostgreSQL/Prisma
 - TypeScript
@@ -180,6 +195,7 @@ npx create-440-app
 - Full authentication
 
 **Example use cases:**
+
 - Multi-tenant SaaS
 - API platform
 - Complex business application
@@ -193,6 +209,7 @@ npx create-440-app
 **Recommended for all projects**
 
 Modern CSS system with:
+
 - Fluid typography
 - Design tokens
 - Dark mode
@@ -200,6 +217,7 @@ Modern CSS system with:
 - Semantic components
 
 **When to use:**
+
 - Every project (unless you have existing CSS framework)
 - Prefer semantic CSS over utility classes
 - Want professional, accessible design
@@ -211,6 +229,7 @@ Modern CSS system with:
 **PostgreSQL with Prisma**
 
 Includes:
+
 - Neon PostgreSQL setup
 - Prisma ORM
 - Type-safe queries
@@ -218,11 +237,13 @@ Includes:
 - MCP integration
 
 **When to use:**
+
 - Need to store user data
 - Building CRUD applications
 - Require relational data
 
 **Example:**
+
 ```prisma
 model User {
   id        String   @id @default(cuid())
@@ -240,6 +261,7 @@ model User {
 **NextAuth.js integration**
 
 Includes:
+
 - User registration/login
 - Session management
 - OAuth providers (Google, GitHub)
@@ -247,6 +269,7 @@ Includes:
 - Protected routes
 
 **When to use:**
+
 - User accounts required
 - Need login/signup
 - Protecting resources
@@ -258,6 +281,7 @@ Includes:
 **Sentry error tracking**
 
 Includes:
+
 - Error monitoring
 - Performance tracking
 - Release tracking
@@ -265,6 +289,7 @@ Includes:
 - MCP integration
 
 **When to use:**
+
 - Production applications
 - Need error alerts
 - Want performance insights
@@ -276,6 +301,7 @@ Includes:
 **Vercel and Cloudflare**
 
 Includes:
+
 - Deployment configuration
 - Environment setup
 - CI/CD integration
@@ -283,6 +309,7 @@ Includes:
 - Platform-specific optimizations
 
 **When to use:**
+
 - Deploying to Vercel or Cloudflare
 - Want automated deployments
 - Need production config
@@ -353,22 +380,26 @@ my-project/
 ### Next Steps
 
 1. **Install dependencies:**
+
    ```bash
    cd my-project
    npm install
    ```
 
 2. **Start development:**
+
    ```bash
    npm run dev
    ```
 
 3. **Generate project plan:**
+
    ```bash
    /project-planner
    ```
 
 4. **Create tasks:**
+
    ```bash
    /task-planner
    ```
@@ -385,6 +416,7 @@ my-project/
 ### Modify PROJECT_STARTER.md
 
 After creation, edit `PROJECT_STARTER.md` to:
+
 - Add project description
 - Change enabled rules
 - Toggle MCP servers
@@ -404,6 +436,7 @@ npm install tailwindcss autoprefixer
 ### Configure Environment
 
 1. Copy example:
+
    ```bash
    cp .env.example .env
    ```
@@ -428,6 +461,7 @@ npm run dev
 ```
 
 Features to select:
+
 - ✓ 440css
 - ✗ Database (use Markdown files)
 - ✓ Deployment
@@ -442,6 +476,7 @@ npm run dev
 ```
 
 Features to select:
+
 - ✓ 440css
 - ✓ Database
 - ✓ Authentication
@@ -458,6 +493,7 @@ npm run dev
 ```
 
 Features to select:
+
 - ✓ 440css
 - ✓ Database
 - ✓ Authentication
@@ -470,12 +506,13 @@ Features to select:
 ### Command not found
 
 **Error:**
+
 ```
 command not found: create-440-app
 ```
 
-**Solution:**
-Use `npx`:
+**Solution:** Use `npx`:
+
 ```bash
 npx create-440-app
 ```
@@ -483,12 +520,13 @@ npx create-440-app
 ### Directory exists
 
 **Error:**
+
 ```
 Directory 'my-app' already exists
 ```
 
-**Solution:**
-Choose a different name or remove existing directory:
+**Solution:** Choose a different name or remove existing directory:
+
 ```bash
 rm -rf my-app
 npx create-440-app my-app
@@ -497,12 +535,13 @@ npx create-440-app my-app
 ### Permission denied
 
 **Error:**
+
 ```
 Permission denied
 ```
 
-**Solution:**
-Check directory permissions:
+**Solution:** Check directory permissions:
+
 ```bash
 # Unix/Mac
 ls -la
@@ -514,12 +553,13 @@ chmod 755 .
 ### Installation fails
 
 **Error:**
+
 ```
 npm install failed
 ```
 
-**Solution:**
-Try different package manager:
+**Solution:** Try different package manager:
+
 ```bash
 # Create without installing
 npx create-440-app my-app --skip-install
@@ -537,14 +577,14 @@ bun install
 
 ## Comparison with Manual Setup
 
-| Task | Manual | CLI |
-|------|--------|-----|
-| Clone template | 2 min | 0 min |
-| Select preset | 2 min | 30 sec |
-| Configure files | 5 min | 0 min |
-| Set up dependencies | 3 min | 0 min |
-| Initialize git | 1 min | 0 min |
-| **Total** | **13 min** | **2 min** |
+| Task                | Manual     | CLI       |
+| ------------------- | ---------- | --------- |
+| Clone template      | 2 min      | 0 min     |
+| Select preset       | 2 min      | 30 sec    |
+| Configure files     | 5 min      | 0 min     |
+| Set up dependencies | 3 min      | 0 min     |
+| Initialize git      | 1 min      | 0 min     |
+| **Total**           | **13 min** | **2 min** |
 
 **Time saved: 84%**
 

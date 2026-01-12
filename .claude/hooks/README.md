@@ -4,7 +4,9 @@
 
 ## Overview
 
-The Hooks Configuration System provides declarative automation for common development tasks. Enable hooks with TRUE/FALSE flags in PROJECT_STARTER.md and they're automatically configured and installed.
+The Hooks Configuration System provides declarative automation for common
+development tasks. Enable hooks with TRUE/FALSE flags in PROJECT_STARTER.md and
+they're automatically configured and installed.
 
 ## Quick Start
 
@@ -14,10 +16,12 @@ The Hooks Configuration System provides declarative automation for common develo
 ## Hooks Configuration
 
 ### Git Hooks
+
 - **Pre-Commit Validation**: `TRUE`
 - **Commit Message Validation**: `TRUE`
 
 ### File Hooks
+
 - **Auto Format on Save**: `TRUE`
 - **Auto Import Sort**: `TRUE`
 ```
@@ -60,75 +64,75 @@ That's it! Hooks are now active in your project.
 
 ### Git Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **Pre-Commit Validation** | Lint, format, type-check before commits | pre-commit |
-| **Pre-Push Validation** | Run full test suite before pushing | pre-push |
-| **Commit Message Validation** | Enforce conventional commit format | commit-msg |
-| **Branch Name Validation** | Enforce branch naming conventions | pre-commit |
+| Hook                          | Purpose                                 | Trigger    |
+| ----------------------------- | --------------------------------------- | ---------- |
+| **Pre-Commit Validation**     | Lint, format, type-check before commits | pre-commit |
+| **Pre-Push Validation**       | Run full test suite before pushing      | pre-push   |
+| **Commit Message Validation** | Enforce conventional commit format      | commit-msg |
+| **Branch Name Validation**    | Enforce branch naming conventions       | pre-commit |
 
 ### File Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **Auto Format on Save** | Format code when files are saved | on-save |
-| **Auto Import Sort** | Sort imports when files are saved | on-save |
-| **Auto Documentation** | Generate docs when code changes | on-save |
-| **Unused Code Detection** | Detect unused code | on-save |
+| Hook                      | Purpose                           | Trigger |
+| ------------------------- | --------------------------------- | ------- |
+| **Auto Format on Save**   | Format code when files are saved  | on-save |
+| **Auto Import Sort**      | Sort imports when files are saved | on-save |
+| **Auto Documentation**    | Generate docs when code changes   | on-save |
+| **Unused Code Detection** | Detect unused code                | on-save |
 
 ### Build & Test Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **Pre-Build Validation** | Validate before builds | pre-build |
-| **Post-Build Actions** | Actions after builds | post-build |
-| **Test on File Change** | Run tests when files change | on-change |
-| **Coverage Reporting** | Generate coverage reports | post-test |
+| Hook                     | Purpose                     | Trigger    |
+| ------------------------ | --------------------------- | ---------- |
+| **Pre-Build Validation** | Validate before builds      | pre-build  |
+| **Post-Build Actions**   | Actions after builds        | post-build |
+| **Test on File Change**  | Run tests when files change | on-change  |
+| **Coverage Reporting**   | Generate coverage reports   | post-test  |
 
 ### Deployment Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **Pre-Deploy Checks** | Validate before deployments | pre-deploy |
-| **Post-Deploy Verification** | Verify deployments | post-deploy |
-| **Deployment Notifications** | Notify team of deployments | post-deploy |
-| **Rollback on Failure** | Auto-rollback failed deployments | deploy-error |
+| Hook                         | Purpose                          | Trigger      |
+| ---------------------------- | -------------------------------- | ------------ |
+| **Pre-Deploy Checks**        | Validate before deployments      | pre-deploy   |
+| **Post-Deploy Verification** | Verify deployments               | post-deploy  |
+| **Deployment Notifications** | Notify team of deployments       | post-deploy  |
+| **Rollback on Failure**      | Auto-rollback failed deployments | deploy-error |
 
 ### Code Quality Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **Complexity Analysis** | Analyze code complexity | on-commit |
-| **Security Scanning** | Scan for vulnerabilities | pre-commit |
-| **Dependency Audit** | Check vulnerable dependencies | pre-commit |
-| **Performance Profiling** | Profile performance | on-change |
+| Hook                      | Purpose                       | Trigger    |
+| ------------------------- | ----------------------------- | ---------- |
+| **Complexity Analysis**   | Analyze code complexity       | on-commit  |
+| **Security Scanning**     | Scan for vulnerabilities      | pre-commit |
+| **Dependency Audit**      | Check vulnerable dependencies | pre-commit |
+| **Performance Profiling** | Profile performance           | on-change  |
 
 ### Documentation Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **README Sync** | Keep README in sync | post-commit |
-| **API Doc Generation** | Generate API docs | on-change |
-| **Changelog Update** | Update changelog | post-commit |
-| **Type Documentation** | Generate type docs | on-change |
+| Hook                   | Purpose             | Trigger     |
+| ---------------------- | ------------------- | ----------- |
+| **README Sync**        | Keep README in sync | post-commit |
+| **API Doc Generation** | Generate API docs   | on-change   |
+| **Changelog Update**   | Update changelog    | post-commit |
+| **Type Documentation** | Generate type docs  | on-change   |
 
 ### Collaboration Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
-| **PR Template Creation** | Create PR descriptions | on-pr |
-| **Issue Linking** | Link commits to issues | post-commit |
-| **Code Review Requests** | Request reviews | on-pr |
-| **Status Updates** | Post status updates | various |
+| Hook                     | Purpose                | Trigger     |
+| ------------------------ | ---------------------- | ----------- |
+| **PR Template Creation** | Create PR descriptions | on-pr       |
+| **Issue Linking**        | Link commits to issues | post-commit |
+| **Code Review Requests** | Request reviews        | on-pr       |
+| **Status Updates**       | Post status updates    | various     |
 
 ### Agent Hooks (4)
 
-| Hook | Purpose | Trigger |
-|------|---------|---------|
+| Hook                              | Purpose                   | Trigger       |
+| --------------------------------- | ------------------------- | ------------- |
 | **Task Completion Notifications** | Notify on task completion | task-complete |
-| **Agent Error Handling** | Handle agent errors | task-error |
-| **Agent Performance Tracking** | Track agent metrics | task-end |
-| **Agent Context Saving** | Save agent context | task-end |
+| **Agent Error Handling**          | Handle agent errors       | task-error    |
+| **Agent Performance Tracking**    | Track agent metrics       | task-end      |
+| **Agent Context Saving**          | Save agent context        | task-end      |
 
 **Total: 32 pre-configured hooks**
 
@@ -143,6 +147,7 @@ Generate and install hook configuration
 ```
 
 **Options:**
+
 - `--output-only` - Generate config without installing
 - `--validate` - Validate existing configuration
 - `--uninstall` - Remove all installed hooks
@@ -259,6 +264,7 @@ Create `.claude/hooks/definitions/custom-hook.json`:
 ### Git Hooks
 
 Triggered by git commands:
+
 - Run before commits, pushes, merges
 - Validate commit messages
 - Enforce branch naming
@@ -267,6 +273,7 @@ Triggered by git commands:
 ### File Hooks
 
 Triggered by file system events:
+
 - Format code on save
 - Sort imports
 - Update documentation
@@ -275,6 +282,7 @@ Triggered by file system events:
 ### Build Hooks
 
 Triggered during build process:
+
 - Pre-build validation
 - Post-build actions
 - Error handling
@@ -283,6 +291,7 @@ Triggered during build process:
 ### Deployment Hooks
 
 Triggered during deployment:
+
 - Pre-deploy checks
 - Post-deploy verification
 - Notifications
@@ -291,6 +300,7 @@ Triggered during deployment:
 ### Agent Hooks
 
 Triggered by agent operations:
+
 - Task completion
 - Error handling
 - Performance tracking
@@ -301,6 +311,7 @@ Triggered by agent operations:
 ### Git Hooks
 
 Installed in `.git/hooks/`:
+
 ```bash
 .git/hooks/
 ├── pre-commit
@@ -312,6 +323,7 @@ Installed in `.git/hooks/`:
 ### IDE Integration
 
 **VSCode** (`.vscode/settings.json`):
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -322,6 +334,7 @@ Installed in `.git/hooks/`:
 ```
 
 **JetBrains** (`.idea/`):
+
 - File Watchers for formatting
 - Actions on Save for imports
 
@@ -348,6 +361,7 @@ SKIP_HOOKS=pre-commit git commit -m "skip pre-commit"
 ### Start Small
 
 Begin with essential hooks:
+
 ```markdown
 - **Pre-Commit Validation**: `TRUE`
 - **Commit Message Validation**: `TRUE`
@@ -467,4 +481,5 @@ For help with hooks:
 
 ---
 
-*The Hooks Configuration System automates repetitive tasks and enforces consistent development practices across your team.*
+_The Hooks Configuration System automates repetitive tasks and enforces
+consistent development practices across your team._

@@ -11,12 +11,12 @@ on:
         required: true
         type: string
       create_release:
-        description: 'Create a GitHub release'
+        description: "Create a GitHub release"
         required: false
         type: boolean
         default: true
       version_bump:
-        description: 'Version bump type'
+        description: "Version bump type"
         required: false
         type: choice
         options:
@@ -26,15 +26,15 @@ on:
         default: patch
 
 env:
-  NODE_VERSION: '20'
-  PNPM_VERSION: '9'
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
 
 jobs:
   # Job 1: Validate deployment request
   validate-deploy:
     name: Validate Deployment Request
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Validate confirmation
         run: |
@@ -49,7 +49,7 @@ jobs:
     name: Pre-deployment Validation
     runs-on: ubuntu-latest
     needs: validate-deploy
-    
+
     steps:
       - name: Checkout dev branch
         uses: actions/checkout@v4
@@ -66,8 +66,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-          cache-dependency-path: 'cli/pnpm-lock.yaml'
+          cache: "pnpm"
+          cache-dependency-path: "cli/pnpm-lock.yaml"
 
       - name: Install dependencies
         run: |
@@ -107,7 +107,7 @@ jobs:
     needs: pre-deploy-validation
     outputs:
       merge_sha: ${{ steps.merge.outputs.merge_sha }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -145,10 +145,10 @@ jobs:
           Triggered by: ${{ github.actor }}
           Run ID: ${{ github.run_id }}
           Version bump: ${{ github.event.inputs.version_bump }}"
-          
+
           MERGE_SHA=$(git rev-parse HEAD)
           echo "merge_sha=$MERGE_SHA" >> $GITHUB_OUTPUT
-          
+
       - name: Push to main
         run: git push origin main
 
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: merge-to-main
     if: ${{ github.event.inputs.create_release == 'true' }}
-    
+
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -177,10 +177,10 @@ jobs:
           # Get current version from CLI package.json
           CURRENT_VERSION=$(node -p "require('./cli/package.json').version")
           echo "Current version: $CURRENT_VERSION"
-          
+
           # Parse version components
           IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-          
+
           # Bump version based on input
           case "${{ github.event.inputs.version_bump }}" in
             "major")
@@ -196,7 +196,7 @@ jobs:
               PATCH=$((PATCH + 1))
               ;;
           esac
-          
+
           NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
           echo "New version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -219,19 +219,19 @@ jobs:
         run: |
           # Get commits since last tag
           LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-          
+
           if [ -n "$LAST_TAG" ]; then
             COMMITS=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
           else
             COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
           fi
-          
+
           # Categorize commits
           FEATURES=$(echo "$COMMITS" | grep -E "^- (feat|feature)" || true)
           FIXES=$(echo "$COMMITS" | grep -E "^- (fix|bugfix)" || true)
           DOCS=$(echo "$COMMITS" | grep -E "^- (docs|doc)" || true)
           OTHER=$(echo "$COMMITS" | grep -vE "^- (feat|feature|fix|bugfix|docs|doc)" || true)
-          
+
           {
             echo "CHANGELOG<<EOF"
             if [ -n "$FEATURES" ]; then
@@ -263,23 +263,23 @@ jobs:
           name: Claude Code Starter v${{ steps.version.outputs.new_version }}
           body: |
             ## What's Changed in v${{ steps.version.outputs.new_version }}
-            
+
             ${{ steps.changelog.outputs.CHANGELOG }}
-            
+
             ---
-            
+
             ### Installation
-            
+
             ```bash
             npx create-440-app my-project
             ```
-            
+
             ### Documentation
-            
+
             - [CLAUDE.md](./CLAUDE.md) - AI Assistant context
             - [README.md](./README.md) - Getting started
             - [Agent Library](./agent-library/README.md) - Available agents
-            
+
             ---
             **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ needs.merge-to-main.outputs.merge_sha }}...v${{ steps.version.outputs.new_version }}
           draft: false
@@ -293,7 +293,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [merge-to-main, create-release]
     if: always()
-    
+
     steps:
       - name: Print summary
         run: |
@@ -305,13 +305,13 @@ jobs:
           echo "Release Status: ${{ needs.create-release.result }}"
           echo "Merge SHA: ${{ needs.merge-to-main.outputs.merge_sha }}"
           echo ""
-          
+
           if [ "${{ needs.merge-to-main.result }}" = "success" ]; then
             echo "✅ Code successfully merged to main"
           else
             echo "❌ Merge to main failed"
           fi
-          
+
           if [ "${{ needs.create-release.result }}" = "success" ]; then
             echo "✅ GitHub release created"
           elif [ "${{ needs.create-release.result }}" = "skipped" ]; then

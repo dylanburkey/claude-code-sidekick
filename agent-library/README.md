@@ -1,14 +1,21 @@
 # Agent Library
 
-> A comprehensive collection of specialized agents for Claude Code that automate development workflows, generate code, ensure quality, and enhance productivity.
+> A comprehensive collection of specialized agents for Claude Code that automate
+> development workflows, generate code, ensure quality, and enhance
+> productivity.
 
 ## Overview
 
-The Agent Library is a curated collection of specialized agents designed to work with Claude Code. Each agent focuses on specific aspects of software development, from code generation to testing to documentation. These agents can be used individually or composed together to create powerful development workflows.
+The Agent Library is a curated collection of specialized agents designed to work
+with Claude Code. Each agent focuses on specific aspects of software
+development, from code generation to testing to documentation. These agents can
+be used individually or composed together to create powerful development
+workflows.
 
 ## Categories
 
 ### 🔧 [Code Generation](./code-generation/)
+
 Agents that generate specific types of code, components, and boilerplate.
 
 - API endpoint generators
@@ -17,6 +24,7 @@ Agents that generate specific types of code, components, and boilerplate.
 - Configuration file creators
 
 ### ⚙️ [Task Automation](./task-automation/)
+
 Agents that automate repetitive development tasks and workflows.
 
 - Build process automation
@@ -25,6 +33,7 @@ Agents that automate repetitive development tasks and workflows.
 - Dependency management
 
 ### ✅ [Testing](./testing/)
+
 Agents focused on quality assurance, testing, and validation.
 
 - Unit test generators
@@ -33,6 +42,7 @@ Agents focused on quality assurance, testing, and validation.
 - Performance testers
 
 ### 📚 [Documentation](./documentation/)
+
 Agents that create and maintain project documentation.
 
 - API documentation generators
@@ -41,6 +51,7 @@ Agents that create and maintain project documentation.
 - Changelog maintainers
 
 ### ⛓️ [Blockchain](./blockchain/)
+
 Specialized agents for blockchain development workflows.
 
 - Smart contract generators
@@ -72,7 +83,7 @@ const agent = loadAgent('code-generation/api-generator');
 await agent.execute({
   resource: 'users',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  auth: true
+  auth: true,
 });
 ```
 
@@ -84,22 +95,28 @@ All agents in this library follow a consistent structure:
 # Agent Name
 
 ## Purpose
+
 Brief description of what this agent does
 
 ## Capabilities
+
 - Capability 1
 - Capability 2
 
 ## Usage
+
 How to use this agent
 
 ## Configuration
+
 Any configuration options
 
 ## Examples
+
 Real-world usage examples
 
 ## Dependencies
+
 Required tools, libraries, or other agents
 ```
 
@@ -115,12 +132,14 @@ Use the [agent template](./templates/agent-template.md) to create new agents:
 
 ## MCP Integration
 
-The Agent Library is designed to work seamlessly with the Model Context Protocol (MCP).
+The Agent Library is designed to work seamlessly with the Model Context Protocol
+(MCP).
 
 ### MCP Capabilities
 
 - **Context Sharing**: Agents can share context across tools and workflows
-- **Resource Access**: Direct access to MCP resources like databases (Neon), files, and APIs
+- **Resource Access**: Direct access to MCP resources like databases (Neon),
+  files, and APIs
 - **Tool Integration**: Agents can invoke MCP tools for enhanced functionality
 - **State Management**: Persistent state across agent invocations
 
@@ -133,7 +152,8 @@ Agents in this library can leverage MCP servers for:
 - External API integrations
 - Custom tool integrations
 
-See the [MCP Integration Guide](./docs/mcp-integration.md) for detailed information.
+See the [MCP Integration Guide](./docs/mcp-integration.md) for detailed
+information.
 
 ## Best Practices
 
@@ -182,19 +202,32 @@ Before adding an agent to the library:
 ## Agent Categories in Detail
 
 ### Code Generation Agents
-Generate production-ready code following best practices and project conventions. These agents understand your codebase structure and generate code that fits naturally.
+
+Generate production-ready code following best practices and project conventions.
+These agents understand your codebase structure and generate code that fits
+naturally.
 
 ### Task Automation Agents
-Automate repetitive workflows like building, testing, deploying, and maintaining code. These agents handle the boring stuff so you can focus on creative work.
+
+Automate repetitive workflows like building, testing, deploying, and maintaining
+code. These agents handle the boring stuff so you can focus on creative work.
 
 ### Testing Agents
-Ensure code quality through automated testing. Generate test suites, run accessibility audits, validate performance, and catch bugs before they reach production.
+
+Ensure code quality through automated testing. Generate test suites, run
+accessibility audits, validate performance, and catch bugs before they reach
+production.
 
 ### Documentation Agents
-Keep documentation up-to-date automatically. Generate API docs, maintain READMEs, create inline documentation, and ensure your code is always well-documented.
+
+Keep documentation up-to-date automatically. Generate API docs, maintain
+READMEs, create inline documentation, and ensure your code is always
+well-documented.
 
 ### Blockchain Agents
-Specialized tools for Web3 development. Generate smart contracts, integrate with blockchain APIs, create DApp scaffolding, and test blockchain interactions.
+
+Specialized tools for Web3 development. Generate smart contracts, integrate with
+blockchain APIs, create DApp scaffolding, and test blockchain interactions.
 
 ## Advanced Usage
 
@@ -207,7 +240,7 @@ Create powerful workflows by chaining multiple agents:
 await chain([
   agents.codeGeneration.apiGenerator,
   agents.testing.unitTestGenerator,
-  agents.documentation.apiDocGenerator
+  agents.documentation.apiDocGenerator,
 ]);
 ```
 
@@ -230,13 +263,19 @@ const customWorkflow = {
 ## Troubleshooting
 
 ### Agent Not Found
-Ensure the agent file exists in the correct category directory and follows the naming convention.
+
+Ensure the agent file exists in the correct category directory and follows the
+naming convention.
 
 ### Dependency Issues
-Check the agent's documentation for required dependencies and ensure they're installed.
+
+Check the agent's documentation for required dependencies and ensure they're
+installed.
 
 ### MCP Connection Issues
-Verify your MCP server configuration and ensure the required MCP tools are available.
+
+Verify your MCP server configuration and ensure the required MCP tools are
+available.
 
 ## Resources
 
@@ -253,4 +292,5 @@ Verify your MCP server configuration and ensure the required MCP tools are avail
 
 ---
 
-*This agent library is part of the Claude Code Sidekick toolkit and follows the structured development approach outlined in CLAUDE.md*
+_This agent library is part of the Claude Code Sidekick toolkit and follows the
+structured development approach outlined in CLAUDE.md_

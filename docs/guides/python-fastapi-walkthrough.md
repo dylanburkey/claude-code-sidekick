@@ -1,10 +1,12 @@
 # Building a Python FastAPI + PostgreSQL App: Complete Walkthrough
 
-> **Build a professional Python web application with FastAPI, PostgreSQL, and modern patterns - No advanced Python knowledge required!**
+> **Build a professional Python web application with FastAPI, PostgreSQL, and
+> modern patterns - No advanced Python knowledge required!**
 
 ## What You'll Build
 
 A complete API-based web application with:
+
 - **Backend:** FastAPI with async/await patterns
 - **Database:** PostgreSQL with SQLAlchemy ORM
 - **API:** RESTful endpoints with auto-generated docs
@@ -55,14 +57,17 @@ Open `PROJECT_STARTER.md`:
 ## Project Information
 
 ### Project Name
+
 Task API
 
 ### Project Description
-A RESTful API for task management built with FastAPI and PostgreSQL.
-Provides secure user authentication, task CRUD operations, and real-time
-data validation with auto-generated API documentation.
+
+A RESTful API for task management built with FastAPI and PostgreSQL. Provides
+secure user authentication, task CRUD operations, and real-time data validation
+with auto-generated API documentation.
 
 ### Project Type
+
 api
 ```
 
@@ -98,34 +103,34 @@ api
 - **Modern JavaScript**: `FALSE`
 - **TypeScript**: `FALSE`
 - **Node.js**: `FALSE`
-- **Python**: `TRUE`  ← Enable Python
+- **Python**: `TRUE` ← Enable Python
 
 ### Backend & API
 
 - **Hono**: `FALSE`
 - **Express/Fastify**: `FALSE`
-- **REST API**: `TRUE`  ← Enable REST patterns
+- **REST API**: `TRUE` ← Enable REST patterns
 - **GraphQL**: `FALSE`
 
 ### Quality & Testing
 
-- **WCAG AA Accessibility**: `FALSE`  ← API doesn't need this
+- **WCAG AA Accessibility**: `FALSE` ← API doesn't need this
 - **SEO Optimization**: `FALSE`
 - **Performance**: `TRUE`
-- **Security**: `TRUE`  ← Very important for APIs
-- **Testing Standards**: `TRUE`  ← Enable testing
+- **Security**: `TRUE` ← Very important for APIs
+- **Testing Standards**: `TRUE` ← Enable testing
 
 ## MCP Configuration
 
 ### Database & Storage
 
-- **Neon Database**: `TRUE`  ← PostgreSQL
+- **Neon Database**: `TRUE` ← PostgreSQL
 - **Supabase**: `FALSE`
 
 ### Development Tools
 
 - **GitHub**: `TRUE`
-- **Sentry**: `TRUE`  ← Error tracking
+- **Sentry**: `TRUE` ← Error tracking
 
 ## Hooks Configuration
 
@@ -136,7 +141,7 @@ api
 
 ### Code Quality Hooks
 
-- **Security Scanning**: `TRUE`  ← Important for APIs
+- **Security Scanning**: `TRUE` ← Important for APIs
 - **Dependency Audit**: `TRUE`
 ```
 
@@ -264,9 +269,12 @@ Create a RESTful API for task management with:
 ```markdown
 ### Functional Requirements
 
-1. **WHEN** user registers **THE SYSTEM SHALL** validate email format and password strength
-2. **WHEN** user logs in **THE SYSTEM SHALL** return JWT access and refresh tokens
-3. **WHEN** user creates task **THE SYSTEM SHALL** validate required fields and save to database
+1. **WHEN** user registers **THE SYSTEM SHALL** validate email format and
+   password strength
+2. **WHEN** user logs in **THE SYSTEM SHALL** return JWT access and refresh
+   tokens
+3. **WHEN** user creates task **THE SYSTEM SHALL** validate required fields and
+   save to database
 4. **WHEN** user requests tasks **THE SYSTEM SHALL** return only their own tasks
 5. **WHEN** invalid token provided **THE SYSTEM SHALL** return 401 Unauthorized
 6. **WHEN** resource not found **THE SYSTEM SHALL** return 404 Not Found
@@ -287,6 +295,7 @@ Create a RESTful API for task management with:
 **Output:** `project-plan/phase_1.md`
 
 This creates a plan covering:
+
 - Database schema design
 - FastAPI application structure
 - Authentication system
@@ -307,6 +316,7 @@ Review the plan to understand the approach.
 **Output:** `tasks/phase-1-tasks.md`
 
 Tasks will include:
+
 1. Set up FastAPI project structure
 2. Configure database connection with SQLAlchemy
 3. Create database models (User, Task)
@@ -438,6 +448,7 @@ my-fastapi-app/
 ### Key Files Explained
 
 **app/main.py** - FastAPI application entry point:
+
 ```python
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -470,6 +481,7 @@ async def root():
 ```
 
 **app/models/task.py** - SQLAlchemy model:
+
 ```python
 from sqlalchemy import Column, Integer, String, Text, Enum, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
@@ -498,6 +510,7 @@ class Task(Base):
 ```
 
 **app/schemas/task.py** - Pydantic schemas for validation:
+
 ```python
 from pydantic import BaseModel, Field
 from datetime import datetime
@@ -528,6 +541,7 @@ class TaskResponse(TaskBase):
 ```
 
 **app/api/routes/tasks.py** - Task endpoints:
+
 ```python
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -696,6 +710,7 @@ uvicorn app.main:app --reload
 ```
 
 **You'll see:**
+
 ```
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 INFO:     Started reloader process
@@ -707,6 +722,7 @@ INFO:     Application startup complete.
 ### 8.4 Test the API
 
 **Open your browser:**
+
 - API Docs: http://localhost:8000/docs
 - Alternative Docs: http://localhost:8000/redoc
 
@@ -722,6 +738,7 @@ INFO:     Application startup complete.
 2. Click "POST /api/auth/register"
 3. Click "Try it out"
 4. Enter:
+
 ```json
 {
   "email": "test@example.com",
@@ -729,12 +746,14 @@ INFO:     Application startup complete.
   "full_name": "Test User"
 }
 ```
+
 5. Click "Execute"
 6. See the response!
 
 ### 9.2 Using curl (Terminal)
 
 **Register:**
+
 ```bash
 curl -X POST "http://localhost:8000/api/auth/register" \
   -H "Content-Type: application/json" \
@@ -746,6 +765,7 @@ curl -X POST "http://localhost:8000/api/auth/register" \
 ```
 
 **Login:**
+
 ```bash
 curl -X POST "http://localhost:8000/api/auth/login" \
   -H "Content-Type: application/json" \
@@ -756,6 +776,7 @@ curl -X POST "http://localhost:8000/api/auth/login" \
 ```
 
 **Response:**
+
 ```json
 {
   "access_token": "eyJhbGc...",
@@ -764,6 +785,7 @@ curl -X POST "http://localhost:8000/api/auth/login" \
 ```
 
 **Create Task (with auth):**
+
 ```bash
 curl -X POST "http://localhost:8000/api/tasks" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
@@ -776,18 +798,21 @@ curl -X POST "http://localhost:8000/api/tasks" \
 ```
 
 **Get All Tasks:**
+
 ```bash
 curl "http://localhost:8000/api/tasks" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 **Filter by Status:**
+
 ```bash
 curl "http://localhost:8000/api/tasks?status=in_progress" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
 **Search Tasks:**
+
 ```bash
 curl "http://localhost:8000/api/tasks?search=API" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
@@ -852,6 +877,7 @@ pytest -v
 ```
 
 **Output:**
+
 ```
 ============================= test session starts ==============================
 collected 47 items
@@ -884,17 +910,20 @@ TOTAL                               224      3    98%
 ### Option 1: Deploy to Railway
 
 **11.1 Create Railway Account**
+
 1. Go to https://railway.app
 2. Sign up with GitHub
 3. Click "New Project"
 
 **11.2 Add PostgreSQL**
+
 1. Click "Add Service"
 2. Select "Database" → "PostgreSQL"
 3. Railway automatically provisions it!
 4. Copy the connection string from Variables tab
 
 **11.3 Deploy Your API**
+
 1. Click "Add Service" → "GitHub Repo"
 2. Select your repository
 3. Railway detects Python automatically
@@ -902,6 +931,7 @@ TOTAL                               224      3    98%
 **11.4 Add Environment Variables**
 
 In Railway dashboard:
+
 ```
 DATABASE_URL=postgresql://...  (from PostgreSQL service)
 SECRET_KEY=your_secret_key
@@ -912,6 +942,7 @@ SENTRY_DSN=your_sentry_dsn
 **11.5 Add Procfile**
 
 Create `Procfile` in project root:
+
 ```
 web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
 release: alembic upgrade head
@@ -932,6 +963,7 @@ Railway automatically deploys!
 ### Option 2: Deploy to Render
 
 **Similar process:**
+
 1. Go to https://render.com
 2. Create Web Service from GitHub
 3. Build Command: `pip install -r requirements.txt`
@@ -1125,6 +1157,7 @@ alembic upgrade head
 ### Enhance Your API
 
 **Add Features:**
+
 - File uploads for task attachments
 - Task sharing between users
 - Task comments/notes
@@ -1133,6 +1166,7 @@ alembic upgrade head
 - Webhooks for task events
 
 **Improve Security:**
+
 - Refresh token rotation
 - OAuth2 integration (Google, GitHub)
 - API key authentication
@@ -1140,12 +1174,14 @@ alembic upgrade head
 - IP whitelisting
 
 **Add Monitoring:**
+
 - Prometheus metrics
 - Grafana dashboards
 - Structured logging
 - Performance profiling
 
 **Optimize Performance:**
+
 - Database query optimization
 - Connection pooling
 - Caching layer (Redis)
@@ -1156,6 +1192,7 @@ alembic upgrade head
 ## Summary
 
 **You now have:**
+
 - ✅ Production-ready FastAPI application
 - ✅ PostgreSQL database with migrations
 - ✅ JWT authentication

@@ -1,24 +1,34 @@
 # Code Generation Agents
 
-> Agents that generate production-ready code following best practices and project conventions.
+> Agents that generate production-ready code following best practices and
+> project conventions.
 
 ## Overview
 
-Code generation agents automate the creation of boilerplate code, components, configurations, and entire features. These agents understand your project structure, follow your coding conventions, and generate code that integrates seamlessly with your existing codebase.
+Code generation agents automate the creation of boilerplate code, components,
+configurations, and entire features. These agents understand your project
+structure, follow your coding conventions, and generate code that integrates
+seamlessly with your existing codebase.
 
 ## Available Agents
 
 ### Component Generators
-- **UI Component Generator**: Create React, Vue, or Web Components with proper structure
-- **API Endpoint Generator**: Generate RESTful or GraphQL endpoints with validation
-- **Database Model Generator**: Create ORM models with relationships and migrations
+
+- **UI Component Generator**: Create React, Vue, or Web Components with proper
+  structure
+- **API Endpoint Generator**: Generate RESTful or GraphQL endpoints with
+  validation
+- **Database Model Generator**: Create ORM models with relationships and
+  migrations
 
 ### Configuration Generators
+
 - **Config File Generator**: Generate ESLint, Prettier, TypeScript configs
 - **Environment Setup**: Create .env templates with documentation
 - **CI/CD Pipeline Generator**: Generate GitHub Actions, GitLab CI configs
 
 ### Feature Scaffolding
+
 - **CRUD Generator**: Complete create-read-update-delete operations
 - **Authentication Module**: Generate auth flows with JWT/OAuth
 - **Form Generator**: Create forms with validation and accessibility
@@ -35,6 +45,7 @@ Generate a REST API endpoint for managing blog posts with full CRUD operations
 
 ```markdown
 Generate a React component for a product card with:
+
 - Image display with lazy loading
 - Title and description
 - Price with currency formatting
@@ -46,6 +57,7 @@ Generate a React component for a product card with:
 
 ```markdown
 Generate the following for a "tasks" resource:
+
 1. Database model with relationships
 2. REST API endpoints
 3. Frontend components
@@ -89,6 +101,7 @@ config:
 ### Example 1: API Endpoint
 
 **Prompt:**
+
 ```
 Generate a REST API endpoint for user profile management with:
 - GET /api/users/:id (fetch profile)
@@ -100,6 +113,7 @@ Generate a REST API endpoint for user profile management with:
 ```
 
 **Output:**
+
 - Route definitions
 - Controller logic
 - Validation schemas
@@ -110,6 +124,7 @@ Generate a REST API endpoint for user profile management with:
 ### Example 2: React Component
 
 **Prompt:**
+
 ```
 Generate a ProductCard component with:
 - Product image with loading state
@@ -121,6 +136,7 @@ Generate a ProductCard component with:
 ```
 
 **Output:**
+
 - Component file with TypeScript
 - CSS module
 - Props interface
@@ -131,6 +147,7 @@ Generate a ProductCard component with:
 ### Example 3: Database Schema
 
 **Prompt:**
+
 ```
 Generate a database schema for an e-commerce system:
 - Users (auth, profile)
@@ -140,6 +157,7 @@ Generate a database schema for an e-commerce system:
 ```
 
 **Output:**
+
 - Migration files
 - Model definitions
 - Relationships
@@ -151,7 +169,8 @@ Generate a database schema for an e-commerce system:
 
 Code generation agents can leverage MCP for:
 
-- **Database Schema Analysis**: Query Neon databases to understand existing schema
+- **Database Schema Analysis**: Query Neon databases to understand existing
+  schema
 - **Code Context**: Access existing files to match patterns
 - **API Discovery**: Analyze existing endpoints before generating new ones
 - **Dependency Management**: Check installed packages and versions
@@ -162,13 +181,13 @@ Code generation agents can leverage MCP for:
 // Agent uses MCP to analyze existing schema before generating
 const existingTables = await mcp.neon.getDatabaseTables({
   projectId: 'project-id',
-  databaseName: 'main'
+  databaseName: 'main',
 });
 
 // Generate new tables that integrate with existing schema
 generateSchema({
   existing: existingTables,
-  new: userSpecifications
+  new: userSpecifications,
 });
 ```
 
@@ -199,8 +218,8 @@ npm run build:analyze
 const customAgent = extendAgent('api-generator', {
   templates: {
     controller: './custom-templates/controller.hbs',
-    routes: './custom-templates/routes.hbs'
-  }
+    routes: './custom-templates/routes.hbs',
+  },
 });
 ```
 
@@ -218,14 +237,16 @@ const agentWithHooks = extendAgent('component-generator', {
 
     // Update index files
     await updateExports(files);
-  }
+  },
 });
 ```
 
 ## Common Patterns
 
 ### Pattern 1: Feature Module
+
 Generate a complete feature with all necessary files:
+
 - Models
 - Controllers
 - Routes
@@ -234,7 +255,9 @@ Generate a complete feature with all necessary files:
 - Documentation
 
 ### Pattern 2: Microservice Scaffold
+
 Generate a complete microservice:
+
 - API gateway configuration
 - Service implementation
 - Database setup
@@ -242,7 +265,9 @@ Generate a complete microservice:
 - CI/CD pipeline
 
 ### Pattern 3: Component Library
+
 Generate a set of reusable components:
+
 - Component files
 - Shared styles
 - Type definitions
@@ -252,16 +277,19 @@ Generate a set of reusable components:
 ## Troubleshooting
 
 ### Generated Code Doesn't Match Style
+
 - Update agent configuration to match your conventions
 - Provide examples of existing code for reference
 - Use post-generation formatting tools
 
 ### Missing Dependencies
+
 - Ensure required packages are in package.json
 - Specify exact versions in agent config
 - Use peer dependencies appropriately
 
 ### Integration Issues
+
 - Review existing code structure before generating
 - Test generated code in isolation first
 - Check for naming conflicts
@@ -285,4 +313,5 @@ To add a new code generation agent:
 
 ---
 
-*Code generation agents are designed to accelerate development while maintaining quality and consistency.*
+_Code generation agents are designed to accelerate development while maintaining
+quality and consistency._

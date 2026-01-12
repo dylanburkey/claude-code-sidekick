@@ -11,8 +11,8 @@ A **balanced, user-friendly configuration system** that gives you two options:
 
 ## The Problem We Solved
 
-**Before:** Users had to toggle 100+ individual settings manually
-**After:** Choose a preset OR use master toggles + simplified categories
+**Before:** Users had to toggle 100+ individual settings manually **After:**
+Choose a preset OR use master toggles + simplified categories
 
 ## System Components
 
@@ -46,10 +46,10 @@ Bulk enable/disable entire feature categories:
 ```markdown
 ### Master Toggles
 
-- **MCP Servers**: `TRUE`         # All database/cloud integrations
-- **Development Hooks**: `TRUE`   # All git hooks and automation
-- **Code Quality Rules**: `TRUE`  # All linting and standards
-- **AI Agents**: `TRUE`           # All specialized agents
+- **MCP Servers**: `TRUE` # All database/cloud integrations
+- **Development Hooks**: `TRUE` # All git hooks and automation
+- **Code Quality Rules**: `TRUE` # All linting and standards
+- **AI Agents**: `TRUE` # All specialized agents
 ```
 
 When `FALSE`, the entire section is skipped during setup.
@@ -64,12 +64,14 @@ Instead of 100+ toggles, organized into logical categories:
 ## Code Rules Configuration
 
 ### Language Standards
+
 - **Modern JavaScript**: `TRUE`
 - **TypeScript**: `FALSE`
 - **Node.js**: `FALSE`
 - **Python**: `FALSE`
 
 ### Framework Standards
+
 - **Astro**: `TRUE`
 - **React**: `FALSE`
 - **Next.js**: `FALSE`
@@ -77,17 +79,20 @@ Instead of 100+ toggles, organized into logical categories:
 - **Svelte/SvelteKit**: `FALSE`
 
 ### CSS & Styling
+
 - **Modern CSS**: `TRUE`
 - **Tailwind CSS**: `FALSE`
 - **Sass/SCSS**: `FALSE`
 
 ### Backend & API
+
 - **Hono**: `TRUE`
 - **Express/Fastify**: `FALSE`
 - **REST API**: `FALSE`
 - **GraphQL**: `FALSE`
 
 ### Quality & Testing
+
 - **WCAG AA Accessibility**: `TRUE`
 - **SEO Optimization**: `TRUE`
 - **Performance**: `TRUE`
@@ -95,6 +100,7 @@ Instead of 100+ toggles, organized into logical categories:
 - **Testing Standards**: `FALSE`
 
 ### Platform Standards
+
 - **Cloudflare Workers**: `TRUE`
 - **Vercel**: `FALSE`
 - **PWA**: `TRUE`
@@ -136,7 +142,9 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ```markdown
 # 1. Edit PROJECT_STARTER.md
+
 ### Project Preset
+
 - [x] **Astro Site**
 ```
 
@@ -146,6 +154,7 @@ PROJECT_STARTER.md                   # Updated with new sections
 ```
 
 **Result:**
+
 - Code rules for Astro + Modern CSS + JavaScript
 - MCP servers: GitHub, Cloudflare, Sentry, GA4
 - Development hooks: Pre-commit, auto-format, README sync
@@ -158,13 +167,17 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ```markdown
 # 1. Select preset
+
 ### Project Preset
+
 - [x] **Astro Site**
 
 # 2. Override specific settings
+
 ## Code Rules Configuration
-- **TypeScript**: `TRUE`  # Add TypeScript
-- **Tailwind CSS**: `TRUE`  # Add Tailwind
+
+- **TypeScript**: `TRUE` # Add TypeScript
+- **Tailwind CSS**: `TRUE` # Add Tailwind
 ```
 
 ```bash
@@ -178,14 +191,18 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ```markdown
 # 1. Select preset
+
 ### Project Preset
+
 - [x] **React App**
 
 # 2. Disable unwanted categories
+
 ### Master Toggles
-- **MCP Servers**: `FALSE`        # No external services
-- **Development Hooks**: `TRUE`   # Keep automation
-- **Code Quality Rules**: `TRUE`  # Keep linting
+
+- **MCP Servers**: `FALSE` # No external services
+- **Development Hooks**: `TRUE` # Keep automation
+- **Code Quality Rules**: `TRUE` # Keep linting
 ```
 
 ```bash
@@ -201,30 +218,34 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ```markdown
 # 1. Select custom preset
+
 ### Project Preset
+
 - [x] **Custom**
 
 # 2. Configure each section manually
+
 ### Master Toggles
+
 - **MCP Servers**: `TRUE`
 - **Development Hooks**: `TRUE`
 - **Code Quality Rules**: `TRUE`
 
 ## Code Rules Configuration
+
 - **Modern JavaScript**: `TRUE`
 - **TypeScript**: `TRUE`
-- **Astro**: `TRUE`
-(... configure all sections ...)
+- **Astro**: `TRUE` (... configure all sections ...)
 
 ## MCP Configuration
+
 - **Neon Database**: `TRUE`
-- **Cloudflare**: `TRUE`
-(... configure all MCPs ...)
+- **Cloudflare**: `TRUE` (... configure all MCPs ...)
 
 ## Hooks Configuration
+
 - **Pre-Commit Validation**: `TRUE`
-- **Auto Format on Save**: `TRUE`
-(... configure all hooks ...)
+- **Auto Format on Save**: `TRUE` (... configure all hooks ...)
 ```
 
 ```bash
@@ -238,8 +259,8 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ### `/quick-start`
 
-**Purpose:** Apply preset configuration
-**Usage:**
+**Purpose:** Apply preset configuration **Usage:**
+
 ```bash
 /quick-start              # Apply selected preset
 /quick-start --validate   # Check config without applying
@@ -249,18 +270,17 @@ PROJECT_STARTER.md                   # Updated with new sections
 
 ### `/mcp-setup`
 
-**Purpose:** Configure MCP servers
-**Respects:** `MCP Servers` master toggle
+**Purpose:** Configure MCP servers **Respects:** `MCP Servers` master toggle
 
 ### `/hooks-setup`
 
-**Purpose:** Configure development hooks
-**Respects:** `Development Hooks` master toggle
+**Purpose:** Configure development hooks **Respects:** `Development Hooks`
+master toggle
 
 ### `/rules-setup` (NEW)
 
-**Purpose:** Configure code quality rules
-**Respects:** `Code Quality Rules` master toggle
+**Purpose:** Configure code quality rules **Respects:** `Code Quality Rules`
+master toggle
 
 ## Preset Definitions
 
@@ -336,10 +356,11 @@ Individual settings ignored
 ```
 
 **Example:**
+
 ```markdown
-- **MCP Servers**: `FALSE`  # Nothing below matters
-- **Neon Database**: `TRUE`  # Ignored
-- **Cloudflare**: `TRUE`     # Ignored
+- **MCP Servers**: `FALSE` # Nothing below matters
+- **Neon Database**: `TRUE` # Ignored
+- **Cloudflare**: `TRUE` # Ignored
 ```
 
 ### 2. Preset Inheritance
@@ -393,9 +414,11 @@ Most specific wins.
 
 ```markdown
 ### Project Preset
+
 - [x] **Astro Site**
 
 ### Master Toggles
+
 - **MCP Servers**: `TRUE`
 - **Development Hooks**: `TRUE`
 - **Code Quality Rules**: `TRUE`
@@ -405,6 +428,7 @@ Most specific wins.
 Run `/quick-start` →
 
 **Configured:**
+
 - Modern JavaScript + Astro + Modern CSS rules
 - GitHub + Cloudflare + Sentry + GA4 MCPs
 - Pre-commit, auto-format, README sync hooks
@@ -414,18 +438,21 @@ Run `/quick-start` →
 
 ```markdown
 ### Project Preset
+
 - [x] **Static Website**
 
 ### Master Toggles
-- **MCP Servers**: `FALSE`        # No external services
-- **Development Hooks**: `TRUE`   # Just automation
-- **Code Quality Rules**: `TRUE`  # Just linting
-- **AI Agents**: `FALSE`          # Core agents only
+
+- **MCP Servers**: `FALSE` # No external services
+- **Development Hooks**: `TRUE` # Just automation
+- **Code Quality Rules**: `TRUE` # Just linting
+- **AI Agents**: `FALSE` # Core agents only
 ```
 
 Run `/quick-start` →
 
 **Configured:**
+
 - Modern JavaScript + Modern CSS rules
 - Pre-commit + auto-format hooks
 - No MCP integrations
@@ -435,15 +462,18 @@ Run `/quick-start` →
 
 ```markdown
 ### Project Preset
+
 - [x] **Full Stack**
 
 ### Master Toggles
+
 (all TRUE - use full preset)
 ```
 
 Run `/quick-start` →
 
 **Configured:**
+
 - JavaScript, TypeScript, Node.js, React, Next.js, Hono rules
 - Neon, Cloudflare, Vercel, Sentry, Stripe, GA4 MCPs
 - All quality hooks + security scanning
@@ -497,14 +527,15 @@ npm install
 
 We created a **balanced configuration system** that:
 
-✅ **Reduces complexity** - 100+ individual settings → 8 presets or 20 categories
-✅ **Saves time** - 2 minutes with preset vs 30-60 minutes manual
-✅ **Maintains flexibility** - Can override any preset setting
-✅ **Provides control** - Master toggles for bulk operations
-✅ **Scales well** - Works for simple to complex projects
-✅ **Teams friendly** - Consistent setup across organization
+✅ **Reduces complexity** - 100+ individual settings → 8 presets or 20
+categories ✅ **Saves time** - 2 minutes with preset vs 30-60 minutes manual ✅
+**Maintains flexibility** - Can override any preset setting ✅ **Provides
+control** - Master toggles for bulk operations ✅ **Scales well** - Works for
+simple to complex projects ✅ **Teams friendly** - Consistent setup across
+organization
 
 **The user gets:**
+
 - Quick Start for speed
 - Master toggles for bulk control
 - Simplified rules for granular control

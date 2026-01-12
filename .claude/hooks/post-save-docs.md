@@ -1,10 +1,13 @@
 # Post-Save Documentation Hook
 
 ## Trigger
+
 This hook activates after any file is saved in the project.
 
 ## Purpose
+
 Automatically maintain documentation consistency by:
+
 1. Updating inline documentation
 2. Syncing README.md with project changes
 3. Updating CLAUDE.md with architectural context
@@ -13,25 +16,28 @@ Automatically maintain documentation consistency by:
 ## Activation Conditions
 
 ### Always Trigger
+
 - New file created
 - Existing file significantly modified
 - File deleted
 
 ### File Type Handlers
 
-| File Pattern | Action |
-|--------------|--------|
-| `*.js`, `*.ts` | Update API docs, check exports |
-| `*.css` | Update style documentation |
-| `*.md` | Validate links, update TOC |
-| `*.yml`, `*.yaml` | Update config documentation |
-| `*.liquid` | Update section/snippet docs |
-| `*.json` | Update schema documentation |
+| File Pattern      | Action                         |
+| ----------------- | ------------------------------ |
+| `*.js`, `*.ts`    | Update API docs, check exports |
+| `*.css`           | Update style documentation     |
+| `*.md`            | Validate links, update TOC     |
+| `*.yml`, `*.yaml` | Update config documentation    |
+| `*.liquid`        | Update section/snippet docs    |
+| `*.json`          | Update schema documentation    |
 
 ## Documentation Updates
 
 ### README.md Updates
+
 Trigger README update when:
+
 - New major feature added
 - Installation steps change
 - Dependencies added/removed
@@ -39,6 +45,7 @@ Trigger README update when:
 
 ```markdown
 ## Sections to Check
+
 - [ ] Project description still accurate
 - [ ] Installation instructions current
 - [ ] Usage examples work
@@ -47,7 +54,9 @@ Trigger README update when:
 ```
 
 ### CLAUDE.md Updates
+
 Trigger CLAUDE.md update when:
+
 - New patterns introduced
 - Architecture decisions made
 - New directories/files with special purpose
@@ -55,6 +64,7 @@ Trigger CLAUDE.md update when:
 
 ```markdown
 ## Sections to Check
+
 - [ ] Project structure accurate
 - [ ] Key patterns documented
 - [ ] File purposes explained
@@ -65,26 +75,27 @@ Trigger CLAUDE.md update when:
 ## Implementation
 
 ### Hook Script
+
 ```yaml
 hook:
-  name: "post-save-docs"
-  trigger: "file_save"
-  agent: "docs"
-  
+  name: 'post-save-docs'
+  trigger: 'file_save'
+  agent: 'docs'
+
   conditions:
     # Skip documentation files themselves to prevent loops
     exclude:
-      - "README.md"
-      - "CLAUDE.md"
-      - ".claude/docs/**"
-    
+      - 'README.md'
+      - 'CLAUDE.md'
+      - '.claude/docs/**'
+
     # Skip generated/vendor files
     exclude_patterns:
-      - "node_modules/**"
-      - "dist/**"
-      - "*.min.*"
-      - "*.lock"
-  
+      - 'node_modules/**'
+      - 'dist/**'
+      - '*.min.*'
+      - '*.lock'
+
   actions:
     - analyze_change
     - determine_doc_impact
@@ -93,9 +104,10 @@ hook:
 ```
 
 ### Change Analysis
+
 ```yaml
 analyze:
-  file: "{{changed_file}}"
+  file: '{{changed_file}}'
   detect:
     - new_exports
     - removed_exports
@@ -105,6 +117,7 @@ analyze:
 ```
 
 ### Documentation Impact Assessment
+
 ```yaml
 impact:
   readme:
@@ -136,6 +149,7 @@ impact:
 ## Rate Limiting
 
 To prevent excessive updates during rapid saves:
+
 - Debounce: 5 second delay after last save
 - Batch: Collect multiple file changes
 - Dedupe: Don't update same doc section twice
@@ -143,6 +157,7 @@ To prevent excessive updates during rapid saves:
 ## Output
 
 ### Log Entry
+
 ```
 [HOOK] post-save-docs triggered
   File: src/components/header.js
@@ -153,11 +168,13 @@ To prevent excessive updates during rapid saves:
 ```
 
 ### Documentation Diff
+
 When significant changes made, output diff for review:
+
 ```diff
 + ## Header Component
 + Responsive header with navigation support.
-+ 
++
 + ### Props
 + - `logo`: Logo image source
 + - `navItems`: Navigation items array
@@ -166,6 +183,7 @@ When significant changes made, output diff for review:
 ## Configuration
 
 In `.claude/config.yml`:
+
 ```yaml
 hooks:
   post_save_docs:
@@ -174,6 +192,6 @@ hooks:
     auto_commit: false
     verbose: true
     excluded_paths:
-      - "test/**"
-      - "*.test.*"
+      - 'test/**'
+      - '*.test.*'
 ```

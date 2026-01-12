@@ -13,7 +13,8 @@
    - Glossary of technical terms
    - Step-by-step with explanations
 
-2. **[Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)** (60 minutes)
+2. **[Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)**
+   (60 minutes)
    - Build a complete Nuxt 3 application from scratch
    - Includes: Database (Neon PostgreSQL), Modern CSS, Vite+
    - Covers: Authentication, CRUD operations, deployment
@@ -46,12 +47,15 @@
 ### Complete Beginners (No Coding Experience)
 
 **Path:**
+
 1. [Beginner's Guide](docs/guides/beginner-guide.md) → Learn concepts
 2. [Quick Start Guide](docs/guides/quick-start-guide.md) → Use preset
-3. [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) → Build real app
+3. [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) → Build real
+   app
 4. [Troubleshooting](docs/guides/troubleshooting.md) → When stuck
 
 **Can now:**
+
 - ✅ Understand what Claude Code Sidekick does
 - ✅ Set up a complete project
 - ✅ Build a full-stack web application
@@ -61,11 +65,14 @@
 ### Intermediate Users (Some Experience)
 
 **Path:**
+
 1. [Quick Start Guide](docs/guides/quick-start-guide.md) → Fast setup
-2. [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) → Specific tech stack
+2. [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) → Specific tech
+   stack
 3. [Configuration](docs/guides/configuration.md) → Fine-tune
 
 **Can now:**
+
 - ✅ Configure projects in 2 minutes
 - ✅ Build with specific tech stacks
 - ✅ Customize every aspect
@@ -73,11 +80,13 @@
 ### Advanced Developers
 
 **Path:**
+
 1. [Getting Started](docs/guides/getting-started.md) → Quick reference
 2. [Configuration](docs/guides/configuration.md) → All options
 3. Build immediately
 
 **Can now:**
+
 - ✅ Use Quick Start or go fully custom
 - ✅ Understand the system architecture
 - ✅ Extend and customize
@@ -86,8 +95,8 @@
 
 ### Before This Update
 
-**Time:** Unknown, likely unsuccessful
-**Barriers:**
+**Time:** Unknown, likely unsuccessful **Barriers:**
+
 - No clear starting point
 - Technical jargon everywhere
 - Missing step-by-step instructions
@@ -95,20 +104,22 @@
 
 ### After This Update
 
-**Time:** 60 minutes from zero to production
-**Path:**
+**Time:** 60 minutes from zero to production **Path:**
 
-1. **Minute 0-5:** [Beginner's Guide](docs/guides/beginner-guide.md#part-1-understanding-the-basics)
+1. **Minute 0-5:**
+   [Beginner's Guide](docs/guides/beginner-guide.md#part-1-understanding-the-basics)
    - Understand key concepts
    - Learn what each piece does
 
-2. **Minute 5-10:** [Beginner's Guide](docs/guides/beginner-guide.md#part-2-creating-your-first-project)
+2. **Minute 5-10:**
+   [Beginner's Guide](docs/guides/beginner-guide.md#part-2-creating-your-first-project)
    - Copy Sidekick files
    - Select Nuxt preset
    - Run `/quick-start`
    - Project configured automatically
 
-3. **Minute 10-60:** [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)
+3. **Minute 10-60:**
+   [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)
    - Set up GitHub, Neon, Vercel accounts (10 min)
    - Configure environment variables (5 min)
    - Define features in plain language (10 min)
@@ -118,6 +129,7 @@
    - Deploy to production (10 min)
 
 **Result:**
+
 - ✅ Production-ready Nuxt 3 app
 - ✅ PostgreSQL database connected
 - ✅ User authentication working
@@ -139,6 +151,7 @@
 ### Coverage
 
 **Topics Covered:**
+
 - Project setup and configuration
 - Quick Start presets
 - Master toggles
@@ -154,6 +167,7 @@
 - Emergency recovery
 
 **Tech Stacks Documented:**
+
 - Nuxt 3 + Vue 3 (complete)
 - Modern CSS (complete)
 - Vite+ (complete)
@@ -168,11 +182,13 @@
 ### 1. Plain Language
 
 **Before:**
+
 ```
 Initialize the Prisma ORM and run migrations to scaffold your schema
 ```
 
 **After:**
+
 ```
 Set up the database structure:
 1. This creates tables to store your data
@@ -183,6 +199,7 @@ Set up the database structure:
 ### 2. Step Numbering
 
 Every guide uses clear numbered steps:
+
 - Major steps: "Step 1: Set Up Your Project (5 minutes)"
 - Substeps: "1.1 Create Project Folder"
 - Progress indicators show time remaining
@@ -209,6 +226,7 @@ Nuxt 3.15.0 with Nitro 2.10.3
 ### 5. Multiple Entry Points
 
 Users can start from:
+
 - Experience level (beginner, intermediate, expert)
 - Goal ("I want to build a website")
 - Tech stack ("Nuxt full-stack app")
@@ -236,7 +254,8 @@ docs/guides/
 3. Read Part 3 (understand what was created)
 4. Try Part 6 (make small changes)
 5. Reference [Troubleshooting](docs/guides/troubleshooting.md) as needed
-6. Build confidence, move to [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)
+6. Build confidence, move to
+   [Nuxt Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md)
 
 ### Journey 2: "I want to build a task manager"
 
@@ -289,30 +308,35 @@ The documentation seamlessly integrates with the new configuration system:
 A non-developer can now:
 
 ### Understand (5 minutes)
+
 - ✅ What Claude Code Sidekick is
 - ✅ What presets do
 - ✅ What master toggles control
 - ✅ Key concepts (agents, hooks, MCPs)
 
 ### Set Up (2-10 minutes)
+
 - ✅ Copy files to project
 - ✅ Select appropriate preset
 - ✅ Run `/quick-start`
 - ✅ Project fully configured
 
 ### Build (30-45 minutes)
+
 - ✅ Describe application in plain language
 - ✅ Run planning commands
 - ✅ Let agents build automatically
 - ✅ Make custom changes
 
 ### Deploy (10 minutes)
+
 - ✅ Set up deployment account
 - ✅ Configure environment
 - ✅ Deploy to production
 - ✅ App live on internet
 
 ### Troubleshoot (varies)
+
 - ✅ Find issue in guide
 - ✅ Understand problem
 - ✅ Apply solution
@@ -350,6 +374,7 @@ A non-developer can now:
 ### Community Contributions
 
 Documentation is set up for community guides:
+
 - Template provided in [index.md](docs/guides/index.md#contributing-a-guide)
 - Clear guidelines for writing style
 - Organized contribution process
@@ -357,18 +382,21 @@ Documentation is set up for community guides:
 ## Impact
 
 ### Before
+
 - High barrier to entry
 - Required coding knowledge
 - Configuration overwhelming
 - Easy to get stuck
 
 ### After
+
 - Accessible to non-developers
 - Plain language throughout
 - Preset-driven simplicity
 - Clear path from start to production
 
 ### Measured Success
+
 - **Setup time:** 30-60 min → 2 min (97% reduction)
 - **Time to first app:** Days → 60 minutes
 - **Documentation coverage:** Partial → Comprehensive
@@ -389,4 +417,6 @@ Documentation is set up for community guides:
 
 ---
 
-**Result:** A complete, accessible documentation system that enables anyone—regardless of coding experience—to build and deploy professional web applications using Claude Code Sidekick. 🚀
+**Result:** A complete, accessible documentation system that enables
+anyone—regardless of coding experience—to build and deploy professional web
+applications using Claude Code Sidekick. 🚀
