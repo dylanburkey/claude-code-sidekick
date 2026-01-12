@@ -2,6 +2,18 @@
 
 > CLI tool to create new projects with Claude Code Sidekick
 
+---
+
+**© 2026 Dylan Burkey. All Rights Reserved.**
+
+**PROPRIETARY SOFTWARE** - This software and all associated code, documentation,
+and materials are the exclusive property of Dylan Burkey. Unauthorized copying,
+modification, distribution, or use of this software is strictly prohibited and
+may result in severe civil and criminal penalties. See LICENSE file for complete
+terms.
+
+---
+
 ## Quick Start
 
 ```bash

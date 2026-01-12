@@ -1,12 +1,42 @@
-import fs from 'fs-extra';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
-import { promisify } from 'util';
+/**
+ * create-claude-project - Project Scaffolding Module
+ *
+ * Copyright (c) 2026 Dylan Burkey. All Rights Reserved.
+ *
+ * PROPRIETARY AND CONFIDENTIAL
+ *
+ * This software and all associated files are the exclusive property of Dylan Burkey.
+ * Unauthorized copying, modification, distribution, or use of this software,
+ * via any medium, is strictly prohibited without explicit written permission.
+ *
+ * This software is provided "AS IS" without warranty of any kind.
+ *
+ * For licensing inquiries: https://github.com/dylanburkey
+ */
+
+import { mkdir, writeFile, cp, access, constants } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { exec } from 'node:child_process';
+import { promisify } from 'node:util';
 import { PRESETS, FEATURE_CONFIGS } from './templates.js';
 
 const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Check if a path exists (replacement for fs-extra pathExists)
+ * @param {string} filePath - Path to check
+ * @returns {Promise<boolean>} True if path exists
+ */
+async function pathExists(filePath) {
+  try {
+    await access(filePath, constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 /**
  * Scaffolds a new project with the specified configuration, including base files,
@@ -32,7 +62,7 @@ export async function scaffoldProject({
   const presetConfig = PRESETS[preset];
 
   // Create project directory
-  await fs.ensureDir(projectPath);
+  await mkdir(projectPath, { recursive: true });
 
   // Copy base template files
   const templateDir = path.join(__dirname, '../../../');
@@ -72,8 +102,8 @@ async function copyBaseFiles(templateDir, projectPath) {
     const src = path.join(templateDir, file);
     const dest = path.join(projectPath, file);
 
-    if (await fs.pathExists(src)) {
-      await fs.copy(src, dest);
+    if (await pathExists(src)) {
+      await cp(src, dest, { recursive: true });
     }
   }
 }
@@ -176,7 +206,7 @@ ${Object.entries(presetConfig.hooks)
   .join('\n')}
 `;
 
-  await fs.writeFile(path.join(projectPath, 'PROJECT_STARTER.md'), content);
+  await writeFile(path.join(projectPath, 'PROJECT_STARTER.md'), content);
 }
 
 /**
@@ -221,7 +251,7 @@ async function createPackageJson(projectPath, projectName, presetConfig, feature
     },
   };
 
-  await fs.writeFile(path.join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
+  await writeFile(path.join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 }
 
 /**
@@ -263,7 +293,7 @@ CLOUDFLARE_API_TOKEN=
 `;
   }
 
-  await fs.writeFile(path.join(projectPath, '.env.example'), envContent);
+  await writeFile(path.join(projectPath, '.env.example'), envContent);
 }
 
 /**

@@ -1,6 +1,22 @@
+/**
+ * create-claude-project - Utility Functions Tests
+ *
+ * Copyright (c) 2026 Dylan Burkey. All Rights Reserved.
+ *
+ * PROPRIETARY AND CONFIDENTIAL
+ *
+ * This software and all associated files are the exclusive property of Dylan Burkey.
+ * Unauthorized copying, modification, distribution, or use of this software,
+ * via any medium, is strictly prohibited without explicit written permission.
+ *
+ * This software is provided "AS IS" without warranty of any kind.
+ *
+ * For licensing inquiries: https://github.com/dylanburkey
+ */
+
 import { describe, it, expect, afterEach } from 'vitest';
-import path from 'path';
-import fs from 'fs-extra';
+import path from 'node:path';
+import { mkdir, writeFile, rm } from 'node:fs/promises';
 import {
   validateProjectName,
   getProjectPath,
@@ -87,7 +103,7 @@ describe('isDirectoryEmpty', () => {
   const testDir = path.join(process.cwd(), 'test-temp-dir');
 
   afterEach(async () => {
-    await fs.remove(testDir);
+    await rm(testDir, { recursive: true, force: true });
   });
 
   it('should return true for non-existent directory', async () => {
@@ -96,14 +112,14 @@ describe('isDirectoryEmpty', () => {
   });
 
   it('should return true for empty directory', async () => {
-    await fs.ensureDir(testDir);
+    await mkdir(testDir, { recursive: true });
     const result = await isDirectoryEmpty(testDir);
     expect(result).toBe(true);
   });
 
   it('should return false for directory with files', async () => {
-    await fs.ensureDir(testDir);
-    await fs.writeFile(path.join(testDir, 'test.txt'), 'test');
+    await mkdir(testDir, { recursive: true });
+    await writeFile(path.join(testDir, 'test.txt'), 'test');
     const result = await isDirectoryEmpty(testDir);
     expect(result).toBe(false);
   });

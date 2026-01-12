@@ -1,0 +1,44 @@
+# Development files
+*.test.js
+*.spec.js
+__tests__/
+coverage/
+.nyc_output/
+vitest.config.js
+
+# Development dependencies
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.travis.yml
+.gitlab-ci.yml
+
+# Documentation (keep README.md)
+docs/
+*.md
+!README.md
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log

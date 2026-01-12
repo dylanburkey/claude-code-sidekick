@@ -1,0 +1,188 @@
+PROPRIETARY LICENSE
+
+Copyright (c) 2026 Dylan Burkey. All Rights Reserved.
+
+================================================================================
+PLAIN LANGUAGE SUMMARY
+================================================================================
+
+This is PROPRIETARY software owned exclusively by Dylan Burkey.
+
+YOU CANNOT:
+- Copy this code
+- Use this code in your own projects
+- Modify this code
+- Share this code with anyone
+- Learn from this code and recreate it
+- Use this code commercially or non-commercially
+- Extract ideas, patterns, or concepts from this code for your own use
+
+YOU CAN ONLY:
+- Read this code if you have been given access
+- Nothing else
+
+If you are unsure whether something is allowed, it is NOT allowed.
+Contact Dylan Burkey for explicit written permission.
+
+================================================================================
+LEGAL TERMS
+================================================================================
+
+NOTICE: All information contained herein is, and remains the property of
+Dylan Burkey. The intellectual and technical concepts contained herein are
+proprietary to Dylan Burkey and are protected by copyright law.
+
+RESTRICTIONS:
+
+1. NO COPYING OR REPRODUCTION
+   You may NOT copy, reproduce, duplicate, or replicate this software, source
+   code, documentation, or any portion thereof in any form, by any means,
+   electronic or mechanical, including but not limited to:
+   - Copying files to another location
+   - Downloading or cloning the repository for use
+   - Taking screenshots or photographs of the code
+   - Transcribing code manually or automatically
+   - Using copy-paste functionality
+   - Creating backups or archives
+
+2. NO MODIFICATION OR DERIVATIVE WORKS
+   You may NOT modify, adapt, alter, translate, transform, or create
+   derivative works based upon this software or any part thereof, including:
+   - Editing or changing any code
+   - Adding new features or functionality
+   - Removing or commenting out code
+   - Reformatting or refactoring code
+   - Creating similar implementations based on this code
+   - Using this code as a reference for your own implementations
+
+3. NO DISTRIBUTION OR SHARING
+   You may NOT distribute, redistribute, publish, transmit, sublicense, rent,
+   lease, loan, sell, or transfer this software or any copies thereof to any
+   third party by any means, including:
+   - Sharing via email, messaging, or file sharing services
+   - Posting on websites, forums, or social media
+   - Including in other projects or repositories
+   - Making available on package managers (npm, yarn, etc.)
+   - Providing access to others directly or indirectly
+
+4. NO COMMERCIAL OR NON-COMMERCIAL USE
+   You may NOT use this software for any purpose whatsoever, including:
+   - Commercial products or services
+   - Internal business tools or applications
+   - Personal projects or learning exercises
+   - Open source projects
+   - Educational or training purposes
+   - Research or analysis
+   - Any other use not explicitly permitted in writing by Dylan Burkey
+
+5. NO REVERSE ENGINEERING OR ANALYSIS
+   You may NOT:
+   - Reverse engineer, decompile, or disassemble this software
+   - Attempt to derive source code or underlying algorithms
+   - Study the code to understand implementation details
+   - Extract patterns, architectures, or methodologies
+   - Create documentation or tutorials based on this code
+   - Analyze performance characteristics or behavior
+
+6. NO REMOVAL OR ALTERATION OF NOTICES
+   You may NOT remove, obscure, modify, or alter any copyright, trademark,
+   attribution, license notices, or other proprietary rights notices contained
+   in or on this software.
+
+PERMITTED USE:
+
+IF you have been granted access to view this code (such as through a public
+or private repository), you may ONLY:
+
+- Read the source code for personal reference
+- View the code in its original, unmodified form
+
+You may NOT:
+- Save, download, or store the code in any form
+- Use the code as reference for your own implementations
+- Learn implementation techniques and apply them elsewhere
+- Share your access with others
+- Take any action beyond passive viewing
+
+Any use beyond passive viewing in its original location requires explicit
+written permission from Dylan Burkey.
+
+OWNERSHIP:
+
+This software and all worldwide intellectual property rights therein,
+including but not limited to copyrights, patents, trade secrets, trademarks,
+and any other proprietary rights, are the exclusive property of Dylan Burkey.
+
+All rights, title, and interest in and to the software remain with Dylan
+Burkey. No rights or licenses are granted except as explicitly stated in
+writing by Dylan Burkey.
+
+VIOLATIONS AND LEGAL CONSEQUENCES:
+
+Any unauthorized use, copying, modification, distribution, or other violation
+of this license will be considered:
+
+1. Copyright infringement under applicable copyright laws
+2. Breach of contract and misappropriation of trade secrets
+3. Subject to immediate legal action
+
+Violations may result in:
+- Injunctive relief requiring you to cease all use immediately
+- Monetary damages including actual damages and statutory damages
+- Payment of Dylan Burkey's attorney fees and court costs
+- Criminal penalties under applicable laws
+- Other remedies available under law
+
+Dylan Burkey reserves the right to pursue all legal remedies available,
+including but not limited to civil lawsuits and criminal prosecution.
+
+IF YOU RECEIVE THIS CODE:
+
+If you have received this code through any means:
+
+1. You are bound by the terms of this license
+2. You must NOT use, copy, modify, or distribute it in any way
+3. If you received it in error or without authorization:
+   - Delete all copies immediately
+   - Notify Dylan Burkey of the unauthorized distribution
+   - Do not view, use, or share the code
+4. Contact Dylan Burkey if you wish to obtain a license
+
+NO WARRANTIES:
+
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL DYLAN BURKEY BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING
+FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+ENTIRE AGREEMENT:
+
+This license constitutes the entire agreement between you and Dylan Burkey
+concerning the software and supersedes all prior or contemporaneous
+understandings regarding such subject matter.
+
+SEVERABILITY:
+
+If any provision of this license is held to be unenforceable or invalid,
+such provision shall be changed and interpreted to accomplish the objectives
+of such provision to the greatest extent possible under applicable law, and
+the remaining provisions shall continue in full force and effect.
+
+CONTACT FOR LICENSING:
+
+For licensing inquiries, permission requests, or to report violations:
+
+Dylan Burkey
+GitHub: https://github.com/dylanburkey
+Email: [Contact via GitHub]
+
+All permission requests must be in writing and explicitly granted by
+Dylan Burkey in a signed writing to be valid.
+
+================================================================================
+
+Last Updated: January 11, 2026

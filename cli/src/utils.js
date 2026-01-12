@@ -1,5 +1,21 @@
-import path from 'path';
-import fs from 'fs-extra';
+/**
+ * create-claude-project - Utility Functions
+ *
+ * Copyright (c) 2026 Dylan Burkey. All Rights Reserved.
+ *
+ * PROPRIETARY AND CONFIDENTIAL
+ *
+ * This software and all associated files are the exclusive property of Dylan Burkey.
+ * Unauthorized copying, modification, distribution, or use of this software,
+ * via any medium, is strictly prohibited without explicit written permission.
+ *
+ * This software is provided "AS IS" without warranty of any kind.
+ *
+ * For licensing inquiries: https://github.com/dylanburkey
+ */
+
+import path from 'node:path';
+import { readdir } from 'node:fs/promises';
 
 /**
  * Validate project name
@@ -56,7 +72,7 @@ export function getProjectPath(projectName) {
  */
 export async function isDirectoryEmpty(dirPath) {
   try {
-    const files = await fs.readdir(dirPath);
+    const files = await readdir(dirPath);
     return files.length === 0;
   } catch {
     // Directory doesn't exist, so it's "empty"
