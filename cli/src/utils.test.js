@@ -17,7 +17,7 @@ describe('validateProjectName', () => {
     expect(validateProjectName('my-project')).toEqual({ valid: true });
     expect(validateProjectName('my_project')).toEqual({ valid: true });
     expect(validateProjectName('my-project-123')).toEqual({ valid: true });
-    expect(validateProjectName('@scope/package')).toEqual({ valid: true });
+    expect(validateProjectName('@scoped-package')).toEqual({ valid: true });
   });
 
   it('should reject empty names', () => {
@@ -55,9 +55,16 @@ describe('validateProjectName', () => {
       valid: false,
       error: '"node_modules" is a reserved name',
     });
+  });
+
+  it('should reject names starting with dots', () => {
     expect(validateProjectName('.git')).toEqual({
       valid: false,
-      error: '".git" is a reserved name',
+      error: 'Project name can only contain lowercase letters, numbers, hyphens, and underscores',
+    });
+    expect(validateProjectName('.github')).toEqual({
+      valid: false,
+      error: 'Project name can only contain lowercase letters, numbers, hyphens, and underscores',
     });
   });
 });
