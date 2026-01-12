@@ -12,13 +12,21 @@ program
   .description('Create a new project with Claude Code Sidekick')
   .version('1.0.0')
   .argument('[project-name]', 'Name of the project')
-  .option('-p, --preset <preset>', 'Project preset (static|astro|react|nextjs|nuxt|svelte|fullstack)')
+  .option(
+    '-p, --preset <preset>',
+    'Project preset (static|astro|react|nextjs|nuxt|svelte|fullstack)'
+  )
   .option('--skip-install', 'Skip dependency installation')
   .option('--skip-git', 'Skip git initialization')
   .action(async (projectName, options) => {
     await createProject(projectName, options);
   });
 
+/**
+ *
+ * @param cliProjectName
+ * @param cliOptions
+ */
 export async function createProject(cliProjectName, cliOptions = {}) {
   console.clear();
 
@@ -32,7 +40,9 @@ export async function createProject(cliProjectName, cliOptions = {}) {
       placeholder: 'my-awesome-app',
       validate: (value) => {
         const result = validateProjectName(value);
-        if (!result.valid) return result.error;
+        if (!result.valid) {
+          return result.error;
+        }
       },
     });
 

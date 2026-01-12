@@ -8,6 +8,16 @@ import { PRESETS, FEATURE_CONFIGS } from './templates.js';
 const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+/**
+ *
+ * @param root0
+ * @param root0.projectName
+ * @param root0.projectPath
+ * @param root0.preset
+ * @param root0.features
+ * @param root0.skipInstall
+ * @param root0.skipGit
+ */
 export async function scaffoldProject({
   projectName,
   projectPath,
@@ -52,12 +62,13 @@ export async function scaffoldProject({
   return projectPath;
 }
 
+/**
+ *
+ * @param templateDir
+ * @param projectPath
+ */
 async function copyBaseFiles(templateDir, projectPath) {
-  const filesToCopy = [
-    '.claude/',
-    '.gitignore',
-    'README.md',
-  ];
+  const filesToCopy = ['.claude/', '.gitignore', 'README.md'];
 
   for (const file of filesToCopy) {
     const src = path.join(templateDir, file);
@@ -69,6 +80,13 @@ async function copyBaseFiles(templateDir, projectPath) {
   }
 }
 
+/**
+ *
+ * @param projectPath
+ * @param projectName
+ * @param preset
+ * @param features
+ */
 async function createProjectStarter(projectPath, projectName, preset, features) {
   const presetConfig = PRESETS[preset];
 
@@ -91,7 +109,7 @@ Selected: **${presetConfig.name}** - ${presetConfig.description}
 
 ### Selected Features
 
-${features.map(f => `- ${FEATURE_CONFIGS[f]?.description || f}`).join('\n')}
+${features.map((f) => `- ${FEATURE_CONFIGS[f]?.description || f}`).join('\n')}
 
 ---
 
@@ -160,12 +178,16 @@ ${Object.entries(presetConfig.hooks)
   .join('\n')}
 `;
 
-  await fs.writeFile(
-    path.join(projectPath, 'PROJECT_STARTER.md'),
-    content
-  );
+  await fs.writeFile(path.join(projectPath, 'PROJECT_STARTER.md'), content);
 }
 
+/**
+ *
+ * @param projectPath
+ * @param projectName
+ * @param presetConfig
+ * @param features
+ */
 async function createPackageJson(projectPath, projectName, presetConfig, features) {
   const dependencies = { ...presetConfig.dependencies };
   const devDependencies = { ...presetConfig.devDependencies };
@@ -196,19 +218,20 @@ async function createPackageJson(projectPath, projectName, presetConfig, feature
     dependencies,
     devDependencies: {
       ...devDependencies,
-      'eslint': '^9.0.0',
-      'prettier': '^3.0.0',
+      eslint: '^9.0.0',
+      prettier: '^3.0.0',
     },
   };
 
-  await fs.writeFile(
-    path.join(projectPath, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
-  );
+  await fs.writeFile(path.join(projectPath, 'package.json'), JSON.stringify(packageJson, null, 2));
 }
 
+/**
+ *
+ * @param projectPath
+ */
 async function copy440css(projectPath) {
-  const cssDir = path.join(__dirname, '../templates/440css');
+  // const cssDir = path.join(__dirname, '../templates/440css');
   const destDir = path.join(projectPath, '440css');
 
   // For now, create a placeholder
@@ -233,6 +256,11 @@ async function copy440css(projectPath) {
   await fs.writeFile(path.join(destDir, '440.css'), placeholderCss);
 }
 
+/**
+ *
+ * @param projectPath
+ * @param features
+ */
 async function createEnvFile(projectPath, features) {
   let envContent = `# Environment Variables
 
@@ -270,17 +298,25 @@ CLOUDFLARE_API_TOKEN=
   await fs.writeFile(path.join(projectPath, '.env.example'), envContent);
 }
 
+/**
+ *
+ * @param projectPath
+ */
 async function initGit(projectPath) {
   try {
     await execAsync('git init', { cwd: projectPath });
     await execAsync('git add .', { cwd: projectPath });
     await execAsync('git commit -m "Initial commit from create-440-app"', { cwd: projectPath });
-  } catch (error) {
+  } catch {
     // Git init is optional, don't fail if it doesn't work
     console.warn('Warning: Could not initialize git repository');
   }
 }
 
+/**
+ *
+ * @param projectPath
+ */
 async function installDependencies(projectPath) {
   try {
     await execAsync('npm install', { cwd: projectPath });

@@ -28,13 +28,7 @@ export function validateProjectName(name) {
     };
   }
 
-  const reservedNames = [
-    'node_modules',
-    'favicon.ico',
-    '.git',
-    '.github',
-    '.claude',
-  ];
+  const reservedNames = ['node_modules', 'favicon.ico', '.git', '.github', '.claude'];
 
   if (reservedNames.includes(name)) {
     return {
@@ -64,7 +58,7 @@ export async function isDirectoryEmpty(dirPath) {
   try {
     const files = await fs.readdir(dirPath);
     return files.length === 0;
-  } catch (error) {
+  } catch {
     // Directory doesn't exist, so it's "empty"
     return true;
   }
@@ -96,9 +90,15 @@ export function getPackageManager() {
   const userAgent = process.env.npm_config_user_agent;
 
   if (userAgent) {
-    if (userAgent.startsWith('yarn')) return 'yarn';
-    if (userAgent.startsWith('pnpm')) return 'pnpm';
-    if (userAgent.startsWith('bun')) return 'bun';
+    if (userAgent.startsWith('yarn')) {
+      return 'yarn';
+    }
+    if (userAgent.startsWith('pnpm')) {
+      return 'pnpm';
+    }
+    if (userAgent.startsWith('bun')) {
+      return 'bun';
+    }
   }
 
   return 'npm';
@@ -140,6 +140,6 @@ export function toKebabCase(str) {
 export function toPascalCase(str) {
   return str
     .split(/[-_\s]+/)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('');
 }

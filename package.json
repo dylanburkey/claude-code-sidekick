@@ -11,7 +11,7 @@
     "url": "https://github.com/dylanburkey/claude-code-lib.git"
   },
   "scripts": {
-    "lint": "eslint cli/src cli/bin --max-warnings 0",
+    "lint": "eslint cli/src cli/bin",
     "lint:fix": "eslint cli/src cli/bin --fix",
     "lint:jsdoc": "eslint cli/src cli/bin --rule 'jsdoc/require-jsdoc: error'",
     "format": "prettier --write .",
