@@ -1,3 +1,19 @@
+/**
+ * create-claude-project - Interactive CLI Main Module
+ *
+ * Copyright (c) 2026 Dylan Burkey. All Rights Reserved.
+ *
+ * PROPRIETARY AND CONFIDENTIAL
+ *
+ * This software and all associated files are the exclusive property of Dylan Burkey.
+ * Unauthorized copying, modification, distribution, or use of this software,
+ * via any medium, is strictly prohibited without explicit written permission.
+ *
+ * This software is provided "AS IS" without warranty of any kind.
+ *
+ * For licensing inquiries: https://github.com/dylanburkey
+ */
+
 import * as p from '@clack/prompts';
 import { Command } from 'commander';
 import chalk from 'chalk';
