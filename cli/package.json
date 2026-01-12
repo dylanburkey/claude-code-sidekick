@@ -18,8 +18,7 @@
     "dev": "node bin/create-claude-project.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "prepublishOnly": "pnpm test"
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
