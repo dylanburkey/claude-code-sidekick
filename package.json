@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "author": "Dylan Burkey",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "https://github.com/dylanburkey/claude-code-lib.git"

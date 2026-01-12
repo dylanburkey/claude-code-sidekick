@@ -4,6 +4,17 @@
 > Professional project scaffolding, specialized agents, and automation in one
 > command.
 
+---
+
+**© 2026 Dylan Burkey. All Rights Reserved.**
+
+**PROPRIETARY SOFTWARE** - This software and all associated code, documentation,
+and materials are the exclusive property of Dylan Burkey. Unauthorized copying,
+modification, distribution, or use of this software is strictly prohibited. See
+LICENSE file for complete terms.
+
+---
+
 ## Quick Start
 
 ### Option 1: CLI - Instant Project Creation (2 minutes)
