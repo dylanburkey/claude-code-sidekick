@@ -41,11 +41,6 @@ export async function scaffoldProject({
   // Create package.json
   await createPackageJson(projectPath, projectName, presetConfig, features);
 
-  // Copy 440css if selected
-  if (features.includes('440css')) {
-    await copy440css(projectPath);
-  }
-
   // Create environment file
   await createEnvFile(projectPath, features);
 
@@ -229,36 +224,6 @@ async function createPackageJson(projectPath, projectName, presetConfig, feature
 /**
  *
  * @param projectPath
- */
-async function copy440css(projectPath) {
-  // const cssDir = path.join(__dirname, '../templates/440css');
-  const destDir = path.join(projectPath, '440css');
-
-  // For now, create a placeholder
-  // TODO: Implement actual 440css system
-  await fs.ensureDir(destDir);
-
-  const placeholderCss = `/* 440css - Modern CSS System */
-/* This will be populated with the full 440css framework */
-
-:root {
-  /* Design Tokens */
-  --color-primary: hsl(220 90% 56%);
-  --color-accent: hsl(340 82% 52%);
-
-  --space-sm: clamp(1rem, 0.91rem + 0.43vw, 1.25rem);
-  --space-md: clamp(1.5rem, 1.37rem + 0.65vw, 1.88rem);
-
-  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-}
-`;
-
-  await fs.writeFile(path.join(destDir, '440.css'), placeholderCss);
-}
-
-/**
- *
- * @param projectPath
  * @param features
  */
 async function createEnvFile(projectPath, features) {
@@ -306,7 +271,9 @@ async function initGit(projectPath) {
   try {
     await execAsync('git init', { cwd: projectPath });
     await execAsync('git add .', { cwd: projectPath });
-    await execAsync('git commit -m "Initial commit from create-440-app"', { cwd: projectPath });
+    await execAsync('git commit -m "Initial commit from create-claude-project"', {
+      cwd: projectPath,
+    });
   } catch {
     // Git init is optional, don't fail if it doesn't work
     console.warn('Warning: Could not initialize git repository');
