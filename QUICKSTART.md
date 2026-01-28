@@ -6,9 +6,27 @@ Get up and running with the Claude Code Starter Template in 5 minutes.
 
 ```bash
 # Clone or copy the .claude directory to your project
-cp -r /path/to/claude-code-lib/.claude /your-project/
-cp /path/to/claude-code-lib/PROJECT_STARTER.md /your-project/
-cp -r /path/to/claude-code-lib/specs /your-project/
+# Replace 'your-project-name' with your actual project directory name
+
+cp -r ~/dev/projects/claude-code-lib/.claude ~/dev/projects/your-project-name/
+cp ~/dev/projects/claude-code-lib/PROJECT_STARTER.md ~/dev/projects/your-project-name/
+cp -r ~/dev/projects/claude-code-lib/specs ~/dev/projects/your-project-name/
+
+# Or using full paths:
+# cp -r /Users/yourusername/dev/projects/claude-code-lib/.claude /Users/yourusername/dev/projects/your-project-name/
+# cp /Users/yourusername/dev/projects/claude-code-lib/PROJECT_STARTER.md /Users/yourusername/dev/projects/your-project-name/
+# cp -r /Users/yourusername/dev/projects/claude-code-lib/specs /Users/yourusername/dev/projects/your-project-name/
+
+# Verify the copy was successful:
+ls -la ~/dev/projects/your-project-name/.claude
+```
+
+**For Shopify or WordPress projects:**
+```bash
+# Use the specialized starter templates instead
+cp ~/dev/projects/claude-code-lib/PROJECT_STARTER_SHOPIFY.md ~/dev/projects/your-project-name/PROJECT_STARTER.md
+# or
+cp ~/dev/projects/claude-code-lib/PROJECT_STARTER_WORDPRESS.md ~/dev/projects/your-project-name/PROJECT_STARTER.md
 ```
 
 ## 2. Fill Out PROJECT_STARTER.md
@@ -78,20 +96,21 @@ This:
 ## Directory Structure After Setup
 
 ```
-your-project/
+~/dev/projects/your-project-name/
 ├── .claude/
 │   ├── commands/           # Slash commands
 │   │   ├── project-planner.md
 │   │   ├── task-planner.md
 │   │   └── task-runner.md
 │   ├── agents/             # Specialized AI agents
-│   │   ├── init.md
-│   │   ├── planner.md
-│   │   ├── dev.md
-│   │   ├── test.md
-│   │   ├── docs.md
-│   │   ├── review.md
-│   │   └── orchestrator.md
+│   │   ├── init-agent.md
+│   │   ├── planner-agent.md
+│   │   ├── dev-agent.md
+│   │   ├── test-agent.md
+│   │   ├── docs-agent.md
+│   │   ├── review-agent.md
+│   │   ├── orchestrator-agent.md
+│   │   └── shopify-theme-developer.md
 │   ├── hooks/              # Event-driven automation
 │   │   ├── post-save-docs.md
 │   │   ├── pre-commit.md
@@ -106,12 +125,12 @@ your-project/
 │       └── structure.md
 ├── specs/                  # Feature specifications
 │   └── _TEMPLATE.md
-├── project-plan/           # Generated plans
+├── project-plan/           # Generated plans (created by /project-planner)
 │   └── phase_1.md
-├── tasks/                  # Generated tasks
+├── tasks/                  # Generated tasks (created by /task-planner)
 │   └── phase-1-tasks.md
 ├── PROJECT_STARTER.md      # Your project definition
-├── CLAUDE.md               # AI context document
+├── CLAUDE.md               # AI context document (optional, create if needed)
 └── README.md               # Project documentation
 ```
 
