@@ -22,6 +22,7 @@ ls -la ~/dev/projects/your-project-name/.claude
 ```
 
 **For Shopify or WordPress projects:**
+
 ```bash
 # Use the specialized starter templates instead
 cp ~/dev/projects/claude-code-lib/PROJECT_STARTER_SHOPIFY.md ~/dev/projects/your-project-name/PROJECT_STARTER.md

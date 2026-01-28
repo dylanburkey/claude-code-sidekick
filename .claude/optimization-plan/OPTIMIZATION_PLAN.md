@@ -26,21 +26,23 @@ This plan addresses four critical gaps in the current Claude Code Sidekick:
 
 ### Critical Gaps
 
-| Gap | Impact | Priority |
-|-----|--------|----------|
+| Gap                         | Impact                            | Priority |
+| --------------------------- | --------------------------------- | -------- |
 | No existing project support | Can't use on 90% of real projects | Critical |
-| No git worktree integration | Sequential execution only | High |
-| Hooks are conceptual only | No actual automation | High |
-| Serena not integrated | Missing structured reasoning | Medium |
+| No git worktree integration | Sequential execution only         | High     |
+| Hooks are conceptual only   | No actual automation              | High     |
+| Serena not integrated       | Missing structured reasoning      | Medium   |
 
 ---
 
 ## Implementation Phases
 
 ### Phase 1: Project Analyzer (Critical)
+
 ### Phase 2: Git Worktree Integration
+
 ### Phase 3: Real Hooks Implementation
+
 ### Phase 4: Serena Integration
 
 See individual phase documents for details.
-

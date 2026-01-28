@@ -64,14 +64,10 @@ scan:
 Create a structure map:
 
 ```markdown
-project-root/
-├── src/                    # Source code
-│   ├── components/         # UI components (47 files)
-│   ├── utils/              # Utility functions (12 files)
-│   └── pages/              # Page templates (8 files)
-├── tests/                  # Test files (23 files)
-├── docs/                   # Documentation (5 files)
-└── config/                 # Configuration (3 files)
+project-root/ ├── src/ # Source code │ ├── components/ # UI components (47
+files) │ ├── utils/ # Utility functions (12 files) │ └── pages/ # Page templates
+(8 files) ├── tests/ # Test files (23 files) ├── docs/ # Documentation (5 files)
+└── config/ # Configuration (3 files)
 ```
 
 ### Step 2: Detect Technology Stack
@@ -80,58 +76,58 @@ Analyze project files to identify:
 
 #### Package Managers & Languages
 
-| Indicator               | Technology |
-| ----------------------- | ---------- |
-| `package.json`          | Node.js    |
-| `requirements.txt`      | Python     |
-| `Cargo.toml`            | Rust       |
-| `composer.json`         | PHP        |
-| `Gemfile`               | Ruby       |
-| `go.mod`                | Go         |
-| `pom.xml` / `build.gradle` | Java    |
+| Indicator                  | Technology |
+| -------------------------- | ---------- |
+| `package.json`             | Node.js    |
+| `requirements.txt`         | Python     |
+| `Cargo.toml`               | Rust       |
+| `composer.json`            | PHP        |
+| `Gemfile`                  | Ruby       |
+| `go.mod`                   | Go         |
+| `pom.xml` / `build.gradle` | Java       |
 
 #### Frameworks
 
-| Indicator                              | Framework           |
-| -------------------------------------- | ------------------- |
-| `astro.config.*`                       | Astro               |
-| `next.config.*`                        | Next.js             |
-| `nuxt.config.*`                        | Nuxt                |
-| `svelte.config.*`                      | SvelteKit           |
-| `angular.json`                         | Angular             |
-| `vite.config.*` + React                | Vite + React        |
-| `remix.config.*`                       | Remix               |
-| Dependencies: `express`, `fastify`     | Node backend        |
-| Dependencies: `hono`                   | Hono                |
-| Dependencies: `django`, `flask`        | Python web          |
-| `config/settings_schema.json`          | Shopify Theme       |
-| `.theme-check.yml`                     | Shopify Theme       |
-| `layout/theme.liquid`                  | Shopify Theme       |
-| Dependencies: `@shopify/cli`           | Shopify CLI         |
-| Dependencies: `@shopify/theme`         | Shopify Theme Kit   |
-| `wp-config.php` or `wp-content/`       | WordPress           |
-| `functions.php` in theme directory     | WordPress Theme     |
-| `style.css` with WordPress header      | WordPress Theme     |
+| Indicator                          | Framework         |
+| ---------------------------------- | ----------------- |
+| `astro.config.*`                   | Astro             |
+| `next.config.*`                    | Next.js           |
+| `nuxt.config.*`                    | Nuxt              |
+| `svelte.config.*`                  | SvelteKit         |
+| `angular.json`                     | Angular           |
+| `vite.config.*` + React            | Vite + React      |
+| `remix.config.*`                   | Remix             |
+| Dependencies: `express`, `fastify` | Node backend      |
+| Dependencies: `hono`               | Hono              |
+| Dependencies: `django`, `flask`    | Python web        |
+| `config/settings_schema.json`      | Shopify Theme     |
+| `.theme-check.yml`                 | Shopify Theme     |
+| `layout/theme.liquid`              | Shopify Theme     |
+| Dependencies: `@shopify/cli`       | Shopify CLI       |
+| Dependencies: `@shopify/theme`     | Shopify Theme Kit |
+| `wp-config.php` or `wp-content/`   | WordPress         |
+| `functions.php` in theme directory | WordPress Theme   |
+| `style.css` with WordPress header  | WordPress Theme   |
 
 #### Styling Approach
 
-| Indicator                      | Approach          |
-| ------------------------------ | ----------------- |
-| `tailwind.config.*`            | Tailwind CSS      |
-| `.scss` / `.sass` files        | Sass              |
-| `styled-components` dependency | CSS-in-JS         |
-| `.module.css` files            | CSS Modules       |
-| Plain `.css` with variables    | Modern CSS        |
+| Indicator                      | Approach     |
+| ------------------------------ | ------------ |
+| `tailwind.config.*`            | Tailwind CSS |
+| `.scss` / `.sass` files        | Sass         |
+| `styled-components` dependency | CSS-in-JS    |
+| `.module.css` files            | CSS Modules  |
+| Plain `.css` with variables    | Modern CSS   |
 
 #### Testing
 
-| Indicator                      | Framework            |
-| ------------------------------ | -------------------- |
-| `vitest.config.*`              | Vitest               |
-| `jest.config.*`                | Jest                 |
-| `playwright.config.*`          | Playwright           |
-| `cypress.config.*`             | Cypress              |
-| `pytest.ini` / `conftest.py`   | Pytest               |
+| Indicator                    | Framework  |
+| ---------------------------- | ---------- |
+| `vitest.config.*`            | Vitest     |
+| `jest.config.*`              | Jest       |
+| `playwright.config.*`        | Playwright |
+| `cypress.config.*`           | Cypress    |
+| `pytest.ini` / `conftest.py` | Pytest     |
 
 ### Step 3: Identify Patterns & Conventions
 
@@ -270,19 +266,17 @@ Create `.claude/PROJECT_CONTEXT.md`:
 
 ### Detected Stack
 
-| Layer      | Technology      | Version  |
-| ---------- | --------------- | -------- |
-| Language   | {{LANGUAGE}}    | {{VER}}  |
-| Framework  | {{FRAMEWORK}}   | {{VER}}  |
-| Styling    | {{STYLING}}     | {{VER}}  |
-| Testing    | {{TESTING}}     | {{VER}}  |
-| Build      | {{BUILD_TOOL}}  | {{VER}}  |
+| Layer     | Technology     | Version |
+| --------- | -------------- | ------- |
+| Language  | {{LANGUAGE}}   | {{VER}} |
+| Framework | {{FRAMEWORK}}  | {{VER}} |
+| Styling   | {{STYLING}}    | {{VER}} |
+| Testing   | {{TESTING}}    | {{VER}} |
+| Build     | {{BUILD_TOOL}} | {{VER}} |
 
 ### Project Structure
 
-\`\`\`
-{{STRUCTURE_TREE}}
-\`\`\`
+\`\`\` {{STRUCTURE_TREE}} \`\`\`
 
 ### Entry Points
 
@@ -347,9 +341,7 @@ Based on this analysis, when working on this project:
 
 This context document is ready for `/project-planner`. Run:
 
-\`\`\`bash
-/project-planner --context=PROJECT_CONTEXT.md
-\`\`\`
+\`\`\`bash /project-planner --context=PROJECT_CONTEXT.md \`\`\`
 
 Or if you have specific goals, fill out `PROJECT_STARTER.md` with:
 

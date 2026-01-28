@@ -9,7 +9,8 @@
 
 ## Executive Summary
 
-This plan optimizes Claude Code Sidekick into a complete AI-assisted development workflow with six interconnected components:
+This plan optimizes Claude Code Sidekick into a complete AI-assisted development
+workflow with six interconnected components:
 
 1. **PROJECT_STARTER.md** → Project definition template
 2. **project-planner** → Analyzes starter, creates phase plans
@@ -19,8 +20,10 @@ This plan optimizes Claude Code Sidekick into a complete AI-assisted development
 6. **hooks** → Auto-generates documentation on file changes
 
 The architecture supports two entry modes:
+
 - **Greenfield Mode:** Start from PROJECT_STARTER.md
-- **Existing Project Mode:** Start from PROJECT_TASK_LIST.md with codebase analysis
+- **Existing Project Mode:** Start from PROJECT_TASK_LIST.md with codebase
+  analysis
 
 ---
 
@@ -135,22 +138,26 @@ The architecture supports two entry modes:
 ## Component 1: PROJECT_STARTER.md
 
 ### Purpose
-Single source of truth for greenfield project definition. Users fill this template to communicate their vision to Claude Code Sidekick.
+
+Single source of truth for greenfield project definition. Users fill this
+template to communicate their vision to Claude Code Sidekick.
 
 ### Location
+
 `/PROJECT_STARTER.md` (project root)
 
 ### Current State
+
 ✅ Exists and is comprehensive (521 lines)
 
 ### Optimizations Needed
 
-| Area | Issue | Solution |
-|------|-------|----------|
-| EARS Notation | Good but examples could be clearer | Add inline examples in template |
-| Questions Section | Users don't know what to ask | Add suggested question prompts |
-| Constraints | Buried in the document | Move to dedicated section |
-| Tech Stack | Requires manual entry | Add preset options |
+| Area              | Issue                              | Solution                        |
+| ----------------- | ---------------------------------- | ------------------------------- |
+| EARS Notation     | Good but examples could be clearer | Add inline examples in template |
+| Questions Section | Users don't know what to ask       | Add suggested question prompts  |
+| Constraints       | Buried in the document             | Move to dedicated section       |
+| Tech Stack        | Requires manual entry              | Add preset options              |
 
 ### Enhanced Template Structure
 
@@ -158,34 +165,41 @@ Single source of truth for greenfield project definition. Users fill this templa
 # PROJECT_STARTER.md
 
 ## 1. Project Identity
+
 - Name, description, type (web-app/api/library/cli/static-site)
 
 ## 2. Vision & Goals
+
 - Primary goal (single sentence)
 - Success criteria (measurable outcomes)
 - Non-goals (explicit exclusions)
 
 ## 3. Requirements (EARS Notation)
+
 - Functional requirements
 - Non-functional requirements
 - Quality attributes
 
 ## 4. Technical Decisions
+
 - Framework/stack preferences
 - Architecture style (monolith/microservices/serverless)
 - Deployment target
 
 ## 5. Constraints
+
 - Timeline
 - Budget/resources
 - Existing systems to integrate
 
 ## 6. Questions for Claude
+
 - Architecture questions
 - Technology choices
 - Best practices inquiries
 
 ## 7. References
+
 - Inspiration links
 - Design mockups
 - API documentation
@@ -196,12 +210,16 @@ Single source of truth for greenfield project definition. Users fill this templa
 ## Component 2: Project Planner Command
 
 ### Purpose
-Analyzes PROJECT_STARTER.md and creates phase documents with breakdown of goals, criteria, and technical approach.
+
+Analyzes PROJECT_STARTER.md and creates phase documents with breakdown of goals,
+criteria, and technical approach.
 
 ### Location
+
 `.claude/commands/project-planner.md`
 
 ### Current State
+
 ✅ Exists with good structure
 
 ### Enhanced Workflow
@@ -241,17 +259,21 @@ Analyzes PROJECT_STARTER.md and creates phase documents with breakdown of goals,
 > Estimated Duration: {{DURATION}}
 
 ## Overview
+
 {{Brief description of what this phase accomplishes}}
 
 ## Goals
+
 1. {{Goal 1}}
 2. {{Goal 2}}
 3. {{Goal 3}}
 
 ## Intent
+
 {{Why this phase exists and how it fits the overall project}}
 
 ## Success Criteria
+
 - [ ] {{Criterion 1 - measurable}}
 - [ ] {{Criterion 2 - testable}}
 - [ ] {{Criterion 3 - verifiable}}
@@ -259,33 +281,41 @@ Analyzes PROJECT_STARTER.md and creates phase documents with breakdown of goals,
 ## Technical Approach
 
 ### Architecture Decisions
+
 {{Key architectural choices for this phase}}
 
 ### Patterns to Use
+
 - {{Pattern 1}}: {{Rationale}}
 - {{Pattern 2}}: {{Rationale}}
 
 ### Dependencies
+
 - **External:** {{NPM packages, APIs, services}}
 - **Internal:** {{Components from previous phases}}
 
 ## Deliverables
+
 1. {{Deliverable 1}} - {{Location}}
 2. {{Deliverable 2}} - {{Location}}
 3. {{Deliverable 3}} - {{Location}}
 
 ## Risks & Mitigations
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| {{Risk 1}} | Medium | High | {{Strategy}} |
+
+| Risk       | Likelihood | Impact | Mitigation   |
+| ---------- | ---------- | ------ | ------------ |
+| {{Risk 1}} | Medium     | High   | {{Strategy}} |
 
 ## Questions Answered
+
 {{Responses to questions from PROJECT_STARTER.md}}
 
 ## Open Questions
+
 {{Questions requiring user input before proceeding}}
 
 ## Transition to Next Phase
+
 {{Conditions that must be met before moving to phase N+1}}
 ```
 
@@ -294,9 +324,12 @@ Analyzes PROJECT_STARTER.md and creates phase documents with breakdown of goals,
 ## Component 3: Task Planner Command
 
 ### Purpose
-Reads phase documents and generates discrete, executable tasks with clear acceptance criteria and agent assignments.
+
+Reads phase documents and generates discrete, executable tasks with clear
+acceptance criteria and agent assignments.
 
 ### Location
+
 `.claude/commands/task-planner.md`
 
 ### Enhanced Workflow
@@ -330,16 +363,16 @@ Reads phase documents and generates discrete, executable tasks with clear accept
 # Phase {{N}} Tasks
 
 > Generated: {{TIMESTAMP}}  
-> Source: project-plan/phase_{{N}}.md  
+> Source: project-plan/phase\_{{N}}.md  
 > Total Tasks: {{COUNT}}
 
 ## Task Overview
 
-| ID | Task | Agent | Status | Dependencies |
-|----|------|-------|--------|--------------|
-| 1.1 | {{Task name}} | dev | pending | none |
-| 1.2 | {{Task name}} | dev | pending | 1.1 |
-| 1.3 | {{Task name}} | test | pending | 1.2 |
+| ID  | Task          | Agent | Status  | Dependencies |
+| --- | ------------- | ----- | ------- | ------------ |
+| 1.1 | {{Task name}} | dev   | pending | none         |
+| 1.2 | {{Task name}} | dev   | pending | 1.1          |
+| 1.3 | {{Task name}} | test  | pending | 1.2          |
 
 ---
 
@@ -353,23 +386,28 @@ Reads phase documents and generates discrete, executable tasks with clear accept
 **Dependencies:** None
 
 #### Description
+
 {{Detailed description of what needs to be done}}
 
 #### Acceptance Criteria
+
 - [ ] {{Criterion 1}}
 - [ ] {{Criterion 2}}
 - [ ] {{Criterion 3}}
 
 #### Files to Create/Modify
+
 - `src/components/{{Component}}.tsx`
 - `src/styles/{{Component}}.css`
 
 #### Implementation Notes
+
 {{Any specific guidance for the agent}}
 
 ---
 
 ### Task 1.2: {{Task Name}}
+
 ...
 ```
 
@@ -378,9 +416,12 @@ Reads phase documents and generates discrete, executable tasks with clear accept
 ## Component 4: Task Runner Command
 
 ### Purpose
-Executes tasks sequentially using specialized subagents, manages git worktrees for isolation, and tracks progress.
+
+Executes tasks sequentially using specialized subagents, manages git worktrees
+for isolation, and tracks progress.
 
 ### Location
+
 `.claude/commands/task-runner.md`
 
 ### Enhanced Workflow
@@ -423,23 +464,23 @@ Executes tasks sequentially using specialized subagents, manages git worktrees f
 ```yaml
 # Task execution delegation
 task:
-  id: "1.1"
-  name: "Create user authentication component"
-  agent: "dev-agent"
-  
+  id: '1.1'
+  name: 'Create user authentication component'
+  agent: 'dev-agent'
+
 delegation:
   # Context provided to agent
   context:
-    - phase_document: "project-plan/phase_1.md"
-    - task_file: "tasks/phase-1-tasks.md"
-    - project_context: "CLAUDE.md"
-    
+    - phase_document: 'project-plan/phase_1.md'
+    - task_file: 'tasks/phase-1-tasks.md'
+    - project_context: 'CLAUDE.md'
+
   # Agent instructions
   instructions: |
     Execute task 1.1 following acceptance criteria.
     Create files in the worktree.
     Report completion status.
-    
+
   # Success validation
   validation:
     - acceptance_criteria_met: true
@@ -466,14 +507,14 @@ delegation:
 
 ### Agent Responsibilities Matrix
 
-| Agent | Primary Responsibility | Tools | Output |
-|-------|----------------------|-------|--------|
-| orchestrator | Task coordination, delegation | All agents | Progress state |
-| dev | Code implementation | File ops, MCP | Source files |
-| test | Test creation, execution | Vitest, fast-check | Test files |
-| docs | Documentation | JSDoc, Markdown | Docs, README |
-| review | Code quality | ESLint, TypeScript | Review reports |
-| security | Vulnerability scanning | npm audit, Semgrep | Security reports |
+| Agent        | Primary Responsibility        | Tools              | Output           |
+| ------------ | ----------------------------- | ------------------ | ---------------- |
+| orchestrator | Task coordination, delegation | All agents         | Progress state   |
+| dev          | Code implementation           | File ops, MCP      | Source files     |
+| test         | Test creation, execution      | Vitest, fast-check | Test files       |
+| docs         | Documentation                 | JSDoc, Markdown    | Docs, README     |
+| review       | Code quality                  | ESLint, TypeScript | Review reports   |
+| security     | Vulnerability scanning        | npm audit, Semgrep | Security reports |
 
 ### Enhanced Orchestrator Agent
 
@@ -481,18 +522,22 @@ delegation:
 # Orchestrator Agent
 
 ## Role
-Central coordinator for task execution. Reads task files, determines
-execution order, delegates to specialized agents, and manages state.
+
+Central coordinator for task execution. Reads task files, determines execution
+order, delegates to specialized agents, and manages state.
 
 ## Workflow
 
 ### 1. Initialize Phase Execution
+
 - Read tasks/phase-N-tasks.md
 - Build dependency graph using topological sort
 - Create git worktree for isolated development
 
 ### 2. Execute Tasks
+
 For each task in dependency order:
+
 1. Load task details and context
 2. Select appropriate agent based on task type
 3. Provide agent with:
@@ -504,11 +549,13 @@ For each task in dependency order:
 6. Update state/progress.json
 
 ### 3. Handle Failures
+
 - Log failure details to state/errors.json
 - Attempt retry with exponential backoff
 - On persistent failure, pause and notify user
 
 ### 4. Complete Phase
+
 - Verify all tasks completed
 - Run full validation suite
 - Trigger documentation update
@@ -517,13 +564,13 @@ For each task in dependency order:
 
 ## Agent Selection Rules
 
-| Task Type | Primary Agent | Backup Agent |
-|-----------|--------------|--------------|
-| Implementation | dev-agent | - |
-| Testing | test-agent | dev-agent |
-| Documentation | docs-agent | dev-agent |
-| Review | review-agent | - |
-| Security | security-agent | review-agent |
+| Task Type      | Primary Agent  | Backup Agent |
+| -------------- | -------------- | ------------ |
+| Implementation | dev-agent      | -            |
+| Testing        | test-agent     | dev-agent    |
+| Documentation  | docs-agent     | dev-agent    |
+| Review         | review-agent   | -            |
+| Security       | security-agent | review-agent |
 ```
 
 ---
@@ -531,6 +578,7 @@ For each task in dependency order:
 ## Component 6: Hooks System
 
 ### Purpose
+
 Automatically trigger actions when specific events occur during development.
 
 ### Hook Types
@@ -553,25 +601,29 @@ Automatically trigger actions when specific events occur during development.
 
 #### on-file-save Hook
 
-```markdown
+````markdown
 # On File Save Hook
 
 ## Trigger
+
 Fires when any tracked file is saved during task execution.
 
 ## Actions
 
 ### 1. JSDoc Generation (for .ts/.js files)
+
 - Extract function signatures
 - Generate or update JSDoc comments
 - Preserve existing documentation
 
 ### 2. README Update
+
 - If new component created, add to component list
 - If API changed, update API section
 - If configuration changed, update setup instructions
 
 ### 3. CLAUDE.md Update (conditional)
+
 - If new pattern introduced, document it
 - If new file location significant, add to structure
 
@@ -581,24 +633,26 @@ Fires when any tracked file is saved during task execution.
 // Pseudo-code for hook logic
 async function onFileSave(filepath) {
   const ext = path.extname(filepath);
-  
+
   // JSDoc generation for code files
   if (['.ts', '.tsx', '.js', '.jsx'].includes(ext)) {
     await generateJSDoc(filepath);
   }
-  
+
   // README updates for component files
   if (filepath.includes('/components/')) {
     await updateReadmeComponents(filepath);
   }
-  
+
   // CLAUDE.md updates for significant changes
   if (isSignificantChange(filepath)) {
     await updateClaudeMd(filepath);
   }
 }
 ```
-```
+````
+
+````
 
 #### on-task-complete Hook
 
@@ -635,8 +689,9 @@ Fires when a task is marked as complete by the task runner.
   "filesCreated": ["src/auth.ts"],
   "filesModified": ["src/index.ts"]
 }
-```
-```
+````
+
+````
 
 #### on-phase-complete Hook
 
@@ -668,7 +723,7 @@ Fires when all tasks in a phase are completed.
 - Display phase summary
 - List what was accomplished
 - Show next phase preview
-```
+````
 
 ---
 
@@ -711,7 +766,11 @@ Fires when all tasks in a phase are completed.
       "startedAt": "2026-01-16T14:35:00Z",
       "tasks": {
         "2.1": { "status": "completed", "agent": "dev" },
-        "2.2": { "status": "running", "agent": "dev", "startedAt": "2026-01-16T15:20:00Z" },
+        "2.2": {
+          "status": "running",
+          "agent": "dev",
+          "startedAt": "2026-01-16T15:20:00Z"
+        },
         "2.3": { "status": "pending" }
       }
     }
@@ -723,49 +782,54 @@ Fires when all tasks in a phase are completed.
 
 ## CLI Commands Summary
 
-| Command | Description | Mode |
-|---------|-------------|------|
-| `ccs init` | Initialize greenfield project | Greenfield |
-| `ccs join` | Analyze existing codebase | Existing |
-| `ccs plan` | Generate phase documents | Both |
-| `ccs task` | Generate task files | Both |
-| `ccs task add "..."` | Add task to backlog | Both |
-| `ccs run` | Execute pending tasks | Both |
-| `ccs run --phase N` | Execute specific phase | Both |
-| `ccs status` | Show progress dashboard | Both |
-| `ccs health` | Show project health | Existing |
-| `ccs scan` | Run security scan | Both |
-| `ccs doc` | Regenerate documentation | Both |
-| `ccs validate` | Validate project structure | Both |
+| Command              | Description                   | Mode       |
+| -------------------- | ----------------------------- | ---------- |
+| `ccs init`           | Initialize greenfield project | Greenfield |
+| `ccs join`           | Analyze existing codebase     | Existing   |
+| `ccs plan`           | Generate phase documents      | Both       |
+| `ccs task`           | Generate task files           | Both       |
+| `ccs task add "..."` | Add task to backlog           | Both       |
+| `ccs run`            | Execute pending tasks         | Both       |
+| `ccs run --phase N`  | Execute specific phase        | Both       |
+| `ccs status`         | Show progress dashboard       | Both       |
+| `ccs health`         | Show project health           | Existing   |
+| `ccs scan`           | Run security scan             | Both       |
+| `ccs doc`            | Regenerate documentation      | Both       |
+| `ccs validate`       | Validate project structure    | Both       |
 
 ---
 
 ## Implementation Priority
 
 ### Phase 1: Core Workflow (Week 1-2)
+
 - [ ] Enhance PROJECT_STARTER.md template
 - [ ] Update project-planner.md with dual-mode support
 - [ ] Update task-planner.md with dependency resolution
 - [ ] Update task-runner.md with agent delegation
 
 ### Phase 2: State Management (Week 2-3)
+
 - [ ] Implement progress.json tracking
 - [ ] Add checkpoint system for resumability
 - [ ] Create status command with visual dashboard
 
 ### Phase 3: Hooks System (Week 3-4)
+
 - [ ] Implement on-file-save hook
 - [ ] Implement on-task-complete hook
 - [ ] Implement on-phase-complete hook
 - [ ] Wire hooks to Claude Code events
 
 ### Phase 4: Agent Optimization (Week 4-5)
+
 - [ ] Enhance orchestrator-agent coordination
 - [ ] Add security-agent
 - [ ] Improve agent context passing
 - [ ] Add agent performance metrics
 
 ### Phase 5: CLI Integration (Week 5-6)
+
 - [ ] Build ccs CLI tool
 - [ ] Implement all commands
 - [ ] Add interactive prompts
