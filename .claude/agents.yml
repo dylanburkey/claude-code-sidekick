@@ -105,6 +105,26 @@ agents:
       - "pattern_matching"
     priority: "high"
 
+  # Shopify Theme Developer - specialized Shopify theme development
+  - name: "shopify-theme-developer"
+    type: "development"
+    description: "Specialized agent for Shopify theme development, Liquid templating, and e-commerce frontend work"
+    config_file: ".claude/agents/shopify-theme-developer.md"
+    capabilities:
+      - "Liquid templating"
+      - "Theme architecture"
+      - "Schema development"
+      - "Section/block creation"
+      - "Performance optimization"
+      - "Accessibility compliance"
+      - "Shopify API integration"
+    tools:
+      - "code_editing"
+      - "file_operations"
+      - "linting"
+      - "performance_profiling"
+    priority: "high"
+
   # Orchestrator agent - coordinates other agents
   - name: "orchestrator"
     type: "coordination"
@@ -125,19 +145,21 @@ agents:
 coordination:
   hierarchy:
     orchestrator:
-      can_spawn: ["planner", "dev", "test", "docs", "review"]
+      can_spawn: ["planner", "dev", "test", "docs", "review", "shopify-theme-developer"]
     init:
       can_spawn: ["planner", "docs"]
     planner:
-      can_spawn: ["dev", "docs"]
+      can_spawn: ["dev", "docs", "shopify-theme-developer"]
     dev:
+      can_spawn: ["test", "review"]
+    shopify-theme-developer:
       can_spawn: ["test", "review"]
     test:
       can_spawn: []
     docs:
       can_spawn: []
     review:
-      can_spawn: ["dev"]
+      can_spawn: ["dev", "shopify-theme-developer"]
 
   communication:
     - from: "planner"
