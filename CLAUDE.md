@@ -32,7 +32,43 @@ tasks/phase-N-tasks.md
    /task-runner
         ↓
    Agents Execute
+        ↓
+   ⛔ PHASE COMPLETE (HARD STOP)
+        ↓
+   [User must explicitly run /task-planner phase=N+1]
 ```
+
+## CRITICAL: Phase Boundaries
+
+**The system WILL NOT auto-advance to the next phase.**
+
+After completing Phase N:
+1. Execution STOPS completely
+2. User must review completed work
+3. User must explicitly run `/task-planner phase=N+1`
+4. User must explicitly run `/task-runner phase=N+1`
+
+This prevents scope creep and ensures controlled, phased delivery.
+
+## Required Skills
+
+These skills are loaded automatically and enforce development discipline:
+
+| Skill | Purpose |
+|-------|---------|
+| `phase-control` | Enforces phase boundaries, prevents auto-advance |
+| `scope-guard` | Validates all file operations against current phase |
+| `checkpoint-manager` | Creates explicit approval gates |
+
+## Required MCPs
+
+These MCP servers are enabled by default:
+
+| MCP | Purpose |
+|-----|---------|
+| `serena` | Structured reasoning, code analysis |
+| `chrome-devtools` | Browser testing, accessibility audits |
+| `context7` | Documentation lookup, best practices |
 
 ### Commands
 

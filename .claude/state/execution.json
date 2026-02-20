@@ -1,0 +1,10 @@
+{
+  "current_phase": 1,
+  "phase_status": "not_started",
+  "authorized_phases": [1],
+  "completed_phases": [],
+  "last_checkpoint": null,
+  "awaiting_approval": false,
+  "scope_violations": [],
+  "execution_log": []
+}

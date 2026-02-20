@@ -85,3 +85,36 @@ workflow:
     - "Phase complete"
   max_parallel_tasks: 3
   task_timeout_minutes: 30
+
+# Phase execution control (CRITICAL for scope management)
+execution:
+  phase_limit: 1              # Only execute up to this phase
+  auto_advance: false         # NEVER auto-advance to next phase
+  require_confirmation: true  # Require explicit user command for each phase
+  hard_stop_on_completion: true  # Stop execution at phase boundary
+
+# Skills configuration
+skills:
+  enabled: true
+  directory: ".claude/skills"
+  auto_load: true
+  available:
+    - phase-control
+    - scope-guard
+    - checkpoint-manager
+
+# Default MCP servers (always enabled)
+mcp:
+  required:
+    - name: "serena"
+      description: "Structured reasoning and code analysis"
+      command: "uvx --from git+https://github.com/oraios/serena serena start-mcp-server"
+      auto_start: true
+    - name: "chrome-devtools"
+      description: "Browser automation and testing"
+      command: "npx @anthropic/mcp-chrome-devtools"
+      auto_start: false
+    - name: "context7"
+      description: "Documentation and context lookup"
+      command: "npx @anthropic/mcp-context7"
+      auto_start: true

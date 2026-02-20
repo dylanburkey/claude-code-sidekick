@@ -18,6 +18,32 @@ Run after `task-planner` has generated a task list.
 
 ## Instructions
 
+### Step 0: Display Phase Boundary Notice
+
+Before ANY execution, output:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│         PHASE {{PHASE}} EXECUTION STARTING                 │
+│                                                             │
+│  ⚠️  This session is LIMITED to Phase {{PHASE}} only        │
+│                                                             │
+│  Scope Control: ACTIVE                                      │
+│  Auto-Advance: DISABLED                                     │
+│  Phase Lock: Phase {{PHASE}}                                │
+│                                                             │
+│  The system will STOP at phase completion.                  │
+│  Manual command required for next phase.                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Step 0.5: Load Required Skills
+
+Before execution, load:
+1. `.claude/skills/phase-control/SKILL.md`
+2. `.claude/skills/scope-guard/SKILL.md`
+3. `.claude/skills/checkpoint-manager/SKILL.md`
+
 ### Step 1: Load Task File
 
 Read `.claude/tasks/phase-{{PHASE}}-tasks.md` and parse:
@@ -144,14 +170,44 @@ After each task batch, report:
 - Remaining: 5/10
 ```
 
-### Step 6: Phase Completion
+### Step 6: Phase Completion (HARD STOP)
 
 When all tasks complete:
 
 1. **Generate Report** - Summary of phase execution
 2. **Update Documentation** - Trigger docs agent
 3. **Notify** - Report phase completion
-4. **Next Phase** - Prompt for next phase planning
+4. **STOP EXECUTION** - **DO NOT proceed to next phase automatically**
+
+Output exactly this completion message:
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   ✓ PHASE {{PHASE}} COMPLETE                                  ║
+║                                                               ║
+║   All tasks for Phase {{PHASE}} have been executed.           ║
+║                                                               ║
+║   ─────────────────────────────────────────────────────────   ║
+║                                                               ║
+║   To continue to Phase {{PHASE+1}}, run BOTH commands:        ║
+║                                                               ║
+║     /task-planner phase={{PHASE+1}}                           ║
+║     /task-runner phase={{PHASE+1}}                            ║
+║                                                               ║
+║   ─────────────────────────────────────────────────────────   ║
+║                                                               ║
+║   ⚠️  MANUAL COMMAND REQUIRED - NO AUTO-ADVANCE              ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+```
+
+**CRITICAL RULES:**
+- **NEVER** automatically invoke task-planner for next phase
+- **NEVER** automatically invoke task-runner for next phase
+- **NEVER** generate Phase N+1 plans without explicit user command
+- **ALWAYS** wait for explicit `/task-planner phase=N` command
+- **ALWAYS** require user confirmation before ANY next-phase work
 
 ## Agent Invocation
 
