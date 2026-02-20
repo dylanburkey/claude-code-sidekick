@@ -1,6 +1,6 @@
 {
   "name": "claude-code-starter-files",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Claude Code Starter Files - A structured workflow template for AI-assisted development",
   "type": "module",
   "private": true,
