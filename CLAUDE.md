@@ -59,6 +59,24 @@ These skills are loaded automatically and enforce development discipline:
 | `phase-control` | Enforces phase boundaries, prevents auto-advance |
 | `scope-guard` | Validates all file operations against current phase |
 | `checkpoint-manager` | Creates explicit approval gates |
+| `git-worktree` | Parallel task execution (opt-in) |
+
+## Git Worktree Mode (Opt-In)
+
+Enable parallel task execution with:
+```
+/worktree-enable
+```
+
+This creates isolated worktrees for each task, allowing independent tasks to run simultaneously:
+```
+main branch
+    ├── .worktrees/task-001/ → Task 1
+    ├── .worktrees/task-002/ → Task 2  (parallel)
+    └── .worktrees/task-003/ → Task 3
+```
+
+Disable with `/worktree-disable`.
 
 ## Required MCPs
 

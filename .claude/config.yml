@@ -102,6 +102,19 @@ skills:
     - phase-control
     - scope-guard
     - checkpoint-manager
+    - git-worktree
+
+# Git worktree configuration (opt-in for parallel execution)
+# Enable with: /worktree-enable
+git:
+  worktrees:
+    enabled: false              # Set to true or run /worktree-enable
+    base_dir: ".worktrees"      # Where worktrees are created
+    auto_cleanup: true          # Remove worktrees after task completion
+    max_concurrent: 3           # Max parallel worktrees
+    branch_prefix: "task/"      # Prefix for worktree branches
+    merge_strategy: "auto"      # auto | manual | squash
+    require_review: false       # Require review-agent before merge
 
 # Default MCP servers (always enabled)
 mcp:
