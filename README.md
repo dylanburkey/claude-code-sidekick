@@ -319,6 +319,8 @@ agent-library/
 
 ### Comprehensive Guides
 
+- [**Real-World SSG Example**](docs/guides/real-world-example-ssg.md) - Build a
+  production static site with blog, SEO, and modern CSS (with terminal screenshots)
 - [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) -
   Build complete Nuxt app
 - [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) -
