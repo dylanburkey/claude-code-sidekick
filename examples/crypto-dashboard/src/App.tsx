@@ -8,7 +8,6 @@ import { useState } from 'react';
 function AppContent() {
   const { authenticated, ready } = usePrivy();
   const [signatureVerified, setSignatureVerified] = useState(false);
-  const [showSignatureModal, setShowSignatureModal] = useState(false);
 
   // Show signature modal when authenticated but not verified
   const needsSignature = authenticated && !signatureVerified;

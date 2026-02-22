@@ -1,299 +1,280 @@
 # SSG Starter Example
 
-> A complete static site generator built with Claude Code Sidekick
+> Step-by-step walkthrough of building a static site with Claude Code Sidekick
 
-This example demonstrates how to use Claude Code Sidekick to build a production-ready static site with:
-
-- ✅ Blog system (Markdown content collections)
-- ✅ SEO optimization (meta tags, JSON-LD)
-- ✅ Modern CSS (@layer, custom properties, glass effects)
-- ✅ Dark theme with pink/purple accents
-- ✅ Responsive design
-- ✅ Accessible (WCAG 2.1 AA)
+This example shows the complete Sidekick workflow from requirements to working code.
 
 ---
 
-## How This Was Built
+## What You'll Learn
 
-### Step 1: Project Creation
+1. How to fill out PROJECT_STARTER.md
+2. How to run /project-planner
+3. How to run /task-planner  
+4. How to run /task-runner
+5. How to fix errors along the way
 
-```bash
-$ npx create-claude-project ssg-starter --preset=astro
+---
 
-   ╭──────────────────────────────────────────╮
-   │                                          │
-   │   🚀 Create Claude Project               │
-   │      AI-Powered Project Generator        │
-   │                                          │
-   ╰──────────────────────────────────────────╯
+## The Finished Product
 
-? Project name: › ssg-starter
-? Select a preset: › Astro Site
+This example builds a production-ready static site with:
 
-✔ Creating project structure...
-✔ Copying Claude Code Sidekick files...
-✔ Installing dependencies...
+- ✅ Homepage with hero section
+- ✅ Blog listing page
+- ✅ Individual blog post pages
+- ✅ SEO meta tags on all pages
+- ✅ JSON-LD structured data
+- ✅ Dark theme with modern CSS
+- ✅ Mobile responsive design
 
-🎉 Project created successfully!
-```
+---
 
-### Step 2: Define Requirements
+## Step 1: Review PROJECT_STARTER.md
 
-Edit `PROJECT_STARTER.md`:
+Open [PROJECT_STARTER.md](./PROJECT_STARTER.md) to see the requirements.
 
+### Key Sections
+
+**Project Info:**
 ```markdown
-## Project Name
-SSG Starter - Modern Static Site
+### Project Name
+SSG Starter
 
-## Requirements (EARS Notation)
+### Project Description
+A modern static site generator starter template with blog...
+```
 
-### Functional
-1. WHEN user visits /blog THE SYSTEM SHALL display post listing
-2. WHEN user visits /blog/[slug] THE SYSTEM SHALL render markdown
+**Requirements (EARS Notation):**
+```markdown
+1. WHEN user visits homepage THE SYSTEM SHALL display hero section
+2. WHEN user visits /blog THE SYSTEM SHALL list all published posts
 3. THE SYSTEM SHALL include SEO meta tags on all pages
-4. THE SYSTEM SHALL include JSON-LD structured data
-
-### Non-Functional
-- CSS: Use @layer for organization
-- CSS: Dark theme with glass morphism effects
-- Accessibility: WCAG 2.1 AA compliant
 ```
 
-### Step 3: Generate Project Plan
-
-```bash
-$ claude
-> /project-planner
-
-📋 Reading PROJECT_STARTER.md...
-
-┌────────────────────────────────────────┐
-│ PROJECT ANALYSIS                       │
-├────────────────────────────────────────┤
-│ Complexity: MEDIUM                     │
-│ Phases: 3                              │
-│ Estimated Time: 2-3 hours              │
-└────────────────────────────────────────┘
-
-✅ Created .claude/project-plan/phase_1.md
+**Technical Stack:**
+```markdown
+- Framework: Astro 5
+- Styling: Modern CSS with @layer
+- Content: Markdown with YAML frontmatter
 ```
 
-### Step 4: Generate Tasks
+---
 
-```bash
-> /task-planner
+## Step 2: Run /project-planner
 
-📖 Reading project-plan/phase_1.md...
+The project-planner reads PROJECT_STARTER.md and creates a structured plan.
 
-┌─────────────────────────────────────────────────────────────────┐
-│ PHASE 1 TASKS                                                   │
-├─────────────────────────────────────────────────────────────────┤
-│ TASK-001 [init] Astro Configuration              ~10 min       │
-│ TASK-002 [dev] CSS Design System                 ~30 min       │
-│ TASK-003 [dev] SEO Component                     ~20 min       │
-│ TASK-004 [dev] JSON-LD Component                 ~20 min       │
-│ TASK-005 [dev] Base Layout                       ~15 min       │
-│ TASK-006 [dev] Navigation Component              ~15 min       │
-│ TASK-007 [dev] Blog System                       ~30 min       │
-└─────────────────────────────────────────────────────────────────┘
+### Command
 
-✅ Created .claude/tasks/phase-1-tasks.md
+```
+/project-planner
 ```
 
-### Step 5: Execute Tasks
+### Output
 
-```bash
-> /task-runner
+See [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md)
 
-🚀 Executing Phase 1...
+The plan includes:
+- Project summary
+- Phase objectives
+- Technical approach
+- Deliverables checklist
 
-┌──────────────────────────────────────────────────────────────────┐
-│ TASK-001: Astro Configuration                        [init]     │
-├──────────────────────────────────────────────────────────────────┤
-│ ▶ Setting output: 'static'                                      │
-│ ▶ Configuring site URL                                          │
-│ ✅ COMPLETE                                                      │
-└──────────────────────────────────────────────────────────────────┘
+---
 
-┌──────────────────────────────────────────────────────────────────┐
-│ TASK-002: CSS Design System                          [dev]      │
-├──────────────────────────────────────────────────────────────────┤
-│ ▶ Creating @layer structure                                     │
-│ ▶ Defining CSS custom properties                                │
-│ ▶ Building glass effect utilities                               │
-│ ✅ COMPLETE                                                      │
-└──────────────────────────────────────────────────────────────────┘
+## Step 3: Run /task-planner
 
-... (tasks 3-7) ...
+The task-planner converts the plan into actionable tasks.
 
-═══════════════════════════════════════════════════════════════════
-                    ⛔ PHASE 1 COMPLETE                            
-═══════════════════════════════════════════════════════════════════
+### Command
 
-Summary:
-  ✅ 7/7 tasks completed
-  📁 12 files created
-  🧪 All components rendering
 ```
+/task-planner
+```
+
+### Output
+
+See [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md)
+
+Example task table:
+
+| ID | Agent | Task | Time | Status |
+|----|-------|------|------|--------|
+| TASK-001 | init | Project setup | 10 min | ✅ |
+| TASK-002 | dev | CSS architecture | 45 min | ✅ |
+| TASK-003 | dev | Base layout | 20 min | ✅ |
+| TASK-004 | dev | Nav component | 15 min | ✅ |
+
+---
+
+## Step 4: Run /task-runner
+
+The task-runner executes each task using the assigned agent.
+
+### Command
+
+```
+/task-runner
+```
+
+### What Happens
+
+1. Claude finds the first incomplete task
+2. Loads the appropriate agent (init, dev, test, etc.)
+3. Executes the task
+4. Marks it complete
+5. Asks if you want to continue
+
+### Fixing Errors
+
+If code has errors:
+
+```
+There's a TypeScript error in SEO.astro. Can you fix it?
+```
+
+Claude will:
+1. Read the error
+2. Find the problem
+3. Fix it
+4. Verify the fix
 
 ---
 
 ## Project Structure
 
+After running the workflow, you get:
+
 ```
 ssg-starter/
-├── .claude/                      # Sidekick configuration
-│   ├── project-plan/
-│   │   └── phase_1.md           # Generated project plan
-│   └── tasks/
-│       └── phase-1-tasks.md     # Generated task list
-│
 ├── src/
 │   ├── components/
-│   │   ├── SEO.astro            # Meta tags component
-│   │   ├── JsonLD.astro         # Structured data
-│   │   ├── Nav.astro            # Navigation
-│   │   └── Footer.astro         # Footer
-│   │
+│   │   ├── SEO.astro          # Meta tags, OG, Twitter
+│   │   ├── JsonLD.astro       # Structured data
+│   │   ├── Nav.astro          # Site navigation
+│   │   └── Footer.astro       # Site footer
 │   ├── layouts/
-│   │   └── BaseLayout.astro     # Main layout
-│   │
+│   │   └── BaseLayout.astro   # Main layout wrapper
 │   ├── pages/
-│   │   ├── index.astro          # Homepage
+│   │   ├── index.astro        # Homepage
 │   │   └── blog/
-│   │       ├── index.astro      # Blog listing
-│   │       └── [slug].astro     # Dynamic post pages
-│   │
+│   │       ├── index.astro    # Blog listing
+│   │       └── [slug].astro   # Blog post template
 │   └── content/
-│       ├── config.ts            # Content collections
-│       └── posts/               # Markdown blog posts
-│           └── hello-world.md
-│
+│       ├── config.ts          # Content schemas
+│       └── posts/             # Markdown posts
 ├── public/
-│   └── styles.css               # Global styles
-│
-├── PROJECT_STARTER.md           # Requirements
-├── astro.config.mjs             # Astro config
+│   └── styles.css             # Global styles
+├── PROJECT_STARTER.md         # Your requirements
+├── CLAUDE.md                  # AI context
 └── package.json
 ```
 
 ---
 
-## Quick Start
+## Running the Example
+
+### Install Dependencies
 
 ```bash
-# Install dependencies
-pnpm install
+cd examples/ssg-starter
+npm install
+```
 
-# Start dev server
-pnpm dev
-# → http://localhost:4321
+### Start Dev Server
 
-# Build for production
-pnpm build
+```bash
+npm run dev
+# Opens http://localhost:4321
+```
 
-# Preview production build
-pnpm preview
+### Build for Production
+
+```bash
+npm run build
+# Output in ./dist/
 ```
 
 ---
 
-## Key Features Explained
+## Key Files Explained
 
-### 1. CSS Architecture
+### SEO.astro
 
-Uses modern CSS with `@layer` for organization:
+Handles all meta tags:
+
+```astro
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<!-- AI Crawler Directives -->
+<meta name="robots" content="index, follow, max-image-preview:large" />
+```
+
+### Content Collection
+
+Blog posts use Astro's content collections:
+
+```typescript
+// src/content/config.ts
+const posts = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.date(),
+    tags: z.array(z.string()),
+  }),
+});
+```
+
+### CSS Architecture
+
+Uses `@layer` for cascade control:
 
 ```css
 @layer reset, base, tokens, layout, components, utilities;
 
 @layer tokens {
   :root {
-    --color-surface: #0a0a0f;
+    --color-bg: #0a0a0f;
     --color-accent: #ec4899;
-    --glass-bg: rgba(24, 24, 27, 0.6);
-  }
-}
-
-@layer components {
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(236, 72, 153, 0.2);
   }
 }
 ```
 
-### 2. SEO Component
+---
 
-Comprehensive meta tags including AI crawler directives:
+## Customizing This Example
 
-```astro
-<!-- src/components/SEO.astro -->
-<title>{title}</title>
-<meta name="description" content={description} />
+### Change Colors
 
-<!-- Open Graph -->
-<meta property="og:title" content={title} />
-<meta property="og:image" content={image} />
+Edit `public/styles.css`:
 
-<!-- AI Crawlers -->
-<meta name="GPTBot" content="index, follow" />
-<meta name="anthropic-index" content="index, follow" />
-```
-
-### 3. Content Collections
-
-Type-safe markdown blog posts:
-
-```typescript
-// src/content/config.ts
-const posts = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishedAt: z.coerce.date(),
-    tags: z.array(z.string()).default([]),
-  }),
-});
-```
-
-### 4. JSON-LD Structured Data
-
-Rich snippets for search engines:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Hello World",
-  "author": { "@type": "Person", "name": "Author" },
-  "datePublished": "2024-02-21"
+```css
+:root {
+  --color-accent: #your-color;
+  --color-bg: #your-background;
 }
 ```
 
----
-
-## Adding Content
-
-### New Blog Post
-
-Create `src/content/posts/my-post.md`:
-
-```markdown
----
-title: "My New Post"
-description: "A brief description"
-publishedAt: 2024-02-21
-tags: ["tutorial", "guide"]
----
-
-# My New Post
-
-Your content here...
-```
-
-### New Page
+### Add a Page
 
 Create `src/pages/about.astro`:
 
@@ -303,68 +284,52 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About" description="About us">
-  <section class="section">
-    <div class="container">
-      <h1>About</h1>
-      <p>Your content here...</p>
-    </div>
-  </section>
+  <h1>About</h1>
+  <p>Your content here.</p>
 </BaseLayout>
 ```
 
+### Add a Blog Post
+
+Create `src/content/posts/my-post.md`:
+
+```markdown
+---
+title: "My New Post"
+description: "A brief description"
+publishedAt: 2024-02-22
+tags: ["tutorial"]
 ---
 
-## Customization
-
-### Colors
-
-Edit `public/styles.css`:
-
-```css
-@layer tokens {
-  :root {
-    --color-accent: #ec4899;     /* Pink */
-    --color-secondary: #8b5cf6;  /* Purple */
-    /* Change these to your brand colors */
-  }
-}
-```
-
-### Fonts
-
-Edit `src/layouts/BaseLayout.astro`:
-
-```html
-<link href="https://fonts.googleapis.com/css2?family=Your+Font&display=swap" rel="stylesheet">
+Your content here...
 ```
 
 ---
 
-## Deployment
+## Troubleshooting
 
-### Cloudflare Pages
-
-```bash
-pnpm build
-npx wrangler pages deploy dist
-```
-
-### Vercel
+### "Cannot find module"
 
 ```bash
-pnpm build
-npx vercel --prod
+npm install
 ```
 
-### Netlify
+### "Content collection error"
+
+Check that your post frontmatter matches the schema in `config.ts`.
+
+### "Build fails"
 
 ```bash
-pnpm build
-npx netlify deploy --prod --dir=dist
+npm run build 2>&1
 ```
+
+Share the error with Claude for help.
 
 ---
 
-## License
+## Next Steps
 
-MIT - Use this as a starting point for your projects!
+- Read the [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
+- Try the [Crypto Dashboard Example](../crypto-dashboard/)
+- Explore [Available Agents](../../.claude/agents/)

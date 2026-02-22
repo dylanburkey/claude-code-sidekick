@@ -1,78 +1,185 @@
 # Crypto Dashboard Example
 
-> Web3 landing page with Privy wallet connection and signature verification
+> Step-by-step walkthrough of building a Web3 dApp with Claude Code Sidekick
 
-This example demonstrates how to use Claude Code Sidekick to build a crypto landing page with:
-
-- ✅ Privy wallet authentication
-- ✅ Signature verification on connect
-- ✅ Elaborate dashboard UI post-auth
-- ✅ Dark neon aesthetic (GigaBrain-inspired)
-- ✅ Real-time data displays
-- ✅ Glassmorphism + gradients
+This example shows how to build a crypto landing page with wallet authentication using the Sidekick workflow.
 
 ---
 
-## How This Was Built
+## What You'll Learn
 
-### Step 1: Project Creation
+1. How to define Web3 requirements in PROJECT_STARTER.md
+2. How to use /project-planner for dApp projects
+3. How to integrate Privy wallet authentication
+4. How to fix TypeScript errors during development
 
-```bash
-$ npx create-claude-project crypto-dashboard --preset=react
+---
 
-   ╭──────────────────────────────────────────╮
-   │                                          │
-   │   🚀 Create Claude Project               │
-   │      AI-Powered Project Generator        │
-   │                                          │
-   ╰──────────────────────────────────────────╯
+## The Finished Product
 
-? Project name: › crypto-dashboard
-? Select a preset: › React App
-? Select features:
-  ◉ Authentication (Privy Web3)
+This example builds a complete crypto dashboard with:
 
-✔ Creating project structure...
-✔ Installing dependencies...
+- ✅ Privy wallet connection
+- ✅ Signature verification (proves wallet ownership)
+- ✅ Elaborate dashboard UI
+- ✅ Dark neon theme (GigaBrain-inspired)
+- ✅ Glassmorphism effects
+- ✅ Demo mode (works without Privy key)
 
-🎉 Project created successfully!
-```
+---
 
-### Step 2: Define Requirements
+## Step 1: Review PROJECT_STARTER.md
+
+Open [PROJECT_STARTER.md](./PROJECT_STARTER.md) to see the requirements.
+
+### Key Requirements
 
 ```markdown
-## Requirements (EARS Notation)
+### Functional Requirements
 
-### Functional
 1. WHEN user clicks "Connect Wallet" THE SYSTEM SHALL open Privy modal
 2. WHEN wallet connects THE SYSTEM SHALL request signature verification
 3. WHEN signature verified THE SYSTEM SHALL display dashboard
-4. WHILE user is connected THE SYSTEM SHALL show wallet address
-5. WHEN user clicks "Disconnect" THE SYSTEM SHALL clear session
-
-### Non-Functional
-- Dark theme with neon accents (cyan, purple, pink)
-- Glassmorphism cards
-- Animated gradients
-- Mobile responsive
+4. WHILE user is authenticated THE SYSTEM SHALL show wallet address
 ```
 
-### Step 3: Execute with Sidekick
+### Design Requirements
 
-```bash
-> /project-planner
-> /task-planner
-> /task-runner
+```markdown
+### Non-Functional Requirements
 
+- Theme: Dark background (#0a0a0f) with neon accents
+- Effects: Glassmorphism cards with backdrop-filter blur
+- Typography: Inter for body, JetBrains Mono for addresses
+```
+
+---
+
+## Step 2: Run /project-planner
+
+### Command
+
+```
+/project-planner
+```
+
+### Output
+
+See [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md)
+
+The plan identifies:
+- Authentication flow (connect → sign → dashboard)
+- Component hierarchy
+- CSS architecture decisions
+
+---
+
+## Step 3: Run /task-planner
+
+### Command
+
+```
+/task-planner
+```
+
+### Output
+
+See [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md)
+
+Tasks are broken down by component:
+
+| ID | Agent | Task | Status |
+|----|-------|------|--------|
+| TASK-001 | init | Project setup | ✅ |
+| TASK-002 | dev | CSS theme | ✅ |
+| TASK-003 | dev | Privy integration | ✅ |
+| TASK-004 | dev | Navbar | ✅ |
+| TASK-005 | dev | Hero section | ✅ |
+| TASK-006 | dev | Signature modal | ✅ |
+| TASK-007 | dev | Dashboard | ✅ |
+
+---
+
+## Step 4: Run /task-runner
+
+### Command
+
+```
+/task-runner
+```
+
+### What Happens
+
+Claude executes each task:
+
+```
 ┌──────────────────────────────────────────────────────────────────┐
-│ TASK-003: Privy Integration                          [dev]      │
+│ TASK-006: Signature Modal                             [dev]     │
 ├──────────────────────────────────────────────────────────────────┤
-│ ▶ Installing @privy-io/react-auth...                            │
-│ ▶ Creating PrivyProvider wrapper...                             │
-│ ▶ Implementing signature verification...                        │
+│ ▶ Creating SignatureModal.tsx...                                │
+│ ▶ Adding message display...                                     │
+│ ▶ Implementing sign handler...                                  │
 │ ✅ COMPLETE                                                      │
 └──────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Authentication Flow
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│   1. User on Landing Page                                       │
+│              ↓                                                  │
+│   2. Clicks "Connect Wallet"                                    │
+│              ↓                                                  │
+│   3. Privy modal opens (MetaMask, WalletConnect, etc.)          │
+│              ↓                                                  │
+│   4. Wallet connects successfully                               │
+│              ↓                                                  │
+│   5. Signature modal appears                                    │
+│              ↓                                                  │
+│   6. User signs verification message                            │
+│              ↓                                                  │
+│   7. Dashboard is displayed                                     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Running the Example
+
+### Install Dependencies
+
+```bash
+cd examples/crypto-dashboard
+npm install
+```
+
+### Start Dev Server (Demo Mode)
+
+Without a Privy app ID, the example runs in demo mode:
+
+```bash
+npm run dev
+# Opens http://localhost:5173
+```
+
+Demo mode simulates:
+- Wallet connection
+- Signature flow
+- Full dashboard
+
+### With Real Privy
+
+1. Get an app ID from [privy.io](https://privy.io)
+2. Create `.env`:
+   ```
+   VITE_PRIVY_APP_ID=your-app-id
+   ```
+3. Run `npm run dev`
 
 ---
 
@@ -82,232 +189,68 @@ $ npx create-claude-project crypto-dashboard --preset=react
 crypto-dashboard/
 ├── src/
 │   ├── components/
-│   │   ├── ConnectButton.tsx    # Wallet connect with Privy
-│   │   ├── SignatureModal.tsx   # Signature request flow
-│   │   ├── Dashboard.tsx        # Main dashboard (post-auth)
-│   │   ├── StatsCard.tsx        # Glassmorphism stat cards
-│   │   ├── PortfolioChart.tsx   # Holdings visualization
-│   │   ├── TokenList.tsx        # Token balances
-│   │   ├── ActivityFeed.tsx     # Transaction history
-│   │   └── Navbar.tsx           # Top navigation
-│   ├── hooks/
-│   │   └── useSignature.ts      # Signature verification hook
+│   │   ├── Navbar.tsx         # Top nav with wallet badge
+│   │   ├── Hero.tsx           # Landing hero section
+│   │   ├── SignatureModal.tsx # Verification overlay
+│   │   ├── Dashboard.tsx      # Post-auth dashboard
+│   │   ├── StatsCard.tsx      # Portfolio stat cards
+│   │   ├── TokenList.tsx      # Token holdings
+│   │   └── ActivityFeed.tsx   # Transaction history
 │   ├── styles/
-│   │   └── globals.css          # Neon dark theme
-│   ├── App.tsx                  # Main app with Privy
-│   └── main.tsx                 # Entry point
-├── public/
-│   └── logo.svg
-├── index.html
-├── package.json
-└── vite.config.ts
+│   │   └── globals.css        # Neon dark theme (13KB)
+│   ├── App.tsx                # Privy provider + routing
+│   ├── main.tsx               # Entry point
+│   └── vite-env.d.ts          # TypeScript env types
+├── PROJECT_STARTER.md
+├── CLAUDE.md
+└── package.json
 ```
 
 ---
 
-## Quick Start
+## Key Code Explained
 
-### 1. Get Privy App ID
-
-1. Go to [privy.io](https://privy.io) and create an account
-2. Create a new app
-3. Copy your **App ID**
-
-### 2. Configure Environment
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env`:
-```
-VITE_PRIVY_APP_ID=your-app-id-here
-```
-
-### 3. Run Development Server
-
-```bash
-pnpm install
-pnpm dev
-# → http://localhost:5173
-```
-
----
-
-## Features
-
-### Landing Page (Pre-Auth)
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│     ╔═══════════════════════════════════════════════════╗      │
-│     ║                                                   ║      │
-│     ║   🌐 NEXUS PROTOCOL                               ║      │
-│     ║                                                   ║      │
-│     ║   The Future of Decentralized Intelligence       ║      │
-│     ║                                                   ║      │
-│     ║   ┌─────────────────────────────────────────┐    ║      │
-│     ║   │     🔗 Connect Wallet                   │    ║      │
-│     ║   └─────────────────────────────────────────┘    ║      │
-│     ║                                                   ║      │
-│     ╚═══════════════════════════════════════════════════╝      │
-│                                                                 │
-│     ┌───────────────┐  ┌───────────────┐  ┌───────────────┐    │
-│     │ $2.4B TVL     │  │ 847K Holders  │  │ 12.4% APY     │    │
-│     └───────────────┘  └───────────────┘  └───────────────┘    │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Signature Verification
-
-After wallet connects, user must sign a message:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│     ┌───────────────────────────────────────────────────┐      │
-│     │                                                   │      │
-│     │   🔐 Verify Ownership                             │      │
-│     │                                                   │      │
-│     │   Sign this message to prove you own this        │      │
-│     │   wallet. This won't cost any gas.               │      │
-│     │                                                   │      │
-│     │   Message:                                        │      │
-│     │   ┌─────────────────────────────────────────┐    │      │
-│     │   │ Welcome to Nexus Protocol!              │    │      │
-│     │   │ Timestamp: 1708531200                   │    │      │
-│     │   │ Nonce: a1b2c3d4                         │    │      │
-│     │   └─────────────────────────────────────────┘    │      │
-│     │                                                   │      │
-│     │   ┌─────────────────────────────────────────┐    │      │
-│     │   │           ✍️ Sign Message               │    │      │
-│     │   └─────────────────────────────────────────┘    │      │
-│     │                                                   │      │
-│     └───────────────────────────────────────────────────┘      │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Dashboard (Post-Auth)
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  NEXUS    Dashboard  Staking  Governance  Rewards    0x1234... │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │                                                         │   │
-│  │   Portfolio Value          24h Change      Total Yield  │   │
-│  │   $124,847.32              +12.4% ▲        $8,432.12   │   │
-│  │                                                         │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                                                                 │
-│  ┌────────────────────────────┐  ┌────────────────────────┐    │
-│  │ 📊 Holdings                │  │ 📈 Performance         │    │
-│  │                            │  │                        │    │
-│  │ ETH    12.45   $31,284    │  │  ╭──────────────────╮  │    │
-│  │ NEXUS  84,320  $42,160    │  │  │    ╱╲    ╱╲     │  │    │
-│  │ USDC   25,000  $25,000    │  │  │   ╱  ╲  ╱  ╲    │  │    │
-│  │ stETH  8.2     $20,664    │  │  │  ╱    ╲╱    ╲   │  │    │
-│  │                            │  │  ╰──────────────────╯  │    │
-│  └────────────────────────────┘  └────────────────────────┘    │
-│                                                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │ 🔔 Recent Activity                                       │   │
-│  │                                                         │   │
-│  │ ✓ Staked 1,000 NEXUS                      2 hours ago  │   │
-│  │ ✓ Claimed 42.5 NEXUS rewards              5 hours ago  │   │
-│  │ ✓ Swapped 0.5 ETH → 2,100 NEXUS          1 day ago    │   │
-│  │                                                         │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Key Code Examples
-
-### Privy Provider Setup
+### Privy Provider (App.tsx)
 
 ```tsx
-// src/App.tsx
-import { PrivyProvider } from '@privy-io/react-auth';
-
-function App() {
-  return (
-    <PrivyProvider
-      appId={import.meta.env.VITE_PRIVY_APP_ID}
-      config={{
-        appearance: {
-          theme: 'dark',
-          accentColor: '#00f5ff',
-        },
-        loginMethods: ['wallet'],
-        embeddedWallets: {
-          createOnLogin: 'users-without-wallets',
-        },
-      }}
-    >
-      <Router />
-    </PrivyProvider>
-  );
-}
+<PrivyProvider
+  appId={import.meta.env.VITE_PRIVY_APP_ID}
+  config={{
+    appearance: {
+      theme: 'dark',
+      accentColor: '#00f5ff',
+    },
+    loginMethods: ['wallet'],
+  }}
+>
+  <AppContent />
+</PrivyProvider>
 ```
 
-### Signature Verification Hook
+### Signature Modal
 
 ```tsx
-// src/hooks/useSignature.ts
-import { useSignMessage } from '@privy-io/react-auth';
-
-export function useSignatureVerification() {
-  const { signMessage } = useSignMessage();
-  const [verified, setVerified] = useState(false);
-
-  const verify = async () => {
-    const message = `Welcome to Nexus Protocol!\nTimestamp: ${Date.now()}\nNonce: ${crypto.randomUUID()}`;
-    
-    try {
-      const signature = await signMessage(message);
-      // Verify signature on backend or locally
-      setVerified(true);
-      return signature;
-    } catch (error) {
-      console.error('Signature rejected');
-      return null;
-    }
-  };
-
-  return { verify, verified };
-}
+const handleSign = async () => {
+  const message = `Welcome to Nexus Protocol!
+Timestamp: ${Date.now()}
+Nonce: ${crypto.randomUUID()}`;
+  
+  // In real app: await signMessage(message)
+  // Then verify signature
+  onSuccess();
+};
 ```
 
-### Connect Button
+### Auth State Flow
 
 ```tsx
-// src/components/ConnectButton.tsx
-import { usePrivy } from '@privy-io/react-auth';
+function AppContent() {
+  const { authenticated } = usePrivy();
+  const [signatureVerified, setSignatureVerified] = useState(false);
 
-export function ConnectButton() {
-  const { login, authenticated, user } = usePrivy();
-
-  if (authenticated) {
-    return (
-      <div className="wallet-badge">
-        {user?.wallet?.address.slice(0, 6)}...
-        {user?.wallet?.address.slice(-4)}
-      </div>
-    );
-  }
-
-  return (
-    <button className="btn btn--glow" onClick={login}>
-      🔗 Connect Wallet
-    </button>
-  );
+  // Not connected → show Hero
+  // Connected but not signed → show SignatureModal
+  // Signed → show Dashboard
 }
 ```
 
@@ -320,36 +263,25 @@ export function ConnectButton() {
 ```css
 :root {
   --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-card: rgba(18, 18, 26, 0.8);
-  
   --color-cyan: #00f5ff;
   --color-purple: #a855f7;
   --color-pink: #ec4899;
-  --color-green: #10b981;
-  --color-red: #ef4444;
-  
-  --gradient-hero: linear-gradient(135deg, #00f5ff 0%, #a855f7 50%, #ec4899 100%);
-  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5);
 }
 ```
 
-### Glassmorphism Cards
+### Glassmorphism
 
 ```css
-.glass-card {
-  background: var(--color-card);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 245, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+.glass {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
 }
 
-.glass-card:hover {
-  border-color: rgba(0, 245, 255, 0.3);
-  box-shadow: var(--glow-cyan);
+.glass:hover {
+  border-color: rgba(0, 245, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
 }
 ```
 
@@ -357,25 +289,18 @@ export function ConnectButton() {
 
 ```css
 .btn--glow {
-  background: var(--gradient-hero);
-  color: white;
-  padding: 12px 32px;
-  border-radius: 9999px;
-  font-weight: 600;
+  background: linear-gradient(135deg, #00f5ff, #a855f7, #ec4899);
   position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
 }
 
 .btn--glow::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: var(--gradient-hero);
-  filter: blur(12px);
+  inset: -3px;
+  background: inherit;
+  filter: blur(16px);
   opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
+  transition: opacity 0.3s;
 }
 
 .btn--glow:hover::before {
@@ -385,7 +310,45 @@ export function ConnectButton() {
 
 ---
 
-## Customization
+## Fixing Common Errors
+
+### "Property 'env' does not exist on ImportMeta"
+
+Add `src/vite-env.d.ts`:
+
+```typescript
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_PRIVY_APP_ID: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
+### "Unused variable"
+
+Remove unused imports/variables or prefix with `_`:
+
+```typescript
+// Before
+const [showModal, setShowModal] = useState(false);
+
+// After (if unused)
+// Remove the line entirely
+```
+
+### "Module not found"
+
+```bash
+npm install
+```
+
+---
+
+## Customizing
 
 ### Change Branding
 
@@ -400,43 +363,35 @@ Edit `src/styles/globals.css`:
 
 ### Add Tokens
 
-Edit `src/data/tokens.ts`:
+Edit `src/components/TokenList.tsx`:
 
 ```typescript
-export const tokens = [
-  { symbol: 'ETH', name: 'Ethereum', balance: 12.45, price: 2512.34 },
-  { symbol: 'NEXUS', name: 'Nexus Token', balance: 84320, price: 0.50 },
-  // Add more...
+const tokens = [
+  { symbol: 'ETH', name: 'Ethereum', balance: '12.45', value: '$31,284' },
+  // Add more tokens...
 ];
 ```
 
----
+### Real Blockchain Data
 
-## Deployment
-
-### Vercel
-
-```bash
-pnpm build
-npx vercel --prod
-```
-
-### Environment Variables
-
-Set in your deployment platform:
-- `VITE_PRIVY_APP_ID` - Your Privy App ID
+Replace mock data with:
+- Alchemy/Infura for balances
+- CoinGecko for prices
+- The Graph for history
 
 ---
 
-## Inspiration Sites
+## Design Inspiration
 
-- [GigaBrain](https://gigabrain.so) - AI token analytics
-- [Dune Analytics](https://dune.com) - Crypto dashboards
-- [DeBank](https://debank.com) - Portfolio tracker
-- [Zapper](https://zapper.fi) - DeFi dashboard
+- [GigaBrain](https://gigabrain.so) - AI token aesthetics
+- [Dune Analytics](https://dune.com) - Dashboard layouts
+- [DeBank](https://debank.com) - Portfolio presentation
+- [Zapper](https://zapper.fi) - Activity feeds
 
 ---
 
-## License
+## Next Steps
 
-MIT - Use as a starting point for your Web3 projects!
+- Read the [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
+- Try the [SSG Starter Example](../ssg-starter/)
+- Learn about [Available Agents](../../.claude/agents/)
