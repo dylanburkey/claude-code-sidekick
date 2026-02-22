@@ -347,6 +347,9 @@ agent-library/
 
 - [**SSG Starter**](examples/ssg-starter/) - Complete static site with blog, SEO,
   and modern CSS. Includes PROJECT_STARTER.md, generated plans, and task breakdowns.
+- [**Crypto Dashboard**](examples/crypto-dashboard/) - Web3 landing page with Privy
+  wallet auth, signature verification, and elaborate dashboard. Dark neon theme
+  (GigaBrain-inspired) with glassmorphism effects.
 
 ### Reference
 
