@@ -343,6 +343,11 @@ agent-library/
 - [Building Custom Hooks](.claude/hooks/templates/custom-hook-guide.md)
 - [EARS Requirements Notation](docs/ears-guide.md)
 
+### Example Projects
+
+- [**SSG Starter**](examples/ssg-starter/) - Complete static site with blog, SEO,
+  and modern CSS. Includes PROJECT_STARTER.md, generated plans, and task breakdowns.
+
 ### Reference
 
 - [All Available MCPs](.claude/mcp/README.md)
