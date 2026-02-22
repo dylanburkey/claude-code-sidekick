@@ -1,0 +1,81 @@
+---
+/**
+ * JSON-LD Structured Data Component
+ * 
+ * Generates schema.org structured data for rich search results.
+ * 
+ * Usage:
+ *   <JsonLD type="website" />
+ *   <JsonLD type="article" data={{ title: "...", ... }} />
+ */
+
+interface Props {
+  type: 'website' | 'article';
+  data?: {
+    title?: string;
+    description?: string;
+    image?: string;
+    publishedTime?: string;
+    author?: string;
+  };
+}
+
+const { type, data = {} } = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://example.com';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+// Organization schema (always included)
+const organization = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'SSG Starter',
+  url: siteUrl,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/logo.png`
+  }
+};
+
+// WebSite schema
+const website = {
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: 'SSG Starter',
+  publisher: { '@id': `${siteUrl}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string'
+  }
+};
+
+// Article schema
+const article = data.title ? {
+  '@type': 'Article',
+  '@id': `${currentUrl}#article`,
+  headline: data.title,
+  description: data.description,
+  image: data.image ? `${siteUrl}${data.image}` : undefined,
+  datePublished: data.publishedTime,
+  author: {
+    '@type': 'Person',
+    name: data.author || 'Author'
+  },
+  publisher: { '@id': `${siteUrl}/#organization` }
+} : null;
+
+// Build schema graph
+const graph = [organization, website];
+if (type === 'article' && article) {
+  graph.push(article);
+}
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': graph
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

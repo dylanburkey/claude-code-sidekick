@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="SSG Starter - Modern Static Site Generator"
+  description="A production-ready static site template with blog, SEO, and modern CSS. Built with Claude Code Sidekick."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero__tag">Built with Claude Code Sidekick</span>
+      <h1 class="hero__title">SSG<span class="text-accent">Starter</span></h1>
+      <p class="hero__subtitle">
+        A production-ready static site template with blog support, SEO optimization, 
+        and modern CSS architecture. Start building faster.
+      </p>
+      <div class="hero__actions">
+        <a href="/blog" class="btn btn--primary">Read the Blog</a>
+        <a href="#features" class="btn btn--secondary">See Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">Features</span>
+        <h2 class="section-header__title">Everything You Need</h2>
+        <p class="section-header__text">
+          Built with modern best practices and ready for production.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="glass">
+          <h3>📝 Blog System</h3>
+          <p class="text-muted mt-sm">
+            Markdown content collections with frontmatter. Just write and publish.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h3>🔍 SEO Optimized</h3>
+          <p class="text-muted mt-sm">
+            Meta tags, Open Graph, Twitter Cards, and JSON-LD structured data built-in.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h3>🎨 Modern CSS</h3>
+          <p class="text-muted mt-sm">
+            @layer architecture, custom properties, glass effects. No preprocessors.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h3>🌙 Dark Theme</h3>
+          <p class="text-muted mt-sm">
+            Beautiful dark theme with pink/purple accents. Easy to customize.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h3>♿ Accessible</h3>
+          <p class="text-muted mt-sm">
+            WCAG 2.1 AA compliant. Keyboard navigation, proper contrast, semantic HTML.
+          </p>
+        </div>
+
+        <div class="glass">
+          <h3>⚡ Fast</h3>
+          <p class="text-muted mt-sm">
+            Static HTML generation. Minimal JavaScript. Ships fast, loads faster.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" id="contact">
+    <div class="container text-center">
+      <h2>Ready to Start?</h2>
+      <p class="text-muted mt-sm mb-lg" style="max-width: 500px; margin-inline: auto;">
+        Clone this template and start building your next project in minutes.
+      </p>
+      <a href="https://github.com/example/ssg-starter" class="btn btn--primary">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+/**
+ * Navigation Component
+ * 
+ * Fixed header with glass effect on scroll.
+ */
+---
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        SSG<span class="nav__accent">Starter</span>
+      </a>
+
+      <div class="nav__links">
+        <a href="/" class="nav__link">Home</a>
+        <a href="/blog" class="nav__link">Blog</a>
+        <a href="#features" class="nav__link">Features</a>
+        <a href="#contact" class="btn btn--primary">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById('nav');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
+    }
+  });
+</script>

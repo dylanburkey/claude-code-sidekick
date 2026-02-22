@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.publishedAt.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout 
+  title={`${post.data.title} - SSG Starter`}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+  publishedTime={post.data.publishedAt.toISOString()}
+  author={post.data.author}
+  tags={post.data.tags}
+>
+  <article class="section">
+    <div class="container">
+      <header class="text-center mb-lg">
+        <p class="text-muted mb-sm">
+          {formattedDate} • {post.data.author}
+        </p>
+        <h1>{post.data.title}</h1>
+        <p class="text-muted mt-sm" style="max-width: 600px; margin-inline: auto;">
+          {post.data.description}
+        </p>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer class="mt-xl text-center">
+        <a href="/blog" class="btn btn--secondary">← Back to Blog</a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

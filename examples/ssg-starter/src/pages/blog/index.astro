@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+
+<BaseLayout 
+  title="Blog - SSG Starter"
+  description="Articles about web development, CSS, and static site generation."
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__tag">Blog</span>
+        <h1 class="section-header__title">Latest Posts</h1>
+        <p class="section-header__text">
+          Tutorials, guides, and thoughts on modern web development.
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        {posts.map(post => (
+          <article class="glass post-card">
+            <div class="post-card__meta">
+              <time datetime={post.data.publishedAt.toISOString()}>
+                {post.data.publishedAt.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              {post.data.tags.length > 0 && (
+                <span> • {post.data.tags[0]}</span>
+              )}
+            </div>
+            <h2 class="post-card__title">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h2>
+            <p class="post-card__excerpt">{post.data.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
