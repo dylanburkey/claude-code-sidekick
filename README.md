@@ -1,366 +1,292 @@
 # Claude Code Sidekick
 
 > Complete development framework for AI-assisted coding with Claude.
-> Professional project scaffolding, specialized agents, and automation in one
-> command.
 
 ![Claude Code Sidekick](public/social-card.png)
 
 ---
 
-Test Flash Light
-
 **© 2026 Dylan Burkey. All Rights Reserved.**
-
-**PROPRIETARY SOFTWARE** - This software and all associated code, documentation,
-and materials are the exclusive property of Dylan Burkey. Unauthorized copying,
-modification, distribution, or use of this software is strictly prohibited. See
-LICENSE file for complete terms.
 
 ---
 
-## Quick Start
+## Table of Contents
 
-### Option 1: CLI - Instant Project Creation (2 minutes)
+- [How to Use Claude Code Sidekick](#how-to-use-claude-code-sidekick)
+  - [Starting a New Project](#starting-a-new-project)
+  - [Adding to an Existing Project](#adding-to-an-existing-project)
+  - [Using the Multi-Model AI Toolkit](#using-the-multi-model-ai-toolkit)
+- [What's Included](#whats-included)
+- [Common Workflows](#common-workflows)
+- [Documentation](#documentation)
+- [Examples](#examples)
+
+---
+
+## How to Use Claude Code Sidekick
+
+### Starting a New Project
+
+**Use this when:** You're starting a fresh project and want a production-ready
+setup.
+
+#### Option A: Interactive CLI (Recommended)
 
 ```bash
 npx create-claude-project
 ```
 
-![Claude Code Sidekick](public/social-card-v3.png)
+The CLI will prompt you to:
 
-Follow the interactive prompts to scaffold a production-ready project with
-Claude Code Sidekick configured.
+1. Choose a project name
+2. Select a preset (Static, Astro, React, Next.js, Nuxt, SvelteKit, Full Stack)
+3. Pick features (database, auth, analytics, etc.)
 
-### Option 2: Manual Setup (5 minutes)
+**What you get:**
+
+- Complete project scaffold with your chosen framework
+- `.claude/` directory with agents, hooks, and rules
+- Pre-configured integrations based on your selections
+- Git initialized with initial commit
+- Ready to run immediately
 
 ```bash
-# Clone the repository
+# After scaffolding:
+cd your-project
+npm install
+npm run dev
+```
+
+#### Option B: Clone and Customize
+
+```bash
+# Clone the starter files
 git clone https://github.com/dylanburkey/claude-code-sidekick.git
 cd claude-code-sidekick
 
-# Copy to your project
-cp -r .claude/ /your-project/
-cp PROJECT_STARTER.md /your-project/
+# Edit PROJECT_STARTER.md with your project details
+# Then run the quick-start command in Claude Code:
+/project-planner
+```
 
-# Configure with Quick Start
-# Edit PROJECT_STARTER.md, then run:
+---
+
+### Adding to an Existing Project
+
+**Use this when:** You have an existing codebase and want to add Claude Code
+Sidekick's features.
+
+#### Step 1: Copy the .claude directory
+
+```bash
+# From the claude-code-sidekick repo, copy to your project:
+cp -r .claude/ /path/to/your-project/
+```
+
+#### Step 2: (Optional) Copy helpful starter files
+
+```bash
+# Project planning template
+cp PROJECT_STARTER.md /path/to/your-project/
+
+# Or use framework-specific starters:
+cp PROJECT_STARTER_WORDPRESS.md /path/to/your-project/
+cp PROJECT_STARTER_SHOPIFY.md /path/to/your-project/
+```
+
+#### Step 3: Configure for your project
+
+Open your project in Claude Code, then:
+
+```bash
+# Set up MCP integrations (databases, cloud, etc.)
+/mcp-setup
+
+# Set up automation hooks
+/hooks-setup
+
+# Or run quick-start for guided setup
 /quick-start
 ```
 
----
+#### What you can now do:
 
-## What is Claude Code Sidekick?
-
-Traditional AI coding tools give you **suggestions**. Claude Code Sidekick gives
-you **systems**.
-
-While Cursor, Windsurf, and Copilot excel at code completion and inline
-suggestions, they leave you to figure out project structure, workflow
-automation, and system integration. Claude Code Sidekick provides a complete,
-opinionated development framework that transforms how you build software with
-AI.
-
-### Core Features
-
-- **Professional CLI** - `npx create-claude-project` for instant project
-  generation
-- **50+ Specialized Agents** for every development task
-- **35+ Pre-Configured MCP Integrations** (databases, cloud, analytics,
-  payments)
-- **32+ Automated Hooks** for quality, testing, and deployment
-- **Declarative Configuration** - Just flip TRUE/FALSE switches
-- **Spec-Driven Development** with EARS notation
-- **Complete Documentation** for every component
-
-**Setup Time:** 2 minutes with CLI, 5 minutes manual **Configuration:** Choose a
-preset or use TRUE/FALSE flags **Result:** Production-ready development
-environment
+| Command            | What it does                                    |
+| ------------------ | ----------------------------------------------- |
+| `/project-planner` | Create a phased project plan                    |
+| `/task-planner`    | Break work into actionable tasks                |
+| `/mcp-setup`       | Configure database, cloud, and API integrations |
+| `/hooks-setup`     | Set up automated quality checks                 |
+| `/status`          | Check project status and progress               |
 
 ---
 
-## CLI Features
+### Using the Multi-Model AI Toolkit
 
-![CLI Preview](public/social-card-v3.png)
+**Use this when:** You want to use multiple AI models (Claude, GPT-4, Gemini,
+Venice) together.
 
-The `create-claude-project` CLI scaffolds production-ready projects with:
+The multi-model toolkit lets you:
 
-- **8 Production Presets** - Static, Astro, React, Next.js, Nuxt, SvelteKit,
-  Full Stack, Custom
-- **Feature Selection** - Database, auth, analytics, deployment configs
-- **Automatic Setup** - All files, dependencies, and configurations
-- **Claude Code Integration** - .claude/ directory with agents, hooks, and rules
-- **Git Ready** - Initialized with .gitignore and initial commit
-- **Zero Config** - Everything works out of the box
+- Run code reviews with consensus from multiple models
+- Intelligently route tasks to the optimal model
+- Search your codebase semantically
 
-[View CLI Documentation →](cli/README.md)
-
----
-
-## Key Differentiators
-
-### 1. Declarative Configuration
-
-**Others:** Write complex configuration files, install tools manually, configure
-each integration **Sidekick:** Mark what you want as TRUE, run one command, done
-
-```markdown
-## MCP Configuration
-
-- **Neon Database**: `TRUE`
-- **Cloudflare**: `TRUE`
-- **GitHub**: `TRUE`
-- **Stripe**: `TRUE`
-
-## Hooks Configuration
-
-- **Pre-Commit Validation**: `TRUE`
-- **Auto Format on Save**: `TRUE`
-```
-
-Run `/mcp-setup` and `/hooks-setup` - your entire development environment is
-configured.
-
-### 2. Agent Library
-
-**Others:** General-purpose AI that tries to do everything **Sidekick:** 50+
-specialized agents, each expert in their domain
-
-- **Code Generation Agents** - Generate components, APIs, migrations, configs
-- **Task Automation Agents** - Handle builds, deployments, CI/CD
-- **Testing Agents** - Create tests, run audits, validate accessibility
-- **Documentation Agents** - Generate docs, maintain READMEs, update changelogs
-- **Blockchain Agents** - Smart contracts, DApps, Web3 integration
-
-Each agent includes real examples, best practices, and MCP integration.
-
-### 3. MCP Integration at Scale
-
-**Others:** Manual MCP setup, one server at a time **Sidekick:** 35+
-pre-configured MCP providers across 10 categories
-
-- **Databases**: Neon, Supabase, Turso, Pinecone
-- **Cloud**: Cloudflare, AWS, Vercel, Railway
-- **Development**: GitHub, GitLab, Linear, Sentry
-- **Analytics**: GA4, PostHog, Axiom, Datadog
-- **Payments**: Stripe, PayPal, Shopify
-- **AI/ML**: OpenAI, Anthropic, Hugging Face, Replicate
-- **And 20+ more...**
-
-Each provider includes:
-
-- JSON configuration
-- Environment variable templates
-- Setup documentation
-- Agent integration examples
-
-### 4. Automated Quality & Compliance
-
-**Others:** Manual testing, linting, and deployment **Sidekick:** 32+ hooks
-automate your entire workflow
-
-- **Git Hooks** - Validate commits, enforce standards, run tests
-- **File Hooks** - Auto-format, sort imports, update docs
-- **Build Hooks** - Pre-build validation, post-build analysis
-- **Deployment Hooks** - Pre-deploy checks, rollback automation
-- **Agent Hooks** - Task notifications, error handling
-
-All configurable with TRUE/FALSE flags.
-
-### 5. Spec-Driven Development
-
-**Others:** Start coding, figure it out as you go **Sidekick:** Define
-requirements first with EARS notation
-
-```markdown
-## Functional Requirements
-
-### Event-Driven
-
-- WHEN user clicks submit THE SYSTEM SHALL validate all fields
-- WHEN validation passes THE SYSTEM SHALL send data to API
-
-### State-Driven
-
-- WHILE form is submitting THE SYSTEM SHALL disable submit button
-- WHILE user is authenticated THE SYSTEM SHALL show logout option
-
-### Error Handling
-
-- IF network request fails THEN THE SYSTEM SHALL retry up to 3 times
-```
-
-Clear, testable, unambiguous requirements that become your implementation
-roadmap.
-
-### 6. Multi-Model AI Toolkit
-
-**Others:** Locked into a single AI provider **Sidekick:** Use Claude, GPT-4,
-and Gemini together with intelligent routing
+#### Setup
 
 ```bash
-# Consensus code review (multiple models must agree)
 cd tools/multi-model
-pnpm review -- src/app.js --deep
+pnpm install
 
-# Semantic code search
-pnpm index -- /path/to/project
-pnpm search -- "authentication middleware"
+# Add API keys to .env (in project root)
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GEMINI_API_KEY=...
+VENICE_API_KEY=...  # Optional: for Venice AI
 ```
 
-**Built-in Multi-Model Tools:**
+**Note:** You only need ONE API key. The toolkit auto-detects what's available.
 
-| Tool          | Purpose                  | Models Used                |
-| ------------- | ------------------------ | -------------------------- |
-| `mm-review`   | Consensus code review    | GPT-4o + Claude + Gemini   |
-| `mm-index`    | Codebase indexing        | OpenAI Embeddings          |
-| `mm-search`   | Semantic search          | OpenAI Embeddings          |
-| `ModelRouter` | Intelligent task routing | Auto-selects optimal model |
+#### Code Review (Multiple Models)
 
-**Cross-Validation Benefits:**
+```bash
+# Quick review (fast, cheap models)
+pnpm review -- src/app.js --quick
 
-- Different models catch different issues
-- Architecture decisions get multiple perspectives
-- Security reviews are more thorough
-- Cost optimization (use cheaper models for simple tasks)
+# Deep review (powerful models)
+pnpm review -- src/app.js --deep
 
-[View Multi-Model Toolkit →](tools/multi-model/README.md)
+# Review multiple files
+pnpm review -- src/components/*.tsx
+```
 
----
+Issues are only reported if multiple models agree, reducing false positives.
 
-## Comparison
+#### Semantic Code Search
 
-### vs. Cursor
+```bash
+# Index your codebase
+pnpm index -- ./src
 
-**Cursor Strengths:**
+# Search by meaning, not keywords
+pnpm search -- "authentication logic"
+pnpm search -- "error handling middleware"
+```
 
-- Excellent AI pair programming
-- Natural language code editing
-- Context-aware suggestions
-
-**Sidekick Advantages:**
-
-- Complete project structure
-- Pre-configured integrations (35+ MCPs)
-- Automated workflows (32+ hooks)
-- Specialized agents for every task
-- Declarative configuration
-- Reusable across all projects
-
-**Use Together:** Cursor for coding + Sidekick for structure and automation
-
-### vs. Windsurf
-
-**Windsurf Strengths:**
-
-- Flow-based development
-- Multi-file editing
-- Contextual awareness
-
-**Sidekick Advantages:**
-
-- Standardized workflows
-- Pre-built agent library
-- MCP integration system
-- Quality automation
-- Production-ready configurations
-- Team collaboration features
-
-**Use Together:** Windsurf for flow + Sidekick for structure and deployment
-
-### vs. Copilot
-
-**Copilot Strengths:**
-
-- Fast autocomplete
-- Wide IDE support
-- Simple setup
-
-**Sidekick Advantages:**
-
-- Complete development framework
-- Project structure and organization
-- Integration management
-- Quality enforcement
-- Documentation automation
-- Deployment pipelines
-
-**Use Together:** Copilot for suggestions + Sidekick for everything else
+[Full Multi-Model Documentation →](tools/multi-model/README.md)
 
 ---
 
 ## What's Included
 
-### Core Components
-
 ```
-.claude/
-├── commands/           # /project-planner, /task-planner, /mcp-setup, /hooks-setup, /quick-start
-├── agents/            # Specialized AI agents for different tasks
-├── hooks/             # 32+ automated development hooks
-│   ├── definitions/   # Pre-configured hook definitions
-│   ├── templates/     # Create custom hooks
-│   └── examples/      # Example configurations
-├── mcp/               # MCP integration system
-│   ├── providers/     # 35+ pre-configured MCP providers
-│   ├── templates/     # Custom MCP guide
-│   └── configs/       # Generated configurations
-├── rules/             # Development standards
-│   ├── code-style.md
-│   ├── accessibility.md
-│   └── documentation.md
-└── steering/          # Project-specific guidance
-    ├── product.md
-    ├── tech.md
-    └── structure.md
-```
-
-### CLI Package
-
-```
-cli/
-├── bin/create-claude-project.js  # CLI entry point
-├── src/
-│   ├── index.js                  # Interactive prompts
-│   ├── templates.js              # 8 preset configurations
-│   ├── scaffold.js               # Project scaffolding
-│   └── utils.js                  # Helper functions
+claude-code-sidekick/
+├── .claude/                    # Core framework
+│   ├── commands/              # Built-in commands (/project-planner, etc.)
+│   ├── agents/                # 50+ specialized AI agents
+│   ├── hooks/                 # 32+ automation hooks
+│   ├── mcp/                   # 35+ pre-configured integrations
+│   ├── rules/                 # Code style, accessibility, docs standards
+│   └── steering/              # Project guidance files
+│
+├── cli/                       # npx create-claude-project
+│
+├── agent-library/             # Extended agent collection
+│   ├── code-generation/       # Components, APIs, configs
+│   ├── task-automation/       # Build, deploy, CI/CD
+│   ├── testing/              # Tests, audits, validation
+│   ├── documentation/        # Docs, READMEs, changelogs
+│   └── blockchain/           # Smart contracts, Web3
+│
+├── tools/multi-model/         # Multi-model AI toolkit
+│
+├── examples/                  # Working example projects
+│   ├── ssg-starter/          # Astro blog
+│   └── crypto-dashboard/     # React + Web3
+│
+├── docs/                      # Guides and documentation
+│
+├── PROJECT_STARTER.md         # Generic project template
+├── PROJECT_STARTER_WORDPRESS.md
+└── PROJECT_STARTER_SHOPIFY.md
 ```
 
-### Agent Library
+---
 
-```
-agent-library/
-├── code-generation/   # Generate components, APIs, configs
-├── task-automation/   # Build, deploy, CI/CD automation
-├── testing/          # Unit tests, E2E, accessibility audits
-├── documentation/    # API docs, READMEs, changelogs
-├── blockchain/       # Smart contracts, DApps, Web3
-└── templates/        # Create custom agents
-```
+## Common Workflows
 
-### Multi-Model Toolkit
+### Workflow 1: Start a React/Next.js Project
 
-```
-tools/multi-model/
-├── bin/
-│   ├── review.js          # mm-review CLI - consensus code review
-│   ├── index-codebase.js  # mm-index CLI - codebase indexing
-│   └── search.js          # mm-search CLI - semantic search
-├── lib/
-│   ├── clients.js         # Unified API for OpenAI, Anthropic, Gemini
-│   ├── code-review.js     # Multi-model consensus review system
-│   ├── model-router.js    # Intelligent task routing
-│   └── embeddings.js      # Codebase indexing & semantic search
-├── examples/
-│   ├── pre-commit-hook.js # Git hook integration example
-│   └── agent-integration.js # Claude Code workflow example
-├── index.js               # Main exports
-├── package.json
-└── README.md              # Full documentation
+```bash
+# 1. Create project
+npx create-claude-project
+# Select: Next.js preset, add database, add auth
+
+# 2. Start development
+cd my-app
+npm install
+npm run dev
+
+# 3. Use Claude Code commands
+/project-planner    # Plan your features
+/task-planner       # Break into tasks
 ```
 
-[View Multi-Model Documentation →](tools/multi-model/README.md)
+### Workflow 2: Add AI Code Review to CI/CD
+
+```bash
+# 1. Set up multi-model toolkit
+cd tools/multi-model
+pnpm install
+
+# 2. Add to pre-commit hook
+cp examples/pre-commit-hook.js .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+
+# 3. Code is now reviewed before each commit
+```
+
+### Workflow 3: Set Up Database + Auth for Existing Project
+
+```bash
+# 1. Copy .claude to your project
+cp -r .claude/ /your-project/
+
+# 2. Run MCP setup in Claude Code
+/mcp-setup
+
+# 3. Select: Neon (database), Supabase (auth)
+# 4. Add keys to .env
+# 5. Done - integrations are configured
+```
+
+### Workflow 4: Build a Web3 DApp
+
+```bash
+# 1. Create with CLI
+npx create-claude-project
+# Select: React preset, add Web3 features
+
+# 2. Or use the example
+cd examples/crypto-dashboard
+npm install
+npm run dev
+```
+
+### Workflow 5: Improve Code Quality on Legacy Project
+
+```bash
+# 1. Add Claude Code Sidekick
+cp -r .claude/ /legacy-project/
+
+# 2. Set up hooks
+/hooks-setup
+# Enable: pre-commit validation, auto-format, lint
+
+# 3. Run multi-model review on critical files
+cd tools/multi-model
+pnpm review -- /legacy-project/src/critical-module.js --deep
+```
 
 ---
 
@@ -368,58 +294,37 @@ tools/multi-model/
 
 ### Getting Started
 
-- [CLI Guide](docs/guides/cli-guide.md) - Instant project creation with CLI
-- [Quick Start Guide](docs/guides/quick-start-guide.md) - Preset-based setup
-- [Getting Started](docs/guides/getting-started.md) - Complete setup reference
-- [Beginner's Guide](docs/guides/beginner-guide.md) - For complete beginners
+- [CLI Guide](docs/guides/cli-guide.md) - Using `npx create-claude-project`
+- [Quick Start](docs/guides/quick-start-guide.md) - 5-minute setup
+- [Beginner's Guide](docs/guides/beginner-guide.md) - Complete introduction
 
-### Comprehensive Guides
+### Tutorials
 
-- [**Real-World SSG Example**](docs/guides/real-world-example-ssg.md) - Build a
-  production static site with blog, SEO, and modern CSS (with terminal
-  screenshots)
-- [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) -
-  Build complete Nuxt app
-- [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) -
-  Build RESTful API
-- [Web3 dApp with Privy](docs/guides/web3-dapp-privy-walkthrough.md) - Build
-  decentralized app
-- [Troubleshooting](docs/guides/troubleshooting.md) - Solutions for 50+ common
-  issues
+- [Build a Static Site (SSG)](docs/guides/real-world-example-ssg.md) -
+  Step-by-step with screenshots
+- [Nuxt Full-Stack App](docs/guides/nuxt-fullstack-walkthrough.md)
+- [Python FastAPI](docs/guides/python-fastapi-walkthrough.md)
+- [Web3 DApp with Privy](docs/guides/web3-dapp-privy-walkthrough.md)
 
-### Systems Documentation
+### Multi-Model AI
 
-- [MCP Integration](agent-library/docs/mcp-integration.md) - MCP setup guide
-- [Hooks Configuration](.claude/hooks/README.md) - Automation hooks
-- [Agent Library](agent-library/README.md) - All available agents
+- [Multi-Model Toolkit](tools/multi-model/README.md) - Full documentation
+- [Consensus Code Review](tools/multi-model/README.md#multi-model-code-review)
+- [Semantic Search](tools/multi-model/README.md#semantic-code-search)
 
-### Multi-Model AI Tools
+### Reference
 
-- [Multi-Model Toolkit Overview](tools/multi-model/README.md) - Full
-  documentation
-- [Consensus Code Review](tools/multi-model/README.md#multi-model-code-review) -
-  Run code through multiple AI models
-- [Intelligent Model Routing](tools/multi-model/README.md#intelligent-model-routing) -
-  Auto-select optimal model per task
-- [Semantic Code Search](tools/multi-model/README.md#semantic-code-search) -
-  Index and search codebase by meaning
-- [Pre-Commit Hook Example](tools/multi-model/examples/pre-commit-hook.js) -
-  CI/CD integration
-- [Agent Integration Example](tools/multi-model/examples/agent-integration.js) -
-  Claude Code workflows
+- [All Commands](.claude/commands/)
+- [All Agents](agent-library/README.md)
+- [All MCP Integrations](.claude/mcp/README.md)
+- [All Hooks](.claude/hooks/README.md)
+- [Troubleshooting](docs/guides/troubleshooting.md)
 
-### Advanced
+---
 
-- [Creating Custom Agents](agent-library/templates/README.md)
-- [Adding Custom MCPs](.claude/mcp/templates/custom-mcp-guide.md)
-- [Building Custom Hooks](.claude/hooks/templates/custom-hook-guide.md)
-- [EARS Requirements Notation](docs/ears-guide.md)
+## Examples
 
-### Example Projects
-
-Working examples that demonstrate the full Sidekick workflow.
-
-#### SSG Starter (Astro Blog)
+### SSG Starter (Astro Blog)
 
 ```bash
 cd examples/ssg-starter
@@ -428,10 +333,9 @@ npm run dev
 # → http://localhost:4321
 ```
 
-Static site with blog, SEO, JSON-LD, and modern CSS.
-[View full guide →](examples/ssg-starter/README.md)
+A production-ready static site with blog, SEO, and modern CSS.
 
-#### Crypto Dashboard (React + Privy)
+### Crypto Dashboard (React + Web3)
 
 ```bash
 cd examples/crypto-dashboard
@@ -440,74 +344,59 @@ npm run dev
 # → http://localhost:5173
 ```
 
-Web3 landing page with wallet auth, signature verification, and neon dashboard.
-Runs in demo mode without a Privy key.
-[View full guide →](examples/crypto-dashboard/README.md)
-
-### Reference
-
-- [All Available MCPs](.claude/mcp/README.md)
-- [All Available Hooks](.claude/hooks/README.md)
-- [Code Style Rules](.claude/rules/code-style.md)
-- [Accessibility Standards](.claude/rules/accessibility.md)
+Web3 landing page with wallet auth and signature verification.
 
 ---
 
-## Use Cases
+## Why Claude Code Sidekick?
 
-### Startup MVP Development
+| Feature                     | Cursor/Copilot | Claude Code Sidekick              |
+| --------------------------- | -------------- | --------------------------------- |
+| Code completion             | ✅             | Uses Claude Code                  |
+| Project scaffolding         | ❌             | ✅ Full CLI                       |
+| Pre-configured integrations | ❌             | ✅ 35+ MCPs                       |
+| Automated workflows         | ❌             | ✅ 32+ hooks                      |
+| Multi-model AI              | ❌             | ✅ Claude + GPT + Gemini + Venice |
+| Specialized agents          | ❌             | ✅ 50+ agents                     |
 
-- Instant setup with CLI
-- Integrated services (database, hosting, analytics, payments)
-- Quality built-in (accessibility, security, performance)
-- Fast iteration with automated testing and deployment
-
-### Enterprise Applications
-
-- Standardized workflows across all teams
-- Compliance built-in (WCAG, security scanning)
-- Integration with 35+ pre-configured services
-- Automated documentation
-
-### Open Source Projects
-
-- Instant contributor setup with CLI
-- Contribution-ready (pre-commit hooks, standards enforcement)
-- Auto-generated documentation
-- Quality gates and automated testing
-
-### Blockchain Development
-
-- Quick DApp setup with CLI
-- Specialized agents for smart contracts and DApp scaffolding
-- Automated testing with testnet integration
-- Built-in security scanning and auditing
+**Use together:** Cursor/Copilot for inline suggestions + Sidekick for
+structure, automation, and multi-model capabilities.
 
 ---
 
-## Community & Support
+## Quick Reference
 
-### Contributing
+### Essential Commands
 
-We welcome contributions! Areas where you can help:
+```bash
+# In Claude Code:
+/quick-start       # Guided setup
+/project-planner   # Create project plan
+/task-planner      # Break into tasks
+/mcp-setup         # Configure integrations
+/hooks-setup       # Set up automation
+/status            # Check progress
+```
 
-- **New Agents** - Add specialized agents to the library
-- **MCP Providers** - Add new MCP integrations
-- **Hooks** - Create useful automation hooks
-- **CLI Presets** - Create new framework presets
-- **Documentation** - Improve guides and examples
-- **Examples** - Share real-world use cases
+### Multi-Model CLI
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+```bash
+# In tools/multi-model/:
+pnpm review -- <file>          # Code review
+pnpm index -- <directory>      # Index codebase
+pnpm search -- "query"         # Semantic search
+```
 
-### Getting Help
+### Environment Variables
 
-- **CLI Issues** - [CLI Documentation](cli/README.md)
-- **General Issues** -
-  [GitHub Issues](https://github.com/dylanburkey/claude-code-sidekick/issues)
-- **Discussions** -
-  [GitHub Discussions](https://github.com/dylanburkey/claude-code-sidekick/discussions)
-- **Comprehensive Docs** - All guides in this repo
+```bash
+# .env
+OPENAI_API_KEY=sk-...          # For GPT models
+ANTHROPIC_API_KEY=sk-ant-...   # For Claude
+GEMINI_API_KEY=...             # For Gemini
+VENICE_API_KEY=...             # For Venice AI
+USE_MULTI_MODEL=TRUE           # Enable multi-model (default)
+```
 
 ---
 
@@ -517,28 +406,10 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
-## The Bottom Line
-
-**Other AI tools help you write code faster.**
-
-**Claude Code Sidekick helps you build software better.**
-
-- 2-minute setup with professional CLI
-- 50+ specialized agents for every task
-- 35+ pre-configured integrations
-- 32+ automated quality checks
-- Complete documentation for non-developers
-- Production-ready from day one
-
-**Stop cobbling together tools. Start with a system.**
+**Get started in 2 minutes:**
 
 ```bash
 npx create-claude-project
 ```
 
-![Claude Code Sidekick Overview](public/social-card-v2.png)
-
-[Get Started →](docs/guides/cli-guide.md) |
-[Browse Agent Library →](agent-library/README.md)
-
-**Built for developers who want more than autocomplete.**
+[Documentation](docs/) | [Examples](examples/) | [Agent Library](agent-library/)
