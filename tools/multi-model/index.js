@@ -6,10 +6,12 @@
  * - Anthropic (Claude 3 Opus, Sonnet, Haiku)
  * - Google (Gemini Pro, Flash)
  *
+ * Supports single-model mode when USE_MULTI_MODEL=FALSE or only one API key is available.
+ *
  * @example
  * import { reviewCode, createRouter, searchCodebase } from '@claude-sidekick/multi-model';
  *
- * // Multi-model code review
+ * // Multi-model code review (auto-adapts to available API keys)
  * const results = await reviewCode(code, { filename: 'app.js' });
  *
  * // Intelligent routing
@@ -20,7 +22,7 @@
  * const matches = await searchCodebase('authentication logic');
  */
 
-// Clients
+// Clients & Configuration
 export {
   complete,
   embed,
@@ -30,10 +32,24 @@ export {
   getGemini,
   MODELS,
   MODEL_COSTS,
+  // Configuration helpers
+  isMultiModelEnabled,
+  getAvailableProviders,
+  getAvailableModels,
+  getDefaultModel,
+  getBestModel,
+  hasProvider,
+  filterAvailableModels,
 } from './lib/clients.js';
 
 // Code Review
-export { reviewCode, quickReview, deepReview, formatReviewResults } from './lib/code-review.js';
+export {
+  reviewCode,
+  quickReview,
+  deepReview,
+  singleReview,
+  formatReviewResults,
+} from './lib/code-review.js';
 
 // Model Router
 export {

@@ -16,6 +16,7 @@
   keywords
 - **💰 Cost Optimization** - Use cheap models for simple tasks, reserve power
   for complex ones
+- **🔧 Flexible Configuration** - Works with just one API key or all three
 
 ## File Structure
 
@@ -50,6 +51,49 @@ OPENAI_API_KEY=sk-...
 ANTHROPIC_API_KEY=sk-ant-...
 GEMINI_API_KEY=...
 ```
+
+## Configuration
+
+### Single-Model vs Multi-Model Mode
+
+The toolkit automatically adapts based on your available API keys:
+
+| API Keys Available | Mode         | Behavior                           |
+| ------------------ | ------------ | ---------------------------------- |
+| All three          | Multi-model  | Consensus review across all models |
+| Two keys           | Multi-model  | Consensus with 2 models            |
+| One key            | Single-model | Direct review with one model       |
+
+**To explicitly disable multi-model mode** (even if you have multiple keys):
+
+```bash
+# In your .env file
+USE_MULTI_MODEL=FALSE
+```
+
+This is useful for:
+
+- Reducing API costs
+- Faster reviews (single API call)
+- Testing with a specific model
+
+### Minimum Requirements
+
+You only need **one API key** to use this toolkit:
+
+```bash
+# Option 1: OpenAI only
+OPENAI_API_KEY=sk-...
+
+# Option 2: Anthropic/Claude only
+ANTHROPIC_API_KEY=sk-ant-...
+
+# Option 3: Gemini only
+GEMINI_API_KEY=...
+```
+
+The toolkit will automatically use the best available model for your
+configuration.
 
 ## CLI Tools
 
