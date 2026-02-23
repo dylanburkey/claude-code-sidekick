@@ -230,8 +230,10 @@ jobs:
       - name: Get changed files
         id: changed
         run: |
-          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|ts|jsx|tsx)$' | grep -v node_modules | head -5)
+          # Get changed files as space-separated single line
+          CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '\.(js|ts|jsx|tsx)$' | grep -v node_modules | head -5 | tr '\n' ' ')
           echo "files=$CHANGED" >> $GITHUB_OUTPUT
+          echo "Found files: $CHANGED"
 
       - name: Run AI Review
         if: ${{ env.OPENAI_API_KEY != '' }}
