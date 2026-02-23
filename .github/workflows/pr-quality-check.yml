@@ -121,7 +121,7 @@ jobs:
       - name: Check for secrets in code
         run: |
           echo "Checking for potential secrets..."
-          
+
           # Check for common secret patterns
           PATTERNS=(
             "sk-[a-zA-Z0-9]{20,}"
@@ -130,16 +130,16 @@ jobs:
             "AKIA[A-Z0-9]{16}"
             "password\s*=\s*['\"][^'\"]+['\"]"
           )
-          
+
           FOUND_SECRETS=false
-          
+
           for pattern in "${PATTERNS[@]}"; do
             if grep -rE "$pattern" --include="*.js" --include="*.ts" --include="*.json" . 2>/dev/null | grep -v node_modules | grep -v ".env.example"; then
               echo "⚠️  Potential secret pattern found: $pattern"
               FOUND_SECRETS=true
             fi
           done
-          
+
           if [ "$FOUND_SECRETS" = true ]; then
             echo "::warning::Potential secrets detected. Please review."
           else
@@ -171,7 +171,7 @@ jobs:
       - name: Check for redundant code
         run: |
           echo "Checking for code redundancy..."
-          
+
           # Check for duplicate imports
           for file in $(find . -name "*.js" -o -name "*.ts" | grep -v node_modules); do
             DUPES=$(grep "^import" "$file" 2>/dev/null | sort | uniq -d)
@@ -180,13 +180,13 @@ jobs:
               echo "$DUPES"
             fi
           done
-          
+
           echo "✅ Redundancy check complete"
 
       - name: Check file sizes
         run: |
           echo "Checking for large files..."
-          
+
           # Find JS/TS files larger than 500 lines
           find . -name "*.js" -o -name "*.ts" | grep -v node_modules | while read file; do
             LINES=$(wc -l < "$file")
@@ -194,7 +194,7 @@ jobs:
               echo "⚠️  Large file: $file ($LINES lines)"
             fi
           done
-          
+
           echo "✅ File size check complete"
 
   # Job 5: Multi-Model AI Review (when secrets available)
@@ -241,9 +241,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           echo "🤖 Running multi-model AI code review..."
-          
+
           cd tools/multi-model
-          
+
           # Review changed files (limit to 5 for cost control)
           for file in ${{ steps.changed.outputs.files }}; do
             if [ -f "../../$file" ]; then
@@ -251,7 +251,7 @@ jobs:
               node bin/review.js "../../$file" --quick --json >> ../../review-results.json 2>/dev/null || true
             fi
           done
-          
+
           echo "✅ AI review complete"
 
       - name: Post Review Summary
@@ -287,7 +287,7 @@ jobs:
           echo "| Security | ${{ needs.security.result == 'success' && '✅' || '⚠️' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Quality | ${{ needs.quality.result == 'success' && '✅' || '⚠️' }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ needs.lint.result }}" != "success" ] || [ "${{ needs.test.result }}" != "success" ]; then
             echo "❌ **Some required checks failed. Please fix before merging.**" >> $GITHUB_STEP_SUMMARY
             exit 1
