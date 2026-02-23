@@ -16,6 +16,7 @@ config();
 let openaiClient = null;
 let anthropicClient = null;
 let geminiClient = null;
+let veniceClient = null;
 
 /**
  * Check if multi-model mode is enabled
@@ -34,6 +35,7 @@ export function getAvailableProviders() {
   if (process.env.OPENAI_API_KEY) providers.push('openai');
   if (process.env.ANTHROPIC_API_KEY) providers.push('anthropic');
   if (process.env.GEMINI_API_KEY || process.env.GEMENI_API_KEY) providers.push('gemini');
+  if (process.env.VENICE_API_KEY) providers.push('venice');
   return providers;
 }
 
@@ -86,6 +88,24 @@ export function getGemini() {
     geminiClient = new GoogleGenerativeAI(key);
   }
   return geminiClient;
+}
+
+/**
+ * Get Venice AI client (OpenAI-compatible)
+ * Venice provides uncensored models with private inference
+ * https://venice.ai
+ */
+export function getVenice() {
+  if (!veniceClient) {
+    if (!process.env.VENICE_API_KEY) {
+      throw new Error('VENICE_API_KEY not set in environment');
+    }
+    veniceClient = new OpenAI({
+      apiKey: process.env.VENICE_API_KEY,
+      baseURL: 'https://api.venice.ai/api/v1',
+    });
+  }
+  return veniceClient;
 }
 
 /**
@@ -147,6 +167,29 @@ export async function complete(model, prompt, options = {}) {
     };
   }
 
+  // Venice AI models (OpenAI-compatible API)
+  if (model.startsWith('venice/') || VENICE_MODELS.includes(model)) {
+    const client = getVenice();
+    const messages = [];
+    if (systemPrompt) messages.push({ role: 'system', content: systemPrompt });
+    messages.push({ role: 'user', content: prompt });
+
+    // Strip venice/ prefix if present
+    const veniceModel = model.replace('venice/', '');
+
+    const response = await client.chat.completions.create({
+      model: veniceModel,
+      messages,
+      max_tokens: maxTokens,
+      temperature,
+    });
+    return {
+      content: response.choices[0].message.content,
+      model,
+      usage: response.usage,
+    };
+  }
+
   throw new Error(`Unknown model: ${model}`);
 }
 
@@ -174,6 +217,16 @@ export async function embedBatch(texts, model = 'text-embedding-3-small') {
   return response.data.map((d) => d.embedding);
 }
 
+// Venice AI model identifiers
+export const VENICE_MODELS = [
+  'llama-3.3-70b',
+  'llama-3.2-3b',
+  'deepseek-r1-671b',
+  'deepseek-r1-llama-70b',
+  'dolphin-2.9.2-qwen2-72b',
+  'qwen-2.5-72b',
+];
+
 export const MODELS = {
   // OpenAI
   GPT4: 'gpt-4-turbo-preview',
@@ -188,6 +241,14 @@ export const MODELS = {
   // Google
   GEMINI_PRO: 'gemini-1.5-pro',
   GEMINI_FLASH: 'gemini-2.0-flash',
+
+  // Venice AI (uncensored, private inference)
+  VENICE_LLAMA_70B: 'llama-3.3-70b',
+  VENICE_LLAMA_3B: 'llama-3.2-3b',
+  VENICE_DEEPSEEK_R1: 'deepseek-r1-671b',
+  VENICE_DEEPSEEK_LLAMA: 'deepseek-r1-llama-70b',
+  VENICE_DOLPHIN: 'dolphin-2.9.2-qwen2-72b',
+  VENICE_QWEN: 'qwen-2.5-72b',
 };
 
 export const MODEL_COSTS = {
@@ -199,6 +260,13 @@ export const MODEL_COSTS = {
   'claude-3-5-haiku-20241022': [0.8, 4],
   'gemini-1.5-pro': [3.5, 10.5],
   'gemini-2.0-flash': [0.075, 0.3],
+  // Venice AI (VVV token) - prices approximate
+  'llama-3.3-70b': [0.5, 0.75],
+  'llama-3.2-3b': [0.1, 0.15],
+  'deepseek-r1-671b': [2.0, 4.0],
+  'deepseek-r1-llama-70b': [0.5, 0.75],
+  'dolphin-2.9.2-qwen2-72b': [0.5, 0.75],
+  'qwen-2.5-72b': [0.5, 0.75],
 };
 
 /**
@@ -208,6 +276,7 @@ export function getProviderFromModel(model) {
   if (model.startsWith('gpt-')) return 'openai';
   if (model.startsWith('claude-')) return 'anthropic';
   if (model.startsWith('gemini-')) return 'gemini';
+  if (model.startsWith('venice/') || VENICE_MODELS.includes(model)) return 'venice';
   return null;
 }
 
@@ -225,6 +294,9 @@ export function getAvailableModels() {
   if (hasProvider('gemini')) {
     models.push(MODELS.GEMINI_PRO, MODELS.GEMINI_FLASH);
   }
+  if (hasProvider('venice')) {
+    models.push(MODELS.VENICE_LLAMA_70B, MODELS.VENICE_LLAMA_3B, MODELS.VENICE_DEEPSEEK_R1);
+  }
   return models;
 }
 
@@ -234,6 +306,7 @@ export function getAvailableModels() {
 export function getDefaultModel() {
   // Prefer cheaper/faster models as default
   if (hasProvider('gemini')) return MODELS.GEMINI_FLASH;
+  if (hasProvider('venice')) return MODELS.VENICE_LLAMA_3B;
   if (hasProvider('openai')) return MODELS.GPT4O_MINI;
   if (hasProvider('anthropic')) return MODELS.CLAUDE_HAIKU;
   throw new Error('No API keys configured');
@@ -245,6 +318,7 @@ export function getDefaultModel() {
 export function getBestModel() {
   if (hasProvider('anthropic')) return MODELS.CLAUDE_SONNET;
   if (hasProvider('openai')) return MODELS.GPT4O;
+  if (hasProvider('venice')) return MODELS.VENICE_DEEPSEEK_R1;
   if (hasProvider('gemini')) return MODELS.GEMINI_PRO;
   throw new Error('No API keys configured');
 }
