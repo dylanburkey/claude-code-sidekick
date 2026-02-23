@@ -251,3 +251,95 @@ When complete, report:
 
 ### Status: {{Complete}}
 ```
+
+## Multi-Model Cross-Validation
+
+The review agent supports cross-validation where a secondary model independently
+reviews the same code, catching issues that a single model might miss.
+
+### Configuration
+
+See `.claude/config/models.yml`:
+
+```yaml
+agent_overrides:
+  review:
+    primary: 'claude-sonnet-4-20250514'
+    secondary: 'gpt-4o'
+    cross_validate: true
+```
+
+### Cross-Validation Process
+
+When enabled:
+
+1. **Primary Review** - Claude reviews the code
+2. **Secondary Review** - GPT-4/Gemini independently reviews
+3. **Comparison** - Findings are deduplicated and merged
+4. **Conflict Highlighting** - Disagreements shown to user
+
+### Output with Cross-Validation
+
+```markdown
+## Cross-Validated Review
+
+### Primary (Claude Sonnet 4)
+
+- Found 3 issues
+- Security: ✅ Passed
+- Accessibility: ⚠️ 1 issue
+
+### Secondary (GPT-4o)
+
+- Found 4 issues
+- Security: ⚠️ 1 issue (XSS risk)
+- Accessibility: ⚠️ 2 issues
+
+### Merged Findings (deduplicated)
+
+| #   | Issue                | Found By | Severity |
+| --- | -------------------- | -------- | -------- |
+| 1   | XSS vulnerability    | GPT-4    | Critical |
+| 2   | Missing ARIA label   | Both     | Major    |
+| 3   | Focus trap missing   | GPT-4    | Major    |
+| 4   | Consider memoization | Claude   | Minor    |
+
+### Disagreements
+
+- Claude: Security passed
+- GPT-4: Found potential XSS → Human review recommended for security concern
+```
+
+### When Cross-Validation Triggers
+
+By default:
+
+- **Security-sensitive code** - Always
+- **High complexity** - When cyclomatic complexity > 10
+- **On request** - When `--cross-validate` flag used
+
+### Requesting Cross-Validation
+
+```bash
+# Single file
+/review --cross-validate src/auth.ts
+
+# Always for security
+# Configure in models.yml:
+cross_validation:
+  triggers:
+    review:
+      on_security: true
+```
+
+### Disabling Cross-Validation
+
+```bash
+# Single run
+/review --no-cross-validate src/utils.ts
+
+# Permanently - edit models.yml
+agent_overrides:
+  review:
+    cross_validate: false
+```

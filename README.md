@@ -193,6 +193,39 @@ requirements first with EARS notation
 Clear, testable, unambiguous requirements that become your implementation
 roadmap.
 
+### 6. Multi-Model AI Toolkit
+
+**Others:** Locked into a single AI provider **Sidekick:** Use Claude, GPT-4,
+and Gemini together with intelligent routing
+
+```bash
+# Consensus code review (multiple models must agree)
+cd tools/multi-model
+pnpm review -- src/app.js --deep
+
+# Semantic code search
+pnpm index -- /path/to/project
+pnpm search -- "authentication middleware"
+```
+
+**Built-in Multi-Model Tools:**
+
+| Tool          | Purpose                  | Models Used                |
+| ------------- | ------------------------ | -------------------------- |
+| `mm-review`   | Consensus code review    | GPT-4o + Claude + Gemini   |
+| `mm-index`    | Codebase indexing        | OpenAI Embeddings          |
+| `mm-search`   | Semantic search          | OpenAI Embeddings          |
+| `ModelRouter` | Intelligent task routing | Auto-selects optimal model |
+
+**Cross-Validation Benefits:**
+
+- Different models catch different issues
+- Architecture decisions get multiple perspectives
+- Security reviews are more thorough
+- Cost optimization (use cheaper models for simple tasks)
+
+[View Multi-Model Toolkit →](tools/multi-model/README.md)
+
 ---
 
 ## Comparison
@@ -306,6 +339,29 @@ agent-library/
 └── templates/        # Create custom agents
 ```
 
+### Multi-Model Toolkit
+
+```
+tools/multi-model/
+├── bin/
+│   ├── review.js          # mm-review CLI - consensus code review
+│   ├── index-codebase.js  # mm-index CLI - codebase indexing
+│   └── search.js          # mm-search CLI - semantic search
+├── lib/
+│   ├── clients.js         # Unified API for OpenAI, Anthropic, Gemini
+│   ├── code-review.js     # Multi-model consensus review system
+│   ├── model-router.js    # Intelligent task routing
+│   └── embeddings.js      # Codebase indexing & semantic search
+├── examples/
+│   ├── pre-commit-hook.js # Git hook integration example
+│   └── agent-integration.js # Claude Code workflow example
+├── index.js               # Main exports
+├── package.json
+└── README.md              # Full documentation
+```
+
+[View Multi-Model Documentation →](tools/multi-model/README.md)
+
 ---
 
 ## Documentation
@@ -320,7 +376,8 @@ agent-library/
 ### Comprehensive Guides
 
 - [**Real-World SSG Example**](docs/guides/real-world-example-ssg.md) - Build a
-  production static site with blog, SEO, and modern CSS (with terminal screenshots)
+  production static site with blog, SEO, and modern CSS (with terminal
+  screenshots)
 - [Nuxt Full-Stack Walkthrough](docs/guides/nuxt-fullstack-walkthrough.md) -
   Build complete Nuxt app
 - [Python FastAPI Walkthrough](docs/guides/python-fastapi-walkthrough.md) -
@@ -335,6 +392,21 @@ agent-library/
 - [MCP Integration](agent-library/docs/mcp-integration.md) - MCP setup guide
 - [Hooks Configuration](.claude/hooks/README.md) - Automation hooks
 - [Agent Library](agent-library/README.md) - All available agents
+
+### Multi-Model AI Tools
+
+- [Multi-Model Toolkit Overview](tools/multi-model/README.md) - Full
+  documentation
+- [Consensus Code Review](tools/multi-model/README.md#multi-model-code-review) -
+  Run code through multiple AI models
+- [Intelligent Model Routing](tools/multi-model/README.md#intelligent-model-routing) -
+  Auto-select optimal model per task
+- [Semantic Code Search](tools/multi-model/README.md#semantic-code-search) -
+  Index and search codebase by meaning
+- [Pre-Commit Hook Example](tools/multi-model/examples/pre-commit-hook.js) -
+  CI/CD integration
+- [Agent Integration Example](tools/multi-model/examples/agent-integration.js) -
+  Claude Code workflows
 
 ### Advanced
 

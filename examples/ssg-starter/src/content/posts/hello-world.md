@@ -1,14 +1,17 @@
 ---
-title: "Hello World: Getting Started with SSG Starter"
-description: "Learn how to use SSG Starter to build your next static site with modern CSS and full SEO support."
+title: 'Hello World: Getting Started with SSG Starter'
+description:
+  'Learn how to use SSG Starter to build your next static site with modern CSS
+  and full SEO support.'
 publishedAt: 2024-02-21
-author: "SSG Team"
-tags: ["getting-started", "tutorial"]
+author: 'SSG Team'
+tags: ['getting-started', 'tutorial']
 ---
 
 # Hello World
 
-Welcome to SSG Starter! This template gives you everything you need to build a modern static site.
+Welcome to SSG Starter! This template gives you everything you need to build a
+modern static site.
 
 ## What's Included
 
@@ -30,10 +33,10 @@ Create a new file in `src/content/posts/`:
 
 ```markdown
 ---
-title: "My New Post"
-description: "A brief description"
+title: 'My New Post'
+description: 'A brief description'
 publishedAt: 2024-02-21
-tags: ["tag1", "tag2"]
+tags: ['tag1', 'tag2']
 ---
 
 Your content here...
@@ -45,7 +48,7 @@ Edit `public/styles.css` to change colors:
 
 ```css
 :root {
-  --color-accent: #ec4899;  /* Change this */
+  --color-accent: #ec4899; /* Change this */
 }
 ```
 

@@ -6,14 +6,18 @@ All notable changes to Claude Code Sidekick will be documented in this file.
 
 ### Added
 
-- **Git Worktree Support** - Opt-in parallel task execution for concurrent development workflows
+- **Git Worktree Support** - Opt-in parallel task execution for concurrent
+  development workflows
 - **Phase Control System** - Structured development phases with scope guards
 - **MCP Integration** - 35+ pre-configured Model Context Protocol integrations
-- **Shopify Development Support** - Complete Shopify theme and app development templates
+- **Shopify Development Support** - Complete Shopify theme and app development
+  templates
 - **WordPress Development Support** - WordPress plugin and theme scaffolding
 - **Vitest Testing Framework** - Complete test suite with coverage reporting
-- **GitHub Actions CI/CD** - Automated linting, formatting, and testing workflows
-- **Comprehensive Agent Library** - 50+ specialized agents for every development task
+- **GitHub Actions CI/CD** - Automated linting, formatting, and testing
+  workflows
+- **Comprehensive Agent Library** - 50+ specialized agents for every development
+  task
 - **Hooks Configuration System** - 32+ automated hooks with TRUE/FALSE toggles
 - **Quick Start Presets** - Master toggles for simplified configuration
 - **Python FastAPI Walkthrough** - Complete backend development guide

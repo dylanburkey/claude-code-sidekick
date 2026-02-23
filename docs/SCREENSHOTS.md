@@ -13,12 +13,14 @@ npx create-claude-project my-app
 ```
 
 **Capture:**
+
 - The interactive prompts
 - Preset selection menu
 - Feature checkboxes
 - Success message
 
-**Tool:** [asciinema](https://asciinema.org/) or [terminalizer](https://terminalizer.com/)
+**Tool:** [asciinema](https://asciinema.org/) or
+[terminalizer](https://terminalizer.com/)
 
 ---
 
@@ -29,6 +31,7 @@ tree -L 2 -a --dirsfirst my-app
 ```
 
 **Shows:**
+
 - `.claude/` directory
 - Key configuration files
 - Clean, organized structure
@@ -38,6 +41,7 @@ tree -L 2 -a --dirsfirst my-app
 ### 3. Workflow Commands
 
 **Screenshot 1: /project-planner**
+
 ```
 📋 Reading PROJECT_STARTER.md...
 ✓ Parsed project requirements
@@ -47,6 +51,7 @@ tree -L 2 -a --dirsfirst my-app
 ```
 
 **Screenshot 2: /task-planner**
+
 ```
 📖 Reading project-plan/phase_1.md...
 🔨 Generating tasks...
@@ -60,6 +65,7 @@ tree -L 2 -a --dirsfirst my-app
 ```
 
 **Screenshot 3: /task-runner**
+
 ```
 🚀 Executing Phase 1...
 ┌──────────────────────────────────────┐
@@ -193,14 +199,14 @@ vhs demo.tape
 
 ## Color Palette for Graphics
 
-| Element | Color | Hex |
-|---------|-------|-----|
-| Success | Green | `#10B981` |
-| In Progress | Blue | `#3B82F6` |
-| Warning | Yellow | `#F59E0B` |
-| Error | Red | `#EF4444` |
-| Background | Dark | `#1E1E2E` |
-| Text | Light | `#CDD6F4` |
+| Element     | Color  | Hex       |
+| ----------- | ------ | --------- |
+| Success     | Green  | `#10B981` |
+| In Progress | Blue   | `#3B82F6` |
+| Warning     | Yellow | `#F59E0B` |
+| Error       | Red    | `#EF4444` |
+| Background  | Dark   | `#1E1E2E` |
+| Text        | Light  | `#CDD6F4` |
 
 ---
 
@@ -209,6 +215,7 @@ vhs demo.tape
 **Dimensions:** 1200 x 630px (2:1 ratio)
 
 **Existing cards:**
+
 - `public/social-card.png` - Main
 - `public/social-card-v2.png` - Overview
 - `public/social-card-v3.png` - CLI
@@ -227,4 +234,7 @@ vhs demo.tape
 
 Renders as:
 
-![Claude Code](https://img.shields.io/badge/Claude-Code-blueviolet) ![Agents](https://img.shields.io/badge/Agents-50+-green) ![MCPs](https://img.shields.io/badge/MCPs-35+-blue) ![Hooks](https://img.shields.io/badge/Hooks-32+-orange)
+![Claude Code](https://img.shields.io/badge/Claude-Code-blueviolet)
+![Agents](https://img.shields.io/badge/Agents-50+-green)
+![MCPs](https://img.shields.io/badge/MCPs-35+-blue)
+![Hooks](https://img.shields.io/badge/Hooks-32+-orange)

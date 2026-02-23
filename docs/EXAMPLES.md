@@ -6,7 +6,8 @@
 
 ## Quick Overview
 
-Claude Code Sidekick transforms project development from "figure it out" to "follow the system."
+Claude Code Sidekick transforms project development from "figure it out" to
+"follow the system."
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -43,7 +44,7 @@ $ npx create-claude-project
    ╰──────────────────────────────────────────╯
 
 ? Project name: › my-saas-app
-? Select a preset: › 
+? Select a preset: ›
   ○ Static Website - Landing pages, marketing sites
   ○ Astro Site - Content-heavy sites, blogs
   ● Next.js App - Full-stack React framework
@@ -104,7 +105,8 @@ my-saas-app/
 
 ## Example 2: The PROJECT_STARTER.md File
 
-This is where you define what you're building. The AI reads this to understand your project.
+This is where you define what you're building. The AI reads this to understand
+your project.
 
 ```markdown
 # Project Starter Template
@@ -112,13 +114,16 @@ This is where you define what you're building. The AI reads this to understand y
 ## Project Information
 
 ### Project Name
+
 TaskFlow - Team Task Management
 
 ### Project Description
-A Kanban-style task management app for small teams. Users can create boards,
-add tasks, assign team members, and track progress with drag-and-drop.
+
+A Kanban-style task management app for small teams. Users can create boards, add
+tasks, assign team members, and track progress with drag-and-drop.
 
 ### Project Type
+
 web-app
 
 ---
@@ -126,10 +131,12 @@ web-app
 ## Goals & Objectives
 
 ### Primary Goal
-Create a fast, accessible task management tool that works offline-first
-and syncs when connected.
+
+Create a fast, accessible task management tool that works offline-first and
+syncs when connected.
 
 ### Success Criteria
+
 - Sub-100ms interactions
 - Works offline (PWA)
 - WCAG 2.1 AA compliant
@@ -197,16 +204,17 @@ Next: Run /task-planner to generate implementation tasks
 ```markdown
 # Phase 1: Foundation
 
-Generated: 2026-02-21T14:30:00Z
-Source: PROJECT_STARTER.md
+Generated: 2026-02-21T14:30:00Z Source: PROJECT_STARTER.md
 
 ## Project Summary
 
 ### Overview
+
 TaskFlow is a Kanban-style task management application targeting small teams.
 The app prioritizes performance, accessibility, and offline-first architecture.
 
 ### Goals
+
 - Fast, responsive drag-and-drop interface
 - Offline-first with background sync
 - Real-time collaboration between team members
@@ -215,6 +223,7 @@ The app prioritizes performance, accessibility, and offline-first architecture.
 ## Analysis
 
 ### Complexity Assessment
+
 - **Overall Complexity:** Medium-High
 - **Key Challenges:**
   - Real-time sync with offline support requires careful state management
@@ -222,12 +231,14 @@ The app prioritizes performance, accessibility, and offline-first architecture.
   - Conflict resolution needs clear, non-disruptive UI
 
 ### Dependencies
+
 - **External:** Supabase (auth + realtime), Service Worker API
 - **Internal:** State → UI → Sync pipeline
 
 ## Phase 1 Scope
 
 ### Objectives
+
 1. Set up project structure with Next.js 15
 2. Configure Supabase connection
 3. Create base component library
@@ -235,6 +246,7 @@ The app prioritizes performance, accessibility, and offline-first architecture.
 5. Set up testing framework
 
 ### Deliverables
+
 - [ ] Working dev environment
 - [ ] Base layout components
 - [ ] Design system foundation
@@ -245,16 +257,12 @@ The app prioritizes performance, accessibility, and offline-first architecture.
 
 ### Architecture
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Next.js   │────▶│  Supabase   │────▶│  Postgres   │
-│   (React)   │     │  (Realtime) │     │   (D1)      │
-└─────────────┘     └─────────────┘     └─────────────┘
-       │
-       ▼
-┌─────────────┐
-│   Service   │
-│   Worker    │
+
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐ │ Next.js │────▶│ Supabase
+│────▶│ Postgres │ │ (React) │ │ (Realtime) │ │ (D1) │ └─────────────┘
+└─────────────┘ └─────────────┘ │ ▼ ┌─────────────┐ │ Service │ │ Worker │
 └─────────────┘
+
 ```
 
 ### Technology Stack
@@ -327,46 +335,48 @@ Next: Run /task-runner to execute tasks
 
 ### Output: tasks/phase-1-tasks.md
 
-```markdown
+````markdown
 # Phase 1 Tasks
 
-Generated: 2026-02-21T14:35:00Z
-Source: project-plan/phase_1.md
+Generated: 2026-02-21T14:35:00Z Source: project-plan/phase_1.md
 
 ## Task Overview
 
-| ID       | Agent | Task                | Est. Time | Dependencies |
-|----------|-------|---------------------|-----------|--------------|
-| TASK-001 | init  | Project Setup       | 30 min    | None         |
-| TASK-002 | init  | Database Setup      | 45 min    | TASK-001     |
-| TASK-003 | dev   | Design System       | 60 min    | TASK-001     |
-| TASK-004 | dev   | Layout Components   | 45 min    | TASK-003     |
-| TASK-005 | test  | Testing Setup       | 30 min    | TASK-001     |
+| ID       | Agent | Task              | Est. Time | Dependencies |
+| -------- | ----- | ----------------- | --------- | ------------ |
+| TASK-001 | init  | Project Setup     | 30 min    | None         |
+| TASK-002 | init  | Database Setup    | 45 min    | TASK-001     |
+| TASK-003 | dev   | Design System     | 60 min    | TASK-001     |
+| TASK-004 | dev   | Layout Components | 45 min    | TASK-003     |
+| TASK-005 | test  | Testing Setup     | 30 min    | TASK-001     |
 
 ---
 
 ## TASK-001: Project Setup
 
-**Agent:** init
-**Priority:** Critical
-**Estimated Time:** 30 minutes
+**Agent:** init **Priority:** Critical **Estimated Time:** 30 minutes
 
 ### Description
-Initialize the Next.js 15 project with TypeScript and establish
-the foundational folder structure.
+
+Initialize the Next.js 15 project with TypeScript and establish the foundational
+folder structure.
 
 ### Acceptance Criteria
+
 - [ ] Next.js 15 project created with App Router
 - [ ] TypeScript configured in strict mode
 - [ ] ESLint and Prettier configured
 - [ ] Folder structure matches steering/structure.md
 
 ### Implementation Notes
+
 ```bash
 npx create-next-app@latest taskflow --typescript --app --tailwind=false
 ```
+````
 
 ### Files to Create
+
 - `src/app/layout.tsx`
 - `src/app/page.tsx`
 - `src/lib/utils.ts`
@@ -375,8 +385,10 @@ npx create-next-app@latest taskflow --typescript --app --tailwind=false
 ---
 
 ## TASK-002: Database Setup
+
 ...
-```
+
+````
 
 ---
 
@@ -430,7 +442,7 @@ npx create-next-app@latest taskflow --typescript --app --tailwind=false
 ... (TASK-004, TASK-005) ...
 
 ═══════════════════════════════════════════════════════════════════
-                    ⛔ PHASE 1 COMPLETE                            
+                    ⛔ PHASE 1 COMPLETE
 ═══════════════════════════════════════════════════════════════════
 
 Summary:
@@ -445,7 +457,7 @@ To continue to Phase 2:
   3. Run: /task-runner phase=2
 
 The system will NOT auto-advance. You control the pace.
-```
+````
 
 ---
 
@@ -456,27 +468,27 @@ The system will NOT auto-advance. You control the pace.
 ```yaml
 # Controls the entire system
 project:
-  name: "TaskFlow"
-  version: "1.0.0"
+  name: 'TaskFlow'
+  version: '1.0.0'
 
 # Agent system
 agents:
   enabled: true
-  directory: ".claude/agents"
+  directory: '.claude/agents'
 
 # Phase execution control (CRITICAL)
 execution:
-  phase_limit: 1              # Only execute this phase
-  auto_advance: false         # NEVER auto-advance
-  require_confirmation: true  # User must approve each phase
+  phase_limit: 1 # Only execute this phase
+  auto_advance: false # NEVER auto-advance
+  require_confirmation: true # User must approve each phase
 
 # MCP servers
 mcp:
   required:
-    - name: "serena"
-      description: "Code analysis"
-    - name: "context7"
-      description: "Documentation lookup"
+    - name: 'serena'
+      description: 'Code analysis'
+    - name: 'context7'
+      description: 'Documentation lookup'
 ```
 
 ### .claude/agents/dev-agent.yml - Agent Definition
@@ -511,17 +523,20 @@ tools:
 # Code Style Rules
 
 ## HTML
+
 - Semantic elements over divs
 - ARIA labels on interactive elements
 - No inline styles
 
 ## CSS
+
 - Custom properties for theming
 - CSS layers for organization
 - Mobile-first responsive design
 - No utility-first frameworks
 
 ## JavaScript
+
 - TypeScript in strict mode
 - Native APIs over libraries
 - Progressive enhancement
@@ -599,20 +614,20 @@ tools:
 
 ## Summary
 
-| Component | Purpose | Location |
-|-----------|---------|----------|
-| **CLI** | Creates new projects | `npx create-claude-project` |
-| **PROJECT_STARTER.md** | Your requirements | Project root |
-| **CLAUDE.md** | AI context | Project root |
-| **.claude/config.yml** | System configuration | `.claude/` |
-| **.claude/commands/** | Slash commands | `.claude/commands/` |
-| **.claude/agents/** | Specialized AI agents | `.claude/agents/` |
-| **.claude/hooks/** | Automation triggers | `.claude/hooks/` |
-| **.claude/mcp/** | MCP integrations | `.claude/mcp/` |
-| **.claude/rules/** | Code standards | `.claude/rules/` |
+| Component              | Purpose               | Location                    |
+| ---------------------- | --------------------- | --------------------------- |
+| **CLI**                | Creates new projects  | `npx create-claude-project` |
+| **PROJECT_STARTER.md** | Your requirements     | Project root                |
+| **CLAUDE.md**          | AI context            | Project root                |
+| **.claude/config.yml** | System configuration  | `.claude/`                  |
+| **.claude/commands/**  | Slash commands        | `.claude/commands/`         |
+| **.claude/agents/**    | Specialized AI agents | `.claude/agents/`           |
+| **.claude/hooks/**     | Automation triggers   | `.claude/hooks/`            |
+| **.claude/mcp/**       | MCP integrations      | `.claude/mcp/`              |
+| **.claude/rules/**     | Code standards        | `.claude/rules/`            |
 
 **Start here:** `npx create-claude-project`
 
 ---
 
-*Built for developers who want more than autocomplete.*
+_Built for developers who want more than autocomplete._

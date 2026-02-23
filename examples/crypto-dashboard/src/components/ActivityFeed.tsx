@@ -1,33 +1,33 @@
 const activities = [
-  { 
+  {
     type: 'stake',
     title: 'Staked 1,000 NEXUS',
     time: '2 hours ago',
-    icon: '🔒'
+    icon: '🔒',
   },
-  { 
+  {
     type: 'claim',
     title: 'Claimed 42.5 NEXUS rewards',
     time: '5 hours ago',
-    icon: '🎁'
+    icon: '🎁',
   },
-  { 
+  {
     type: 'swap',
     title: 'Swapped 0.5 ETH → 2,100 NEXUS',
     time: '1 day ago',
-    icon: '🔄'
+    icon: '🔄',
   },
-  { 
+  {
     type: 'vote',
     title: 'Voted on Proposal #47',
     time: '2 days ago',
-    icon: '🗳️'
+    icon: '🗳️',
   },
-  { 
+  {
     type: 'stake',
     title: 'Staked 5,000 NEXUS',
     time: '3 days ago',
-    icon: '🔒'
+    icon: '🔒',
   },
 ];
 

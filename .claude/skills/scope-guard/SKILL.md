@@ -1,9 +1,13 @@
 # Scope Guard Skill
 
 ## Purpose
-Monitors all agent actions to prevent out-of-scope work. Acts as a watchdog that validates every file creation, modification, and task execution against the current phase scope.
+
+Monitors all agent actions to prevent out-of-scope work. Acts as a watchdog that
+validates every file creation, modification, and task execution against the
+current phase scope.
 
 ## When to Use
+
 - Automatically invoked before any file operation
 - Called by dev-agent before implementation
 - Called by orchestrator before task delegation
@@ -11,6 +15,7 @@ Monitors all agent actions to prevent out-of-scope work. Acts as a watchdog that
 ## Scope Validation Rules
 
 ### 1. File-Level Scope Check
+
 Before creating/modifying ANY file:
 
 ```javascript
@@ -18,21 +23,23 @@ Before creating/modifying ANY file:
 function validateScope(filePath, currentPhase) {
   const phaseDeliverables = loadPhaseDeliverables(currentPhase);
   const futureDeliverables = loadFuturePhaseDeliverables(currentPhase);
-  
+
   if (futureDeliverables.includes(filePath)) {
     return {
       allowed: false,
       reason: `File "${filePath}" is a Phase ${futurePhase} deliverable`,
-      action: "STOP"
+      action: 'STOP',
     };
   }
-  
+
   return { allowed: true };
 }
 ```
 
 ### 2. Task-Level Scope Check
+
 Before executing ANY task:
+
 ```yaml
 validation:
   - task_id_matches_phase: true
@@ -42,7 +49,9 @@ validation:
 ```
 
 ### 3. Code-Level Scope Check
+
 During implementation, flag:
+
 - Imports from future-phase modules
 - References to future-phase components
 - API calls to future-phase endpoints
@@ -50,6 +59,7 @@ During implementation, flag:
 ## Violation Handling
 
 ### Level 1: Warning
+
 ```
 ⚠️  SCOPE WARNING
 Creating file that may belong to future phase.
@@ -60,6 +70,7 @@ Continue? (Requires explicit confirmation)
 ```
 
 ### Level 2: Block
+
 ```
 ⛔ SCOPE VIOLATION - BLOCKED
 Cannot create Phase 2 deliverable while in Phase 1.
@@ -72,6 +83,7 @@ Resolution: Run /task-planner phase=2 first
 ```
 
 ### Level 3: Emergency Stop
+
 ```
 🚨 CRITICAL SCOPE VIOLATION
 Multiple out-of-scope operations detected.
@@ -86,7 +98,9 @@ Manual review required before continuing.
 ```
 
 ## Scope Definition Sources
+
 Read scope from (in priority order):
+
 1. `.claude/tasks/phase-N-tasks.md` - Task deliverables
 2. `.claude/project-plan/phase_N.md` - Phase scope
 3. `PROJECT_STARTER.md` - Overall phase definitions
@@ -94,6 +108,7 @@ Read scope from (in priority order):
 ## Integration
 
 ### With Dev Agent
+
 ```markdown
 ## Before Any Implementation
 
@@ -104,6 +119,7 @@ Read scope from (in priority order):
 ```
 
 ### With Orchestrator
+
 ```markdown
 ## Before Task Delegation
 
@@ -114,11 +130,12 @@ Read scope from (in priority order):
 ```
 
 ## Configuration
+
 ```yaml
 # .claude/config.yml
 scope_guard:
   enabled: true
-  strictness: "strict"  # strict | moderate | relaxed
-  on_violation: "block" # block | warn | log
+  strictness: 'strict' # strict | moderate | relaxed
+  on_violation: 'block' # block | warn | log
   allow_override: false
 ```

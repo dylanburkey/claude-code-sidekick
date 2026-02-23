@@ -1,14 +1,17 @@
 ---
-title: "Modern CSS Architecture with @layer"
-description: "How SSG Starter uses CSS @layer for maintainable, scalable stylesheets without preprocessors."
+title: 'Modern CSS Architecture with @layer'
+description:
+  'How SSG Starter uses CSS @layer for maintainable, scalable stylesheets
+  without preprocessors.'
 publishedAt: 2024-02-20
-author: "SSG Team"
-tags: ["css", "architecture", "tutorial"]
+author: 'SSG Team'
+tags: ['css', 'architecture', 'tutorial']
 ---
 
 # Modern CSS Architecture
 
-SSG Starter uses modern CSS features to create maintainable stylesheets without any preprocessors.
+SSG Starter uses modern CSS features to create maintainable stylesheets without
+any preprocessors.
 
 ## The @layer System
 

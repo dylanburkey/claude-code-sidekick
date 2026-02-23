@@ -2,7 +2,8 @@
 
 > Step-by-step walkthrough of building a static site with Claude Code Sidekick
 
-This example shows the complete Sidekick workflow from requirements to working code.
+This example shows the complete Sidekick workflow from requirements to working
+code.
 
 ---
 
@@ -10,7 +11,7 @@ This example shows the complete Sidekick workflow from requirements to working c
 
 1. How to fill out PROJECT_STARTER.md
 2. How to run /project-planner
-3. How to run /task-planner  
+3. How to run /task-planner
 4. How to run /task-runner
 5. How to fix errors along the way
 
@@ -37,15 +38,19 @@ Open [PROJECT_STARTER.md](./PROJECT_STARTER.md) to see the requirements.
 ### Key Sections
 
 **Project Info:**
+
 ```markdown
 ### Project Name
+
 SSG Starter
 
 ### Project Description
+
 A modern static site generator starter template with blog...
 ```
 
 **Requirements (EARS Notation):**
+
 ```markdown
 1. WHEN user visits homepage THE SYSTEM SHALL display hero section
 2. WHEN user visits /blog THE SYSTEM SHALL list all published posts
@@ -53,6 +58,7 @@ A modern static site generator starter template with blog...
 ```
 
 **Technical Stack:**
+
 ```markdown
 - Framework: Astro 5
 - Styling: Modern CSS with @layer
@@ -76,6 +82,7 @@ The project-planner reads PROJECT_STARTER.md and creates a structured plan.
 See [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md)
 
 The plan includes:
+
 - Project summary
 - Phase objectives
 - Technical approach
@@ -99,12 +106,12 @@ See [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md)
 
 Example task table:
 
-| ID | Agent | Task | Time | Status |
-|----|-------|------|------|--------|
-| TASK-001 | init | Project setup | 10 min | ✅ |
-| TASK-002 | dev | CSS architecture | 45 min | ✅ |
-| TASK-003 | dev | Base layout | 20 min | ✅ |
-| TASK-004 | dev | Nav component | 15 min | ✅ |
+| ID       | Agent | Task             | Time   | Status |
+| -------- | ----- | ---------------- | ------ | ------ |
+| TASK-001 | init  | Project setup    | 10 min | ✅     |
+| TASK-002 | dev   | CSS architecture | 45 min | ✅     |
+| TASK-003 | dev   | Base layout      | 20 min | ✅     |
+| TASK-004 | dev   | Nav component    | 15 min | ✅     |
 
 ---
 
@@ -135,6 +142,7 @@ There's a TypeScript error in SEO.astro. Can you fix it?
 ```
 
 Claude will:
+
 1. Read the error
 2. Find the problem
 3. Fix it
@@ -295,10 +303,10 @@ Create `src/content/posts/my-post.md`:
 
 ```markdown
 ---
-title: "My New Post"
-description: "A brief description"
+title: 'My New Post'
+description: 'A brief description'
 publishedAt: 2024-02-22
-tags: ["tutorial"]
+tags: ['tutorial']
 ---
 
 Your content here...
@@ -330,6 +338,7 @@ Share the error with Claude for help.
 
 ## Next Steps
 
-- Read the [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
+- Read the
+  [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
 - Try the [Crypto Dashboard Example](../crypto-dashboard/)
 - Explore [Available Agents](../../.claude/agents/)

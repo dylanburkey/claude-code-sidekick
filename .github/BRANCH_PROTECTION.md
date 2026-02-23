@@ -18,13 +18,13 @@ fix/*
 
 ## Branch Purposes
 
-| Branch | Purpose | Protection |
-|--------|---------|------------|
-| `main` | Production-ready code | Highly protected |
-| `dev` | Integration/staging | Protected |
-| `feature/*` | New features | None |
-| `feat/*` | New features (alias) | None |
-| `fix/*` | Bug fixes | None |
+| Branch      | Purpose               | Protection       |
+| ----------- | --------------------- | ---------------- |
+| `main`      | Production-ready code | Highly protected |
+| `dev`       | Integration/staging   | Protected        |
+| `feature/*` | New features          | None             |
+| `feat/*`    | New features (alias)  | None             |
+| `fix/*`     | Bug fixes             | None             |
 
 ## Workflow
 
@@ -59,6 +59,7 @@ When you create a PR to `dev`, these checks run automatically:
 ### 3. Merge to Dev
 
 Once PR checks pass and code is approved:
+
 - Squash and merge to `dev`
 - Feature branch is deleted
 
@@ -79,6 +80,7 @@ Actions → Merge Dev to Main → Run workflow
 ```
 
 Options:
+
 - **Merge strategy**: merge, squash, or rebase
 - **Create release**: Auto-tag and create GitHub release
 - **Version bump**: patch, minor, or major
@@ -94,9 +96,9 @@ required_approving_review_count: 1
 dismiss_stale_reviews: true
 require_status_checks: true
 required_status_checks:
-  - "CI - Code Quality & Validation / Lint & Code Quality"
-  - "CI - Code Quality & Validation / Test CLI Tool"
-  - "CI - Code Quality & Validation / Security Audit"
+  - 'CI - Code Quality & Validation / Lint & Code Quality'
+  - 'CI - Code Quality & Validation / Test CLI Tool'
+  - 'CI - Code Quality & Validation / Security Audit'
 require_branches_to_be_up_to_date: true
 restrict_pushes: true
 allow_force_pushes: false
@@ -111,20 +113,20 @@ require_pull_request_reviews: true
 required_approving_review_count: 1
 require_status_checks: true
 required_status_checks:
-  - "PR Quality Check / Lint & Format"
-  - "PR Quality Check / Run Tests"
+  - 'PR Quality Check / Lint & Format'
+  - 'PR Quality Check / Run Tests'
 require_branches_to_be_up_to_date: true
 allow_force_pushes: false
 ```
 
 ## CI/CD Workflows
 
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| `ci.yml` | Push/PR to main, dev | Full CI validation |
-| `pr-quality-check.yml` | PR to dev | Quality gates for dev |
-| `merge-dev-to-main.yml` | Manual | Controlled releases |
-| `pre-commit.yml` | Push | Pre-commit validation |
+| Workflow                | Trigger              | Purpose               |
+| ----------------------- | -------------------- | --------------------- |
+| `ci.yml`                | Push/PR to main, dev | Full CI validation    |
+| `pr-quality-check.yml`  | PR to dev            | Quality gates for dev |
+| `merge-dev-to-main.yml` | Manual               | Controlled releases   |
+| `pre-commit.yml`        | Push                 | Pre-commit validation |
 
 ## Setting Up API Keys for AI Review
 
