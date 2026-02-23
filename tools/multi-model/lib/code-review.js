@@ -1,9 +1,19 @@
 /**
  * Multi-Model Code Review System
  * Run code through multiple AI models and find consensus issues
+ *
+ * Supports single-model mode when USE_MULTI_MODEL=FALSE or only one API key is available
  */
 
-import { complete, MODELS } from './clients.js';
+import {
+  complete,
+  MODELS,
+  isMultiModelEnabled,
+  getAvailableProviders,
+  filterAvailableModels,
+  getDefaultModel,
+  getBestModel,
+} from './clients.js';
 import chalk from 'chalk';
 
 const REVIEW_PROMPT = `You are an expert code reviewer. Analyze the following code and identify issues.
@@ -105,14 +115,62 @@ function findConsensus(reviews) {
 
 /**
  * Multi-model code review with consensus
+ * Falls back to single-model mode when USE_MULTI_MODEL=FALSE or only one API key is available
  */
 export async function reviewCode(code, options = {}) {
   const {
     filename = 'code',
-    models = [MODELS.GEMINI_FLASH, MODELS.GPT4O_MINI, MODELS.CLAUDE_HAIKU],
+    models: requestedModels = [MODELS.GEMINI_FLASH, MODELS.GPT4O_MINI, MODELS.CLAUDE_HAIKU],
     consensusThreshold = 2, // How many models must agree
     verbose = false,
   } = options;
+
+  // Check if multi-model is enabled and what providers are available
+  const multiModelEnabled = isMultiModelEnabled();
+  const availableProviders = getAvailableProviders();
+
+  // Filter to only available models
+  let models = filterAvailableModels(requestedModels);
+
+  // Determine mode
+  const useSingleModel = !multiModelEnabled || availableProviders.length === 1 || models.length < 2;
+
+  if (useSingleModel) {
+    // Single model mode - use the best available model
+    const singleModel = models.length > 0 ? models[0] : getBestModel();
+    console.log(chalk.blue(`\n🔍 Reviewing ${filename} with ${singleModel} (single-model mode)\n`));
+
+    if (!multiModelEnabled) {
+      console.log(chalk.dim('Multi-model mode disabled via USE_MULTI_MODEL=FALSE'));
+    } else if (availableProviders.length === 1) {
+      console.log(chalk.dim(`Only ${availableProviders[0]} API key configured`));
+    }
+
+    const startTime = Date.now();
+    const review = await reviewWithModel(code, singleModel, filename);
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+
+    // In single model mode, all issues are "confirmed" (no consensus possible)
+    return {
+      filename,
+      models: [singleModel],
+      reviews: [review],
+      confirmedIssues: review.issues.map((issue) => ({
+        ...issue,
+        models: [singleModel],
+        count: 1,
+      })),
+      possibleIssues: [],
+      elapsed,
+      singleModelMode: true,
+      summary: generateSingleModelSummary(review),
+    };
+  }
+
+  // Multi-model mode
+  if (models.length === 0) {
+    throw new Error('No models available. Check your API keys.');
+  }
 
   console.log(chalk.blue(`\n🔍 Reviewing ${filename} with ${models.length} models...\n`));
 
@@ -142,8 +200,27 @@ export async function reviewCode(code, options = {}) {
     confirmedIssues,
     possibleIssues,
     elapsed,
+    singleModelMode: false,
     summary: generateSummary(confirmedIssues, possibleIssues),
   };
+}
+
+/**
+ * Generate summary for single-model review
+ */
+function generateSingleModelSummary(review) {
+  if (review.error) {
+    return `❌ Review failed: ${review.summary}`;
+  }
+  if (review.issues.length === 0) {
+    return '✅ No issues found';
+  }
+  const critical = review.issues.filter((i) => i.severity === 'critical').length;
+  const high = review.issues.filter((i) => i.severity === 'high').length;
+  const parts = [`⚠️  ${review.issues.length} issue(s) found`];
+  if (critical > 0) parts.push(`🚨 ${critical} critical`);
+  if (high > 0) parts.push(`🔴 ${high} high`);
+  return parts.join(' | ');
 }
 
 /**
@@ -174,12 +251,21 @@ function generateSummary(confirmed, possible) {
 export function formatReviewResults(results) {
   const lines = [];
   lines.push(chalk.bold(`\n📋 Code Review Results: ${results.filename}`));
-  lines.push(chalk.dim(`Models: ${results.models.join(', ')}`));
+
+  if (results.singleModelMode) {
+    lines.push(chalk.dim(`Model: ${results.models[0]} (single-model mode)`));
+  } else {
+    lines.push(chalk.dim(`Models: ${results.models.join(', ')}`));
+  }
   lines.push(chalk.dim(`Time: ${results.elapsed}s\n`));
   lines.push(results.summary);
 
   if (results.confirmedIssues.length > 0) {
-    lines.push(chalk.bold('\n🔴 Confirmed Issues (multiple models agree):'));
+    const headerText = results.singleModelMode
+      ? '\n🔍 Issues Found:'
+      : '\n🔴 Confirmed Issues (multiple models agree):';
+    lines.push(chalk.bold(headerText));
+
     for (const issue of results.confirmedIssues) {
       const severityColor =
         { critical: 'red', high: 'yellow', medium: 'cyan', low: 'dim' }[issue.severity] || 'white';
@@ -190,7 +276,11 @@ export function formatReviewResults(results) {
       );
       lines.push(`    ${issue.description}`);
       lines.push(chalk.green(`    → ${issue.suggestion}`));
-      lines.push(chalk.dim(`    Flagged by: ${issue.models.join(', ')}\n`));
+      if (!results.singleModelMode) {
+        lines.push(chalk.dim(`    Flagged by: ${issue.models.join(', ')}\n`));
+      } else {
+        lines.push(''); // blank line
+      }
     }
   }
 
@@ -207,17 +297,19 @@ export function formatReviewResults(results) {
 
 /**
  * Quick review with fastest/cheapest models
+ * Automatically adapts to available API keys
  */
 export async function quickReview(code, filename = 'code') {
   return reviewCode(code, {
     filename,
-    models: [MODELS.GEMINI_FLASH, MODELS.GPT4O_MINI],
+    models: [MODELS.GEMINI_FLASH, MODELS.GPT4O_MINI, MODELS.CLAUDE_HAIKU],
     consensusThreshold: 2,
   });
 }
 
 /**
  * Deep review with most capable models
+ * Automatically adapts to available API keys
  */
 export async function deepReview(code, filename = 'code') {
   return reviewCode(code, {
@@ -225,5 +317,18 @@ export async function deepReview(code, filename = 'code') {
     models: [MODELS.GPT4O, MODELS.CLAUDE_SONNET, MODELS.GEMINI_PRO],
     consensusThreshold: 2,
     verbose: true,
+  });
+}
+
+/**
+ * Single model review (explicit single-model mode)
+ * Uses the best available model
+ */
+export async function singleReview(code, filename = 'code', model = null) {
+  const useModel = model || getBestModel();
+  return reviewCode(code, {
+    filename,
+    models: [useModel],
+    consensusThreshold: 1,
   });
 }
