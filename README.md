@@ -345,11 +345,32 @@ agent-library/
 
 ### Example Projects
 
-- [**SSG Starter**](examples/ssg-starter/) - Complete static site with blog, SEO,
-  and modern CSS. Includes PROJECT_STARTER.md, generated plans, and task breakdowns.
-- [**Crypto Dashboard**](examples/crypto-dashboard/) - Web3 landing page with Privy
-  wallet auth, signature verification, and elaborate dashboard. Dark neon theme
-  (GigaBrain-inspired) with glassmorphism effects.
+Working examples that demonstrate the full Sidekick workflow.
+
+#### SSG Starter (Astro Blog)
+
+```bash
+cd examples/ssg-starter
+npm install
+npm run dev
+# → http://localhost:4321
+```
+
+Static site with blog, SEO, JSON-LD, and modern CSS.
+[View full guide →](examples/ssg-starter/README.md)
+
+#### Crypto Dashboard (React + Privy)
+
+```bash
+cd examples/crypto-dashboard
+npm install
+npm run dev
+# → http://localhost:5173
+```
+
+Web3 landing page with wallet auth, signature verification, and neon dashboard.
+Runs in demo mode without a Privy key.
+[View full guide →](examples/crypto-dashboard/README.md)
 
 ### Reference
 
