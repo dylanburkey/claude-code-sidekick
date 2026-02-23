@@ -1,9 +1,11 @@
 # /worktree-enable - Enable Git Worktree Mode
 
 ## Purpose
+
 Enables parallel task execution using git worktrees. Simple one-command opt-in.
 
 ## Trigger
+
 ```
 /worktree-enable
 ```
@@ -11,6 +13,7 @@ Enables parallel task execution using git worktrees. Simple one-command opt-in.
 ## What It Does
 
 ### Step 1: Check Prerequisites
+
 ```bash
 # Verify git version supports worktrees
 git --version  # Requires 2.5+
@@ -20,23 +23,27 @@ git rev-parse --git-dir
 ```
 
 ### Step 2: Create Worktree Directory
+
 ```bash
 mkdir -p .worktrees
 echo ".worktrees/" >> .gitignore
 ```
 
 ### Step 3: Update Config
+
 Adds to `.claude/config.yml`:
+
 ```yaml
 git:
   worktrees:
     enabled: true
-    base_dir: ".worktrees"
+    base_dir: '.worktrees'
     auto_cleanup: true
     max_concurrent: 3
 ```
 
 ### Step 4: Confirm
+
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║  ✓ GIT WORKTREE MODE ENABLED                                 ║
@@ -87,6 +94,7 @@ git:
 ```
 
 ## Reverting
+
 ```
 /worktree-disable
 ```

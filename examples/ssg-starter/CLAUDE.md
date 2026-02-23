@@ -4,9 +4,11 @@
 
 ## Project Overview
 
-**SSG Starter** is a production-ready static site template built with Astro. It demonstrates the Claude Code Sidekick workflow for building modern web projects.
+**SSG Starter** is a production-ready static site template built with Astro. It
+demonstrates the Claude Code Sidekick workflow for building modern web projects.
 
 ### Tech Stack
+
 - **Framework:** Astro 5 (static output)
 - **Styling:** Modern CSS (@layer, custom properties)
 - **Content:** Markdown with frontmatter
@@ -64,14 +66,14 @@ All design values are CSS custom properties:
 
 ### Key Classes
 
-| Class | Purpose |
-|-------|---------|
-| `.glass` | Glass morphism card effect |
-| `.container` | Max-width centered container |
-| `.section` | Vertical padding for sections |
-| `.grid` | CSS grid with responsive columns |
-| `.btn` | Button base styles |
-| `.prose` | Blog post content styling |
+| Class        | Purpose                          |
+| ------------ | -------------------------------- |
+| `.glass`     | Glass morphism card effect       |
+| `.container` | Max-width centered container     |
+| `.section`   | Vertical padding for sections    |
+| `.grid`      | CSS grid with responsive columns |
+| `.btn`       | Button base styles               |
+| `.prose`     | Blog post content styling        |
 
 ## Content Collections
 
@@ -94,10 +96,10 @@ Create `src/content/posts/my-post.md`:
 
 ```markdown
 ---
-title: "My Post Title"
-description: "Brief description"
+title: 'My Post Title'
+description: 'Brief description'
 publishedAt: 2024-02-21
-tags: ["tag1", "tag2"]
+tags: ['tag1', 'tag2']
 ---
 
 Content here...
@@ -116,16 +118,19 @@ Every page includes:
 ## Coding Standards
 
 ### HTML
+
 - Semantic elements (`<article>`, `<section>`, `<nav>`)
 - Proper heading hierarchy
 - ARIA labels where needed
 
 ### CSS
+
 - Use custom properties for values
 - Mobile-first responsive design
 - No `!important`
 
 ### Accessibility
+
 - Color contrast AA compliant
 - Focus states visible
 - Skip links present
@@ -142,5 +147,7 @@ Every page includes:
 ## Related Files
 
 - [PROJECT_STARTER.md](./PROJECT_STARTER.md) - Original requirements
-- [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md) - Project plan
-- [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md) - Task breakdown
+- [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md) - Project
+  plan
+- [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md) - Task
+  breakdown

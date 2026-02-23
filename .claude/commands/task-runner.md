@@ -40,6 +40,7 @@ Before ANY execution, output:
 ### Step 0.5: Load Required Skills
 
 Before execution, load:
+
 1. `.claude/skills/phase-control/SKILL.md`
 2. `.claude/skills/scope-guard/SKILL.md`
 3. `.claude/skills/checkpoint-manager/SKILL.md`
@@ -203,6 +204,7 @@ Output exactly this completion message:
 ```
 
 **CRITICAL RULES:**
+
 - **NEVER** automatically invoke task-planner for next phase
 - **NEVER** automatically invoke task-runner for next phase
 - **NEVER** generate Phase N+1 plans without explicit user command

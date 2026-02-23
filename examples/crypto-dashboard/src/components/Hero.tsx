@@ -12,21 +12,19 @@ export function Hero({ demoMode, onConnect }: HeroProps) {
   return (
     <section className="hero">
       <div className="hero__glow" />
-      
+
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <span className="hero__tag">
-          ⚡ Powered by Web3
-        </span>
-        
+        <span className="hero__tag">⚡ Powered by Web3</span>
+
         <h1 className="hero__title">
           <span className="text-gradient">NEXUS</span>
           <br />
           PROTOCOL
         </h1>
-        
+
         <p className="hero__subtitle">
-          The Future of Decentralized Intelligence. Stake, earn, and govern 
-          the next generation of AI-powered DeFi infrastructure.
+          The Future of Decentralized Intelligence. Stake, earn, and govern the next generation of
+          AI-powered DeFi infrastructure.
         </p>
 
         <button className="btn btn--glow" onClick={login}>

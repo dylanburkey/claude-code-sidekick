@@ -23,16 +23,13 @@ function AppContent() {
   return (
     <>
       <Navbar />
-      
+
       {!authenticated ? (
         <Hero />
       ) : needsSignature ? (
         <>
           <Hero />
-          <SignatureModal
-            onSuccess={() => setSignatureVerified(true)}
-            onClose={() => {}}
-          />
+          <SignatureModal onSuccess={() => setSignatureVerified(true)} onClose={() => {}} />
         </>
       ) : (
         <Dashboard />
@@ -76,13 +73,16 @@ function DemoApp() {
 
   return (
     <>
-      <Navbar 
-        demoMode 
-        connected={connected} 
+      <Navbar
+        demoMode
+        connected={connected}
         onConnect={() => setConnected(true)}
-        onDisconnect={() => { setConnected(false); setVerified(false); }}
+        onDisconnect={() => {
+          setConnected(false);
+          setVerified(false);
+        }}
       />
-      
+
       {!connected ? (
         <Hero demoMode onConnect={() => setConnected(true)} />
       ) : !verified ? (

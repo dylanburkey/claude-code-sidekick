@@ -1,9 +1,12 @@
 # Phase Control Skill
 
 ## Purpose
-Enforces strict phase boundaries during project execution. Prevents scope creep by ensuring work stays within the authorized phase.
+
+Enforces strict phase boundaries during project execution. Prevents scope creep
+by ensuring work stays within the authorized phase.
 
 ## When to Use
+
 - Before executing any task
 - When task-runner completes a phase
 - When any agent attempts to create deliverables
@@ -12,25 +15,32 @@ Enforces strict phase boundaries during project execution. Prevents scope creep 
 ## Core Rules
 
 ### 1. Phase Authorization
+
 ```yaml
-current_phase: 1  # Read from .claude/state/execution.json
-authorized_phases: [1]  # Only phases explicitly approved
+current_phase: 1 # Read from .claude/state/execution.json
+authorized_phases: [1] # Only phases explicitly approved
 ```
 
 ### 2. Pre-Task Validation
+
 Before executing ANY task:
+
 1. Check task ID prefix matches current phase (e.g., PHASE1-xxx)
 2. Verify deliverables are within phase scope
 3. Confirm no dependencies on future-phase tasks
 
 ### 3. Scope Violation Detection
+
 Flag as SCOPE VIOLATION if:
+
 - Task creates files listed in Phase N+1 deliverables
 - Task references components from future phases
 - Task implements features marked "Phase 2+" in PROJECT_STARTER.md
 
 ### 4. Hard Stop Protocol
+
 When phase completes:
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  ⛔ PHASE BOUNDARY - EXECUTION HALTED                       │
@@ -47,7 +57,9 @@ When phase completes:
 ```
 
 ## State File
+
 Maintain execution state in `.claude/state/execution.json`:
+
 ```json
 {
   "current_phase": 1,
@@ -62,24 +74,31 @@ Maintain execution state in `.claude/state/execution.json`:
 ## Commands
 
 ### Check Phase Status
+
 ```
 /phase-status
 ```
+
 Output: Current phase, completion %, next steps
 
 ### Authorize Next Phase
+
 ```
 /phase-approve 2
 ```
+
 Explicitly authorizes Phase 2 execution
 
 ### Lock to Phase
+
 ```
 /phase-lock 1
 ```
+
 Prevents any work beyond Phase 1
 
 ## Integration Points
+
 - task-runner.md: Calls phase-control before each task
 - orchestrator-agent.md: Respects phase boundaries
 - dev-agent.md: Checks scope before creating files

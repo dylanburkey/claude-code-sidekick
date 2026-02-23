@@ -16,7 +16,9 @@
    LAYER: Reset
    ============================================ */
 @layer reset {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -33,16 +35,29 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
   }
 
-  input, button, textarea, select {
+  input,
+  button,
+  textarea,
+  select {
     font: inherit;
   }
 
-  p, h1, h2, h3, h4, h5, h6 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     overflow-wrap: break-word;
   }
 
@@ -51,7 +66,8 @@
     text-decoration: none;
   }
 
-  ul, ol {
+  ul,
+  ol {
     list-style: none;
   }
 }
@@ -127,17 +143,30 @@
     background-attachment: fixed;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
     color: var(--color-text-primary);
   }
 
-  h1 { font-size: var(--text-4xl); }
-  h2 { font-size: var(--text-3xl); }
-  h3 { font-size: var(--text-2xl); }
-  h4 { font-size: var(--text-xl); }
+  h1 {
+    font-size: var(--text-4xl);
+  }
+  h2 {
+    font-size: var(--text-3xl);
+  }
+  h3 {
+    font-size: var(--text-2xl);
+  }
+  h4 {
+    font-size: var(--text-xl);
+  }
 
   p {
     color: var(--color-text-secondary);
@@ -187,7 +216,6 @@
    LAYER: Components
    ============================================ */
 @layer components {
-
   /* ----- Glass Card ----- */
   .glass {
     background: var(--glass-bg);
@@ -399,7 +427,9 @@
     margin-inline: auto;
   }
 
-  .prose h1, .prose h2, .prose h3 {
+  .prose h1,
+  .prose h2,
+  .prose h3 {
     margin-top: var(--space-xl);
     margin-bottom: var(--space-md);
   }
@@ -413,7 +443,8 @@
     text-decoration: underline;
   }
 
-  .prose ul, .prose ol {
+  .prose ul,
+  .prose ol {
     margin-bottom: var(--space-md);
     padding-left: var(--space-lg);
   }
@@ -450,19 +481,39 @@
    LAYER: Utilities
    ============================================ */
 @layer utilities {
-  .text-center { text-align: center; }
-  .text-muted { color: var(--color-text-muted); }
-  .text-accent { color: var(--color-accent); }
-  
-  .mt-sm { margin-top: var(--space-sm); }
-  .mt-md { margin-top: var(--space-md); }
-  .mt-lg { margin-top: var(--space-lg); }
-  .mt-xl { margin-top: var(--space-xl); }
-  
-  .mb-sm { margin-bottom: var(--space-sm); }
-  .mb-md { margin-bottom: var(--space-md); }
-  .mb-lg { margin-bottom: var(--space-lg); }
-  
+  .text-center {
+    text-align: center;
+  }
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .mt-sm {
+    margin-top: var(--space-sm);
+  }
+  .mt-md {
+    margin-top: var(--space-md);
+  }
+  .mt-lg {
+    margin-top: var(--space-lg);
+  }
+  .mt-xl {
+    margin-top: var(--space-xl);
+  }
+
+  .mb-sm {
+    margin-bottom: var(--space-sm);
+  }
+  .mb-md {
+    margin-bottom: var(--space-md);
+  }
+  .mb-lg {
+    margin-bottom: var(--space-lg);
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -482,11 +533,11 @@
   .nav__links {
     display: none;
   }
-  
+
   .hero__actions {
     flex-direction: column;
   }
-  
+
   .hero__actions .btn {
     width: 100%;
     text-align: center;

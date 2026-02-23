@@ -1,9 +1,11 @@
 # /worktree-disable - Disable Git Worktree Mode
 
 ## Purpose
+
 Returns to sequential task execution. Cleans up existing worktrees.
 
 ## Trigger
+
 ```
 /worktree-disable
 ```
@@ -11,7 +13,9 @@ Returns to sequential task execution. Cleans up existing worktrees.
 ## Process
 
 ### Step 1: Check for Active Worktrees
+
 If worktrees exist with uncommitted work:
+
 ```
 ⚠️  ACTIVE WORKTREES DETECTED
 
@@ -26,6 +30,7 @@ Options:
 ```
 
 ### Step 2: Clean Up Worktrees
+
 ```bash
 # Remove all worktrees
 git worktree list | grep ".worktrees" | while read wt; do
@@ -37,7 +42,9 @@ git branch | grep "task/" | xargs git branch -D
 ```
 
 ### Step 3: Update Config
+
 Sets in `.claude/config.yml`:
+
 ```yaml
 git:
   worktrees:
@@ -45,6 +52,7 @@ git:
 ```
 
 ### Step 4: Confirm
+
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║  ✓ GIT WORKTREE MODE DISABLED                                ║

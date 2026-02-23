@@ -6,6 +6,6 @@ export default defineConfig({
   site: 'https://example.com',
   output: 'static',
   build: {
-    inlineStylesheets: 'auto'
-  }
+    inlineStylesheets: 'auto',
+  },
 });

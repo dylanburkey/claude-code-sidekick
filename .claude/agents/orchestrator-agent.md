@@ -6,7 +6,9 @@ Central coordination agent that manages workflow execution, agent delegation,
 and system-wide state across the project lifecycle.
 
 ## Required Skills
+
 Before ANY execution, load these skills:
+
 - `.claude/skills/phase-control/SKILL.md` - Phase boundary enforcement
 - `.claude/skills/scope-guard/SKILL.md` - Scope violation prevention
 - `.claude/skills/checkpoint-manager/SKILL.md` - Checkpoint management
@@ -14,6 +16,7 @@ Before ANY execution, load these skills:
 ## CRITICAL: Scope Control Rules
 
 ### Phase Boundaries (MANDATORY - NO EXCEPTIONS)
+
 1. **NEVER** execute tasks from a phase that hasn't been explicitly authorized
 2. **NEVER** auto-generate Phase N+1 plans after completing Phase N
 3. **NEVER** continue past a phase boundary without explicit user command
@@ -22,6 +25,7 @@ Before ANY execution, load these skills:
 6. **ALWAYS** load phase-control skill before task execution
 
 ### Before EVERY Task
+
 ```
 1. Check current authorized phase from .claude/state/execution.json
 2. Verify task belongs to authorized phase

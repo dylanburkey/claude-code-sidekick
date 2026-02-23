@@ -1,0 +1,35 @@
+{
+  "name": "@claude-sidekick/multi-model",
+  "version": "1.0.0",
+  "description": "Multi-model AI toolkit for code review, routing, and semantic search",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "mm-review": "./bin/review.js",
+    "mm-index": "./bin/index-codebase.js",
+    "mm-search": "./bin/search.js"
+  },
+  "scripts": {
+    "review": "node bin/review.js",
+    "index": "node bin/index-codebase.js",
+    "search": "node bin/search.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.18.0",
+    "@google/generative-ai": "^0.24.1",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.0",
+    "glob": "^10.3.0",
+    "openai": "^4.28.0",
+    "ora": "^8.0.1",
+    "tiktoken": "^1.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
