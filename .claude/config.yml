@@ -116,6 +116,15 @@ git:
     merge_strategy: "auto"      # auto | manual | squash
     require_review: false       # Require review-agent before merge
 
+# Multi-model configuration
+# Supports Claude, OpenAI, and Gemini for cross-validation and specialization
+models:
+  enabled: true
+  config_file: ".claude/config/models.yml"
+  cross_validation:
+    enabled: true
+    tasks: ["planning", "review"]  # Tasks that get second opinions
+  
 # Default MCP servers (always enabled)
 mcp:
   required:

@@ -1,0 +1,186 @@
+# Multi-Model Configuration
+# Configure multiple AI providers for different tasks
+#
+# Use Cases:
+# - Cross-validation: Have different models review each other's work
+# - Cost optimization: Use cheaper models for simpler tasks
+# - Specialization: Use models that excel at specific tasks
+# - Redundancy: Fallback to alternative providers if one is down
+
+# Available model providers
+providers:
+  anthropic:
+    enabled: true
+    env_key: "ANTHROPIC_API_KEY"
+    models:
+      - id: "claude-sonnet-4-20250514"
+        name: "Claude Sonnet 4"
+        context: 200000
+        strengths: ["coding", "analysis", "reasoning"]
+        cost_tier: "medium"
+      - id: "claude-opus-4-20250514"
+        name: "Claude Opus 4"
+        context: 200000
+        strengths: ["complex-reasoning", "nuanced-writing", "deep-analysis"]
+        cost_tier: "high"
+
+  openai:
+    enabled: true  # Set to true if OPENAI_API_KEY is available
+    env_key: "OPENAI_API_KEY"
+    models:
+      - id: "gpt-4o"
+        name: "GPT-4o"
+        context: 128000
+        strengths: ["general", "speed", "multimodal"]
+        cost_tier: "medium"
+      - id: "gpt-4-turbo"
+        name: "GPT-4 Turbo"
+        context: 128000
+        strengths: ["coding", "instruction-following"]
+        cost_tier: "medium"
+      - id: "o1"
+        name: "o1"
+        context: 200000
+        strengths: ["reasoning", "math", "complex-problems"]
+        cost_tier: "high"
+
+  google:
+    enabled: true  # Set to true if GOOGLE_API_KEY is available
+    env_key: "GOOGLE_API_KEY"
+    models:
+      - id: "gemini-2.0-flash"
+        name: "Gemini 2.0 Flash"
+        context: 1000000
+        strengths: ["speed", "large-context", "multimodal"]
+        cost_tier: "low"
+      - id: "gemini-2.5-pro"
+        name: "Gemini 2.5 Pro"
+        context: 2000000
+        strengths: ["reasoning", "coding", "large-context"]
+        cost_tier: "medium"
+
+# Default model assignments per task type
+defaults:
+  # Primary model for each task type
+  primary:
+    planning: "claude-sonnet-4-20250514"
+    development: "claude-sonnet-4-20250514"
+    review: "claude-sonnet-4-20250514"
+    testing: "claude-sonnet-4-20250514"
+    documentation: "claude-sonnet-4-20250514"
+
+  # Secondary model for cross-validation (optional)
+  # Set to null to disable cross-validation
+  secondary:
+    planning: "gemini-2.5-pro"      # Different perspective on architecture
+    review: "gpt-4o"                 # Independent code review
+    testing: null                    # No cross-validation for tests
+    documentation: null              # No cross-validation for docs
+
+# Cross-validation configuration
+cross_validation:
+  enabled: true
+  
+  # When to use cross-validation
+  triggers:
+    planning:
+      always: true                   # Always get second opinion on plans
+      description: "Architecture decisions benefit from multiple perspectives"
+    
+    review:
+      on_complexity: "high"          # Only for complex code reviews
+      on_security: true              # Always for security-sensitive code
+      on_request: true               # When explicitly requested
+      description: "Critical code benefits from independent review"
+    
+    development:
+      on_request: true               # Only when explicitly requested
+      description: "Optional second opinion on implementation"
+
+  # How to handle disagreements
+  conflict_resolution:
+    strategy: "human"                # human | primary | vote | merge
+    notify: true                     # Notify user of disagreements
+    
+  # Output format for cross-validation
+  output:
+    show_both: true                  # Show both model responses
+    highlight_differences: true      # Highlight where models disagree
+    summary: true                    # Generate summary of consensus/conflicts
+
+# Agent-specific model overrides
+# Override the default model for specific agents
+agent_overrides:
+  planner:
+    primary: "claude-sonnet-4-20250514"
+    secondary: "gemini-2.5-pro"
+    cross_validate: true
+    
+  review:
+    primary: "claude-sonnet-4-20250514"
+    secondary: "gpt-4o"
+    cross_validate: true
+    
+  dev:
+    primary: "claude-sonnet-4-20250514"
+    secondary: null
+    cross_validate: false
+    
+  test:
+    primary: "claude-sonnet-4-20250514"
+    secondary: null
+    cross_validate: false
+
+  docs:
+    primary: "gemini-2.0-flash"      # Fast model for docs
+    secondary: null
+    cross_validate: false
+
+# Cost optimization settings
+cost_optimization:
+  enabled: true
+  
+  # Use cheaper models for these tasks
+  use_budget_model:
+    - "simple-refactoring"
+    - "documentation-updates"
+    - "code-formatting"
+    - "simple-tests"
+  
+  budget_model: "gemini-2.0-flash"
+  
+  # Always use premium model for these tasks
+  use_premium_model:
+    - "architecture-decisions"
+    - "security-reviews"
+    - "complex-algorithms"
+    - "api-design"
+  
+  premium_model: "claude-opus-4-20250514"
+
+# Fallback chain if primary model fails
+fallback:
+  enabled: true
+  chain:
+    - "claude-sonnet-4-20250514"
+    - "gpt-4o"
+    - "gemini-2.5-pro"
+  max_retries: 2
+  retry_delay_ms: 1000
+
+# Model-specific prompting adjustments
+prompt_adjustments:
+  openai:
+    # OpenAI models prefer explicit JSON formatting
+    prefer_json_mode: true
+    system_prompt_style: "concise"
+    
+  google:
+    # Gemini handles large contexts well
+    include_full_context: true
+    system_prompt_style: "detailed"
+    
+  anthropic:
+    # Claude excels with examples
+    include_examples: true
+    system_prompt_style: "balanced"

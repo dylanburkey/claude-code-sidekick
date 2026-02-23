@@ -193,6 +193,33 @@ requirements first with EARS notation
 Clear, testable, unambiguous requirements that become your implementation
 roadmap.
 
+### 6. Multi-Model Support
+
+**Others:** Locked into a single AI provider
+**Sidekick:** Use Claude, GPT-4, and Gemini together
+
+```yaml
+# .claude/config/models.yml
+agent_overrides:
+  planner:
+    primary: "claude-sonnet-4-20250514"
+    secondary: "gemini-2.5-pro"    # Second opinion on architecture
+    cross_validate: true
+    
+  review:
+    primary: "claude-sonnet-4-20250514"
+    secondary: "gpt-4o"            # Independent code review
+    cross_validate: true
+```
+
+**Cross-Validation Benefits:**
+- Different models catch different issues
+- Architecture decisions get multiple perspectives  
+- Security reviews are more thorough
+- Cost optimization (use cheaper models for simple tasks)
+
+[View Multi-Model Setup Guide →](docs/guides/multi-model-setup.md)
+
 ---
 
 ## Comparison
