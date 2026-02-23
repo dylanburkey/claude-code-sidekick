@@ -1,7 +1,7 @@
 # Multi-Model AI Toolkit
 
-> Leverage OpenAI, Anthropic, and Google Gemini together for superior code
-> quality.
+> Leverage OpenAI, Anthropic, Google Gemini, and Venice AI together for superior
+> code quality.
 
 **Part of [Claude Code Sidekick](../../README.md)**
 
@@ -16,7 +16,9 @@
   keywords
 - **💰 Cost Optimization** - Use cheap models for simple tasks, reserve power
   for complex ones
-- **🔧 Flexible Configuration** - Works with just one API key or all three
+- **🔧 Flexible Configuration** - Works with just one API key or all four
+- **🔓 Venice AI Integration** - Access uncensored models with private inference
+  via [VVV token](https://venice.ai/token)
 
 ## File Structure
 
@@ -50,6 +52,7 @@ pnpm install
 OPENAI_API_KEY=sk-...
 ANTHROPIC_API_KEY=sk-ant-...
 GEMINI_API_KEY=...
+VENICE_API_KEY=...  # Optional: Venice AI for uncensored models
 ```
 
 ## Configuration
@@ -58,11 +61,20 @@ GEMINI_API_KEY=...
 
 The toolkit automatically adapts based on your available API keys:
 
-| API Keys Available | Mode         | Behavior                           |
-| ------------------ | ------------ | ---------------------------------- |
-| All three          | Multi-model  | Consensus review across all models |
-| Two keys           | Multi-model  | Consensus with 2 models            |
-| One key            | Single-model | Direct review with one model       |
+| API Keys Available | Mode         | Behavior                       |
+| ------------------ | ------------ | ------------------------------ |
+| 3+ keys            | Multi-model  | Consensus review across models |
+| 2 keys             | Multi-model  | Consensus with 2 models        |
+| 1 key              | Single-model | Direct review with one model   |
+
+### Supported Providers
+
+| Provider  | Env Variable        | Models                               |
+| --------- | ------------------- | ------------------------------------ |
+| OpenAI    | `OPENAI_API_KEY`    | GPT-4o, GPT-4o-mini                  |
+| Anthropic | `ANTHROPIC_API_KEY` | Claude Sonnet, Claude Haiku          |
+| Google    | `GEMINI_API_KEY`    | Gemini Pro, Gemini Flash             |
+| Venice AI | `VENICE_API_KEY`    | Llama 3.3 70B, DeepSeek R1, Qwen 2.5 |
 
 **To explicitly disable multi-model mode** (even if you have multiple keys):
 
@@ -90,10 +102,40 @@ ANTHROPIC_API_KEY=sk-ant-...
 
 # Option 3: Gemini only
 GEMINI_API_KEY=...
+
+# Option 4: Venice AI only (uncensored models)
+VENICE_API_KEY=...
 ```
 
 The toolkit will automatically use the best available model for your
 configuration.
+
+### Venice AI (VVV Token)
+
+[Venice AI](https://venice.ai) provides uncensored AI models with private
+inference. Powered by the [VVV token](https://venice.ai/token).
+
+Available models:
+
+- `llama-3.3-70b` - Llama 3.3 70B (fast, capable)
+- `llama-3.2-3b` - Llama 3.2 3B (lightweight, cheap)
+- `deepseek-r1-671b` - DeepSeek R1 671B (reasoning, most capable)
+- `deepseek-r1-llama-70b` - DeepSeek R1 Llama 70B
+- `dolphin-2.9.2-qwen2-72b` - Dolphin (uncensored)
+- `qwen-2.5-72b` - Qwen 2.5 72B
+
+```javascript
+import { MODELS, complete } from '@claude-sidekick/multi-model';
+
+// Use Venice models directly
+const result = await complete(
+  MODELS.VENICE_LLAMA_70B,
+  'Explain quantum computing'
+);
+
+// Or use venice/ prefix
+const result2 = await complete('venice/llama-3.3-70b', prompt);
+```
 
 ## CLI Tools
 

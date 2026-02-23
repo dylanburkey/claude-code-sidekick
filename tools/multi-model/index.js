@@ -30,8 +30,10 @@ export {
   getOpenAI,
   getAnthropic,
   getGemini,
+  getVenice,
   MODELS,
   MODEL_COSTS,
+  VENICE_MODELS,
   // Configuration helpers
   isMultiModelEnabled,
   getAvailableProviders,
@@ -40,6 +42,7 @@ export {
   getBestModel,
   hasProvider,
   filterAvailableModels,
+  getProviderFromModel,
 } from './lib/clients.js';
 
 // Code Review
