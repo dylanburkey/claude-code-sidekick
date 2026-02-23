@@ -10,9 +10,26 @@ import { join, relative, extname } from 'path';
 import chalk from 'chalk';
 
 const DEFAULT_EXTENSIONS = [
-  '.js', '.ts', '.jsx', '.tsx', '.py', '.go', '.rs',
-  '.java', '.rb', '.php', '.vue', '.svelte', '.astro',
-  '.css', '.scss', '.html', '.json', '.md', '.yaml', '.yml',
+  '.js',
+  '.ts',
+  '.jsx',
+  '.tsx',
+  '.py',
+  '.go',
+  '.rs',
+  '.java',
+  '.rb',
+  '.php',
+  '.vue',
+  '.svelte',
+  '.astro',
+  '.css',
+  '.scss',
+  '.html',
+  '.json',
+  '.md',
+  '.yaml',
+  '.yml',
 ];
 
 const DEFAULT_IGNORE = [
@@ -184,10 +201,12 @@ export async function indexCodebase(rootDir, options = {}) {
     rootDir,
     totalFiles: files.length,
     totalChunks: allChunks.length,
-    chunks: allChunks.map((chunk, i) => ({
-      ...chunk,
-      embedding: embeddings[i],
-    })).filter((c) => c.embedding !== null),
+    chunks: allChunks
+      .map((chunk, i) => ({
+        ...chunk,
+        embedding: embeddings[i],
+      }))
+      .filter((c) => c.embedding !== null),
   };
 
   // Save index
@@ -235,12 +254,7 @@ function cosineSimilarity(a, b) {
  * Search the codebase
  */
 export async function searchCodebase(query, options = {}) {
-  const {
-    indexPath,
-    index: providedIndex,
-    topK = 10,
-    minSimilarity = 0.5,
-  } = options;
+  const { indexPath, index: providedIndex, topK = 10, minSimilarity = 0.5 } = options;
 
   // Load or use provided index
   const index = providedIndex || loadIndex(indexPath);

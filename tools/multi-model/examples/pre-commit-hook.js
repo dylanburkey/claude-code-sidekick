@@ -2,9 +2,9 @@
 
 /**
  * Pre-Commit Hook Example
- * 
+ *
  * Install: Add to .husky/pre-commit or package.json scripts
- * 
+ *
  * This hook runs a quick multi-model review on staged files
  * and blocks commits with critical issues.
  */
@@ -39,7 +39,7 @@ async function main() {
   for (const file of staged) {
     try {
       const code = readFileSync(file, 'utf-8');
-      
+
       // Skip small files
       if (code.length < 50) continue;
 
@@ -53,16 +53,18 @@ async function main() {
       if (blocking.length > 0) {
         hasBlockingIssues = true;
         console.log(chalk.red(`\n❌ ${file}: ${blocking.length} blocking issue(s)`));
-        
+
         for (const issue of blocking) {
           console.log(chalk.red(`   [${issue.severity.toUpperCase()}] ${issue.description}`));
           console.log(chalk.yellow(`   → ${issue.suggestion}`));
         }
-        
+
         allIssues.push(...blocking.map((i) => ({ ...i, file })));
       } else if (results.confirmedIssues.length > 0) {
         console.log(
-          chalk.yellow(`⚠️  ${file}: ${results.confirmedIssues.length} minor issue(s) (non-blocking)`)
+          chalk.yellow(
+            `⚠️  ${file}: ${results.confirmedIssues.length} minor issue(s) (non-blocking)`
+          )
         );
       } else {
         console.log(chalk.green(`✓  ${file}`));

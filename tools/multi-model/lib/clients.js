@@ -139,7 +139,7 @@ export const MODELS = {
   GPT4O_MINI: 'gpt-4o-mini',
 
   // Anthropic
-  CLAUDE_OPUS: 'claude-sonnet-4-20250514',  // Opus 4 not out yet, use Sonnet 4
+  CLAUDE_OPUS: 'claude-sonnet-4-20250514', // Opus 4 not out yet, use Sonnet 4
   CLAUDE_SONNET: 'claude-sonnet-4-20250514',
   CLAUDE_HAIKU: 'claude-3-5-haiku-20241022',
 

@@ -1,9 +1,11 @@
 # /status - Execution Status Command
 
 ## Purpose
+
 Displays current execution state, phase progress, and next steps.
 
 ## Trigger
+
 Run `/status` at any time to see project state.
 
 ## Output Format
@@ -50,6 +52,7 @@ Run `/status` at any time to see project state.
 ## Data Sources
 
 Read from:
+
 1. `.claude/state/execution.json` - Execution state
 2. `.claude/tasks/phase-{{N}}-tasks.md` - Task progress
 3. `.claude/config.yml` - Configuration
@@ -57,14 +60,14 @@ Read from:
 
 ## Status Values
 
-| Status | Meaning |
-|--------|---------|
-| `not_started` | Phase planning not yet run |
-| `planning` | Running /project-planner or /task-planner |
-| `in_progress` | Tasks being executed |
-| `awaiting_approval` | At checkpoint, waiting for user |
-| `complete` | Phase finished |
-| `blocked` | Execution halted due to error/violation |
+| Status              | Meaning                                   |
+| ------------------- | ----------------------------------------- |
+| `not_started`       | Phase planning not yet run                |
+| `planning`          | Running /project-planner or /task-planner |
+| `in_progress`       | Tasks being executed                      |
+| `awaiting_approval` | At checkpoint, waiting for user           |
+| `complete`          | Phase finished                            |
+| `blocked`           | Execution halted due to error/violation   |
 
 ## Next Steps Logic
 

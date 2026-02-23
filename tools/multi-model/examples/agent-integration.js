@@ -1,6 +1,6 @@
 /**
  * Agent Integration Example
- * 
+ *
  * Shows how to integrate multi-model routing into a Claude Code workflow
  */
 
@@ -29,11 +29,12 @@ async function smartAssistant(userRequest, codeContext = {}) {
   }
 
   // 2. Build context-aware prompt
-  const contextBlock = relevantCode.length > 0
-    ? `\nRelevant code from the codebase:\n${relevantCode.map((r) => 
-        `--- ${r.filename} (lines ${r.lineStart}-${r.lineEnd}) ---\n${r.content}`
-      ).join('\n\n')}\n`
-    : '';
+  const contextBlock =
+    relevantCode.length > 0
+      ? `\nRelevant code from the codebase:\n${relevantCode
+          .map((r) => `--- ${r.filename} (lines ${r.lineStart}-${r.lineEnd}) ---\n${r.content}`)
+          .join('\n\n')}\n`
+      : '';
 
   const prompt = `${userRequest}${contextBlock}`;
 
@@ -67,10 +68,8 @@ async function reviewPullRequest(changedFiles) {
 
   for (const file of changedFiles) {
     // Use quick review for small files, deep for large/important ones
-    const isImportant = 
-      file.path.includes('auth') || 
-      file.path.includes('payment') ||
-      file.path.includes('security');
+    const isImportant =
+      file.path.includes('auth') || file.path.includes('payment') || file.path.includes('security');
 
     const review = isImportant
       ? await reviewCode(file.content, {
@@ -88,12 +87,8 @@ async function reviewPullRequest(changedFiles) {
       summary: review.summary,
     });
 
-    results.criticalCount += review.confirmedIssues.filter(
-      (i) => i.severity === 'critical'
-    ).length;
-    results.highCount += review.confirmedIssues.filter(
-      (i) => i.severity === 'high'
-    ).length;
+    results.criticalCount += review.confirmedIssues.filter((i) => i.severity === 'critical').length;
+    results.highCount += review.confirmedIssues.filter((i) => i.severity === 'high').length;
   }
 
   // Generate overall summary using Claude (best at synthesis)
@@ -115,14 +110,14 @@ ${JSON.stringify(results.fileReviews, null, 2)}`;
 async function batchProcess(tasks, budget = 1.0) {
   const costRouter = createRouter('cost');
   const qualityRouter = createRouter('quality');
-  
+
   let spent = 0;
   const results = [];
 
   for (const task of tasks) {
     // Estimate cost with cheap model
     const estimate = costRouter.estimateCost(task.type, task.tokens);
-    
+
     // Use quality model if we have budget, otherwise cheap
     const useQuality = spent + estimate.total * 10 < budget; // 10x safety margin
     const router = useQuality ? qualityRouter : costRouter;

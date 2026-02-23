@@ -1,14 +1,16 @@
 # Real-World Example: Building an SSG with Claude Code Sidekick
 
-> A complete walkthrough of using Claude Code Sidekick to build a production static site generator project.
+> A complete walkthrough of using Claude Code Sidekick to build a production
+> static site generator project.
 
 ---
 
 ## The Project: Rise3 Recovery Platform
 
 We'll rebuild a live production site (rise3.org) as a proper SSG with:
+
 - Blog support via markdown
-- SEO meta tags and JSON-LD structured data  
+- SEO meta tags and JSON-LD structured data
 - Modern CSS (layers, custom properties, glass effects)
 - Content collections for easy updates
 
@@ -64,14 +66,17 @@ Edit `PROJECT_STARTER.md` with your project specs:
 ## Project Information
 
 ### Project Name
+
 Rise3 - Recovery Platform Website
 
 ### Project Description
-A static site for Rise3, a blockchain-powered recovery incentives platform.
-Must match the existing deployed site at rise3.org exactly, but rebuilt
-as a proper SSG with blog support and content management.
+
+A static site for Rise3, a blockchain-powered recovery incentives platform. Must
+match the existing deployed site at rise3.org exactly, but rebuilt as a proper
+SSG with blog support and content management.
 
 ### Project Type
+
 static-site
 
 ---
@@ -79,13 +84,16 @@ static-site
 ## Goals & Objectives
 
 ### Primary Goal
+
 Rebuild rise3.org as an Astro SSG with:
+
 - Exact design match (dark theme, glass effects, pink/purple gradients)
 - Blog system using markdown content collections
 - SEO optimization (meta tags, JSON-LD structured data)
 - Modern CSS architecture (@layer, custom properties)
 
 ### Success Criteria
+
 - Visual parity with production site
 - Lighthouse SEO score > 95
 - Blog posts render from markdown
@@ -100,12 +108,13 @@ Rebuild rise3.org as an Astro SSG with:
 1. WHEN user visits /blog THE SYSTEM SHALL display list of posts
 2. WHEN user visits /blog/[slug] THE SYSTEM SHALL render markdown content
 3. THE SYSTEM SHALL include Open Graph and Twitter meta tags
-4. THE SYSTEM SHALL include JSON-LD structured data for Organization and Articles
+4. THE SYSTEM SHALL include JSON-LD structured data for Organization and
+   Articles
 
 ### Non-Functional Requirements
 
 - CSS: Use @layer for organization
-- CSS: Use namespaced custom properties (--r3-*)
+- CSS: Use namespaced custom properties (--r3-\*)
 - Accessibility: WCAG 2.1 AA compliant
 - Performance: Static HTML, minimal JavaScript
 ```
@@ -149,11 +158,10 @@ Rebuild rise3.org as an Astro SSG with:
 
 ### Generated Output: `.claude/project-plan/phase_1.md`
 
-```markdown
+````markdown
 # Phase 1: Foundation & Design System
 
-Generated: 2026-02-21T16:00:00Z
-Source: PROJECT_STARTER.md
+Generated: 2026-02-21T16:00:00Z Source: PROJECT_STARTER.md
 
 ## Objectives
 
@@ -173,6 +181,7 @@ Source: PROJECT_STARTER.md
 ## Technical Approach
 
 ### CSS Architecture
+
 ```css
 @layer reset, base, tokens, layout, components, utilities;
 
@@ -185,7 +194,9 @@ Source: PROJECT_STARTER.md
   }
 }
 ```
-```
+````
+
+````
 
 ---
 
@@ -237,7 +248,7 @@ Source: PROJECT_STARTER.md
 
 📁 Created tasks/phase-1-tasks.md
 ✅ 5 tasks generated
-```
+````
 
 ---
 
@@ -282,8 +293,8 @@ export default defineConfig({
   site: 'https://rise3.org',
   output: 'static',
   adapter: cloudflare({
-    platformProxy: { enabled: true }
-  })
+    platformProxy: { enabled: true },
+  }),
 });
 ```
 
@@ -454,16 +465,16 @@ export const collections = { posts };
 
 ```markdown
 ---
-title: "Welcome to Rise3"
-description: "Introducing our blockchain-powered recovery platform"
+title: 'Welcome to Rise3'
+description: 'Introducing our blockchain-powered recovery platform'
 publishedAt: 2024-02-21
-tags: ["announcement", "recovery"]
+tags: ['announcement', 'recovery']
 ---
 
 # Welcome to Rise3
 
-We're excited to introduce Rise3, a revolutionary platform 
-designed to support and reward your recovery journey.
+We're excited to introduce Rise3, a revolutionary platform designed to support
+and reward your recovery journey.
 
 ## Why We Built Rise3
 
@@ -484,7 +495,7 @@ const posts = await getCollection('posts');
   <section class="section">
     <div class="container">
       <h1>Rise3 Blog</h1>
-      
+
       <div class="grid grid--3">
         {posts.map(post => (
           <article class="glass">
@@ -508,13 +519,13 @@ const posts = await getCollection('posts');
 # Build static site
 $ pnpm build
 
- prerendering static routes 
+ prerendering static routes
 ▶ src/pages/blog/[slug].astro
-  └─ /blog/welcome/index.html (+7ms) 
+  └─ /blog/welcome/index.html (+7ms)
 ▶ src/pages/blog/index.astro
-  └─ /blog/index.html (+5ms) 
+  └─ /blog/index.html (+5ms)
 ▶ src/pages/index.astro
-  └─ /index.html (+12ms) 
+  └─ /index.html (+12ms)
 
 ✓ Completed in 44ms.
 [build] Complete!
@@ -530,14 +541,14 @@ $ pnpm deploy
 
 ## Key Sidekick Features Used
 
-| Feature | How It Helped |
-|---------|---------------|
+| Feature                | How It Helped                               |
+| ---------------------- | ------------------------------------------- |
 | **PROJECT_STARTER.md** | Defined exact requirements in EARS notation |
-| **/project-planner** | Analyzed requirements, created phased plan |
-| **/task-planner** | Generated specific implementation tasks |
-| **/task-runner** | Executed tasks with specialized agents |
-| **CSS Rules** | Enforced modern CSS standards |
-| **Hooks** | Auto-formatted on save, validated on commit |
+| **/project-planner**   | Analyzed requirements, created phased plan  |
+| **/task-planner**      | Generated specific implementation tasks     |
+| **/task-runner**       | Executed tasks with specialized agents      |
+| **CSS Rules**          | Enforced modern CSS standards               |
+| **Hooks**              | Auto-formatted on save, validated on commit |
 
 ---
 
@@ -576,14 +587,16 @@ rise3-webapp/
 
 ## Summary
 
-Claude Code Sidekick transformed this from a vague request ("rebuild as SSG") into:
+Claude Code Sidekick transformed this from a vague request ("rebuild as SSG")
+into:
 
 1. **Structured requirements** via PROJECT_STARTER.md
 2. **Phased plan** via /project-planner
 3. **Actionable tasks** via /task-planner
 4. **Executed implementation** via /task-runner
 
-The result: A production-ready static site with blog support, SEO optimization, and modern CSS architecture—built systematically instead of ad-hoc.
+The result: A production-ready static site with blog support, SEO optimization,
+and modern CSS architecture—built systematically instead of ad-hoc.
 
 ---
 

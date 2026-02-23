@@ -46,7 +46,9 @@ program
       }
     } catch (error) {
       if (error.message.includes('Index not found')) {
-        console.error(chalk.red('\nNo index found. Run `mm-index` first to index your codebase.\n'));
+        console.error(
+          chalk.red('\nNo index found. Run `mm-index` first to index your codebase.\n')
+        );
       } else {
         console.error(chalk.red(`Error: ${error.message}`));
       }

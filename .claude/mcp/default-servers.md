@@ -1,26 +1,31 @@
 # Default MCP Servers
 
-These MCP servers are recommended for all projects using Claude Code Sidekick. They provide essential capabilities for structured development.
+These MCP servers are recommended for all projects using Claude Code Sidekick.
+They provide essential capabilities for structured development.
 
 ## Required MCPs
 
 ### 1. Serena (Structured Reasoning)
 
-**Purpose:** Provides structured reasoning, code analysis, and semantic understanding of your codebase.
+**Purpose:** Provides structured reasoning, code analysis, and semantic
+understanding of your codebase.
 
 **Installation:**
+
 ```bash
 claude mcp add serena -- uvx --from git+https://github.com/oraios/serena \
   serena start-mcp-server --project "$(pwd)"
 ```
 
 **When Used:**
+
 - During project analysis (`/project-planner`)
 - Code review and quality checks
 - Architecture decisions
 - Complex refactoring tasks
 
 **Integration with Sidekick:**
+
 - Planner agent uses Serena for requirement analysis
 - Review agent uses Serena for code quality assessment
 - Orchestrator consults Serena for task dependency resolution
@@ -30,17 +35,20 @@ claude mcp add serena -- uvx --from git+https://github.com/oraios/serena \
 **Purpose:** Browser automation, testing, and debugging capabilities.
 
 **Installation:**
+
 ```bash
 claude mcp add chrome-devtools -- npx @anthropic/mcp-chrome-devtools
 ```
 
 **When Used:**
+
 - Frontend testing and validation
 - Accessibility audits (WCAG compliance)
 - Performance profiling
 - Visual regression testing
 
 **Integration with Sidekick:**
+
 - Test agent uses for browser-based tests
 - Dev agent uses for live preview during development
 - Review agent uses for accessibility validation
@@ -50,17 +58,20 @@ claude mcp add chrome-devtools -- npx @anthropic/mcp-chrome-devtools
 **Purpose:** Documentation lookup and context enrichment from external sources.
 
 **Installation:**
+
 ```bash
 claude mcp add context7 -- npx @anthropic/mcp-context7
 ```
 
 **When Used:**
+
 - Looking up framework documentation
 - API reference queries
 - Best practices lookup
 - Integration guidance
 
 **Integration with Sidekick:**
+
 - All agents can query for relevant documentation
 - Reduces hallucination by grounding in real docs
 
@@ -73,7 +84,14 @@ Add to your Claude Code settings (`~/.claude/settings.json`):
   "mcpServers": {
     "serena": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--project", "."],
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--project",
+        "."
+      ],
       "env": {}
     },
     "chrome-devtools": {
@@ -82,7 +100,7 @@ Add to your Claude Code settings (`~/.claude/settings.json`):
       "env": {}
     },
     "context7": {
-      "command": "npx", 
+      "command": "npx",
       "args": ["@anthropic/mcp-context7"],
       "env": {}
     }
@@ -92,35 +110,37 @@ Add to your Claude Code settings (`~/.claude/settings.json`):
 
 ## Quick Setup Command
 
-Run `/mcp-setup` after filling out PROJECT_STARTER.md to automatically configure all required MCPs based on your project type.
+Run `/mcp-setup` after filling out PROJECT_STARTER.md to automatically configure
+all required MCPs based on your project type.
 
 ## MCP Usage in Agents
 
 ### Planner Agent + Serena
+
 ```yaml
 When analyzing PROJECT_STARTER.md:
-  1. Use Serena to parse requirements
-  2. Use Serena to identify code patterns
-  3. Use Context7 to lookup framework best practices
+  1. Use Serena to parse requirements 2. Use Serena to identify code patterns 3.
+  Use Context7 to lookup framework best practices
 ```
 
 ### Dev Agent + Chrome DevTools
+
 ```yaml
 During implementation:
-  1. Use Chrome DevTools for live preview
-  2. Run accessibility checks after each component
-  3. Profile performance of new features
+  1. Use Chrome DevTools for live preview 2. Run accessibility checks after each
+  component 3. Profile performance of new features
 ```
 
 ### Test Agent + Chrome DevTools
+
 ```yaml
 During testing:
-  1. Run automated browser tests
-  2. Capture screenshots for visual regression
-  3. Validate responsive behavior
+  1. Run automated browser tests 2. Capture screenshots for visual regression 3.
+  Validate responsive behavior
 ```
 
 ### Review Agent + All MCPs
+
 ```yaml
 During review:
   1. Serena: Code quality analysis

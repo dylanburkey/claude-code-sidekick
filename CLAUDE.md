@@ -43,6 +43,7 @@ tasks/phase-N-tasks.md
 **The system WILL NOT auto-advance to the next phase.**
 
 After completing Phase N:
+
 1. Execution STOPS completely
 2. User must review completed work
 3. User must explicitly run `/task-planner phase=N+1`
@@ -54,21 +55,24 @@ This prevents scope creep and ensures controlled, phased delivery.
 
 These skills are loaded automatically and enforce development discipline:
 
-| Skill | Purpose |
-|-------|---------|
-| `phase-control` | Enforces phase boundaries, prevents auto-advance |
-| `scope-guard` | Validates all file operations against current phase |
-| `checkpoint-manager` | Creates explicit approval gates |
-| `git-worktree` | Parallel task execution (opt-in) |
+| Skill                | Purpose                                             |
+| -------------------- | --------------------------------------------------- |
+| `phase-control`      | Enforces phase boundaries, prevents auto-advance    |
+| `scope-guard`        | Validates all file operations against current phase |
+| `checkpoint-manager` | Creates explicit approval gates                     |
+| `git-worktree`       | Parallel task execution (opt-in)                    |
 
 ## Git Worktree Mode (Opt-In)
 
 Enable parallel task execution with:
+
 ```
 /worktree-enable
 ```
 
-This creates isolated worktrees for each task, allowing independent tasks to run simultaneously:
+This creates isolated worktrees for each task, allowing independent tasks to run
+simultaneously:
+
 ```
 main branch
     ├── .worktrees/task-001/ → Task 1
@@ -82,23 +86,24 @@ Disable with `/worktree-disable`.
 
 These MCP servers are enabled by default:
 
-| MCP | Purpose |
-|-----|---------|
-| `serena` | Structured reasoning, code analysis |
+| MCP               | Purpose                               |
+| ----------------- | ------------------------------------- |
+| `serena`          | Structured reasoning, code analysis   |
 | `chrome-devtools` | Browser testing, accessibility audits |
-| `context7` | Documentation lookup, best practices |
+| `context7`        | Documentation lookup, best practices  |
 
 ## Multi-Model AI Toolkit
 
-The project includes a powerful multi-model toolkit at `tools/multi-model/` that leverages OpenAI, Anthropic, and Google Gemini together.
+The project includes a powerful multi-model toolkit at `tools/multi-model/` that
+leverages OpenAI, Anthropic, and Google Gemini together.
 
 ### Available Tools
 
-| CLI Command | Purpose | Documentation |
-|-------------|---------|---------------|
+| CLI Command | Purpose                                 | Documentation                                               |
+| ----------- | --------------------------------------- | ----------------------------------------------------------- |
 | `mm-review` | Consensus code review (multiple models) | [View](tools/multi-model/README.md#multi-model-code-review) |
-| `mm-index` | Index codebase for semantic search | [View](tools/multi-model/README.md#codebase-indexing) |
-| `mm-search` | Search code by meaning, not keywords | [View](tools/multi-model/README.md#semantic-search) |
+| `mm-index`  | Index codebase for semantic search      | [View](tools/multi-model/README.md#codebase-indexing)       |
+| `mm-search` | Search code by meaning, not keywords    | [View](tools/multi-model/README.md#semantic-search)         |
 
 ### Quick Start
 
@@ -119,11 +124,15 @@ pnpm search -- "project scaffolding"
 ### Programmatic Usage
 
 ```javascript
-import { reviewCode, createRouter, searchCodebase } from './tools/multi-model/index.js';
+import {
+  reviewCode,
+  createRouter,
+  searchCodebase,
+} from './tools/multi-model/index.js';
 
 // Consensus code review
 const results = await reviewCode(code, { filename: 'app.js' });
-console.log(results.confirmedIssues);  // Issues 2+ models agree on
+console.log(results.confirmedIssues); // Issues 2+ models agree on
 
 // Intelligent routing (auto-selects best model per task)
 const router = createRouter('balanced');
@@ -131,7 +140,7 @@ const response = await router.route('Explain this architecture...');
 
 // Semantic search
 const matches = await searchCodebase('authentication logic', {
-  indexPath: '.code-index/index.json'
+  indexPath: '.code-index/index.json',
 });
 ```
 
@@ -139,19 +148,21 @@ const matches = await searchCodebase('authentication logic', {
 
 The router automatically selects the optimal model based on task type:
 
-| Task Type | Optimal Model | Reason |
-|-----------|---------------|--------|
-| Long context (>50k chars) | Claude Sonnet | 200k context window |
-| Code generation | GPT-4o | Mature function calling |
-| Documentation | Claude Sonnet | Nuanced, thorough |
-| Security review | Claude Sonnet | Careful reasoning |
-| Quick refactors | GPT-4o-mini | Fast, accurate |
-| Linting/style | Gemini Flash | Cheapest |
+| Task Type                 | Optimal Model | Reason                  |
+| ------------------------- | ------------- | ----------------------- |
+| Long context (>50k chars) | Claude Sonnet | 200k context window     |
+| Code generation           | GPT-4o        | Mature function calling |
+| Documentation             | Claude Sonnet | Nuanced, thorough       |
+| Security review           | Claude Sonnet | Careful reasoning       |
+| Quick refactors           | GPT-4o-mini   | Fast, accurate          |
+| Linting/style             | Gemini Flash  | Cheapest                |
 
 ### Examples
 
-- [Pre-Commit Hook](tools/multi-model/examples/pre-commit-hook.js) - Block commits with critical issues
-- [Agent Integration](tools/multi-model/examples/agent-integration.js) - Smart assistant workflows
+- [Pre-Commit Hook](tools/multi-model/examples/pre-commit-hook.js) - Block
+  commits with critical issues
+- [Agent Integration](tools/multi-model/examples/agent-integration.js) - Smart
+  assistant workflows
 
 ### Required Environment Variables
 

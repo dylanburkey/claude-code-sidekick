@@ -133,9 +133,7 @@ export async function reviewCode(code, options = {}) {
   // Find consensus
   const consensusIssues = findConsensus(reviews);
   const confirmedIssues = consensusIssues.filter((i) => i.count >= consensusThreshold);
-  const possibleIssues = consensusIssues.filter(
-    (i) => i.count < consensusThreshold && i.count > 0
-  );
+  const possibleIssues = consensusIssues.filter((i) => i.count < consensusThreshold && i.count > 0);
 
   return {
     filename,

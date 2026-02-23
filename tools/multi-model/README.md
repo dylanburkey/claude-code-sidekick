@@ -1,6 +1,7 @@
 # Multi-Model AI Toolkit
 
-> Leverage OpenAI, Anthropic, and Google Gemini together for superior code quality.
+> Leverage OpenAI, Anthropic, and Google Gemini together for superior code
+> quality.
 
 **Part of [Claude Code Sidekick](../../README.md)**
 
@@ -8,10 +9,13 @@
 
 ## Features
 
-- **🔍 Consensus Code Review** - Run code through multiple models, find issues all agree on
+- **🔍 Consensus Code Review** - Run code through multiple models, find issues
+  all agree on
 - **🎯 Intelligent Routing** - Automatically route tasks to the optimal model
-- **🔎 Semantic Search** - Index your codebase and search by meaning, not keywords
-- **💰 Cost Optimization** - Use cheap models for simple tasks, reserve power for complex ones
+- **🔎 Semantic Search** - Index your codebase and search by meaning, not
+  keywords
+- **💰 Cost Optimization** - Use cheap models for simple tasks, reserve power
+  for complex ones
 
 ## File Structure
 
@@ -96,16 +100,20 @@ pnpm search -- "database connection" --json
 ### Code Review
 
 ```javascript
-import { reviewCode, quickReview, deepReview } from '@claude-sidekick/multi-model';
+import {
+  reviewCode,
+  quickReview,
+  deepReview,
+} from '@claude-sidekick/multi-model';
 
 // Basic review (3 models, consensus required)
 const results = await reviewCode(code, {
   filename: 'auth.js',
-  consensusThreshold: 2,  // 2+ models must agree
+  consensusThreshold: 2, // 2+ models must agree
 });
 
-console.log(results.confirmedIssues);  // Issues multiple models found
-console.log(results.possibleIssues);   // Issues only one model found
+console.log(results.confirmedIssues); // Issues multiple models found
+console.log(results.possibleIssues); // Issues only one model found
 
 // Quick review for CI
 const quick = await quickReview(code, 'app.js');
@@ -120,23 +128,29 @@ const deep = await deepReview(code, 'payment.js');
 import { createRouter, ModelRouter } from '@claude-sidekick/multi-model';
 
 // Use a preset profile
-const router = createRouter('balanced');  // 'cost', 'speed', 'quality', 'balanced'
+const router = createRouter('balanced'); // 'cost', 'speed', 'quality', 'balanced'
 
 // Tasks are automatically routed to optimal models
-const result = await router.route('Explain the architecture of this codebase...');
-console.log(result.model);     // e.g., 'claude-3-5-sonnet-20241022'
-console.log(result.taskType);  // e.g., 'architecture'
-console.log(result.routing);   // 'Claude excels at complex reasoning...'
+const result = await router.route(
+  'Explain the architecture of this codebase...'
+);
+console.log(result.model); // e.g., 'claude-3-5-sonnet-20241022'
+console.log(result.taskType); // e.g., 'architecture'
+console.log(result.routing); // 'Claude excels at complex reasoning...'
 
 // Estimate costs
 const cost = router.estimateCost('documentation', 5000, 2000);
-console.log(cost.formatted);  // '$0.0215'
+console.log(cost.formatted); // '$0.0215'
 ```
 
 ### Semantic Code Search
 
 ```javascript
-import { indexCodebase, searchCodebase, findSimilarCode } from '@claude-sidekick/multi-model';
+import {
+  indexCodebase,
+  searchCodebase,
+  findSimilarCode,
+} from '@claude-sidekick/multi-model';
 
 // Index a codebase (do this once, or on changes)
 await indexCodebase('/path/to/project', {
@@ -160,26 +174,26 @@ const similar = await findSimilarCode(myCode, {
 
 ## Model Selection Guide
 
-| Task | Best Model | Why |
-|------|------------|-----|
-| Long file analysis | Claude Sonnet | 200k context window |
-| Code generation | GPT-4o | Mature function calling |
-| Quick refactors | GPT-4o-mini | Fast, accurate |
-| Documentation | Claude Sonnet | Nuanced, thorough |
-| Image analysis | Gemini Pro | Native multimodal |
-| Security review | Claude Sonnet | Careful reasoning |
-| Linting/style | Gemini Flash | Cheapest |
+| Task               | Best Model    | Why                     |
+| ------------------ | ------------- | ----------------------- |
+| Long file analysis | Claude Sonnet | 200k context window     |
+| Code generation    | GPT-4o        | Mature function calling |
+| Quick refactors    | GPT-4o-mini   | Fast, accurate          |
+| Documentation      | Claude Sonnet | Nuanced, thorough       |
+| Image analysis     | Gemini Pro    | Native multimodal       |
+| Security review    | Claude Sonnet | Careful reasoning       |
+| Linting/style      | Gemini Flash  | Cheapest                |
 
 ## Cost Comparison (per 1M tokens)
 
-| Model | Input | Output |
-|-------|-------|--------|
-| Gemini Flash | $0.075 | $0.30 |
-| GPT-4o-mini | $0.15 | $0.60 |
-| Claude Haiku | $0.25 | $1.25 |
-| Claude Sonnet | $3.00 | $15.00 |
-| Gemini Pro | $3.50 | $10.50 |
-| GPT-4o | $5.00 | $15.00 |
+| Model         | Input  | Output |
+| ------------- | ------ | ------ |
+| Gemini Flash  | $0.075 | $0.30  |
+| GPT-4o-mini   | $0.15  | $0.60  |
+| Claude Haiku  | $0.25  | $1.25  |
+| Claude Sonnet | $3.00  | $15.00 |
+| Gemini Pro    | $3.50  | $10.50 |
+| GPT-4o        | $5.00  | $15.00 |
 
 ## CI/CD Integration
 
@@ -189,7 +203,7 @@ const similar = await findSimilarCode(myCode, {
   run: |
     cd tools/multi-model
     pnpm review -- ${{ github.event.pull_request.changed_files }} --json > review.json
-    
+
 - name: Fail on Critical Issues
   run: |
     if jq -e '.confirmedIssues[] | select(.severity == "critical")' review.json; then
@@ -214,7 +228,8 @@ DEBUG=true          # Enable debug logging
 
 ### Pre-Commit Hook
 
-Block commits that have critical/high severity issues detected by multiple models.
+Block commits that have critical/high severity issues detected by multiple
+models.
 
 📄 **[examples/pre-commit-hook.js](examples/pre-commit-hook.js)**
 
@@ -224,14 +239,15 @@ import { quickReview } from '../lib/code-review.js';
 
 // Reviews staged files, blocks on critical issues
 const results = await quickReview(code, filename);
-if (results.confirmedIssues.some(i => i.severity === 'critical')) {
-  process.exit(1);  // Block commit
+if (results.confirmedIssues.some((i) => i.severity === 'critical')) {
+  process.exit(1); // Block commit
 }
 ```
 
 ### Agent Integration
 
-Smart assistant that routes tasks to optimal models and uses semantic search for context.
+Smart assistant that routes tasks to optimal models and uses semantic search for
+context.
 
 📄 **[examples/agent-integration.js](examples/agent-integration.js)**
 
@@ -251,14 +267,17 @@ const result = await router.route(userRequest, { context });
 ## Supported Models
 
 ### OpenAI
+
 - `gpt-4o` - Most capable, best for complex tasks
 - `gpt-4o-mini` - Fast and cheap, good for simple tasks
 
 ### Anthropic
+
 - `claude-sonnet-4-20250514` - Best reasoning, 200k context
 - `claude-3-5-haiku-20241022` - Fast and cheap
 
 ### Google
+
 - `gemini-1.5-pro` - Multimodal, good reasoning
 - `gemini-2.0-flash` - Very fast, very cheap
 

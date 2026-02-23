@@ -28,21 +28,23 @@ program
       }
 
       if (options.extensions) {
-        indexOptions.extensions = options.extensions.split(',').map((e) => 
-          e.trim().startsWith('.') ? e.trim() : `.${e.trim()}`
-        );
+        indexOptions.extensions = options.extensions
+          .split(',')
+          .map((e) => (e.trim().startsWith('.') ? e.trim() : `.${e.trim()}`));
       }
 
       if (options.ignore) {
         indexOptions.ignore = [
-          ...indexOptions.ignore || [],
+          ...(indexOptions.ignore || []),
           ...options.ignore.split(',').map((p) => p.trim()),
         ];
       }
 
       const index = await indexCodebase(directory, indexOptions);
 
-      console.log(chalk.green(`\n✅ Indexed ${index.totalFiles} files (${index.totalChunks} chunks)`));
+      console.log(
+        chalk.green(`\n✅ Indexed ${index.totalFiles} files (${index.totalChunks} chunks)`)
+      );
       console.log(chalk.dim(`   Index saved to: ${directory}/.code-index/index.json`));
     } catch (error) {
       console.error(chalk.red(`Error: ${error.message}`));

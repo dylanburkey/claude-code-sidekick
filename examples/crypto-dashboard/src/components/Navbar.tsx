@@ -10,13 +10,13 @@ interface NavbarProps {
 export function Navbar({ demoMode, connected, onConnect, onDisconnect }: NavbarProps) {
   // Use Privy hooks only when not in demo mode
   const privy = demoMode ? null : usePrivy();
-  
+
   const isConnected = demoMode ? connected : privy?.authenticated;
   const walletAddress = demoMode ? '0x1234...abcd' : privy?.user?.wallet?.address;
   const login = demoMode ? onConnect : privy?.login;
   const logout = demoMode ? onDisconnect : privy?.logout;
 
-  const displayAddress = walletAddress 
+  const displayAddress = walletAddress
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
     : '';
 
@@ -32,10 +32,18 @@ export function Navbar({ demoMode, connected, onConnect, onDisconnect }: NavbarP
 
         {isConnected && (
           <div className="navbar__links">
-            <a href="#" className="navbar__link active">Dashboard</a>
-            <a href="#" className="navbar__link">Staking</a>
-            <a href="#" className="navbar__link">Governance</a>
-            <a href="#" className="navbar__link">Rewards</a>
+            <a href="#" className="navbar__link active">
+              Dashboard
+            </a>
+            <a href="#" className="navbar__link">
+              Staking
+            </a>
+            <a href="#" className="navbar__link">
+              Governance
+            </a>
+            <a href="#" className="navbar__link">
+              Rewards
+            </a>
           </div>
         )}
 

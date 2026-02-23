@@ -1,6 +1,6 @@
 /**
  * Content Collections Configuration
- * 
+ *
  * Define your content schemas here. Astro will type-check
  * your frontmatter and provide autocompletion.
  */

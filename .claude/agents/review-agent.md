@@ -254,7 +254,8 @@ When complete, report:
 
 ## Multi-Model Cross-Validation
 
-The review agent supports cross-validation where a secondary model independently reviews the same code, catching issues that a single model might miss.
+The review agent supports cross-validation where a secondary model independently
+reviews the same code, catching issues that a single model might miss.
 
 ### Configuration
 
@@ -263,8 +264,8 @@ See `.claude/config/models.yml`:
 ```yaml
 agent_overrides:
   review:
-    primary: "claude-sonnet-4-20250514"
-    secondary: "gpt-4o"
+    primary: 'claude-sonnet-4-20250514'
+    secondary: 'gpt-4o'
     cross_validate: true
 ```
 
@@ -283,32 +284,36 @@ When enabled:
 ## Cross-Validated Review
 
 ### Primary (Claude Sonnet 4)
+
 - Found 3 issues
 - Security: ✅ Passed
 - Accessibility: ⚠️ 1 issue
 
 ### Secondary (GPT-4o)
-- Found 4 issues  
+
+- Found 4 issues
 - Security: ⚠️ 1 issue (XSS risk)
 - Accessibility: ⚠️ 2 issues
 
 ### Merged Findings (deduplicated)
-| # | Issue | Found By | Severity |
-|---|-------|----------|----------|
-| 1 | XSS vulnerability | GPT-4 | Critical |
-| 2 | Missing ARIA label | Both | Major |
-| 3 | Focus trap missing | GPT-4 | Major |
-| 4 | Consider memoization | Claude | Minor |
+
+| #   | Issue                | Found By | Severity |
+| --- | -------------------- | -------- | -------- |
+| 1   | XSS vulnerability    | GPT-4    | Critical |
+| 2   | Missing ARIA label   | Both     | Major    |
+| 3   | Focus trap missing   | GPT-4    | Major    |
+| 4   | Consider memoization | Claude   | Minor    |
 
 ### Disagreements
+
 - Claude: Security passed
-- GPT-4: Found potential XSS
-→ Human review recommended for security concern
+- GPT-4: Found potential XSS → Human review recommended for security concern
 ```
 
 ### When Cross-Validation Triggers
 
 By default:
+
 - **Security-sensitive code** - Always
 - **High complexity** - When cyclomatic complexity > 10
 - **On request** - When `--cross-validate` flag used

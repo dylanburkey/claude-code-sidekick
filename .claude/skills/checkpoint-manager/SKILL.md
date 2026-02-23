@@ -1,9 +1,13 @@
 # Checkpoint Manager Skill
 
 ## Purpose
-Manages execution checkpoints to ensure proper stopping points and enable safe resumption of work. Creates explicit gates that require user approval before continuing.
+
+Manages execution checkpoints to ensure proper stopping points and enable safe
+resumption of work. Creates explicit gates that require user approval before
+continuing.
 
 ## When to Use
+
 - At phase boundaries
 - After critical task completion
 - Before any deployment action
@@ -12,6 +16,7 @@ Manages execution checkpoints to ensure proper stopping points and enable safe r
 ## Checkpoint Types
 
 ### 1. Phase Checkpoint (MANDATORY)
+
 Triggered when all tasks in a phase complete.
 
 ```
@@ -37,6 +42,7 @@ Triggered when all tasks in a phase complete.
 ```
 
 ### 2. Critical Task Checkpoint
+
 Triggered after high-risk tasks (database changes, auth setup, etc.)
 
 ```
@@ -53,6 +59,7 @@ Review before continuing: /checkpoint-review PHASE1-005
 ```
 
 ### 3. Decision Checkpoint
+
 Triggered when agent encounters ambiguity.
 
 ```
@@ -70,6 +77,7 @@ Waiting for input: /decide A or /decide B
 ## Checkpoint State
 
 Stored in `.claude/state/checkpoints.json`:
+
 ```json
 {
   "checkpoints": [
@@ -94,48 +102,59 @@ Stored in `.claude/state/checkpoints.json`:
 ## Commands
 
 ### View Current Checkpoint
+
 ```
 /checkpoint-status
 ```
 
 ### Approve and Continue
+
 ```
 /checkpoint-continue
 ```
+
 Marks checkpoint as approved, allows execution to continue.
 
 ### Rollback
+
 ```
 /checkpoint-rollback
 ```
+
 Reverts to state before checkpoint (requires git).
 
 ### Review Specific Checkpoint
+
 ```
 /checkpoint-review <checkpoint-id>
 ```
+
 Shows detailed diff of changes.
 
 ## Integration with Git
 
 Each checkpoint creates a git tag:
+
 ```bash
 git tag -a "checkpoint/phase-1-complete" -m "Phase 1 checkpoint"
 ```
 
 Rollback uses:
+
 ```bash
 git reset --hard "checkpoint/phase-1-start"
 ```
 
 ## Enforcement Rules
 
-1. **No auto-continue**: Checkpoints MUST wait for explicit `/checkpoint-continue`
+1. **No auto-continue**: Checkpoints MUST wait for explicit
+   `/checkpoint-continue`
 2. **Logged approval**: Record who approved and when
 3. **Reversible**: Always maintain ability to rollback
 4. **Visible**: Checkpoints must output clear terminal messages
 
 ## Configuration
+
 ```yaml
 # .claude/config.yml
 checkpoints:

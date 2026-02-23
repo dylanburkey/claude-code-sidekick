@@ -171,7 +171,8 @@ Brief description of phase goals
 
 ## Multi-Model Support
 
-The planner agent supports cross-validation with secondary models to get different perspectives on architecture decisions.
+The planner agent supports cross-validation with secondary models to get
+different perspectives on architecture decisions.
 
 ### Configuration
 
@@ -180,8 +181,8 @@ See `.claude/config/models.yml`:
 ```yaml
 agent_overrides:
   planner:
-    primary: "claude-sonnet-4-20250514"
-    secondary: "gemini-2.5-pro"
+    primary: 'claude-sonnet-4-20250514'
+    secondary: 'gemini-2.5-pro'
     cross_validate: true
 ```
 
@@ -197,12 +198,14 @@ When cross-validation is enabled:
 ### When to Use Cross-Validation
 
 **Recommended for:**
+
 - Major architecture decisions
 - Database schema design
 - API structure planning
 - Security-sensitive features
 
 **Optional for:**
+
 - Simple feature planning
 - Bug fix planning
 - Documentation tasks
@@ -210,11 +213,13 @@ When cross-validation is enabled:
 ### Disabling Cross-Validation
 
 For a single run:
+
 ```
 /project-planner --no-cross-validate
 ```
 
 Permanently:
+
 ```yaml
 # .claude/config/models.yml
 agent_overrides:

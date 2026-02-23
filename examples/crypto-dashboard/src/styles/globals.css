@@ -8,7 +8,9 @@
 /* ============================================
    Reset & Base
    ============================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,42 +19,48 @@
 :root {
   /* Background */
   --color-bg: #0a0a0f;
-  --color-bg-gradient: radial-gradient(ellipse at 50% 0%, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
-                       radial-gradient(ellipse at 80% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+  --color-bg-gradient:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
   --color-surface: #12121a;
   --color-surface-elevated: #1a1a24;
   --color-card: rgba(18, 18, 26, 0.8);
   --color-border: rgba(255, 255, 255, 0.06);
-  
+
   /* Accent Colors */
   --color-cyan: #00f5ff;
   --color-purple: #a855f7;
   --color-pink: #ec4899;
   --color-blue: #3b82f6;
-  
+
   /* Status */
   --color-green: #10b981;
   --color-red: #ef4444;
   --color-yellow: #f59e0b;
-  
+
   /* Text */
   --color-text: #ffffff;
   --color-text-secondary: #a1a1aa;
   --color-text-muted: #52525b;
-  
+
   /* Gradients */
-  --gradient-hero: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-purple) 50%, var(--color-pink) 100%);
+  --gradient-hero: linear-gradient(
+    135deg,
+    var(--color-cyan) 0%,
+    var(--color-purple) 50%,
+    var(--color-pink) 100%
+  );
   --gradient-card: linear-gradient(135deg, rgba(0, 245, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-  
+
   /* Glows */
   --glow-cyan: 0 0 30px rgba(0, 245, 255, 0.4);
   --glow-purple: 0 0 30px rgba(168, 85, 247, 0.4);
   --glow-pink: 0 0 30px rgba(236, 72, 153, 0.4);
-  
+
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -61,7 +69,7 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.75rem;
@@ -89,16 +97,29 @@ body {
 /* ============================================
    Typography
    ============================================ */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
 
 .text-gradient {
   background: var(--gradient-hero);
@@ -119,9 +140,15 @@ h4 { font-size: 1.25rem; }
   color: var(--color-text-secondary);
 }
 
-.text-green { color: var(--color-green); }
-.text-red { color: var(--color-red); }
-.text-cyan { color: var(--color-cyan); }
+.text-green {
+  color: var(--color-green);
+}
+.text-red {
+  color: var(--color-red);
+}
+.text-cyan {
+  color: var(--color-cyan);
+}
 
 /* ============================================
    Layout
@@ -167,12 +194,20 @@ h4 { font-size: 1.25rem; }
 }
 
 @media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================
@@ -348,8 +383,13 @@ h4 { font-size: 1.25rem; }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* ============================================
@@ -382,8 +422,15 @@ h4 { font-size: 1.25rem; }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
-  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.2;
+  }
 }
 
 .hero__tag {
@@ -467,11 +514,15 @@ h4 { font-size: 1.25rem; }
 }
 
 @media (max-width: 1024px) {
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .stats-row { grid-template-columns: 1fr; }
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .stat-card {
@@ -497,8 +548,12 @@ h4 { font-size: 1.25rem; }
   gap: var(--space-xs);
 }
 
-.stat-card__change.positive { color: var(--color-green); }
-.stat-card__change.negative { color: var(--color-red); }
+.stat-card__change.positive {
+  color: var(--color-green);
+}
+.stat-card__change.negative {
+  color: var(--color-red);
+}
 
 /* Token List */
 .token-list {
@@ -666,16 +721,38 @@ h4 { font-size: 1.25rem; }
 /* ============================================
    Utilities
    ============================================ */
-.mt-sm { margin-top: var(--space-sm); }
-.mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
-.mt-xl { margin-top: var(--space-xl); }
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+.mt-md {
+  margin-top: var(--space-md);
+}
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+.mt-xl {
+  margin-top: var(--space-xl);
+}
 
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
-.mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+.mb-xl {
+  margin-bottom: var(--space-xl);
+}
 
-.gap-sm { gap: var(--space-sm); }
-.gap-md { gap: var(--space-md); }
-.gap-lg { gap: var(--space-lg); }
+.gap-sm {
+  gap: var(--space-sm);
+}
+.gap-md {
+  gap: var(--space-md);
+}
+.gap-lg {
+  gap: var(--space-lg);
+}

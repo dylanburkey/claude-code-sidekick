@@ -4,9 +4,12 @@
 
 ## Project Overview
 
-**Nexus Protocol Dashboard** is a crypto landing page demonstrating Privy wallet authentication with signature verification. Features a dark neon aesthetic inspired by GigaBrain and modern DeFi platforms.
+**Nexus Protocol Dashboard** is a crypto landing page demonstrating Privy wallet
+authentication with signature verification. Features a dark neon aesthetic
+inspired by GigaBrain and modern DeFi platforms.
 
 ### Tech Stack
+
 - **Framework:** React 18 + TypeScript
 - **Build:** Vite 5
 - **Auth:** Privy (@privy-io/react-auth)
@@ -53,22 +56,26 @@ src/
 ## Key Components
 
 ### App.tsx
+
 - Wraps app in `PrivyProvider`
 - Manages auth state and signature verification
 - Includes demo mode for testing without Privy
 
 ### SignatureModal.tsx
+
 - Displays after wallet connection
 - Shows message to be signed
 - Calls Privy `signMessage` or simulates in demo mode
 
 ### Dashboard.tsx
+
 - Only visible after signature verification
 - Contains StatsCard grid, TokenList, ActivityFeed
 
 ## CSS Architecture
 
 ### Design Tokens
+
 ```css
 :root {
   --color-bg: #0a0a0f;
@@ -80,18 +87,20 @@ src/
 ```
 
 ### Key Classes
-| Class | Purpose |
-|-------|---------|
-| `.glass` | Glassmorphism card with blur |
-| `.btn--glow` | Gradient button with glow effect |
-| `.wallet-badge` | Connected wallet address display |
-| `.text-gradient` | Gradient text effect |
-| `.hero` | Full-height landing section |
-| `.dashboard` | Post-auth dashboard container |
+
+| Class            | Purpose                          |
+| ---------------- | -------------------------------- |
+| `.glass`         | Glassmorphism card with blur     |
+| `.btn--glow`     | Gradient button with glow effect |
+| `.wallet-badge`  | Connected wallet address display |
+| `.text-gradient` | Gradient text effect             |
+| `.hero`          | Full-height landing section      |
+| `.dashboard`     | Post-auth dashboard container    |
 
 ## Privy Integration
 
 ### Provider Config
+
 ```tsx
 <PrivyProvider
   appId={import.meta.env.VITE_PRIVY_APP_ID}
@@ -103,12 +112,14 @@ src/
 ```
 
 ### Hooks Used
+
 - `usePrivy()` - Auth state, login, logout
 - `useSignMessage()` - Request wallet signature
 
 ## Demo Mode
 
 If `VITE_PRIVY_APP_ID` is not set, app runs in demo mode:
+
 - Simulates wallet connection
 - Simulates signature flow
 - Shows full dashboard with mock data
@@ -116,16 +127,19 @@ If `VITE_PRIVY_APP_ID` is not set, app runs in demo mode:
 ## Coding Standards
 
 ### TypeScript
+
 - Strict mode enabled
 - Props interfaces for all components
 - Explicit return types
 
 ### CSS
+
 - Custom properties for all colors/spacing
-- BEM-ish naming (component__element)
+- BEM-ish naming (component\_\_element)
 - Mobile-first media queries
 
 ### Components
+
 - Functional components with hooks
 - Props destructuring
 - Conditional rendering for auth states
@@ -133,10 +147,12 @@ If `VITE_PRIVY_APP_ID` is not set, app runs in demo mode:
 ## Mock Data
 
 Token and activity data in components is static/mock:
+
 - `TokenList.tsx` - hardcoded token array
 - `ActivityFeed.tsx` - hardcoded activity array
 
 To integrate real data:
+
 1. Fetch from API or blockchain
 2. Replace static arrays with state
 3. Add loading states

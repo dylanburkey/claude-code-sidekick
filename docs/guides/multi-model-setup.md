@@ -2,7 +2,9 @@
 
 > Use Claude, GPT-4, and Gemini together for better results
 
-Claude Code Sidekick supports multiple AI providers. This guide shows you how to configure and use them together for cross-validation, cost optimization, and specialized tasks.
+Claude Code Sidekick supports multiple AI providers. This guide shows you how to
+configure and use them together for cross-validation, cost optimization, and
+specialized tasks.
 
 ---
 
@@ -10,7 +12,8 @@ Claude Code Sidekick supports multiple AI providers. This guide shows you how to
 
 ### 1. Cross-Validation
 
-Different models have different strengths. Getting a second opinion can catch issues:
+Different models have different strengths. Getting a second opinion can catch
+issues:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -38,12 +41,12 @@ Claude writes code → GPT-4 reviews it → Issues caught early
 
 Use cheaper/faster models for simple tasks:
 
-| Task | Model | Why |
-|------|-------|-----|
-| Documentation | Gemini Flash | Fast, cheap, good enough |
-| Architecture | Claude Opus | Complex reasoning needed |
-| Code review | GPT-4o | Independent perspective |
-| Simple refactoring | Gemini Flash | Cost-effective |
+| Task               | Model        | Why                      |
+| ------------------ | ------------ | ------------------------ |
+| Documentation      | Gemini Flash | Fast, cheap, good enough |
+| Architecture       | Claude Opus  | Complex reasoning needed |
+| Code review        | GPT-4o       | Independent perspective  |
+| Simple refactoring | Gemini Flash | Cost-effective           |
 
 ---
 
@@ -53,11 +56,11 @@ Use cheaper/faster models for simple tasks:
 
 You need API keys from the providers you want to use:
 
-| Provider | Get Key From | Env Variable |
-|----------|--------------|--------------|
+| Provider  | Get Key From                                           | Env Variable        |
+| --------- | ------------------------------------------------------ | ------------------- |
 | Anthropic | [console.anthropic.com](https://console.anthropic.com) | `ANTHROPIC_API_KEY` |
-| OpenAI | [platform.openai.com](https://platform.openai.com) | `OPENAI_API_KEY` |
-| Google | [aistudio.google.com](https://aistudio.google.com) | `GOOGLE_API_KEY` |
+| OpenAI    | [platform.openai.com](https://platform.openai.com)     | `OPENAI_API_KEY`    |
+| Google    | [aistudio.google.com](https://aistudio.google.com)     | `GOOGLE_API_KEY`    |
 
 ### Step 2: Set Environment Variables
 
@@ -77,9 +80,9 @@ providers:
   anthropic:
     enabled: true
   openai:
-    enabled: true   # ← Enable if you have the key
+    enabled: true # ← Enable if you have the key
   google:
-    enabled: true   # ← Enable if you have the key
+    enabled: true # ← Enable if you have the key
 ```
 
 ---
@@ -93,9 +96,9 @@ providers:
 
 defaults:
   primary:
-    planning: "claude-sonnet-4-20250514"
-    development: "claude-sonnet-4-20250514"
-    review: "claude-sonnet-4-20250514"
+    planning: 'claude-sonnet-4-20250514'
+    development: 'claude-sonnet-4-20250514'
+    review: 'claude-sonnet-4-20250514'
 ```
 
 ### Cross-Validation: Second Opinion
@@ -103,8 +106,8 @@ defaults:
 ```yaml
 defaults:
   secondary:
-    planning: "gemini-2.5-pro"    # Gemini reviews Claude's plans
-    review: "gpt-4o"               # GPT-4 reviews Claude's code
+    planning: 'gemini-2.5-pro' # Gemini reviews Claude's plans
+    review: 'gpt-4o' # GPT-4 reviews Claude's code
 ```
 
 ### Per-Agent Configuration
@@ -112,13 +115,13 @@ defaults:
 ```yaml
 agent_overrides:
   planner:
-    primary: "claude-sonnet-4-20250514"
-    secondary: "gemini-2.5-pro"
-    cross_validate: true           # ← Enable cross-validation
-    
+    primary: 'claude-sonnet-4-20250514'
+    secondary: 'gemini-2.5-pro'
+    cross_validate: true # ← Enable cross-validation
+
   review:
-    primary: "gpt-4o"              # ← Use GPT-4 as primary reviewer
-    secondary: "claude-sonnet-4-20250514"
+    primary: 'gpt-4o' # ← Use GPT-4 as primary reviewer
+    secondary: 'claude-sonnet-4-20250514'
     cross_validate: true
 ```
 
@@ -206,46 +209,48 @@ When you run `/project-planner` with cross-validation enabled:
 ### 1. Use Cross-Validation for Important Decisions
 
 Enable for:
+
 - Architecture planning
 - Security-sensitive code
 - API design
 - Database schema
 
 Skip for:
+
 - Simple bug fixes
 - Documentation updates
 - Formatting changes
 
 ### 2. Match Model to Task
 
-| Model | Best For |
-|-------|----------|
-| Claude Opus | Complex reasoning, nuanced decisions |
-| Claude Sonnet | General development, balanced |
-| GPT-4o | Fast iteration, multimodal |
-| GPT-4 Turbo | Instruction following |
-| o1 | Math, algorithms, complex logic |
-| Gemini Flash | Speed, large contexts, docs |
-| Gemini Pro | Balanced, large codebase analysis |
+| Model         | Best For                             |
+| ------------- | ------------------------------------ |
+| Claude Opus   | Complex reasoning, nuanced decisions |
+| Claude Sonnet | General development, balanced        |
+| GPT-4o        | Fast iteration, multimodal           |
+| GPT-4 Turbo   | Instruction following                |
+| o1            | Math, algorithms, complex logic      |
+| Gemini Flash  | Speed, large contexts, docs          |
+| Gemini Pro    | Balanced, large codebase analysis    |
 
 ### 3. Cost-Conscious Configuration
 
 ```yaml
 cost_optimization:
   enabled: true
-  
+
   # Cheap model for simple stuff
   use_budget_model:
-    - "documentation-updates"
-    - "code-formatting"
-    - "simple-tests"
-  budget_model: "gemini-2.0-flash"
-  
+    - 'documentation-updates'
+    - 'code-formatting'
+    - 'simple-tests'
+  budget_model: 'gemini-2.0-flash'
+
   # Premium model only when needed
   use_premium_model:
-    - "architecture-decisions"
-    - "security-reviews"
-  premium_model: "claude-opus-4-20250514"
+    - 'architecture-decisions'
+    - 'security-reviews'
+  premium_model: 'claude-opus-4-20250514'
 ```
 
 ---
@@ -259,6 +264,7 @@ cost_optimization:
 ```
 
 Output:
+
 ```
 Available Models:
 
@@ -302,6 +308,7 @@ Available Models:
 ### "API key not found"
 
 Check your environment:
+
 ```bash
 echo $OPENAI_API_KEY
 echo $GOOGLE_API_KEY
@@ -311,17 +318,19 @@ If empty, set them and restart your terminal.
 
 ### "Model not available"
 
-The model ID may have changed. Check provider documentation for current model IDs.
+The model ID may have changed. Check provider documentation for current model
+IDs.
 
 ### "Cross-validation taking too long"
 
 Disable for non-critical tasks:
+
 ```yaml
 cross_validation:
   triggers:
     planning:
       always: false
-      on_request: true  # Only when you ask
+      on_request: true # Only when you ask
 ```
 
 ---

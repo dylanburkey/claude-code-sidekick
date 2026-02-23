@@ -25,7 +25,7 @@ providers:
         cost_tier: "high"
 
   openai:
-    enabled: true  # Set to true if OPENAI_API_KEY is available
+    enabled: true # Set to true if OPENAI_API_KEY is available
     env_key: "OPENAI_API_KEY"
     models:
       - id: "gpt-4o"
@@ -45,7 +45,7 @@ providers:
         cost_tier: "high"
 
   google:
-    enabled: true  # Set to true if GOOGLE_API_KEY is available
+    enabled: true # Set to true if GOOGLE_API_KEY is available
     env_key: "GOOGLE_API_KEY"
     models:
       - id: "gemini-2.0-flash"
@@ -72,41 +72,41 @@ defaults:
   # Secondary model for cross-validation (optional)
   # Set to null to disable cross-validation
   secondary:
-    planning: "gemini-2.5-pro"      # Different perspective on architecture
-    review: "gpt-4o"                 # Independent code review
-    testing: null                    # No cross-validation for tests
-    documentation: null              # No cross-validation for docs
+    planning: "gemini-2.5-pro" # Different perspective on architecture
+    review: "gpt-4o" # Independent code review
+    testing: null # No cross-validation for tests
+    documentation: null # No cross-validation for docs
 
 # Cross-validation configuration
 cross_validation:
   enabled: true
-  
+
   # When to use cross-validation
   triggers:
     planning:
-      always: true                   # Always get second opinion on plans
+      always: true # Always get second opinion on plans
       description: "Architecture decisions benefit from multiple perspectives"
-    
+
     review:
-      on_complexity: "high"          # Only for complex code reviews
-      on_security: true              # Always for security-sensitive code
-      on_request: true               # When explicitly requested
+      on_complexity: "high" # Only for complex code reviews
+      on_security: true # Always for security-sensitive code
+      on_request: true # When explicitly requested
       description: "Critical code benefits from independent review"
-    
+
     development:
-      on_request: true               # Only when explicitly requested
+      on_request: true # Only when explicitly requested
       description: "Optional second opinion on implementation"
 
   # How to handle disagreements
   conflict_resolution:
-    strategy: "human"                # human | primary | vote | merge
-    notify: true                     # Notify user of disagreements
-    
+    strategy: "human" # human | primary | vote | merge
+    notify: true # Notify user of disagreements
+
   # Output format for cross-validation
   output:
-    show_both: true                  # Show both model responses
-    highlight_differences: true      # Highlight where models disagree
-    summary: true                    # Generate summary of consensus/conflicts
+    show_both: true # Show both model responses
+    highlight_differences: true # Highlight where models disagree
+    summary: true # Generate summary of consensus/conflicts
 
 # Agent-specific model overrides
 # Override the default model for specific agents
@@ -115,47 +115,47 @@ agent_overrides:
     primary: "claude-sonnet-4-20250514"
     secondary: "gemini-2.5-pro"
     cross_validate: true
-    
+
   review:
     primary: "claude-sonnet-4-20250514"
     secondary: "gpt-4o"
     cross_validate: true
-    
+
   dev:
     primary: "claude-sonnet-4-20250514"
     secondary: null
     cross_validate: false
-    
+
   test:
     primary: "claude-sonnet-4-20250514"
     secondary: null
     cross_validate: false
 
   docs:
-    primary: "gemini-2.0-flash"      # Fast model for docs
+    primary: "gemini-2.0-flash" # Fast model for docs
     secondary: null
     cross_validate: false
 
 # Cost optimization settings
 cost_optimization:
   enabled: true
-  
+
   # Use cheaper models for these tasks
   use_budget_model:
     - "simple-refactoring"
     - "documentation-updates"
     - "code-formatting"
     - "simple-tests"
-  
+
   budget_model: "gemini-2.0-flash"
-  
+
   # Always use premium model for these tasks
   use_premium_model:
     - "architecture-decisions"
     - "security-reviews"
     - "complex-algorithms"
     - "api-design"
-  
+
   premium_model: "claude-opus-4-20250514"
 
 # Fallback chain if primary model fails
@@ -174,12 +174,12 @@ prompt_adjustments:
     # OpenAI models prefer explicit JSON formatting
     prefer_json_mode: true
     system_prompt_style: "concise"
-    
+
   google:
     # Gemini handles large contexts well
     include_full_context: true
     system_prompt_style: "detailed"
-    
+
   anthropic:
     # Claude excels with examples
     include_examples: true

@@ -2,7 +2,8 @@
 
 > Step-by-step walkthrough of building a Web3 dApp with Claude Code Sidekick
 
-This example shows how to build a crypto landing page with wallet authentication using the Sidekick workflow.
+This example shows how to build a crypto landing page with wallet authentication
+using the Sidekick workflow.
 
 ---
 
@@ -68,6 +69,7 @@ Open [PROJECT_STARTER.md](./PROJECT_STARTER.md) to see the requirements.
 See [.claude/project-plan/phase_1.md](./.claude/project-plan/phase_1.md)
 
 The plan identifies:
+
 - Authentication flow (connect → sign → dashboard)
 - Component hierarchy
 - CSS architecture decisions
@@ -88,15 +90,15 @@ See [.claude/tasks/phase-1-tasks.md](./.claude/tasks/phase-1-tasks.md)
 
 Tasks are broken down by component:
 
-| ID | Agent | Task | Status |
-|----|-------|------|--------|
-| TASK-001 | init | Project setup | ✅ |
-| TASK-002 | dev | CSS theme | ✅ |
-| TASK-003 | dev | Privy integration | ✅ |
-| TASK-004 | dev | Navbar | ✅ |
-| TASK-005 | dev | Hero section | ✅ |
-| TASK-006 | dev | Signature modal | ✅ |
-| TASK-007 | dev | Dashboard | ✅ |
+| ID       | Agent | Task              | Status |
+| -------- | ----- | ----------------- | ------ |
+| TASK-001 | init  | Project setup     | ✅     |
+| TASK-002 | dev   | CSS theme         | ✅     |
+| TASK-003 | dev   | Privy integration | ✅     |
+| TASK-004 | dev   | Navbar            | ✅     |
+| TASK-005 | dev   | Hero section      | ✅     |
+| TASK-006 | dev   | Signature modal   | ✅     |
+| TASK-007 | dev   | Dashboard         | ✅     |
 
 ---
 
@@ -168,6 +170,7 @@ npm run dev
 ```
 
 Demo mode simulates:
+
 - Wallet connection
 - Signature flow
 - Full dashboard
@@ -234,7 +237,7 @@ const handleSign = async () => {
   const message = `Welcome to Nexus Protocol!
 Timestamp: ${Date.now()}
 Nonce: ${crypto.randomUUID()}`;
-  
+
   // In real app: await signMessage(message)
   // Then verify signature
   onSuccess();
@@ -375,6 +378,7 @@ const tokens = [
 ### Real Blockchain Data
 
 Replace mock data with:
+
 - Alchemy/Infura for balances
 - CoinGecko for prices
 - The Graph for history
@@ -392,6 +396,7 @@ Replace mock data with:
 
 ## Next Steps
 
-- Read the [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
+- Read the
+  [Getting Started Tutorial](../../docs/guides/getting-started-tutorial.md)
 - Try the [SSG Starter Example](../ssg-starter/)
 - Learn about [Available Agents](../../.claude/agents/)

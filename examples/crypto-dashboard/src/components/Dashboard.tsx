@@ -53,13 +53,13 @@ export function Dashboard() {
           {/* Chart Placeholder */}
           <div className="glass">
             <h3 className="mb-lg">📈 Performance (30d)</h3>
-            <div 
-              className="flex-center" 
-              style={{ 
-                height: '280px', 
+            <div
+              className="flex-center"
+              style={{
+                height: '280px',
                 background: 'var(--color-bg)',
                 borderRadius: 'var(--radius-md)',
-                color: 'var(--color-text-muted)'
+                color: 'var(--color-text-muted)',
               }}
             >
               <div style={{ textAlign: 'center' }}>

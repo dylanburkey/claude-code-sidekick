@@ -109,12 +109,21 @@ export function detectTaskType(prompt, context = {}) {
 
   // Keyword matching (in priority order)
   const patterns = [
-    { type: 'security', keywords: ['security', 'vulnerability', 'exploit', 'injection', 'xss', 'csrf'] },
-    { type: 'documentation', keywords: ['document', 'readme', 'jsdoc', 'explain the code', 'write docs'] },
+    {
+      type: 'security',
+      keywords: ['security', 'vulnerability', 'exploit', 'injection', 'xss', 'csrf'],
+    },
+    {
+      type: 'documentation',
+      keywords: ['document', 'readme', 'jsdoc', 'explain the code', 'write docs'],
+    },
     { type: 'testing', keywords: ['test', 'spec', 'unittest', 'jest', 'vitest', 'coverage'] },
     { type: 'architecture', keywords: ['architect', 'design pattern', 'structure', 'scalab'] },
     { type: 'refactor', keywords: ['refactor', 'clean up', 'simplify', 'optimize'] },
-    { type: 'code-generation', keywords: ['generate', 'create a function', 'implement', 'build a'] },
+    {
+      type: 'code-generation',
+      keywords: ['generate', 'create a function', 'implement', 'build a'],
+    },
     { type: 'lint', keywords: ['lint', 'format', 'style', 'prettier', 'eslint'] },
     { type: 'explain', keywords: ['explain', 'what does', 'how does', 'why does', 'teach me'] },
     { type: 'research', keywords: ['research', 'compare', 'alternatives', 'best practice'] },
@@ -188,9 +197,7 @@ export class ModelRouter {
     let model = this.getModel(taskType);
 
     // Try primary, then fallback
-    const modelsToTry = [model, routing.fallback].filter(
-      (m) => m && !this.failedModels.has(m)
-    );
+    const modelsToTry = [model, routing.fallback].filter((m) => m && !this.failedModels.has(m));
 
     for (const tryModel of modelsToTry) {
       try {

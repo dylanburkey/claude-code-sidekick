@@ -2,7 +2,9 @@
 
 > A complete walkthrough of building a project with Claude Code Sidekick
 
-This guide walks you through the entire Claude Code Sidekick workflow from start to finish. By the end, you'll understand how to use each command and agent to build production-ready projects.
+This guide walks you through the entire Claude Code Sidekick workflow from start
+to finish. By the end, you'll understand how to use each command and agent to
+build production-ready projects.
 
 ---
 
@@ -25,6 +27,7 @@ Claude Code Sidekick follows a structured, 4-step workflow:
 ```
 
 Each step builds on the previous one. This structure ensures:
+
 - Clear requirements before coding starts
 - Organized phases and milestones
 - Trackable tasks with progress
@@ -34,7 +37,8 @@ Each step builds on the previous one. This structure ensures:
 
 ## Step 1: Fill Out PROJECT_STARTER.md
 
-The `PROJECT_STARTER.md` file is your project's blueprint. It tells Claude exactly what you want to build.
+The `PROJECT_STARTER.md` file is your project's blueprint. It tells Claude
+exactly what you want to build.
 
 ### Open the File
 
@@ -58,17 +62,21 @@ Here's what each section means:
 ## Project Information
 
 ### Project Name
+
 My Awesome Blog
 
-### Project Description  
-A personal blog with dark theme, SEO optimization, and a 
-content management system for markdown posts.
+### Project Description
+
+A personal blog with dark theme, SEO optimization, and a content management
+system for markdown posts.
 
 ### Project Type
+
 web-app
 ```
 
 **Tips:**
+
 - Be specific in the description
 - Mention key features you want
 - Project type helps Claude choose the right tools
@@ -79,22 +87,26 @@ web-app
 ## Goals & Objectives
 
 ### Primary Goal
-Create a fast, SEO-optimized blog that ranks well in search 
-engines and provides an excellent reading experience.
+
+Create a fast, SEO-optimized blog that ranks well in search engines and provides
+an excellent reading experience.
 
 ### Success Criteria
+
 - Lighthouse score above 95
 - All pages have meta tags and structured data
 - Mobile responsive design
 - Blog post pages with proper heading hierarchy
 
 ### Non-Goals
+
 - User authentication (this is a static site)
 - Comments system (will add later)
 - E-commerce features
 ```
 
 **Tips:**
+
 - Non-goals are important! They prevent scope creep
 - Success criteria should be measurable
 
@@ -106,29 +118,30 @@ EARS notation makes requirements clear and testable:
 ## Requirements
 
 ### Functional Requirements
+
 1. WHEN user visits homepage THE SYSTEM SHALL display recent posts
 2. WHEN user clicks a post THE SYSTEM SHALL navigate to the post page
 3. THE SYSTEM SHALL generate an RSS feed at /feed.xml
 4. WHILE page is loading THE SYSTEM SHALL show a loading indicator
 
 ### Non-Functional Requirements
+
 - Load time under 2 seconds on 3G
 - WCAG 2.1 AA accessible
 - Works without JavaScript enabled
 ```
 
-**EARS Keywords:**
-| Keyword | Meaning | Example |
-|---------|---------|---------|
-| WHEN | Triggered by event | WHEN user clicks... |
-| THE SYSTEM SHALL | Required behavior | ...SHALL show menu |
-| WHILE | During a state | WHILE loading... |
-| WHERE | Specific conditions | WHERE user is admin... |
+**EARS Keywords:** | Keyword | Meaning | Example |
+|---------|---------|---------| | WHEN | Triggered by event | WHEN user
+clicks... | | THE SYSTEM SHALL | Required behavior | ...SHALL show menu | |
+WHILE | During a state | WHILE loading... | | WHERE | Specific conditions |
+WHERE user is admin... |
 
 #### Technical Stack
 
 ```markdown
 ## Technical Stack
+
 - Framework: Astro 5
 - Styling: Modern CSS (no framework)
 - Content: Markdown with frontmatter
@@ -143,7 +156,8 @@ Once filled out, save the file. You're ready for step 2.
 
 ## Step 2: Run /project-planner
 
-The `/project-planner` command reads your PROJECT_STARTER.md and generates a structured project plan.
+The `/project-planner` command reads your PROJECT_STARTER.md and generates a
+structured project plan.
 
 ### Run the Command
 
@@ -156,6 +170,7 @@ In Claude Code (Terminal or VS Code), type:
 ### What Happens
 
 Claude will:
+
 1. Read your PROJECT_STARTER.md
 2. Analyze the requirements
 3. Break the project into phases
@@ -164,6 +179,7 @@ Claude will:
 ### Output Location
 
 The plan is saved to:
+
 ```
 .claude/project-plan/phase_1.md
 ```
@@ -174,6 +190,7 @@ The plan is saved to:
 # Phase 1: Core Blog Setup
 
 ## Objectives
+
 1. Project scaffolding with Astro
 2. Base layout and navigation
 3. Blog post collection setup
@@ -181,6 +198,7 @@ The plan is saved to:
 5. Individual post pages
 
 ## Deliverables
+
 - [ ] package.json with dependencies
 - [ ] src/layouts/BaseLayout.astro
 - [ ] src/components/Nav.astro
@@ -189,6 +207,7 @@ The plan is saved to:
 - [ ] src/content/config.ts
 
 ## Technical Approach
+
 - Use Astro content collections for posts
 - CSS custom properties for theming
 - Mobile-first responsive design
@@ -197,6 +216,7 @@ The plan is saved to:
 ### Review the Plan
 
 Read through the generated plan. If something's wrong:
+
 - Edit `.claude/project-plan/phase_1.md` directly
 - Or update PROJECT_STARTER.md and re-run
 
@@ -215,6 +235,7 @@ The `/task-planner` command converts the project plan into actionable tasks.
 ### What Happens
 
 Claude will:
+
 1. Read the project plan (phase_1.md)
 2. Break each objective into tasks
 3. Estimate time for each task
@@ -223,6 +244,7 @@ Claude will:
 ### Output Location
 
 Tasks are saved to:
+
 ```
 .claude/tasks/phase-1-tasks.md
 ```
@@ -233,7 +255,7 @@ Tasks are saved to:
 # Phase 1 Tasks
 
 | ID       | Agent | Task                     | Est.   | Status |
-|----------|-------|--------------------------|--------|--------|
+| -------- | ----- | ------------------------ | ------ | ------ |
 | TASK-001 | init  | Project scaffolding      | 5 min  | ⬜     |
 | TASK-002 | dev   | Create BaseLayout.astro  | 15 min | ⬜     |
 | TASK-003 | dev   | Create Nav component     | 10 min | ⬜     |
@@ -245,15 +267,16 @@ Tasks are saved to:
 
 ## TASK-001: Project Scaffolding
 
-**Agent:** init
-**Estimated Time:** 5 minutes
+**Agent:** init **Estimated Time:** 5 minutes
 
 ### Instructions
+
 1. Initialize Astro project
 2. Add TypeScript configuration
 3. Create folder structure
 
 ### Acceptance Criteria
+
 - [ ] package.json exists
 - [ ] tsconfig.json configured
 - [ ] src/ directory structure created
@@ -263,19 +286,20 @@ Tasks are saved to:
 
 Each task is assigned an agent:
 
-| Agent | Purpose |
-|-------|---------|
-| init | Project setup, dependencies |
-| dev | Feature development, code |
-| test | Testing, validation |
-| docs | Documentation |
-| review | Code review, refactoring |
+| Agent  | Purpose                     |
+| ------ | --------------------------- |
+| init   | Project setup, dependencies |
+| dev    | Feature development, code   |
+| test   | Testing, validation         |
+| docs   | Documentation               |
+| review | Code review, refactoring    |
 
 ---
 
 ## Step 4: Run /task-runner
 
-The `/task-runner` command executes tasks one by one using the appropriate agent.
+The `/task-runner` command executes tasks one by one using the appropriate
+agent.
 
 ### Run the Command
 
@@ -286,6 +310,7 @@ The `/task-runner` command executes tasks one by one using the appropriate agent
 ### What Happens
 
 Claude will:
+
 1. Find the first incomplete task
 2. Load the assigned agent
 3. Execute the task
@@ -326,6 +351,7 @@ If a task produces broken code:
 ### Manual Fixes
 
 You can also:
+
 - Edit files directly in your editor
 - Mark tasks complete manually in the tasks file
 - Skip tasks by marking them as "skipped"
@@ -349,27 +375,33 @@ cd my-blog
 ## Project Information
 
 ### Project Name
+
 Developer Blog
 
 ### Project Description
-A technical blog for sharing programming tutorials.
-Dark theme with syntax highlighting.
+
+A technical blog for sharing programming tutorials. Dark theme with syntax
+highlighting.
 
 ### Project Type
+
 static-site
 
 ## Goals & Objectives
 
 ### Primary Goal
+
 Create a fast, beautiful blog with excellent SEO.
 
 ### Success Criteria
+
 - Lighthouse 95+ on all pages
 - Blog posts with code syntax highlighting
 - RSS feed
 - Sitemap
 
 ### Non-Goals
+
 - User accounts
 - Comments
 - Newsletter signup
@@ -377,6 +409,7 @@ Create a fast, beautiful blog with excellent SEO.
 ## Requirements
 
 ### Functional
+
 1. WHEN user visits / THE SYSTEM SHALL show latest 5 posts
 2. WHEN user visits /blog THE SYSTEM SHALL show all posts
 3. WHEN user visits /blog/[slug] THE SYSTEM SHALL show post content
@@ -384,6 +417,7 @@ Create a fast, beautiful blog with excellent SEO.
 5. THE SYSTEM SHALL generate feed.xml
 
 ### Non-Functional
+
 - Dark theme with purple accents
 - Mobile responsive
 - WCAG 2.1 AA compliant
@@ -421,8 +455,8 @@ npm run dev
 
 ### 1. Be Specific in Requirements
 
-❌ Bad: "Make it look good"
-✅ Good: "Dark theme with #0a0a0f background, pink (#ec4899) accents"
+❌ Bad: "Make it look good" ✅ Good: "Dark theme with #0a0a0f background, pink
+(#ec4899) accents"
 
 ### 2. Include Non-Goals
 
@@ -461,6 +495,7 @@ Ask Claude: "There are TypeScript errors. Can you fix them?"
 ```bash
 npm run build 2>&1 | head -50
 ```
+
 Share the error output with Claude.
 
 ---
