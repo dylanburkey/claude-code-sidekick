@@ -1,205 +1,200 @@
-# Getting Started
+# Getting Started with Claude Code Sidekick
 
-Get your project running in 2 minutes with Quick Start presets, or take full
-control with custom configuration.
-
-## Choose Your Path
-
-### 🚀 Quick Start (Recommended for Most Projects)
-
-**Time:** 2 minutes | **Best for:** Standard tech stacks
-
-[Complete Quick Start Guide →](quick-start-guide.md)
-
-Select a preset that matches your project type and everything is configured
-automatically.
-
-### ⚙️ Custom Configuration
-
-**Time:** 5-10 minutes | **Best for:** Unique requirements
-
-Manually configure each aspect of your project for complete control.
-
-### 📚 Full Walkthrough (For Beginners)
-
-**Time:** 30 minutes | **Best for:** First-time users
-
-[Complete Beginner's Guide →](beginner-guide.md)
-
-Step-by-step walkthrough with explanations of every concept.
+This guide helps you pick the right path based on what you're trying to do.
 
 ---
 
-## Quick Start Setup (2 Minutes)
+## What Are You Trying To Do?
 
-### Step 1: Copy Template Files
+### 🆕 "I'm starting a new project from scratch"
+
+**Use the CLI** - It's the fastest way to get a production-ready project.
 
 ```bash
-# Clone the repository
+npx create-claude-project
+```
+
+The CLI will:
+
+1. Ask you what kind of project (React, Next.js, Astro, etc.)
+2. Ask what features you need (database, auth, payments, etc.)
+3. Scaffold everything with Claude Code Sidekick pre-configured
+
+**Time:** 2 minutes
+
+[→ Detailed CLI Guide](cli-guide.md)
+
+---
+
+### 📂 "I have an existing project and want to add Sidekick"
+
+**Copy the .claude directory** to your project.
+
+```bash
+# Clone the repo
 git clone https://github.com/dylanburkey/claude-code-sidekick.git
-cd claude-code-sidekick
 
-# Copy to your project
-cp -r .claude/ /path/to/your/project/
-cp PROJECT_STARTER.md /path/to/your/project/
-cp .env.example /path/to/your/project/
-
-cd /path/to/your/project/
+# Copy .claude to your project
+cp -r claude-code-sidekick/.claude/ /path/to/your-project/
 ```
 
-### Step 2: Select Your Preset
-
-Open `PROJECT_STARTER.md` and choose your tech stack:
-
-```markdown
-### Project Preset
-
-- [ ] **Static Website** - HTML, Modern CSS, Vanilla JS
-- [x] **Astro Site** - Astro 5, Modern CSS, Islands ← Put X here
-- [ ] **React App** - React, TypeScript, Vite
-- [ ] **Next.js App** - Next.js 15, App Router
-- [ ] **Vue/Nuxt** - Vue 3, Nuxt, Composition API
-- [ ] **SvelteKit** - Svelte 5, SvelteKit
-- [ ] **Full Stack** - Complete backend + frontend + database
-- [ ] **Custom** - Manual configuration
-```
-
-### Step 3: Run Quick Start
+Then open your project in Claude Code and run:
 
 ```bash
 /quick-start
 ```
 
-**Done!** Your project is configured with:
+This will guide you through configuring Sidekick for your existing codebase.
 
-- Code quality rules for your tech stack
-- MCP servers (database, cloud, analytics)
-- Development hooks (git, formatting, testing)
-- Specialized AI agents
-- Project structure
-
-### Step 4: Add Your Project Details
-
-In `PROJECT_STARTER.md`, fill out:
-
-```markdown
-## Project Information
-
-### Project Name
-
-My Awesome App
-
-### Project Description
-
-A web application that helps users manage their tasks efficiently
-
-### Primary Goal
-
-Create a simple, beautiful task manager that works on all devices
-```
-
-### Step 5: Generate and Build
-
-```bash
-# Create your project plan
-/project-planner
-
-# Generate implementation tasks
-/task-planner
-
-# Let agents build your project
-/task-runner
-```
-
-**Your application is ready!**
+**Time:** 5 minutes
 
 ---
 
-## Custom Configuration (5-10 Minutes)
+### 🔍 "I just want the multi-model AI code review tools"
 
-For projects with unique requirements:
-
-### Step 1: Copy Template Files
-
-Same as Quick Start Step 1 above.
-
-### Step 2: Select Custom Preset
-
-```markdown
-### Project Preset
-
-- [x] **Custom** - Manual configuration
-```
-
-### Step 3: Configure Master Toggles
-
-```markdown
-### Master Toggles
-
-- **MCP Servers**: `TRUE` # External services
-- **Development Hooks**: `TRUE` # Automation
-- **Code Quality Rules**: `TRUE` # Linting/standards
-- **AI Agents**: `TRUE` # Specialized agents
-```
-
-**Set to `FALSE` to disable entire categories.**
-
-### Step 4: Configure Code Rules
-
-```markdown
-## Code Rules Configuration
-
-### Language Standards
-
-- **Modern JavaScript**: `TRUE`
-- **TypeScript**: `FALSE`
-- **Node.js**: `FALSE`
-- **Python**: `FALSE`
-
-### Framework Standards
-
-- **Astro**: `TRUE`
-- **React**: `FALSE` (... configure what you need ...)
-```
-
-See [Configuration Guide](configuration.md) for all options.
-
-### Step 5: Configure Services
-
-```markdown
-## MCP Configuration
-
-### Database & Storage
-
-- **Neon Database**: `TRUE`
-- **Supabase**: `FALSE`
-
-### Cloud & Infrastructure
-
-- **Cloudflare**: `TRUE`
-- **Vercel**: `FALSE` (... select what you need ...)
-```
-
-### Step 6: Apply Configuration
+You don't need the full framework - just the `tools/multi-model/` directory.
 
 ```bash
-/mcp-setup      # Configure MCP servers
-/hooks-setup    # Configure development hooks
-/rules-setup    # Configure code quality rules
+# Clone and set up
+git clone https://github.com/dylanburkey/claude-code-sidekick.git
+cd claude-code-sidekick/tools/multi-model
+pnpm install
+
+# Add your API key(s) to .env in the repo root
+echo "ANTHROPIC_API_KEY=sk-ant-your-key" >> ../../.env
+
+# Review code
+pnpm review -- /path/to/any/file.js
 ```
 
-### Step 7: Continue as Normal
+[→ Multi-Model Toolkit Guide](../tools/multi-model/README.md)
 
-Follow steps 4-5 from Quick Start above.
+**Time:** 3 minutes
 
-## What's Next?
+---
 
-- [Configure your project](configuration.md)
-- [Learn about EARS notation](../architecture/index.md)
-- [Explore the API](../api/index.md)
+### 📖 "I'm new to all of this and need a full explanation"
 
-## Need Help?
+Start with the Beginner's Guide, which explains every concept step by step.
 
-- Check the [Architecture docs](../architecture/index.md) for design decisions
-- Review [CLAUDE.md](../../CLAUDE.md) for AI context
-- Look at the [QUICKSTART.md](../../QUICKSTART.md) for more details
+[→ Complete Beginner's Guide](beginner-guide.md)
+
+**Time:** 30 minutes (worth it if you're new)
+
+---
+
+## Quick Overview: What Does Sidekick Include?
+
+| Component             | What It Does                                 | Location             |
+| --------------------- | -------------------------------------------- | -------------------- |
+| **Commands**          | Claude Code commands like `/project-planner` | `.claude/commands/`  |
+| **Agents**            | 50+ specialized AI assistants                | `.claude/agents/`    |
+| **Hooks**             | 32+ automated quality checks                 | `.claude/hooks/`     |
+| **MCP Integrations**  | 35+ pre-configured services                  | `.claude/mcp/`       |
+| **Multi-Model Tools** | Use Claude + GPT + Gemini together           | `tools/multi-model/` |
+| **Examples**          | Working starter projects                     | `examples/`          |
+
+---
+
+## After Setup: What Commands Can I Use?
+
+Once you have `.claude/` in your project, these commands are available in Claude
+Code:
+
+| Command            | What It Does                                        |
+| ------------------ | --------------------------------------------------- |
+| `/quick-start`     | Guided setup wizard                                 |
+| `/project-planner` | Create a phased project plan from your requirements |
+| `/task-planner`    | Break a feature into actionable tasks               |
+| `/task-runner`     | Execute tasks with specialized agents               |
+| `/mcp-setup`       | Configure external services (databases, APIs, etc.) |
+| `/hooks-setup`     | Set up automated quality checks                     |
+| `/status`          | Check project progress                              |
+| `/analyze-project` | Analyze existing codebase                           |
+
+---
+
+## Typical First-Day Workflow
+
+### For a new project:
+
+```bash
+# 1. Create project
+npx create-claude-project
+
+# 2. Start dev server
+cd my-project
+npm install
+npm run dev
+
+# 3. In Claude Code, plan your work
+/project-planner
+# → Creates phases with milestones
+
+# 4. Start building
+/task-planner
+# → Breaks first feature into tasks
+```
+
+### For an existing project:
+
+```bash
+# 1. Add Sidekick
+cp -r claude-code-sidekick/.claude/ ./
+
+# 2. Configure
+/quick-start
+# → Select your tech stack and features
+
+# 3. Set up integrations
+/mcp-setup
+# → Select: database, auth, hosting, etc.
+
+# 4. Set up automation
+/hooks-setup
+# → Enable: pre-commit checks, formatting, etc.
+```
+
+---
+
+## Common Questions
+
+### "Do I need all the API keys?"
+
+No. For the multi-model tools, you only need ONE of:
+
+- `ANTHROPIC_API_KEY` (Claude)
+- `OPENAI_API_KEY` (GPT)
+- `GEMINI_API_KEY` (Gemini)
+- `VENICE_API_KEY` (Venice AI)
+
+The toolkit auto-detects what's available and works with whatever you have.
+
+### "Can I use Sidekick with Cursor/Copilot?"
+
+Yes! They complement each other:
+
+- **Cursor/Copilot:** Inline code suggestions
+- **Sidekick:** Project structure, automation, multi-model tools
+
+### "What if I don't want all the features?"
+
+The `.claude/config.yml` lets you disable anything:
+
+```yaml
+features:
+  mcp: false # Disable MCP integrations
+  hooks: false # Disable automation hooks
+  agents: false # Disable specialized agents
+```
+
+Or just delete the folders you don't need.
+
+---
+
+## Next Steps
+
+- [CLI Guide](cli-guide.md) - Full CLI documentation
+- [Configuration Guide](configuration.md) - Customize everything
+- [Troubleshooting](troubleshooting.md) - Common issues and fixes
+- [Multi-Model Tools](../../tools/multi-model/README.md) - AI toolkit docs
