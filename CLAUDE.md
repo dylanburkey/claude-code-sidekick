@@ -88,6 +88,80 @@ These MCP servers are enabled by default:
 | `chrome-devtools` | Browser testing, accessibility audits |
 | `context7` | Documentation lookup, best practices |
 
+## Multi-Model AI Toolkit
+
+The project includes a powerful multi-model toolkit at `tools/multi-model/` that leverages OpenAI, Anthropic, and Google Gemini together.
+
+### Available Tools
+
+| CLI Command | Purpose | Documentation |
+|-------------|---------|---------------|
+| `mm-review` | Consensus code review (multiple models) | [View](tools/multi-model/README.md#multi-model-code-review) |
+| `mm-index` | Index codebase for semantic search | [View](tools/multi-model/README.md#codebase-indexing) |
+| `mm-search` | Search code by meaning, not keywords | [View](tools/multi-model/README.md#semantic-search) |
+
+### Quick Start
+
+```bash
+cd tools/multi-model
+pnpm install
+
+# Review code with multiple AI models
+pnpm review -- ../cli/src/scaffold.js --deep
+
+# Index the codebase
+pnpm index -- ../
+
+# Search semantically
+pnpm search -- "project scaffolding"
+```
+
+### Programmatic Usage
+
+```javascript
+import { reviewCode, createRouter, searchCodebase } from './tools/multi-model/index.js';
+
+// Consensus code review
+const results = await reviewCode(code, { filename: 'app.js' });
+console.log(results.confirmedIssues);  // Issues 2+ models agree on
+
+// Intelligent routing (auto-selects best model per task)
+const router = createRouter('balanced');
+const response = await router.route('Explain this architecture...');
+
+// Semantic search
+const matches = await searchCodebase('authentication logic', {
+  indexPath: '.code-index/index.json'
+});
+```
+
+### Model Routing Logic
+
+The router automatically selects the optimal model based on task type:
+
+| Task Type | Optimal Model | Reason |
+|-----------|---------------|--------|
+| Long context (>50k chars) | Claude Sonnet | 200k context window |
+| Code generation | GPT-4o | Mature function calling |
+| Documentation | Claude Sonnet | Nuanced, thorough |
+| Security review | Claude Sonnet | Careful reasoning |
+| Quick refactors | GPT-4o-mini | Fast, accurate |
+| Linting/style | Gemini Flash | Cheapest |
+
+### Examples
+
+- [Pre-Commit Hook](tools/multi-model/examples/pre-commit-hook.js) - Block commits with critical issues
+- [Agent Integration](tools/multi-model/examples/agent-integration.js) - Smart assistant workflows
+
+### Required Environment Variables
+
+```bash
+# In .env at project root
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GEMINI_API_KEY=...
+```
+
 ### Commands
 
 | Command            | Purpose                                        | Output                    |
