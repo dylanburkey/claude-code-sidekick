@@ -236,7 +236,7 @@ export const MODELS = {
   // Anthropic
   CLAUDE_OPUS: 'claude-sonnet-4-20250514', // Opus 4 not out yet, use Sonnet 4
   CLAUDE_SONNET: 'claude-sonnet-4-20250514',
-  CLAUDE_HAIKU: 'claude-3-5-haiku-20241022',
+  CLAUDE_HAIKU: 'claude-haiku-4-5-20251001',
 
   // Google
   GEMINI_PRO: 'gemini-1.5-pro',
