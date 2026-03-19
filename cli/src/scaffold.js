@@ -17,9 +17,10 @@
 import { mkdir, writeFile, cp, access, constants } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { exec } from 'node:child_process';
+import { exec, spawn } from 'node:child_process';
 import { promisify } from 'node:util';
 import { PRESETS, FEATURE_CONFIGS } from './templates.js';
+import { openInBrowser } from './utils.js';
 
 const execAsync = promisify(exec);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -87,7 +88,39 @@ export async function scaffoldProject({
     await installDependencies(projectPath);
   }
 
+  // Launch dashboard (non-blocking, best-effort)
+  launchDashboard(projectPath).catch(() => {});
+
   return projectPath;
+}
+
+/**
+ * Launch the Claude Sidekick dashboard for the created project.
+ * @param {string} projectPath - Absolute path to the newly created project
+ * @returns {Promise<void>}
+ */
+async function launchDashboard(projectPath) {
+  const dashboardDir = path.resolve(__dirname, '../../../tools/dashboard');
+  const buildEntry = path.join(dashboardDir, 'build', 'index.js');
+
+  // Only launch if the dashboard has been built
+  if (!(await pathExists(buildEntry))) {
+    return;
+  }
+
+  const port = process.env.DASHBOARD_PORT ?? '5174';
+
+  const server = spawn('node', [buildEntry], {
+    cwd: dashboardDir,
+    env: { ...process.env, PROJECT_ROOT: projectPath, PORT: port },
+    detached: true,
+    stdio: 'ignore',
+  });
+  server.unref();
+
+  // Give the server a moment to start before opening the browser
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  await openInBrowser(`http://localhost:${port}`);
 }
 
 /**

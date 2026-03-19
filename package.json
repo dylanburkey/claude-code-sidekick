@@ -20,7 +20,12 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "validate": "pnpm lint && pnpm format:check && pnpm test"
+    "validate": "pnpm lint && pnpm format:check && pnpm test",
+    "dashboard:dev": "cd tools/dashboard && pnpm dev",
+    "dashboard:build": "cd tools/dashboard && pnpm build"
+  },
+  "pnpm": {
+    "overrides": {}
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

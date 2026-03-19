@@ -16,6 +16,10 @@
 
 import path from 'node:path';
 import { readdir } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+
+const execFileAsync = promisify(execFile);
 
 /**
  * Validate project name
@@ -158,4 +162,23 @@ export function toPascalCase(str) {
     .split(/[-_\s]+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('');
+}
+
+/**
+ * Open a URL in the default system browser.
+ * @param {string} url - URL to open
+ * @returns {Promise<void>}
+ */
+export async function openInBrowser(url) {
+  try {
+    if (process.platform === 'darwin') {
+      await execFileAsync('open', [url]);
+    } else if (process.platform === 'win32') {
+      await execFileAsync('cmd', ['/c', 'start', '', url]);
+    } else {
+      await execFileAsync('xdg-open', [url]);
+    }
+  } catch (err) {
+    console.warn(`Could not open browser: ${err.message}`);
+  }
 }

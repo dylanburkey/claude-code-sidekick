@@ -5,6 +5,14 @@ cli/node_modules/
 # Build outputs
 dist/
 *.min.js
+.svelte-kit/
+tools/dashboard/.svelte-kit/
+
+# Lock files
+pnpm-lock.yaml
+
+# Serena
+.serena/
 
 # IDE
 .idea/
