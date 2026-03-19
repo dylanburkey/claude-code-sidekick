@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "lastUpdated": "2026-03-18",
+    "version": "1.0.0",
+    "description": "Architecture patterns and data flows for Claude Code Sidekick"
+  },
+  "overview": {
+    "type": "Monorepo - Claude Code development framework + CLI + multi-model AI toolkit + SvelteKit dashboard",
+    "packageManager": "pnpm (workspace)",
+    "nodeVersion": ">=18.0.0",
+    "language": "JavaScript ES modules (type: module)",
+    "license": "UNLICENSED - Proprietary"
+  },
+  "workspacePackages": {
+    "cli": {
+      "path": "cli/",
+      "description": "npx create-claude-project CLI for project scaffolding",
+      "entrypoint": "cli/bin/",
+      "exports": ["scaffoldProject", "openInBrowser"]
+    },
+    "tools/multi-model": {
+      "path": "tools/multi-model/",
+      "description": "Multi-model AI toolkit (OpenAI, Anthropic, Gemini, Venice)",
+      "entrypoint": "tools/multi-model/index.js",
+      "exports": ["complete", "reviewCode", "createRouter", "searchCodebase", "indexCodebase"]
+    },
+    "tools/dashboard": {
+      "path": "tools/dashboard/",
+      "description": "SvelteKit local web dashboard for project management",
+      "entrypoint": "tools/dashboard/src/routes/",
+      "stack": "SvelteKit 2 + Svelte 5 + Vite 6 + Node adapter",
+      "port": "5174"
+    }
+  },
+  "coreArchitecturePatterns": {
+    "specDrivenDevelopment": {
+      "description": "EARS notation requirements → project-plan → tasks → implementation",
+      "flow": "PROJECT_STARTER.md -> /project-planner -> project-plan/phase_N.md -> /task-planner -> tasks/phase-N-tasks.md -> /task-runner -> agents execute",
+      "phaseGate": "HARD STOP between phases - user must explicitly advance"
+    },
+    "agentSystem": {
+      "description": "Specialized agents in .claude/agents/ for domain-specific tasks",
+      "agents": ["init", "planner", "dev", "test", "docs", "review", "orchestrator", "shopify-theme-developer"],
+      "config": ".claude/agents.yml"
+    },
+    "skillSystem": {
+      "description": "Modular skills in .claude/skills/ loaded automatically",
+      "skills": ["phase-control", "scope-guard", "checkpoint-manager", "git-worktree"],
+      "purpose": "Enforce development discipline and phase boundaries"
+    },
+    "hookSystem": {
+      "description": "Event-driven automation in .claude/hooks/",
+      "triggers": ["post-save-docs", "pre-commit", "task-complete"],
+      "config": ".claude/config.yml hooks section"
+    }
+  },
+  "multiModelArchitecture": {
+    "providers": {
+      "openai": {
+        "client": "OpenAI SDK",
+        "key": "OPENAI_API_KEY",
+        "models": ["gpt-4-turbo-preview", "gpt-4o", "gpt-4o-mini"]
+      },
+      "anthropic": {
+        "client": "Anthropic SDK",
+        "key": "ANTHROPIC_API_KEY",
+        "models": ["claude-sonnet-4-20250514", "claude-haiku-4-5-20251001"]
+      },
+      "gemini": {
+        "client": "@google/generative-ai",
+        "key": "GEMINI_API_KEY (or GEMENI_API_KEY typo-tolerant)",
+        "models": ["gemini-1.5-pro", "gemini-2.0-flash"]
+      },
+      "venice": {
+        "client": "OpenAI SDK (compatible API)",
+        "key": "VENICE_API_KEY",
+        "baseURL": "https://api.venice.ai/api/v1",
+        "description": "Uncensored models with private inference (VVV token ecosystem)",
+        "models": ["llama-3.3-70b", "llama-3.2-3b", "deepseek-r1-671b", "deepseek-r1-llama-70b", "dolphin-2.9.2-qwen2-72b", "qwen-2.5-72b"]
+      }
+    },
+    "singleModelMode": {
+      "description": "Falls back gracefully when only one API key is present",
+      "envControl": "USE_MULTI_MODEL=FALSE to force single-model",
+      "primaryProviderLogic": "First provider in [openai, anthropic, gemini, venice] order"
+    },
+    "modelRouting": {
+      "strategy": "Task-type based routing to optimal model",
+      "modes": ["balanced", "speed", "quality", "cost"],
+      "routingFile": "tools/multi-model/lib/model-router.js"
+    }
+  },
+  "dashboardArchitecture": {
+    "framework": "SvelteKit 2 with Svelte 5",
+    "adapter": "@sveltejs/adapter-node",
+    "deployTarget": "Local / Tailscale private network",
+    "launchMechanism": "Auto-launched by CLI after scaffolding (non-blocking spawn)",
+    "routes": {
+      "/": "Dashboard shell + tab switcher",
+      "/api/asana/tasks": "Proxy to Asana API",
+      "/api/asana/complete": "Mark task complete",
+      "/api/cloudflare/resources": "Cloudflare resources",
+      "/api/github/items": "GitHub issues/PRs",
+      "agents": "Agent management view",
+      "history": "History view",
+      "hooks": "Hook management view",
+      "review": "Code review view",
+      "skills": "Skills view"
+    },
+    "security": "No auth required - Tailscale network is security boundary. All API calls proxied server-side."
+  },
+  "dataFlows": {
+    "cliScaffold": "User runs npx create-claude-project -> CLI prompts -> scaffoldProject() -> copies templates -> installs deps -> launchDashboard() (non-blocking) -> opens browser",
+    "multiModelReview": "Code input -> code-review.js -> parallel requests to all available providers -> consensus aggregation -> formatReviewResults()",
+    "semanticSearch": "indexCodebase() -> embedBatch() via OpenAI -> JSON index file -> searchCodebase() -> cosine similarity -> ranked results",
+    "phasedDevelopment": "EARS spec -> /project-planner -> phase plans -> /task-planner -> task files -> /task-runner -> agent execution -> HARD STOP"
+  },
+  "configFiles": {
+    ".claude/config.yml": "Main agent system config (agents, commands, hooks, rules, planning)",
+    ".claude/config/models.yml": "Detailed model configuration",
+    ".claude/agents.yml": "Agent definitions reference",
+    ".claude/tasks.yml": "Task management config",
+    "pnpm-workspace.yaml": "Monorepo workspace packages: [cli, tools/*]",
+    ".env.example": "All env vars documented with instructions"
+  }
+}

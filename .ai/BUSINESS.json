@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "lastUpdated": "2026-03-18",
+    "version": "1.0.0",
+    "description": "Business logic, features, and product state for Claude Code Sidekick"
+  },
+  "product": {
+    "name": "Claude Code Sidekick",
+    "author": "Dylan Burkey",
+    "version": "2.0.0",
+    "positioning": "Complete development framework for AI-assisted coding with Claude. Professional project scaffolding, specialized agents, and automation.",
+    "primaryCLI": "npx create-claude-project",
+    "targetUsers": "Developers using Claude Code who want structured workflow, multi-model AI, and automation",
+    "license": "UNLICENSED (Proprietary)"
+  },
+  "coreFeatures": {
+    "cliScaffolding": {
+      "status": "complete",
+      "description": "npx create-claude-project interactive CLI for instant project generation",
+      "presets": ["static", "astro", "react", "nextjs", "nuxt", "svelte", "fullstack", "custom"],
+      "features": ["database", "auth", "analytics", "deployment"],
+      "outputs": "Complete project with .claude/ dir, framework config, git, deps installed",
+      "dashboardLaunch": "Auto-launches local dashboard after scaffolding (if built)"
+    },
+    "specDrivenDevelopment": {
+      "status": "complete",
+      "description": "EARS notation specs -> phased planning -> task generation -> agent execution",
+      "commands": ["/project-planner", "/task-planner", "/task-runner", "/quick-start", "/phase-approve"],
+      "phaseControl": "Hard stops between phases, user must explicitly advance"
+    },
+    "agentLibrary": {
+      "status": "complete",
+      "description": "50+ specialized agents for every development task",
+      "categories": ["code-generation", "task-automation", "testing", "documentation", "blockchain"],
+      "customizable": "Copy to .claude/agents/ for project-specific customization"
+    },
+    "mcpIntegrations": {
+      "status": "complete",
+      "description": "35+ pre-configured MCP server integrations",
+      "categories": ["databases (Neon)", "cloud (Cloudflare)", "analytics", "payments (Stripe)", "github"],
+      "configFile": ".claude/mcp/default-servers.md"
+    },
+    "hooksSystem": {
+      "status": "complete",
+      "description": "32+ automated hooks with TRUE/FALSE toggles",
+      "hooks": ["pre-commit validation", "auto-format on save", "post-save documentation", "task-complete notification"],
+      "config": ".claude/config.yml hooks section"
+    },
+    "multiModelAI": {
+      "status": "complete",
+      "description": "Multi-model toolkit with OpenAI, Anthropic, Gemini, and Venice AI",
+      "cliCommands": ["mm-review", "mm-index", "mm-search"],
+      "programmaticAPI": "import { reviewCode, createRouter, searchCodebase } from './tools/multi-model/index.js'",
+      "capabilities": ["consensus code review", "intelligent model routing", "semantic code search", "codebase indexing"]
+    },
+    "veniceAISupport": {
+      "status": "complete",
+      "description": "Venice AI (VVV token ecosystem) support for uncensored models with private inference",
+      "addedIn": "feat: Add Venice AI (VVV) support - commit 8fed0b0",
+      "envKey": "VENICE_API_KEY",
+      "apiBase": "https://api.venice.ai/api/v1",
+      "integration": "OpenAI-compatible SDK, VENICE_MODELS array, MODEL_COSTS pricing"
+    },
+    "localDashboard": {
+      "status": "in-progress",
+      "description": "SvelteKit local web dashboard for project and service management",
+      "stack": "SvelteKit 2 + Svelte 5 + Vite 6 + adapter-node",
+      "port": "5174",
+      "autoLaunch": "CLI launches dashboard after project creation if built",
+      "routes": ["Dashboard shell", "Agents", "History", "Hooks", "Review", "Skills"],
+      "apiProxy": "Server-side proxying for Asana, Cloudflare, GitHub"
+    },
+    "opsDashboard": {
+      "status": "planned",
+      "description": "Personal ops command center at ops.codesidekick.xyz via Tailscale",
+      "spec": "specs/ops-dashboard.md",
+      "stack": "SvelteKit + Tailscale + Docker",
+      "integrations": ["Asana", "Cloudflare", "GitHub"],
+      "phases": ["scaffold+shell", "Cloudflare tab", "GitHub tab", "Asana tab", "polish+deploy"]
+    },
+    "worktreeSupport": {
+      "status": "complete",
+      "description": "Parallel task execution via git worktrees (opt-in)",
+      "commands": ["/worktree-enable", "/worktree-disable"],
+      "worktreeDir": ".worktrees/"
+    },
+    "examples": {
+      "status": "complete",
+      "projects": {
+        "cryptoDashboard": "React/Vite crypto dashboard with Privy wallet auth at examples/crypto-dashboard/",
+        "ssgStarter": "Astro SSG starter with Claude Code Sidekick config at examples/ssg-starter/"
+      }
+    }
+  },
+  "modelRouting": {
+    "description": "Task-type based routing to optimal AI model",
+    "routingTable": {
+      "long-context": "Claude Sonnet (200k window)",
+      "code-generation": "GPT-4o (mature function calling)",
+      "refactor": "GPT-4o-mini (fast + accurate)",
+      "documentation": "Claude Sonnet (nuanced)",
+      "multimodal": "Gemini Pro (native multimodal)",
+      "research": "Gemini Pro",
+      "security": "Claude Sonnet (careful reasoning)",
+      "linting": "Gemini Flash (cheapest)"
+    }
+  },
+  "pricing": {
+    "description": "Model cost awareness in MODEL_COSTS (per 1M tokens [input, output])",
+    "cheapest": "Gemini Flash ($0.075/$0.3)",
+    "mostExpensive": "GPT-4 Turbo ($10/$30)",
+    "venice": "Venice models ~$0.1-2.0 input (VVV token ecosystem)"
+  },
+  "ciCd": {
+    "prQualityCheck": {
+      "status": "complete",
+      "file": ".github/workflows/pr-quality-check.yml",
+      "checks": ["eslint", "prettier", "vitest"]
+    },
+    "branchProtection": {
+      "documented": ".github/BRANCH_PROTECTION.md"
+    }
+  },
+  "pendingWork": {
+    "dashboard": "Dashboard tool is new (untracked), needs to be built before auto-launch works",
+    "opsDashboard": "Ops dashboard spec written (specs/ops-dashboard.md), implementation not started",
+    "uncommittedChanges": "Branch docs/improve-readme-clarity has uncommitted changes: .env.example (dashboard vars), cli/src/scaffold.js (launchDashboard), cli/src/utils.js (openInBrowser), package.json (dashboard:dev/build scripts), tools/multi-model/lib/clients.js (current state)"
+  }
+}
